@@ -1,4 +1,5 @@
 import { Shield, Scale, Siren, GraduationCap, ArrowRight } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const modules = [
   {
@@ -7,7 +8,7 @@ const modules = [
     title: 'Cyber Awareness',
     description: 'Protect yourself against Phishing, UPI fraud, and Identity Theft with practical guides and real-world examples.',
     tag: 'Essential',
-    href: '#awareness',
+    href: '/awareness',
   },
   {
     icon: Scale,
@@ -67,6 +68,7 @@ const colorMap: Record<string, { icon: string; glow: string; border: string; tag
 };
 
 export default function CoreModules() {
+  const navigate = useNavigate();
   return (
     <section id="awareness" className="py-20 bg-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -90,6 +92,7 @@ export default function CoreModules() {
               <a
                 key={mod.title}
                 href={mod.href}
+                onClick={mod.href.startsWith('/') ? (e) => { e.preventDefault(); navigate(mod.href); } : undefined}
                 className={`group relative bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col gap-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${c.glow} ${c.border} cursor-pointer`}
               >
                 {/* Tag */}
