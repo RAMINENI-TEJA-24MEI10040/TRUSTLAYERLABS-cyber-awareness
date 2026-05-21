@@ -1,4 +1,5 @@
 import { ArrowRight, FileWarning, ShieldCheck, Globe as Globe2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Hero() {
   return (
@@ -35,10 +36,10 @@ export default function Hero() {
 
         {/* CTA Buttons */}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <button className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-7 py-3.5 rounded-xl transition-all duration-200 shadow-xl shadow-cyan-500/25 hover:shadow-cyan-400/35 hover:-translate-y-0.5 text-base">
+          <Link to="/laws" className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-7 py-3.5 rounded-xl transition-all duration-200 shadow-xl shadow-cyan-500/25 hover:shadow-cyan-400/35 hover:-translate-y-0.5 text-base">
             Explore Cyber Laws
             <ArrowRight className="w-4 h-4" />
-          </button>
+          </Link>
           <button className="flex items-center gap-2 bg-transparent hover:bg-slate-800 text-white font-semibold px-7 py-3.5 rounded-xl border border-slate-700 hover:border-slate-600 transition-all duration-200 text-base">
             <FileWarning className="w-4 h-4 text-red-400" />
             Report an Incident
