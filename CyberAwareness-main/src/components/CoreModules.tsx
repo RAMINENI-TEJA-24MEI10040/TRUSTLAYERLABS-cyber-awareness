@@ -24,7 +24,7 @@ const modules = [
     title: 'Incident Reporting',
     description: 'Step-by-step guidance for the National Cyber Crime Portal and evidence collection to maximize case success.',
     tag: 'Action',
-    href: '#report',
+    href: '/incident-reporting',
   },
   {
     icon: GraduationCap,

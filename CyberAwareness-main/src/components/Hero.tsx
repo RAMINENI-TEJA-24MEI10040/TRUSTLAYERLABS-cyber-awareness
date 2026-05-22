@@ -40,10 +40,10 @@ export default function Hero() {
             Explore Cyber Laws
             <ArrowRight className="w-4 h-4" />
           </Link>
-          <button className="flex items-center gap-2 bg-transparent hover:bg-slate-800 text-white font-semibold px-7 py-3.5 rounded-xl border border-slate-700 hover:border-slate-600 transition-all duration-200 text-base">
+          <Link to="/incident-reporting" className="flex items-center gap-2 bg-transparent hover:bg-slate-800 text-white font-semibold px-7 py-3.5 rounded-xl border border-slate-700 hover:border-slate-600 transition-all duration-200 text-base">
             <FileWarning className="w-4 h-4 text-red-400" />
             Report an Incident
-          </button>
+          </Link>
         </div>
 
         {/* Stats */}
