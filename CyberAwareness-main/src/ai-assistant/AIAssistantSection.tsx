@@ -44,7 +44,7 @@ export default function AIAssistantSection() {
   }
 
   return (
-    <section id="ai-assistant" className="py-16 bg-slate-950 text-white scroll-mt-24">
+    <section id="ai-assistant" className="py-16 bg-white text-gray-900 dark:bg-slate-950 dark:text-white scroll-mt-24 transition-colors duration-300">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl">
           <p className="text-[11px] uppercase tracking-[0.28em] text-cyan-300/80 mb-3">AI Guidance Assistant</p>
@@ -56,14 +56,14 @@ export default function AIAssistantSection() {
 
         <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-3 mt-8">
           {featureCards.map((card) => (
-            <div key={card.title} className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4">
-              <h3 className="text-sm font-semibold text-cyan-100 mb-1.5">{card.title}</h3>
-              <p className="text-xs md:text-sm leading-6 text-slate-400">{card.text}</p>
+            <div key={card.title} className="rounded-2xl border border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-900/70 p-4 transition-colors duration-300">
+              <h3 className="text-sm font-semibold text-cyan-700 dark:text-cyan-100 mb-1.5">{card.title}</h3>
+              <p className="text-xs md:text-sm leading-6 text-gray-600 dark:text-slate-400">{card.text}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-6 rounded-[1.75rem] border border-cyan-500/10 bg-[linear-gradient(180deg,rgba(8,15,28,0.96),rgba(10,18,33,0.98))] p-4 md:p-5 shadow-[0_18px_60px_rgba(0,0,0,0.25)]">
+        <div className="mt-6 rounded-[1.75rem] border border-cyan-500/10 bg-white dark:bg-slate-900/95 p-4 md:p-5 shadow-[0_18px_60px_rgba(0,0,0,0.08)] dark:shadow-[0_18px_60px_rgba(0,0,0,0.25)] transition-colors duration-300">
           <div className="flex items-center justify-between gap-4 border-b border-white/5 pb-3">
             <div>
               <h3 className="text-xl font-semibold">Ask here</h3>
@@ -76,12 +76,12 @@ export default function AIAssistantSection() {
             </div>
           </div>
 
-          <div className="mt-4 rounded-[1.5rem] border border-slate-800 bg-slate-950/70 p-3 md:p-4">
+          <div className="mt-4 rounded-[1.5rem] border border-gray-200 dark:border-slate-800 bg-white dark:bg-slate-950/70 p-3 md:p-4 transition-colors duration-300">
             <div className="max-h-[20rem] space-y-3 overflow-auto pr-1 md:max-h-[22rem]">
               {messages.slice(-8).map((message) => (
                 <div key={message.id} className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                  <div className={`max-w-[92%] rounded-3xl border px-3 py-2.5 leading-relaxed whitespace-pre-wrap text-[13px] sm:text-sm shadow-sm ${message.role === 'user' ? 'bg-cyan-400 text-slate-950 border-cyan-300/20' : 'bg-slate-900/90 text-slate-100 border-white/5'}`}>
-                    <div className="mb-1 text-[10px] uppercase tracking-[0.22em] text-slate-500">{formatRole(message.role)}</div>
+                  <div className={`max-w-[92%] rounded-3xl border px-3 py-2.5 leading-relaxed whitespace-pre-wrap text-[13px] sm:text-sm shadow-sm ${message.role === 'user' ? 'bg-cyan-400 text-slate-950 border-cyan-300/20' : 'bg-white dark:bg-slate-900/90 text-gray-900 dark:text-slate-100 border-gray-200 dark:border-white/5'}`}>
+                    <div className="mb-1 text-[10px] uppercase tracking-[0.22em] text-gray-500 dark:text-slate-400">{formatRole(message.role)}</div>
                     {message.text}
                   </div>
                 </div>
@@ -89,14 +89,14 @@ export default function AIAssistantSection() {
 
               {loading && (
                 <div className="flex justify-start">
-                  <div className="rounded-3xl border border-white/5 bg-slate-900/90 px-3 py-2.5 text-[13px] text-slate-400">
+                  <div className="rounded-3xl border border-gray-200 dark:border-white/5 bg-white dark:bg-slate-900/90 px-3 py-2.5 text-[13px] text-gray-600 dark:text-slate-400">
                     Thinking about the safest response...
                   </div>
                 </div>
               )}
             </div>
 
-            <div className="mt-4 rounded-3xl border border-white/10 bg-slate-950/85 p-3">
+            <div className="mt-4 rounded-3xl border border-gray-200 dark:border-white/10 bg-white dark:bg-slate-950/85 p-3 transition-colors duration-300">
               <div className="flex flex-col gap-3 md:flex-row md:items-stretch">
                 <textarea
                   value={draft}
@@ -109,7 +109,7 @@ export default function AIAssistantSection() {
                   }}
                   rows={3}
                   placeholder="Type your question here..."
-                  className="min-h-[92px] flex-1 resize-none rounded-2xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm leading-6 text-slate-100 outline-none placeholder:text-slate-500 focus:border-cyan-400/40"
+                  className="min-h-[92px] flex-1 resize-none rounded-2xl border border-gray-200 bg-white dark:border-slate-800 dark:bg-slate-950 px-4 py-3 text-sm leading-6 text-gray-900 dark:text-white outline-none placeholder:text-gray-500 dark:placeholder:text-slate-500 focus:border-cyan-400/40"
                 />
                 <button
                   onClick={() => send()}
@@ -120,8 +120,8 @@ export default function AIAssistantSection() {
                 </button>
               </div>
               <div className="mt-2 flex flex-col gap-1 md:flex-row md:items-center md:justify-between">
-                <p className="text-[11px] text-slate-400 md:max-w-[60%]">{hint}</p>
-                <p className="text-[11px] text-slate-500">Press Enter to send, Shift+Enter for a new line.</p>
+                <p className="text-[11px] text-gray-500 dark:text-slate-300 md:max-w-[60%]">{hint}</p>
+                <p className="text-[11px] text-gray-500 dark:text-slate-400">Press Enter to send, Shift+Enter for a new line.</p>
               </div>
             </div>
           </div>

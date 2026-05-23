@@ -1,68 +1,64 @@
-import { ArrowRight, FileWarning, ShieldCheck, Globe as Globe2 } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Shield, Bot } from "lucide-react";
+
+import { useTranslation } from "react-i18next";
+
+import { useNavigate } from "react-router-dom";
 
 export default function Hero() {
+  const { t } = useTranslation();
+  const navigate = useNavigate();
+
   return (
-    <section className="relative pt-32 pb-24 overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-cyan-500/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-20 right-0 w-72 h-72 bg-blue-600/8 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-teal-500/5 rounded-full blur-3xl pointer-events-none" />
+    <section className="relative overflow-hidden bg-white dark:bg-gray-950 text-gray-900 dark:text-white pt-32 pb-24 px-4 sm:px-6 transition-colors duration-300">
 
-      {/* Grid overlay */}
-      <div className="absolute inset-0 opacity-[0.03]" style={{backgroundImage: 'linear-gradient(#00e5ff 1px, transparent 1px), linear-gradient(90deg, #00e5ff 1px, transparent 1px)', backgroundSize: '50px 50px'}} />
+      {/* Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-cyan-500/20 blur-[140px] rounded-full" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold px-4 py-1.5 rounded-full mb-8 tracking-wider uppercase">
-          <ShieldCheck className="w-3.5 h-3.5" />
-          India's Trusted Cyber Safety Platform
-        </div>
+      <div className="relative max-w-7xl mx-auto">
 
-        {/* Headline */}
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6 max-w-4xl mx-auto">
-          Empowering{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-teal-400">
-            Digital India
-          </span>{' '}
-          with Cyber Awareness &amp; Legal Guidance
-        </h1>
+        <div className="max-w-4xl">
 
-        {/* Subheadline */}
-        <p className="text-slate-400 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-          Educating citizens on cyber threats, IPC/BNS laws, and safe digital practices — so every Indian can navigate the internet with confidence.
-        </p>
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 px-4 py-2 rounded-full text-sm font-medium mb-6">
 
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
-          <Link to="/laws" className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-7 py-3.5 rounded-xl transition-all duration-200 shadow-xl shadow-cyan-500/25 hover:shadow-cyan-400/35 hover:-translate-y-0.5 text-base">
-            Explore Cyber Laws
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-          <Link to="/incident-reporting" className="flex items-center gap-2 bg-transparent hover:bg-slate-800 text-white font-semibold px-7 py-3.5 rounded-xl border border-slate-700 hover:border-slate-600 transition-all duration-200 text-base">
-            <FileWarning className="w-4 h-4 text-red-400" />
-            Report an Incident
-          </Link>
-        </div>
+            <Shield className="w-4 h-4" />
 
-        {/* Stats */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 sm:gap-12">
-          {[
-            { icon: Globe2, value: '1.4B+', label: 'Citizens Protected' },
-            { icon: ShieldCheck, value: '50K+', label: 'Incidents Reported' },
-            { icon: FileWarning, value: '200+', label: 'Cyber Laws Covered' },
-          ].map(({ icon: Icon, value, label }) => (
-            <div key={label} className="flex items-center gap-3 text-left">
-              <div className="w-10 h-10 rounded-lg bg-slate-800 border border-slate-700 flex items-center justify-center flex-shrink-0">
-                <Icon className="w-5 h-5 text-cyan-400" />
-              </div>
-              <div>
-                <div className="text-xl font-bold text-white">{value}</div>
-                <div className="text-xs text-slate-500">{label}</div>
-              </div>
-            </div>
-          ))}
+            {t("hero.badgeText")}
+          </div>
+
+          {/* Heading */}
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black leading-tight tracking-tight mb-6 text-gray-900 dark:text-white">
+
+            {t("hero.title")}
+          </h1>
+
+          {/* Subtitle */}
+          <p className="text-gray-600 dark:text-gray-300 text-base sm:text-xl max-w-2xl leading-relaxed mb-10">
+
+            {t("hero.subtitle")}
+          </p>
+
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4">
+
+            <button
+              onClick={() => navigate("/analyzer")}
+              className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-black font-bold px-8 py-4 rounded-2xl transition-all duration-300 text-base sm:text-lg"
+            >
+              <Bot className="w-5 h-5" />
+
+              {t("hero.analyzerBtn")}
+            </button>
+
+            <button
+              onClick={() => navigate("/login")}
+              className="flex items-center justify-center gap-2 border border-gray-300 dark:border-gray-600 hover:border-cyan-500 hover:bg-cyan-500/10 px-8 py-4 rounded-2xl transition-colors duration-300 text-base sm:text-lg text-gray-900 dark:text-white"
+            >
+              <Shield className="w-5 h-5" />
+
+              {t("hero.dashboardBtn")}
+            </button>
+          </div>
         </div>
       </div>
     </section>

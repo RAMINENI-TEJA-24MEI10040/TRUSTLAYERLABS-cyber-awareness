@@ -1,0 +1,53 @@
+.explorer-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.section-map {
+  display: grid;
+  gap: 12px;
+}
+
+.section-node {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid rgba(0, 220, 255, 0.22);
+  border-radius: var(--law-radius);
+  color: var(--law-text);
+  background: rgba(6, 16, 30, 0.78);
+  text-align: left;
+  cursor: pointer;
+  transition: transform var(--law-smooth), border-color var(--law-fast), box-shadow var(--law-fast);
+}
+
+.section-node:hover {
+  transform: translateX(6px);
+  border-color: var(--law-cyan);
+  box-shadow: var(--law-shadow);
+}
+
+.section-node strong {
+  display: block;
+  color: var(--law-cyan);
+  font-family: "Courier New", monospace;
+  margin-bottom: 6px;
+}
+
+.section-node span {
+  color: var(--law-muted);
+}
+
+.copy-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+@media (max-width: 860px) {
+  .explorer-layout {
+    grid-template-columns: 1fr;
+  }
+}

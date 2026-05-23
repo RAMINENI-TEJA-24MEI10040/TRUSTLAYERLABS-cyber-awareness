@@ -1,110 +1,108 @@
-type KnowledgeChunk = {
+import { phishingData } from './data/phishing';
+import { qrScamsData } from './data/qrScams';
+import { deepfakeData } from './data/deepfake';
+import { cyberLawData } from './data/cyberLaw';
+import { reportingData } from './data/reporting';
+import { otpFraudData } from './data/otpFraud';
+import { upiFraudData } from './data/upiFraud';
+import { socialEngineeringData } from './data/socialEngineering';
+
+export type KnowledgeChunk = {
   id: string;
   title: string;
   text: string;
   source: string;
+  keywords?: string[];
+  category?: string;
 };
 
+// Route-to-dataset mapping
+const CONTEXT_MAPPING: Record<string, string[]> = {
+  '/phishing': ['phishing', 'otp', 'social'],
+  '/qr': ['qr', 'upi'],
+  '/deepfake': ['deepfake'],
+  '/laws': ['law', 'reporting'],
+  '/reporting': ['reporting'],
+  '/awareness': ['phishing', 'qr', 'upi', 'otp', 'social', 'deepfake'],
+  'general': ['phishing', 'qr', 'upi', 'otp', 'social', 'deepfake', 'law', 'reporting'],
+};
+
+// Unified knowledge base with categories
 const knowledgeBase: KnowledgeChunk[] = [
-  {
-    id: 'cyber-awareness-overview',
-    title: 'Cyber awareness overview',
-    source: 'PDF guide',
-    text: 'The platform teaches cyber threats, scams, cyber laws, reporting, digital safety best practices, and AI-powered guidance for awareness and prevention.',
-  },
-  {
-    id: 'phishing',
-    title: 'Phishing awareness',
-    source: 'PDF guide',
-    text: 'Phishing scams use fake emails, SMS, calls, and websites to steal credentials, OTPs, card details, and account access. Always verify sender identity and links before acting.',
-  },
-  {
-    id: 'upi-fraud',
-    title: 'UPI fraud awareness',
-    source: 'PDF guide',
-    text: 'UPI fraud often uses collect requests, fake refunds, remote access, or misleading payment prompts. Never approve unknown requests and never share UPI PIN or OTP.',
-  },
-  {
-    id: 'qr-scam',
-    title: 'QR code scam awareness',
-    source: 'PDF guide',
-    text: 'QR scams trick users into scanning a code that may trigger payment or reveal payment details. A QR code should be treated as a payment action, not a way to receive money.',
-  },
-  {
-    id: 'social-media-scams',
-    title: 'Social media scams',
-    source: 'PDF guide',
-    text: 'Fake profiles, lottery messages, job offers, investment claims, and romance scams are common on WhatsApp, Instagram, Facebook, and Telegram.',
-  },
-  {
-    id: 'deepfake',
-    title: 'Deepfake awareness',
-    source: 'PDF guide',
-    text: 'Deepfakes can be used for blackmail, misinformation, and fraud. Check for mismatched audio, odd lip movement, or unusual urgency before trusting a video message.',
-  },
-  {
-    id: 'identity-theft',
-    title: 'Identity theft awareness',
-    source: 'PDF guide',
-    text: 'Identity theft can involve Aadhaar, PAN, SIM, bank credentials, email access, or social profile takeover. Protect documents and report misuse quickly.',
-  },
-  {
-    id: 'password-mfa',
-    title: 'Password and MFA guidance',
-    source: 'PDF guide',
-    text: 'Use strong unique passwords and multi-factor authentication. Never reuse passwords across banking, email, and social accounts.',
-  },
-  {
-    id: 'reporting',
-    title: 'Incident reporting guidance',
-    source: 'PDF guide',
-    text: 'If money, credentials, or account access are involved, stop interacting, preserve evidence, call 1930, and report at cybercrime.gov.in.',
-  },
-  {
-    id: 'law-module',
-    title: 'Indian cyber law module',
-    source: 'PDF guide',
-    text: 'The platform should explain the IT Act, IPC/BNS cyber-related sections, legal rights of victims, punishments, and reporting procedures in simple language.',
-  },
+  ...phishingData.map(e => ({ ...e, source: 'Phishing Module', category: 'phishing' })),
+  ...qrScamsData.map(e => ({ ...e, source: 'QR Scams Module', category: 'qr' })),
+  ...deepfakeData.map(e => ({ ...e, source: 'Deepfake Module', category: 'deepfake' })),
+  ...cyberLawData.map(e => ({ ...e, source: 'Cyber Law Module', category: 'law' })),
+  ...reportingData.map(e => ({ ...e, source: 'Reporting Module', category: 'reporting' })),
+  ...otpFraudData.map(e => ({ ...e, source: 'OTP Fraud Module', category: 'otp' })),
+  ...upiFraudData.map(e => ({ ...e, source: 'UPI Fraud Module', category: 'upi' })),
+  ...socialEngineeringData.map(e => ({ ...e, source: 'Social Engineering Module', category: 'social' })),
 ];
 
-function tokenize(text: string) {
+function tokenize(text: string): string[] {
   return text.toLowerCase().match(/[a-z0-9]+/g) ?? [];
 }
 
-function scoreChunk(queryTokens: string[], chunk: KnowledgeChunk) {
-  const textTokens = tokenize(`${chunk.title} ${chunk.text}`);
-  const frequency = new Map<string, number>();
-  for (const token of textTokens) {
-    frequency.set(token, (frequency.get(token) ?? 0) + 1);
-  }
+function scoreChunk(queryTokens: string[], chunk: KnowledgeChunk): number {
+  const titleTokens = tokenize(chunk.title);
+  const textTokens = tokenize(chunk.text);
+  const keywordTokens = chunk.keywords ? chunk.keywords.map(k => tokenize(k)).flat() : [];
 
   let score = 0;
   for (const token of queryTokens) {
-    if (frequency.has(token)) {
-      score += 1 + Math.min(frequency.get(token) ?? 0, 3) * 0.2;
+    // Exact keyword match (highest priority)
+    if (chunk.keywords?.includes(token)) {
+      score += 3;
+    }
+    // Title match (high priority)
+    else if (titleTokens.includes(token)) {
+      score += 2;
+    }
+    // Keyword match (medium priority)
+    else if (keywordTokens.includes(token)) {
+      score += 1.5;
+    }
+    // Text match (base priority)
+    else if (textTokens.includes(token)) {
+      score += 0.8;
     }
   }
-
   return score;
 }
 
-export function searchKnowledgeBase(query: string) {
+// Filter knowledge base by context
+function filterByContext(context: string): KnowledgeChunk[] {
+  const categories = CONTEXT_MAPPING[context] || CONTEXT_MAPPING['general'];
+  return knowledgeBase.filter(chunk => 
+    chunk.category && categories.includes(chunk.category)
+  );
+}
+
+// Search with context awareness
+export function searchKnowledgeBase(query: string, context?: string): KnowledgeChunk[] {
   const queryTokens = tokenize(query);
-  return knowledgeBase
+  const contextBase = context ? filterByContext(context) : knowledgeBase;
+
+  return contextBase
     .map((chunk) => ({ ...chunk, score: scoreChunk(queryTokens, chunk) }))
     .filter((chunk) => chunk.score > 0)
     .sort((a, b) => b.score - a.score)
-    .slice(0, 4);
+    .slice(0, 3); // Limit to 2-3 entries
 }
 
-export function buildKnowledgeContext(query: string) {
-  const hits = searchKnowledgeBase(query);
+// Build knowledge context for prompt
+export function buildKnowledgeContext(query: string, context?: string): string {
+  const hits = searchKnowledgeBase(query, context);
   if (hits.length === 0) {
-    return 'No direct local knowledge match was found. Use general cyber safety guidance and ask one follow-up if needed.';
+    return 'No direct local knowledge match was found. Use general cyber safety guidance.';
   }
 
   return hits
-    .map((hit, index) => `${index + 1}. ${hit.title} (${hit.source}): ${hit.text}`)
+    .map((hit) => `• ${hit.title}: ${hit.text}`)
     .join('\n\n');
 }
+
+export function getKnowledgeBase(): KnowledgeChunk[] {
+  return knowledgeBase;
+}
+

@@ -1,102 +1,213 @@
-export type Detection = {
-  type: string;
-  confidence: number; // 0-1
+export type ScamSignal = {
+  category: string;
   summary: string;
+  score: number; // 0-100
+  confidence: number; // 0-1
+  indicators: string[];
   guidance: string[];
+  suspiciousUrls: string[];
+  threatType: string;
 };
 
-const patterns: { type: string; re: RegExp; summary: string; guidance: string[] }[] = [
+const rules: Array<{
+  type: string;
+  category: string;
+  label: string;
+  weight: number;
+  re: RegExp;
+  indicator: string;
+  guidance: string[];
+}> = [
   {
-    type: 'otp-request',
-    re: /\b(otp|one[- ]time pass(code)?|verification code)\b/i,
-    summary: 'Requesting OTP or verification code',
-    guidance: ['Never share OTPs', 'Do not provide codes over chat or phone', 'Report if asked by unknown person'],
+    type: 'otp-scam',
+    category: 'OTP Scam',
+    label: 'OTP or verification code request',
+    weight: 25,
+    re: /\b(otp|one[- ]time pass(code)?|verification code|m-pin|mpin|cvv|atm pin)\b/i,
+    indicator: 'Sensitive OTP or authentication request',
+    guidance: ['Never share OTPs or verification codes.', 'Banks and services will not ask for passcodes via chat or SMS.', 'Report unexpected authentication requests.'],
   },
   {
-    type: 'urgent-action',
-    re: /\b(immediate|urgent|act now|verify your account|account locked|suspend)\b/i,
-    summary: 'Urgent-sounding request to take action',
-    guidance: ['Do not rush, verify the sender', 'Contact bank/support via official channels', 'Do not click links or share credentials'],
+    type: 'urgent-scam',
+    category: 'Urgency Scam',
+    label: 'Urgent deadline or pressure',
+    weight: 20,
+    re: /\b(immediate|urgent|act now|verify now|within 24 hours|last chance|limited time|expire|suspend|temporarily locked|blocked)\b/i,
+    indicator: 'Urgent pressure or deadline trigger',
+    guidance: ['Do not act under pressure.', 'Verify the sender using official channels.', 'Legitimate services do not force instant action via chat.'],
   },
   {
-    type: 'bank-credential',
-    re: /\b(bank|account number|ifsc|upi id|pin|netbanking|mPIN)\b/i,
-    summary: 'Requesting bank or credential information',
-    guidance: ['Never share PINs or passwords', 'Banks will not ask for full credentials via chat'],
+    type: 'bank-impersonation',
+    category: 'Bank Impersonation',
+    label: 'Bank or financial credential request',
+    weight: 18,
+    re: /\b(bank|account number|ifsc|upi id|netbanking|banking|customer care|debit card|credit card|statement)\b/i,
+    indicator: 'Bank or financial credential request',
+    guidance: ['Do not share account or card details in messages.', 'Contact your bank directly through official channels.', 'Avoid replying to unverified banking messages.'],
   },
   {
-    type: 'payment-collect',
-    re: /\b(collect request|scan to pay|scan qr|scan this qr|upi collect|collect request)\b/i,
-    summary: 'UPI or payment collect request',
-    guidance: ['Verify the payee before accepting collect requests', 'Do not approve unknown requests', 'Use official bank app features to cancel/verify'],
+    type: 'payment-scam',
+    category: 'UPI / Payment Scam',
+    label: 'Payment or UPI request',
+    weight: 18,
+    re: /\b(pay now|request money|collect request|scan to pay|scan this qr|upi collect|send money|refund request)\b/i,
+    indicator: 'UPI or payment request language',
+    guidance: ['Verify the recipient before approving any payment request.', 'Do not accept collect requests from unknown contacts.', 'Use your own bank or UPI app to confirm the transaction.'],
   },
   {
-    type: 'link-phishing',
-    re: /https?:\/\//i,
-    summary: 'Contains link(s)',
-    guidance: ['Do not click unfamiliar links', 'Check link domain carefully', 'Open official app/website directly instead'],
-  },
-  {
-    type: 'upi-collect',
-    re: /\b(upi|bharat qr|bhim|pay now|request money|collect money|money request)\b/i,
-    summary: 'UPI / payment request language',
-    guidance: ['Do not approve unknown collect requests', 'Verify the exact payee before sending money', 'Use your bank app or official UPI app to confirm'],
+    type: 'phishing-link',
+    category: 'Phishing Link',
+    label: 'Suspicious link included',
+    weight: 22,
+    re: /https?:\/\/[\w-./?=&%#]+/i,
+    indicator: 'Suspicious link or URL included',
+    guidance: ['Do not click unfamiliar links.', 'Open official websites directly instead of following links.', 'Inspect links for typos and unusual domains.'],
   },
   {
     type: 'qr-scam',
-    re: /\b(qr|scan the code|scan this code|qr code)\b/i,
-    summary: 'QR code scanning prompt',
-    guidance: ['Never scan a QR code to receive money', 'Check who shared the QR code and why', 'A QR scan can initiate payment and not receive it'],
+    category: 'QR Scam',
+    label: 'QR code or scan request',
+    weight: 18,
+    re: /\b(qr code|scan the code|scan this code|bharat qr|bhim|scan now)\b/i,
+    indicator: 'QR code or scanning prompt',
+    guidance: ['Do not scan QR codes from unknown sources.', 'Check who shared the QR code and why.', 'Official payment flows do not use random QR images in unsolicited messages.'],
   },
   {
-    type: 'screen-share',
-    re: /\b(screen share|remote access|anydesk|teamviewer|remote support)\b/i,
-    summary: 'Remote access / screen sharing request',
-    guidance: ['Never share screen for banking support from strangers', 'Do not install remote access tools unless verified', 'Disconnect and contact official support'],
+    type: 'remote-access',
+    category: 'Remote Access Scam',
+    label: 'Remote access or screen sharing request',
+    weight: 23,
+    re: /\b(screen share|remote access|anydesk|teamviewer|remote support|remote desktop|join my screen)\b/i,
+    indicator: 'Remote access or screen sharing request',
+    guidance: ['Do not provide remote access unless you initiated the support session.', 'Disconnect and contact official support directly if asked to share your screen.', 'Avoid installing remote-control tools from unknown senders.'],
   },
   {
-    type: 'fake-job',
-    re: /\b(job|interview|offer letter|salary advance|recruiter|verification fee)\b/i,
-    summary: 'Job or fee scam language',
-    guidance: ['Do not pay any upfront fee for a job', 'Verify recruiter identity through official company channels', 'Be careful with fake offer letters and WhatsApp jobs'],
+    type: 'investment-scam',
+    category: 'Investment Scam',
+    label: 'Investment or money-flip offer',
+    weight: 17,
+    re: /\b(investment|guaranteed returns|double your money|money flipping|crypto profit|fixed deposit|high return)\b/i,
+    indicator: 'Investment or reward offer language',
+    guidance: ['Be skeptical of guaranteed returns.', 'Never transfer money for unverified investment offers.', 'Verify opportunities through trusted financial advisors.'],
   },
   {
-    type: 'social-engineering',
-    re: /\b(congratulations|you have won|prize|claim|lottery)\b/i,
-    summary: 'Prize/offer scam language',
-    guidance: ['Be skeptical of unsolicited prizes', 'Do not share personal info or pay fees to claim'],
+    type: 'reward-scam',
+    category: 'Reward Scam',
+    label: 'Prize or lottery claim',
+    weight: 16,
+    re: /\b(congratulations|you have won|prize|claim your reward|lottery|gift voucher|redeem now)\b/i,
+    indicator: 'Prize or reward claim language',
+    guidance: ['Do not share personal details to claim rewards.', 'Verify offers with the official brand website.', 'Free prizes should not require an upfront payment.'],
   },
 ];
 
-export function detectScam(message: string): Detection | null {
-  const checks = patterns.map((p) => ({ p, matches: p.re.test(message) }));
-  const matched = checks.filter((c) => c.matches).map((c) => c.p);
-  if (matched.length === 0) return null;
+const urlPattern = /https?:\/\/[\w-./?=&%#]+/gi;
+const suspiciousShortener = /\b(?:bit\.ly|tinyurl\.com|t\.co|cutt\.ly|tiny\.cc|goo\.gl|s\.id|rb\.gy|ow\.ly|lnkd\.in|is\.gd|buff\.ly)\b/i;
+const suspiciousTld = /\.(?:xyz|top|club|review|online|info|bid|win|live|pw|country|center|loan|tech|store)\b/i;
+const fakeLoginPattern = /\b(?:secure|verify|login|account|support|online|india|confirm|update)(?:[-\w]*?)\.(?:com|in|net|org|online|info|xyz|site|biz|ru|pw|cc)\b/i;
 
-  const text = message.toLowerCase();
-  const hasMoney = /\b(money|pay|payment|transfer|send|deposit|refund|collect)\b/.test(text);
-  const hasUrgency = /\b(urgent|immediate|now|today|quick|hurry|last chance|act now)\b/.test(text);
-  const hasCredential = /\b(otp|pin|password|cvv|upi pin|net banking|account|card number)\b/.test(text);
-  const scoreBoost = [hasMoney, hasUrgency, hasCredential].filter(Boolean).length * 0.12;
+function extractUrls(text: string): string[] {
+  return Array.from(text.matchAll(urlPattern), (match) => match[0]);
+}
 
-  // crude confidence: patterns + context boosts, capped
-  const confidence = Math.min(0.97, 0.38 + matched.length * 0.18 + scoreBoost);
-  const primary = matched[0];
-  const guidance = Array.from(new Set(primary.guidance.concat(...matched.slice(1).map((m) => m.guidance))));
+function clamp(value: number, min: number, max: number) {
+  return Math.max(min, Math.min(max, value));
+}
+
+export function detectScam(message: string): ScamSignal | null {
+  const normalized = message.trim();
+  if (!normalized) return null;
+
+  const indicators: string[] = [];
+  const guidanceSet = new Set<string>();
+  const categoryScores: Record<string, number> = {};
+  const threatScores: Record<string, number> = {};
+  let score = 0;
+
+  for (const rule of rules) {
+    if (rule.re.test(normalized)) {
+      score += rule.weight;
+      indicators.push(rule.indicator);
+      rule.guidance.forEach((g) => guidanceSet.add(g));
+      categoryScores[rule.category] = (categoryScores[rule.category] ?? 0) + rule.weight;
+      threatScores[rule.type] = (threatScores[rule.type] ?? 0) + rule.weight;
+    }
+  }
+
+  const urls = extractUrls(normalized);
+  const suspiciousUrls = urls.filter((url) => suspiciousShortener.test(url) || suspiciousTld.test(url) || fakeLoginPattern.test(url));
+
+  if (urls.length > 0) {
+    score += 15;
+    guidanceSet.add('Do not click suspicious links. Open official apps or websites directly.');
+    if (suspiciousUrls.length > 0) {
+      score += 20;
+      indicators.push('Suspicious or shortened URL detected');
+      guidanceSet.add('Shortened and unusual domain links are commonly used in phishing attacks.');
+    }
+  }
+
+  const urgentMatch = /\b(urgent|immediate|verify now|act now|within 24 hours|last chance|limited time|expire|suspend|blocked)\b/i.test(normalized);
+  const authMatch = /\b(otp|verification code|m-pin|mpin|cvv|atm pin|password)\b/i.test(normalized);
+  const moneyMatch = /\b(payment|transfer|deposit|collect|refund|pay now|send money|request money|upi|qr code|bank account|ifsc|account number)\b/i.test(normalized);
+
+  if (urgentMatch && !indicators.includes('Urgent pressure or deadline trigger')) {
+    score += 14;
+    indicators.push('Urgent pressure or deadline trigger');
+    guidanceSet.add('Do not respond to urgent demands without verifying the sender.');
+  }
+
+  if (authMatch && !indicators.includes('Sensitive OTP or authentication request')) {
+    score += 18;
+    indicators.push('Sensitive auth or OTP request');
+    guidanceSet.add('Never share OTPs, passwords, or PINs with anyone claiming to be support.');
+  }
+
+  if (moneyMatch && !indicators.includes('Financial transaction or payment request')) {
+    score += 12;
+    indicators.push('Financial transaction or payment request');
+    guidanceSet.add('Verify any money request with the official provider before sending funds.');
+  }
+
+  const hasPhoneTerms = /\b(call|whatsapp|message|sms|phone number)\b/i.test(normalized);
+  if (hasPhoneTerms && !indicators.includes('Direct contact request detected')) {
+    score += 8;
+    indicators.push('Direct contact request detected');
+    guidanceSet.add('Avoid calling or texting unknown numbers for verification requests.');
+  }
+
+  const totalScore = clamp(score, 0, 100);
+  const confidence = clamp(0.25 + totalScore / 180 + indicators.length * 0.03, 0.2, 0.96);
+  const category = Object.entries(categoryScores).sort((a, b) => b[1] - a[1])[0]?.[0] ?? 'General scam';
+  const threatType = Object.entries(threatScores).sort((a, b) => b[1] - a[1])[0]?.[0] ?? 'general-scam';
+  const summary = indicators.length > 0 ? `Detected ${category} signals` : 'No clear scam signals detected';
 
   return {
-    type: primary.type,
+    category,
+    summary,
+    score: totalScore,
     confidence,
-    summary: primary.summary,
-    guidance,
+    indicators: Array.from(new Set(indicators)),
+    guidance: Array.from(guidanceSet),
+    suspiciousUrls,
+    threatType,
   };
 }
 
 export function ruleBasedReply(message: string) {
   const det = detectScam(message);
   if (!det) return null;
-  const lines = [`⚠️ Possible scam signal detected: ${det.summary}.`, `Confidence: ${Math.round(det.confidence * 100)}%.`, '', 'Recommended steps:'];
+  const lines = [
+    `⚠️ Possible scam signal detected: ${det.summary}.`,
+    `Scam category: ${det.category}.`,
+    `Confidence: ${Math.round(det.confidence * 100)}%.`,
+    '',
+    'Recommended steps:',
+  ];
   det.guidance.forEach((g, i) => lines.push(`${i + 1}. ${g}`));
+  if (det.suspiciousUrls.length > 0) {
+    lines.push('', `Suspicious links: ${det.suspiciousUrls.join(', ')}`);
+  }
   lines.push('', 'If this looks urgent or financial, stop interacting immediately.', 'Call 1930 or report at cybercrime.gov.in');
   return lines.join('\n');
 }

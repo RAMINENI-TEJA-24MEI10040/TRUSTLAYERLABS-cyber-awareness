@@ -1,0 +1,807 @@
+/* Cyber Law Dashboard - shared module styles */
+:root {
+  --law-bg: #f8fafc;
+  --law-panel: #ffffff;
+  --law-panel-strong: #f8fbff;
+  --law-border: rgba(209, 213, 219, 0.55);
+  --law-cyan: #0ea5e9;
+  --law-cyan-soft: rgba(14, 165, 233, 0.14);
+  --law-red: #ef4444;
+  --law-red-soft: rgba(255, 36, 95, 0.08);
+  --law-green: #16a34a;
+  --law-yellow: #eab308;
+  --law-text: #0f172a;
+  --law-muted: #334155;
+  --law-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --law-box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+  --law-red-shadow: 0 0 18px rgba(239, 68, 68, 0.14);
+  --law-radius: 8px;
+  --law-fast: 180ms ease;
+  --law-smooth: 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.dark .law-shell {
+  --law-bg: #02050d;
+  --law-panel: rgba(15, 23, 42, 0.92);
+  --law-panel-strong: rgba(15, 23, 42, 0.98);
+  --law-border: rgba(148, 163, 184, 0.2);
+  --law-cyan: #00dcff;
+  --law-cyan-soft: rgba(0, 220, 255, 0.12);
+  --law-red: #ff245f;
+  --law-red-soft: rgba(255, 36, 95, 0.08);
+  --law-green: #29ff9a;
+  --law-yellow: #ffd166;
+  --law-text: #f8fafc;
+  --law-muted: #cbd5e1;
+  --law-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+  --law-box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  --law-red-shadow: 0 0 18px rgba(255, 36, 95, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.law-shell {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--law-text);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  background:
+    radial-gradient(circle at 14% 18%, rgba(14, 165, 233, 0.05), transparent 18rem),
+    radial-gradient(circle at 86% 6%, rgba(239, 68, 68, 0.03), transparent 16rem),
+    #f8fafc;
+  overflow-x: hidden;
+}
+.dark .law-shell {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(0, 220, 255, 0.04), transparent 18rem),
+    radial-gradient(circle at 86% 4%, rgba(255, 36, 95, 0.03), transparent 16rem),
+    #02050d;
+}
+
+.law-shell::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background: repeating-linear-gradient(
+    180deg,
+    transparent 0,
+    transparent 8px,
+    rgba(15, 23, 42, 0.03) 9px
+  );
+  opacity: 0.7;
+}
+
+a {
+  color: inherit;
+}
+
+.law-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 56px;
+}
+
+.law-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  margin-bottom: 26px;
+  background: rgba(255, 255, 255, 0.82);
+  border-bottom: 1px solid rgba(209, 213, 219, 0.55);
+  backdrop-filter: blur(18px);
+}
+.dark .law-nav {
+  background: rgba(10, 19, 36, 0.94);
+  border-bottom: 1px solid rgba(71, 85, 105, 0.35);
+}
+
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--law-text);
+  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--law-border);
+  color: var(--law-cyan);
+  background: var(--law-cyan-soft);
+  box-shadow: var(--law-shadow);
+}
+
+.law-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.law-links a,
+.chip,
+.law-btn {
+  border: 1px solid var(--law-border);
+  border-radius: var(--law-radius);
+  color: var(--law-text);
+  background: var(--law-panel);
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform var(--law-fast), border-color var(--law-fast), box-shadow var(--law-fast), background var(--law-fast), color var(--law-fast);
+}
+
+.law-tab {
+  padding: 9px 11px;
+  font-size: 0.83rem;
+  min-width: 72px;
+  text-align: center;
+  color: #334155;
+  background: #f8fafc;
+  border-color: rgba(209, 213, 219, 0.55);
+  pointer-events: auto;
+  position: relative;
+}
+
+.dark .law-tab {
+  color: #cbd5e1;
+  background: #0f172a;
+  border-color: rgba(100, 116, 139, 0.3);
+}
+
+.law-tab:hover {
+  background: rgba(14, 165, 233, 0.12);
+}
+
+.law-tab-active {
+  background: #0ea5e9;
+  color: #ffffff;
+  border-color: #0ea5e9;
+  box-shadow: var(--law-shadow);
+}
+
+.dark .law-tab-active {
+  background: #0891b2;
+}
+
+.law-tab-inactive {
+  background: #f8fafc;
+  color: #334155;
+}
+
+.dark .law-tab-inactive {
+  background: #0f172a;
+  color: #cbd5e1;
+}
+
+.law-links a {
+  padding: 9px 11px;
+  font-size: 0.83rem;
+}
+
+.law-links .dashboard-link {
+  color: var(--law-green);
+  border-color: rgba(41, 255, 154, 0.32);
+}
+
+.law-links a:hover,
+.chip:hover,
+.law-btn:hover {
+  border-color: var(--law-cyan);
+  background: rgba(14, 165, 233, 0.08);
+  box-shadow: var(--law-shadow);
+  transform: translateY(-2px);
+}
+
+.law-links a.active,
+.chip.active {
+  border-color: var(--law-cyan);
+  background: rgba(14, 165, 233, 0.16);
+  color: var(--law-text);
+  box-shadow: var(--law-shadow);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+  gap: 24px;
+  align-items: stretch;
+  margin-bottom: 30px;
+}
+
+.hero-panel,
+.soc-panel,
+.law-card,
+.metric-card,
+.timeline-item,
+.accordion,
+.flow-step,
+.penalty-card,
+.case-console,
+.progress-panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--law-border);
+  border-radius: var(--law-radius);
+  background: var(--law-panel);
+  box-shadow: var(--law-box-shadow);
+}
+
+.hero-panel::after,
+.soc-panel::after,
+.law-card::after,
+.metric-card::after,
+.penalty-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: transparent;
+}
+
+.hero-panel:hover::after,
+.soc-panel:hover::after,
+.law-card:hover::after,
+.metric-card:hover::after,
+.penalty-card:hover::after {
+  transform: translateX(120%);
+}
+
+.hero-panel {
+  min-height: 440px;
+  padding: clamp(28px, 5vw, 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.eyebrow {
+  display: inline-flex;
+  width: fit-content;
+  padding: 7px 10px;
+  border: 1px solid rgba(41, 255, 154, 0.34);
+  border-radius: var(--law-radius);
+  color: var(--law-green);
+  background: rgba(41, 255, 154, 0.08);
+  font-family: "Courier New", monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  letter-spacing: 0;
+}
+
+h1 {
+  max-width: 780px;
+  margin-top: 22px;
+  font-size: clamp(2.45rem, 7vw, 5.4rem);
+  line-height: 0.96;
+  text-shadow: none;
+  color: var(--law-text);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  color: var(--law-text);
+}
+
+h3 {
+  font-size: 1.05rem;
+}
+
+.lead {
+  max-width: 760px;
+  color: var(--law-muted);
+  font-size: clamp(1rem, 2vw, 1.18rem);
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 26px;
+}
+
+.law-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 10px 15px;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.law-btn.primary {
+  border-color: var(--law-cyan);
+  background: var(--law-cyan-soft);
+  color: var(--law-text);
+}
+
+.law-btn.danger {
+  border-color: rgba(255, 36, 95, 0.5);
+  color: var(--law-text);
+  background: var(--law-red-soft);
+}
+
+.soc-panel {
+  padding: 20px;
+}
+
+.soc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 7px;
+}
+
+.terminal-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--law-cyan);
+  box-shadow: 0 0 12px currentColor;
+}
+
+.terminal-dots span:nth-child(2) {
+  color: var(--law-yellow);
+  background: var(--law-yellow);
+}
+
+.terminal-dots span:nth-child(3) {
+  color: var(--law-red);
+  background: var(--law-red);
+}
+
+.terminal {
+  min-height: 190px;
+  padding: 18px;
+  border: 1px solid var(--law-border);
+  border-radius: var(--law-radius);
+  color: #caffdf;
+  background: rgba(15, 23, 42, 0.9);
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.terminal-line {
+  opacity: 0;
+  animation: typeReveal 0.55s ease forwards;
+}
+
+.terminal-line:nth-child(2) { animation-delay: 0.25s; }
+.terminal-line:nth-child(3) { animation-delay: 0.5s; }
+.terminal-line:nth-child(4) { animation-delay: 0.75s; }
+.terminal-line:nth-child(5) { animation-delay: 1s; }
+
+.terminal-line strong {
+  color: var(--law-cyan);
+}
+
+.metric-grid,
+.card-grid,
+.penalty-grid,
+.tips-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.metric-card {
+  padding: 18px;
+  min-height: 132px;
+  transition: transform var(--law-smooth), border-color var(--law-fast), box-shadow var(--law-fast);
+}
+
+.metric-card:hover,
+.law-card:hover,
+.penalty-card:hover,
+.flow-step:hover {
+  transform: translateY(-5px);
+  border-color: var(--law-cyan);
+  box-shadow: var(--law-shadow);
+}
+
+.metric-value {
+  display: block;
+  margin: 8px 0;
+  color: var(--law-cyan);
+  font-family: "Courier New", monospace;
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.metric-card p,
+.law-card p,
+.penalty-card p,
+.flow-step p,
+.timeline-item p {
+  margin: 8px 0 0;
+  color: var(--law-muted);
+  line-height: 1.62;
+}
+
+.section-block {
+  margin-top: 34px;
+}
+
+.section-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.section-head p {
+  max-width: 660px;
+  margin: 8px 0 0;
+  color: var(--law-muted);
+}
+
+.law-card,
+.penalty-card {
+  padding: 20px;
+  min-height: 190px;
+  color: var(--law-text);
+  text-decoration: none;
+  transition: transform var(--law-smooth), border-color var(--law-fast), box-shadow var(--law-fast);
+}
+
+.law-card .card-code,
+.penalty-card .card-code {
+  display: inline-flex;
+  margin-bottom: 14px;
+  color: var(--law-cyan);
+  font-family: "Courier New", monospace;
+  font-weight: 800;
+}
+
+.law-card.danger,
+.penalty-card.danger {
+  border-color: rgba(255, 36, 95, 0.3);
+}
+
+.law-card.danger .card-code,
+.penalty-card.danger .card-code {
+  color: var(--law-red);
+}
+
+.search-panel {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  margin: 16px 0;
+}
+
+.law-search {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 14px;
+  border: 1px solid var(--law-border);
+  border-radius: var(--law-radius);
+  color: var(--law-text);
+  background: var(--law-panel);
+  outline: none;
+}
+
+.law-search:focus {
+  border-color: var(--law-cyan);
+  box-shadow: var(--law-shadow);
+}
+
+.chip-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  min-height: 38px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.accordion-list {
+  display: grid;
+  gap: 12px;
+}
+
+.accordion {
+  border-color: rgba(0, 220, 255, 0.18);
+}
+
+.accordion-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px;
+  border: 0;
+  color: var(--law-text);
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+.accordion-button span {
+  color: var(--law-cyan);
+  font-family: "Courier New", monospace;
+}
+
+.accordion-icon {
+  color: var(--law-red);
+  font-weight: 900;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height var(--law-smooth), opacity var(--law-smooth);
+}
+
+.accordion.open .accordion-content {
+  max-height: 360px;
+  opacity: 1;
+}
+
+.accordion-content-inner {
+  padding: 0 18px 18px;
+  color: var(--law-muted);
+  line-height: 1.65;
+}
+
+.timeline {
+  position: relative;
+  display: grid;
+  gap: 16px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  bottom: 10px;
+  left: 18px;
+  width: 2px;
+  background: linear-gradient(var(--law-cyan), var(--law-red));
+  box-shadow: var(--law-shadow);
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 14px;
+  padding: 18px;
+}
+
+.timeline-dot {
+  width: 16px;
+  height: 16px;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: var(--law-cyan);
+  box-shadow: 0 0 12px rgba(14, 165, 233, 0.18);
+}
+
+.flow-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.flow-step {
+  padding: 18px;
+  transition: transform var(--law-smooth), border-color var(--law-fast), box-shadow var(--law-fast);
+}
+
+.flow-step strong {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  margin-bottom: 12px;
+  color: var(--law-bg);
+  background: var(--law-cyan);
+  box-shadow: var(--law-shadow);
+}
+
+.progress-panel {
+  padding: 18px;
+}
+
+.progress-track {
+  height: 12px;
+  margin: 12px 0;
+  overflow: hidden;
+  border: 1px solid var(--law-border);
+  border-radius: var(--law-radius);
+  background: rgba(148, 163, 184, 0.18);
+}
+
+.progress-fill {
+  width: 0;
+  height: 100%;
+  background: linear-gradient(90deg, var(--law-cyan), var(--law-red));
+  box-shadow: var(--law-shadow);
+  transition: width var(--law-smooth);
+}
+
+.case-console {
+  padding: 20px;
+}
+
+.case-stage {
+  min-height: 230px;
+  padding: 18px;
+  border: 1px solid var(--law-border);
+  border-radius: var(--law-radius);
+  background: var(--law-panel);
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.choice {
+  min-height: 92px;
+  padding: 14px;
+  border: 1px solid var(--law-border);
+  border-radius: var(--law-radius);
+  color: var(--law-text);
+  background: var(--law-panel);
+  cursor: pointer;
+}
+
+.choice:hover,
+.choice.selected {
+  border-color: var(--law-cyan);
+  box-shadow: var(--law-shadow);
+}
+
+.choice.correct {
+  border-color: var(--law-green);
+}
+
+.choice.risky {
+  border-color: var(--law-red);
+}
+
+.achievement-popup {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 30;
+  width: min(360px, calc(100% - 44px));
+  padding: 18px;
+  border: 1px solid var(--law-cyan);
+  border-radius: var(--law-radius);
+  background: rgba(5, 10, 20, 0.94);
+  box-shadow: var(--law-shadow), var(--law-red-shadow);
+  transform: translateY(24px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--law-smooth), transform var(--law-smooth);
+}
+
+.achievement-popup.show {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.achievement-popup strong {
+  display: block;
+  color: var(--law-cyan);
+  margin-bottom: 6px;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: fadeUp 0.7s ease forwards;
+}
+
+.hidden-by-search {
+  display: none !important;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typeReveal {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 960px) {
+  .hero-grid,
+  .metric-grid,
+  .card-grid,
+  .penalty-grid,
+  .tips-grid,
+  .flow-grid,
+  .choice-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .law-nav {
+    align-items: flex-start;
+    flex-direction: column;
+    position: relative;
+  }
+}
+
+@media (max-width: 640px) {
+  .law-shell {
+    width: min(100% - 22px, 1180px);
+    padding-top: 12px;
+  }
+
+  .hero-grid,
+  .metric-grid,
+  .card-grid,
+  .penalty-grid,
+  .tips-grid,
+  .flow-grid,
+  .choice-grid,
+  .search-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-panel {
+    min-height: 0;
+    padding: 24px;
+  }
+
+  .law-links {
+    justify-content: flex-start;
+  }
+
+  .section-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

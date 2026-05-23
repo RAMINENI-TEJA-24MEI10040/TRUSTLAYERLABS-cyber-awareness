@@ -8,23 +8,23 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 border-t border-slate-800">
+    <footer className="bg-white dark:bg-gray-950 border-t border-gray-200 dark:border-gray-800 transition-colors duration-300">
       {/* Emergency Banner */}
-      <div className="bg-gradient-to-r from-red-950/60 to-red-900/40 border-b border-red-900/30">
+      <div className="bg-gradient-to-r from-red-100 to-red-200 dark:from-red-950/80 dark:to-red-900/60 border-b border-red-200 dark:border-red-900/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-red-500/20 border border-red-500/30 rounded-xl flex items-center justify-center flex-shrink-0">
-                <Phone className="w-5 h-5 text-red-400" />
+                <Phone className="w-5 h-5 text-red-500" />
               </div>
               <div>
-                <p className="text-white font-bold text-sm">National Cyber Crime Helpline</p>
-                <p className="text-slate-400 text-xs">Report cyber crimes 24/7 — Free &amp; Confidential</p>
+                <p className="text-gray-900 dark:text-white font-bold text-sm">National Cyber Crime Helpline</p>
+                <p className="text-gray-600 dark:text-gray-400 text-xs">Report cyber crimes 24/7 — Free &amp; Confidential</p>
               </div>
             </div>
             <a
               href="tel:1930"
-              className="flex items-center gap-2 bg-red-500 hover:bg-red-400 text-white font-bold text-lg px-6 py-2 rounded-xl transition-colors shadow-lg shadow-red-500/20"
+              className="flex items-center gap-2 bg-red-500 hover:bg-red-400 text-white font-bold text-lg px-6 py-2 rounded-xl transition-colors duration-300 shadow-lg shadow-red-500/20"
             >
               1930
             </a>
@@ -46,17 +46,17 @@ export default function Footer() {
                 <span className="text-cyan-400">Cybershield</span>
               </span>
             </div>
-            <p className="text-slate-400 text-sm leading-relaxed mb-6 max-w-xs">
+            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6 max-w-xs">
               India's trusted platform for cyber awareness, digital safety education, and legal guidance under the IT Act and IPC/BNS.
             </p>
 
             {/* Trust Badges */}
             <div className="flex flex-col gap-2 mb-6">
-              <div className="flex items-center gap-2 text-xs text-slate-400 bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 w-fit">
+              <div className="flex items-center gap-2 text-xs text-gray-700 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 w-fit transition-colors duration-300">
                 <Lock className="w-3.5 h-3.5 text-green-400" />
                 <span>Secure &amp; Encrypted Communication</span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-slate-400 bg-slate-900 border border-slate-800 rounded-lg px-3 py-2 w-fit">
+              <div className="flex items-center gap-2 text-xs text-gray-700 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg px-3 py-2 w-fit transition-colors duration-300">
                 <Shield className="w-3.5 h-3.5 text-cyan-400" />
                 <span>User Privacy Protected — No Data Sold</span>
               </div>
@@ -67,7 +67,7 @@ export default function Footer() {
               {[Twitter, Youtube, Instagram].map((Icon, i) => (
                 <button
                   key={i}
-                  className="w-9 h-9 bg-slate-900 border border-slate-800 rounded-lg flex items-center justify-center text-slate-400 hover:text-cyan-400 hover:border-cyan-500/30 transition-all"
+                  className="w-9 h-9 bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg flex items-center justify-center text-gray-700 dark:text-gray-400 hover:text-cyan-400 hover:border-cyan-500/30 transition-all duration-300"
                 >
                   <Icon className="w-4 h-4" />
                 </button>
@@ -78,13 +78,13 @@ export default function Footer() {
           {/* Links */}
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
-              <h4 className="text-white font-semibold text-sm mb-4">{category}</h4>
+              <h4 className="text-gray-900 dark:text-white font-semibold text-sm mb-4 transition-colors duration-300">{category}</h4>
               <ul className="space-y-2.5">
                 {links.map((link) => (
                   <li key={link}>
                     <a
                       href="#"
-                      className="text-slate-400 text-sm hover:text-cyan-400 transition-colors flex items-center gap-1 group"
+                      className="text-gray-600 dark:text-gray-400 text-sm hover:text-cyan-400 transition-colors duration-300 flex items-center gap-1 group"
                     >
                       {link}
                       <ExternalLink className="w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -97,7 +97,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div className="mt-12 pt-6 border-t border-gray-300 dark:border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-600 dark:text-gray-500 transition-colors duration-300">
           <p>
             &copy; {new Date().getFullYear()} Cybershield. All rights reserved. Educational use only.
           </p>

@@ -1,6 +1,8 @@
 import { detectScam } from './heuristics';
 import { buildKnowledgeContext, searchKnowledgeBase } from './knowledgeBase';
 import { groqChat, GroqMessage } from './groqClient';
+import { detectContext, type PageContext } from './contextDetection';
+import { buildContextualSystemPrompt } from './contextualPrompts';
 
 type AssistantResult = {
   reply: string;
@@ -8,40 +10,61 @@ type AssistantResult = {
   signal: ReturnType<typeof detectScam>;
 };
 
-function buildSystemPrompt() {
-  return [
-    'You are CyberShield, a calm and trustworthy cyber safety assistant for Indian users.',
-    'Write like a real human advisor, not a template or an AI bot.',
-    'Keep the reply natural, specific, and grounded in the provided context.',
-    'Avoid phrases like "as an AI", "I am unable", or long generic disclaimers unless absolutely necessary.',
-    'When the message looks risky, say it plainly in everyday language and explain the pattern briefly.',
-    'Give immediate safety steps first, then one or two extra checks if useful.',
-    'If reporting is relevant, mention 1930 and cybercrime.gov.in.',
-    'Do not invent legal sections or facts not present in the context; keep legal guidance simple.',
-    'Use short paragraphs. Bullets are okay only when they improve clarity.',
-  ].join(' ');
+function getContextFromPage(): PageContext {
+  if (typeof window !== 'undefined') {
+    return detectContext(window.location.pathname);
+  }
+  return { type: 'general', path: '/' };
 }
 
-function buildUserPrompt(query: string) {
+// Map PageContext to knowledge base route
+function getKnowledgeRoute(context: PageContext): string {
+  switch (context.type) {
+    case 'phishing':
+      return '/phishing';
+    case 'qr-scam':
+      return '/qr';
+    case 'deepfake':
+      return '/deepfake';
+    case 'cyber-law':
+      return '/laws';
+    case 'reporting':
+      return '/reporting';
+    case 'awareness':
+      return '/awareness';
+    default:
+      return 'general';
+  }
+}
+
+function buildUserPrompt(query: string, context: PageContext) {
   const signal = detectScam(query);
-  const context = buildKnowledgeContext(query);
+  const knowledgeRoute = getKnowledgeRoute(context);
+  const knowledgeContext = buildKnowledgeContext(query, knowledgeRoute);
 
   return [
     `User message: ${query}`,
+    `Current context: ${context.type}${context.topic ? ` (${context.topic})` : ''}`,
     signal
       ? `Heuristic signal: ${signal.summary} (confidence ${Math.round(signal.confidence * 100)}%). Guidance cues: ${signal.guidance.join(' | ')}`
-      : 'Heuristic signal: none detected, but still answer cautiously and check for awareness or reporting guidance.',
-    `Relevant local knowledge: ${context}`,
-    'Respond in a human, conversational style. If this is likely a scam, clearly explain why and what the user should do right now. If it is educational, answer the question directly and simply.',
+      : 'Heuristic signal: none detected, but still answer cautiously.',
+    `Relevant local knowledge: ${knowledgeContext}`,
+    'Respond in 3-5 lines max. Be conversational, actionable, and awareness-focused.',
   ].join('\n\n');
 }
 
 async function getAnswer(query: string): Promise<AssistantResult> {
-  const sources = searchKnowledgeBase(query);
+  const context = getContextFromPage();
+  const knowledgeRoute = getKnowledgeRoute(context);
+  
+  const sources = searchKnowledgeBase(query, knowledgeRoute);
   const signal = detectScam(query);
+
+  const systemPrompt = buildContextualSystemPrompt(context.type, context.topic);
+
   const messages: GroqMessage[] = [
-    { role: 'system', content: buildSystemPrompt() },
-    { role: 'user', content: buildUserPrompt(query) },
+    { role: 'system', content: systemPrompt },
+    { role: 'user', content: buildUserPrompt(query, context) },
   ];
 
   let reply = '';
@@ -51,11 +74,22 @@ async function getAnswer(query: string): Promise<AssistantResult> {
     reply = '';
   }
 
+  // Fallback: Use local knowledge if API fails
   if (!reply) {
-    const hint = signal
-      ? `This looks like a ${signal.summary.toLowerCase()}. Stop interacting, check the sender, and if money or credentials are involved call 1930.`
-      : 'Share the suspicious text or describe what happened, and I will help you check the safest next step.';
-    reply = hint;
+    if (sources && sources.length > 0) {
+      reply = sources
+        .map((h) => `${h.title}: ${h.text}`)
+        .join('\n\n');
+
+      if (signal && signal.confidence > 0.6) {
+        reply += `\n\n⚠️ This looks like ${signal.summary.toLowerCase()}. Stop interacting, check the sender, and if money or credentials are involved call 1930.`;
+      }
+    } else {
+      const hint = signal
+        ? `This looks like a ${signal.summary.toLowerCase()}. Stop interacting, check the sender, and if money or credentials are involved call 1930.`
+        : 'Share the suspicious text or describe what happened, and I will help you check the safest next step.';
+      reply = hint;
+    }
   }
 
   return { reply, sources, signal };

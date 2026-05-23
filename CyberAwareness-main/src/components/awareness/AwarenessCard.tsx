@@ -25,7 +25,7 @@ export default function AwarenessCard({ title, items, color = 'cyan' }: Awarenes
       </h3>
       <ul className="space-y-2.5">
         {items.map((item, i) => (
-          <li key={i} className="flex items-start gap-2.5 text-sm leading-relaxed text-slate-400">
+          <li key={i} className="flex items-start gap-2.5 text-sm leading-relaxed text-gray-700 dark:text-slate-300">
             <span className="mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: c.dot }} />
             {item}
           </li>

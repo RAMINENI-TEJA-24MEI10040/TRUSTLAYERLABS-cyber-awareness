@@ -1,4 +1,4 @@
-import { createContext, useContext, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useMemo, useState, useRef, useEffect } from 'react';
 import { Message } from './types';
 import { getAnswer } from './rag';
 
@@ -7,6 +7,10 @@ type AssistantMessage = Message & { id: string };
 type AssistantContextValue = {
   messages: AssistantMessage[];
   loading: boolean;
+  open: boolean;
+  openAssistant: () => void;
+  closeAssistant: () => void;
+  toggleAssistant: () => void;
   sendMessage: (text: string) => Promise<void>;
 };
 
@@ -32,10 +36,19 @@ const initialMessages: AssistantMessage[] = [
 export function AssistantProvider({ children }: { children: React.ReactNode }) {
   const [messages, setMessages] = useState<AssistantMessage[]>(initialMessages);
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
+  const loadingRef = useRef(loading);
 
-  async function sendMessage(text: string) {
+  useEffect(() => {
+    loadingRef.current = loading;
+  }, [loading]);
+
+  const sendMessage = useCallback(async (text: string) => {
     const trimmed = text.trim();
-    if (!trimmed || loading) return;
+    if (!trimmed || loadingRef.current) return;
+
+    // Ensure the assistant UI is visible when a message is sent from any page.
+    setOpen(true);
 
     setMessages((current) => [...current, { id: uid(), role: 'user', text: trimmed, timestamp: now() }]);
     setLoading(true);
@@ -53,9 +66,17 @@ export function AssistantProvider({ children }: { children: React.ReactNode }) {
     } finally {
       setLoading(false);
     }
-  }
+  }, []);
 
-  const value = useMemo(() => ({ messages, loading, sendMessage }), [messages, loading]);
+  const value = useMemo(() => ({
+    messages,
+    loading,
+    open,
+    openAssistant: () => setOpen(true),
+    closeAssistant: () => setOpen(false),
+    toggleAssistant: () => setOpen((value) => !value),
+    sendMessage,
+  }), [messages, loading, open, sendMessage]);
 
   return <AssistantContext.Provider value={value}>{children}</AssistantContext.Provider>;
 }
