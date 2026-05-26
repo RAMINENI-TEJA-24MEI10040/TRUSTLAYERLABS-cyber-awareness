@@ -344,24 +344,24 @@ Built with ❤️ for cybersecurity awareness and digital safety.
 
 <div align="center">
 
-```ascii
-╔══════════════════════════════════════════════════════════════════════╗
-║                TRUSTLAYERLABS SENTINEL CORE ONLINE                 ║
-╠══════════════════════════════════════════════════════════════════════╣
-║  🟢 Threat Monitoring ................. ACTIVE                      ║
-║  🟢 Scam Intelligence Grid ........... ACTIVE                      ║
-║  🟢 AI Sentinel Network .............. ACTIVE                      ║
-║  🟢 Cyber Law Intelligence ........... ACTIVE                      ║
-║  🟢 Multilingual Awareness ........... ACTIVE                      ║
-║  🟢 Emergency Response Matrix ........ ACTIVE                      ║
-║  🟢 Digital Fraud Detection .......... ACTIVE                      ║
-╚══════════════════════════════════════════════════════════════════════╝
+<div align="center">
 
-        ░▒▓█ CYBER AWARENESS • DIGITAL SAFETY • AI INTELLIGENCE █▓▒░
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⣠⣶⣿⠿⠛⠉⠉⠉⠉⠉⠉⠉⠉⠉⠉⠛⠿⣿⣶⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢠⣾⡿⠋⠀⠀ TRU STLAYERLABS SENTINEL⠀⠀⠙⢿⣷⡄⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⣰⣿⠏⠀⠀⠀ CYBER AWARENESS CORE ONLINE ⠀⠀⠀⠹⣿⣆⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⢰⣿⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣿⡆⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⠀⠀⠀🟢 AI SENTINEL NETWORK ........ ACTIVE ⠀⠀⣿⣿⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⠀⠀⠀🟢 THREAT INTELLIGENCE ......... ACTIVE ⠀⠀⣿⣿⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⠀⠀⠀🟢 SCAM DETECTION MATRIX ....... ACTIVE ⠀⠀⣿⣿⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⠀⠀⠀🟢 CYBER LAW ENGINE ............ ACTIVE ⠀⠀⣿⣿⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⠀⠀⠀🟢 MULTILINGUAL GRID ........... ACTIVE ⠀⠀⣿⣿⠀⠀⠀⠀⠀
+⠀⠀⠀⣿⣿⠀⠀⠀🟢 DIGITAL FRAUD MONITOR ....... ACTIVE ⠀⠀⣿⣿⠀⠀⠀⠀⠀
+⠀⠀⠀⢿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⡿⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠹⣿⣆⠀⠀⠀⠀ INITIALIZING INDIA CYBER GRID ⠀⣰⣿⠏⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠘⢿⣷⣄⠀⠀ PROTECT • DETECT • DEFEND ⣠⣾⡿⠃⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠈⠛⠿⣷⣶⣤⣤⣤⣤⣤⣤⣤⣶⣾⠿⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 
-> INITIALIZING NATIONAL CYBER DEFENSE AWARENESS ECOSYSTEM...
-> PROTECTING USERS AGAINST DIGITAL FRAUD & CYBER THREATS...
+<img src="https://readme-typing-svg.demolab.com?font=Orbitron&weight=700&size=18&duration=1800&pause=700&color=00F7FF&center=true&vCenter=true&width=1000&lines=INITIALIZING+SENTINEL+AI+SYSTEMS...;SCANNING+NATIONAL+THREAT+LANDSCAPE...;ANALYZING+SCAM+INTELLIGENCE+SIGNALS...;LOADING+CYBER+LAW+DATABASE...;SECURING+DIGITAL+INDIA+THROUGH+AI+INTELLIGENCE" />
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=16&duration=2200&pause=900&color=00F7FF&center=true&vCenter=true&width=900&lines=Initializing+Sentinel+AI+Systems...;Scanning+Cyber+Threat+Landscape...;Loading+Threat+Intelligence+Modules...;Detecting+Scam+Patterns+Across+India...;Securing+Digital+India+Through+Awareness+%26+Intelligence" /> </div> ```
-```
-```
+</div>
