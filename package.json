@@ -1,0 +1,15 @@
+{
+  "name": "cyberawareness-workspace-root",
+  "private": true,
+  "scripts": {
+    "dev": "npm --prefix CyberAwareness-main run dev",
+    "build": "npm --prefix CyberAwareness-main run build",
+    "lint": "npm --prefix CyberAwareness-main run lint",
+    "preview": "npm --prefix CyberAwareness-main run preview",
+    "typecheck": "npm --prefix CyberAwareness-main run typecheck"
+  },
+  "dependencies": {
+    "framer-motion": "^12.40.0",
+    "lucide-react": "^1.16.0"
+  }
+}

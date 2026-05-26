@@ -1,0 +1,84 @@
+.challenge-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 18px;
+  align-items: start;
+}
+
+.challenge-media {
+  min-height: 340px;
+  display: grid;
+  place-items: center;
+}
+
+.challenge-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.choice-button {
+  min-height: 78px;
+  border: 1px solid var(--df-line);
+  border-radius: var(--df-radius);
+  color: var(--df-text);
+  font-family: var(--df-mono);
+  font-weight: 800;
+  text-transform: uppercase;
+  background: rgba(44, 226, 255, 0.07);
+  cursor: pointer;
+}
+
+.choice-button:hover {
+  box-shadow: 0 0 22px rgba(44, 226, 255, 0.18);
+}
+
+.choice-button.correct {
+  border-color: rgba(77, 255, 157, 0.52);
+  color: var(--df-green);
+}
+
+.choice-button.wrong {
+  border-color: var(--df-line-hot);
+  color: var(--df-red);
+}
+
+.scoreboard {
+  display: grid;
+  gap: 12px;
+}
+
+.feedback-panel {
+  display: none;
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px solid var(--df-line);
+  border-radius: var(--df-radius);
+  color: var(--df-text);
+  background: rgba(44, 226, 255, 0.06);
+}
+
+.feedback-panel.show {
+  display: block;
+}
+
+.clue-stack {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.clue {
+  padding: 10px;
+  border-left: 3px solid var(--df-cyan);
+  background: rgba(44, 226, 255, 0.06);
+  color: var(--df-text);
+}
+
+@media (max-width: 900px) {
+  .challenge-layout,
+  .challenge-options {
+    grid-template-columns: 1fr;
+  }
+}

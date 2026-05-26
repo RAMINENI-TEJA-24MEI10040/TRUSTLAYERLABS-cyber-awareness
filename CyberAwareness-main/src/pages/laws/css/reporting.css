@@ -1,0 +1,58 @@
+.report-kit {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.74fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.checklist {
+  display: grid;
+  gap: 10px;
+}
+
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--law-border);
+  border-radius: var(--law-radius);
+  background: var(--law-panel);
+}
+
+.check-item input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--law-cyan);
+  margin-top: 2px;
+}
+
+.check-item span {
+  color: var(--law-muted);
+  line-height: 1.5;
+}
+
+.flow-step.active {
+  border-color: var(--law-red);
+  box-shadow: var(--law-red-shadow);
+}
+
+.hotline-card {
+  padding: 18px;
+  border: 1px solid var(--law-border);
+  border-radius: var(--law-radius);
+  background: var(--law-panel);
+}
+
+.hotline-card strong {
+  display: block;
+  color: var(--law-red);
+  font-size: 1.5rem;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 860px) {
+  .report-kit {
+    grid-template-columns: 1fr;
+  }
+}
