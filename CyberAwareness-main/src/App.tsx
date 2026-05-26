@@ -57,6 +57,8 @@ import AnalyzerPage from "./pages/analyzer";
 import { Login, Signup } from "./pages/auth";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import AdminPage from "./pages/admin";
+import ScamLibrary from "./pages/scam-library";
+import ScamDetailPage from "./pages/scam-library/[id]";
 export default function App() {
   return (
     <>
@@ -134,6 +136,9 @@ export default function App() {
             <Route path="/quiz/challenge" element={<QuizChallenge />} />
             <Route path="/quiz/case-study" element={<QuizCaseStudy />} />
             <Route path="/quiz/leaderboard" element={<QuizLeaderboard />} />
+
+            <Route path="/scam-library" element={<ScamLibrary />} />
+            <Route path="/scam-library/:id" element={<ScamDetailPage />} />
 
             <Route path="*" element={<NotFound />} />
           </Route>

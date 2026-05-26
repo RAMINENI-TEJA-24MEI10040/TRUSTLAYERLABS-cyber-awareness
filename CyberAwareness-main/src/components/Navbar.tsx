@@ -45,6 +45,11 @@ export default function Navbar() {
       },
 
       {
+        label: "Scam Library",
+        to: "/scam-library",
+      },
+
+      {
         label: t("navbar.report"),
         to: "/reporting",
       },
