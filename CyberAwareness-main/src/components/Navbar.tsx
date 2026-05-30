@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -8,6 +8,8 @@ import {
   X,
   Bot,
   ChevronDown,
+  Check,
+  Languages,
   Sun,
   Moon,
 } from "lucide-react";
@@ -24,6 +26,12 @@ export default function Navbar() {
   const [learningOpen, setLearningOpen] =
     useState(false);
 
+  const [languageOpen, setLanguageOpen] =
+    useState(false);
+
+  const [mobileLanguageOpen, setMobileLanguageOpen] =
+    useState(false);
+
   const { openAssistant } =
     useAssistant();
 
@@ -32,6 +40,136 @@ export default function Navbar() {
 
   const { t, i18n } =
     useTranslation();
+
+  const desktopLanguageRef =
+    useRef<HTMLDivElement | null>(null);
+
+  const mobileLanguageRef =
+    useRef<HTMLDivElement | null>(null);
+
+  const languageOptions = [
+    {
+      code: "en",
+      label: "English",
+      nativeLabel: "EN",
+    },
+    {
+      code: "as",
+      label: "Assamese",
+      nativeLabel: "অসমীয়া",
+    },
+    {
+      code: "bn",
+      label: "Bengali",
+      nativeLabel: "বাংলা",
+    },
+    {
+      code: "brx",
+      label: "Bodo",
+      nativeLabel: "बर'",
+    },
+    {
+      code: "doi",
+      label: "Dogri",
+      nativeLabel: "डोगरी",
+    },
+    {
+      code: "gu",
+      label: "Gujarati",
+      nativeLabel: "ગુજરાતી",
+    },
+    {
+      code: "hi",
+      label: "Hindi",
+      nativeLabel: "हिन्दी",
+    },
+    {
+      code: "kn",
+      label: "Kannada",
+      nativeLabel: "ಕನ್ನಡ",
+    },
+    {
+      code: "ks",
+      label: "Kashmiri",
+      nativeLabel: "कॉशुर",
+    },
+    {
+      code: "kok",
+      label: "Konkani",
+      nativeLabel: "कोंकणी",
+    },
+    {
+      code: "mai",
+      label: "Maithili",
+      nativeLabel: "मैथिली",
+    },
+    {
+      code: "ml",
+      label: "Malayalam",
+      nativeLabel: "മലയാളം",
+    },
+    {
+      code: "mni",
+      label: "Manipuri",
+      nativeLabel: "ꯃꯤꯇꯩ",
+    },
+    {
+      code: "mr",
+      label: "Marathi",
+      nativeLabel: "मराठी",
+    },
+    {
+      code: "or",
+      label: "Odia",
+      nativeLabel: "ଓଡ଼ିଆ",
+    },
+    {
+      code: "pa",
+      label: "Punjabi",
+      nativeLabel: "ਪੰਜਾਬੀ",
+    },
+    {
+      code: "sa",
+      label: "Sanskrit",
+      nativeLabel: "संस्कृतम्",
+    },
+    {
+      code: "sat",
+      label: "Santali",
+      nativeLabel: "ᱥᱟᱱᱛᱟᱲᱤ",
+    },
+    {
+      code: "sd",
+      label: "Sindhi",
+      nativeLabel: "سنڌي",
+    },
+    {
+      code: "ta",
+      label: "Tamil",
+      nativeLabel: "தமிழ்",
+    },
+    {
+      code: "te",
+      label: "Telugu",
+      nativeLabel: "తెలుగు",
+    },
+    {
+      code: "ur",
+      label: "Urdu",
+      nativeLabel: "اردو",
+    },
+  ];
+
+  const currentLanguageCode =
+    (i18n.resolvedLanguage || i18n.language || "en")
+      .split("-")[0]
+      .toLowerCase();
+
+  const currentLanguage =
+    languageOptions.find(
+      (language) =>
+        language.code === currentLanguageCode,
+    ) || languageOptions[0];
 
   const navLinks = [
       {
@@ -116,6 +254,62 @@ export default function Navbar() {
         "auto";
     };
   }, [open]);
+
+  useEffect(() => {
+    const handleOutsideClick = (
+      event: MouseEvent,
+    ) => {
+      const target =
+        event.target as Node;
+
+      if (
+        desktopLanguageRef.current &&
+        !desktopLanguageRef.current.contains(
+          target,
+        )
+      ) {
+        setLanguageOpen(false);
+      }
+
+      if (
+        mobileLanguageRef.current &&
+        !mobileLanguageRef.current.contains(
+          target,
+        )
+      ) {
+        setMobileLanguageOpen(false);
+      }
+    };
+
+    const handleEscape = (
+      event: KeyboardEvent,
+    ) => {
+      if (event.key === "Escape") {
+        setLanguageOpen(false);
+        setMobileLanguageOpen(false);
+      }
+    };
+
+    document.addEventListener(
+      "mousedown",
+      handleOutsideClick,
+    );
+    document.addEventListener(
+      "keydown",
+      handleEscape,
+    );
+
+    return () => {
+      document.removeEventListener(
+        "mousedown",
+        handleOutsideClick,
+      );
+      document.removeEventListener(
+        "keydown",
+        handleEscape,
+      );
+    };
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm bg-white/60 dark:bg-slate-950/80 border-b border-gray-200/60 dark:border-gray-800 transition-colors duration-300">
@@ -209,40 +403,60 @@ export default function Navbar() {
             </div>
 
             {/* Language Switch */}
-            <div className="flex items-center gap-2">
-
+            <div
+              ref={desktopLanguageRef}
+              className="relative"
+            >
               <button
                 onClick={() =>
-                  i18n.changeLanguage("en")
+                  setLanguageOpen(
+                    !languageOpen,
+                  )
                 }
-                className="text-xs px-3 py-1 rounded-lg bg-zinc-800 dark:bg-gray-700 hover:bg-cyan-500 hover:text-black dark:hover:text-black transition-colors duration-300"
+                className="flex items-center gap-2 rounded-lg border border-gray-300/80 bg-white/80 px-3 py-2 text-xs font-medium text-gray-700 backdrop-blur-sm transition-colors duration-200 hover:border-cyan-400 hover:text-cyan-500 dark:border-gray-700 dark:bg-slate-900/80 dark:text-gray-300 dark:hover:border-cyan-400 dark:hover:text-cyan-400"
+                aria-haspopup="menu"
+                aria-expanded={languageOpen}
+                aria-label="Language"
               >
-                EN
+                <Languages className="h-4 w-4" />
+                <span>{currentLanguage.nativeLabel}</span>
+                <ChevronDown className={`h-4 w-4 transition-transform ${languageOpen ? "rotate-180" : ""}`} />
               </button>
 
-              <button
-                onClick={() =>
-                  i18n.changeLanguage("hi")
-                }
-                className="text-xs px-3 py-1 rounded-lg bg-zinc-800 dark:bg-gray-700 hover:bg-cyan-500 hover:text-black dark:hover:text-black transition-colors duration-300"
-              >
-                हिन्दी
-              </button>
+              {languageOpen && (
+                <div className="absolute right-0 z-50 mt-2 w-44 rounded-xl border border-gray-200 bg-white p-1 shadow-xl dark:border-gray-700 dark:bg-slate-900 max-h-56 overflow-y-auto">
+                  {languageOptions.map(
+                    (language) => {
+                      const isActive =
+                        language.code ===
+                        currentLanguageCode;
+
+                      return (
+                        <button
+                          key={language.code}
+                          onClick={() => {
+                            i18n.changeLanguage(
+                              language.code,
+                            );
+                            setLanguageOpen(false);
+                          }}
+                          className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-gray-700 transition-colors hover:bg-cyan-500/10 hover:text-cyan-500 dark:text-gray-300 dark:hover:text-cyan-400"
+                        >
+                          <span>{language.label}</span>
+                          <span className="flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
+                            {language.nativeLabel}
+                            {isActive && (
+                              <Check className="h-3.5 w-3.5 text-cyan-500" />
+                            )}
+                          </span>
+                        </button>
+                      );
+                    },
+                  )}
+                </div>
+              )}
             </div>
           </nav>
-
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center">
-
-            <button
-              onClick={openAssistant}
-              className="flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-sm px-4 py-2 rounded-lg transition-all duration-200 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-400/30"
-            >
-              <Bot className="w-4 h-4" />
-
-              {t("navbar.aiAssistant")}
-            </button>
-          </div>
 
           {/* Mobile Toggle */}
           <button
@@ -305,25 +519,60 @@ export default function Navbar() {
               </div>
 
               {/* Mobile Languages */}
-              <div className="flex gap-3 pt-6">
-
+              <div
+                ref={mobileLanguageRef}
+                className="pt-6"
+              >
                 <button
                   onClick={() =>
-                    i18n.changeLanguage("en")
+                    setMobileLanguageOpen(
+                      !mobileLanguageOpen,
+                    )
                   }
-                  className="px-4 py-2 rounded-xl bg-zinc-800 dark:bg-gray-700 text-sm hover:bg-cyan-500 hover:text-black transition-colors duration-300"
+                  className="flex w-full items-center justify-between rounded-xl border border-slate-700 bg-slate-800 px-4 py-3 text-sm font-medium text-slate-200 transition-colors hover:border-cyan-400 hover:text-cyan-300 dark:border-gray-700 dark:bg-gray-800"
+                  aria-haspopup="menu"
+                  aria-expanded={mobileLanguageOpen}
+                  aria-label="Language"
                 >
-                  EN
+                  <span className="flex items-center gap-2">
+                    <Languages className="h-4 w-4" />
+                    Language: {currentLanguage.label}
+                  </span>
+                  <ChevronDown className={`h-4 w-4 transition-transform ${mobileLanguageOpen ? "rotate-180" : ""}`} />
                 </button>
 
-                <button
-                  onClick={() =>
-                    i18n.changeLanguage("hi")
-                  }
-                  className="px-4 py-2 rounded-xl bg-zinc-800 dark:bg-gray-700 text-sm hover:bg-cyan-500 hover:text-black transition-colors duration-300"
-                >
-                  हिन्दी
-                </button>
+                {mobileLanguageOpen && (
+                  <div className="mt-2 space-y-1 rounded-xl border border-slate-700 bg-slate-900 p-2 dark:border-gray-700 dark:bg-gray-900 max-h-56 overflow-y-auto">
+                    {languageOptions.map(
+                      (language) => {
+                        const isActive =
+                          language.code ===
+                          currentLanguageCode;
+
+                        return (
+                          <button
+                            key={language.code}
+                            onClick={() => {
+                              i18n.changeLanguage(
+                                language.code,
+                              );
+                              setMobileLanguageOpen(false);
+                            }}
+                            className="flex w-full items-center justify-between rounded-lg px-3 py-2 text-left text-sm text-slate-200 transition-colors hover:bg-cyan-500/10 hover:text-cyan-300"
+                          >
+                            <span>{language.label}</span>
+                            <span className="flex items-center gap-1 text-xs text-slate-400">
+                              {language.nativeLabel}
+                              {isActive && (
+                                <Check className="h-3.5 w-3.5 text-cyan-400" />
+                              )}
+                            </span>
+                          </button>
+                        );
+                      },
+                    )}
+                  </div>
+                )}
               </div>
             </div>
 
@@ -336,7 +585,7 @@ export default function Navbar() {
 
                   setOpen(false);
                 }}
-                className="w-full flex items-center justify-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 dark:text-slate-950 font-bold text-lg px-6 py-4 rounded-2xl transition-all duration-300"
+                className="w-full flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-cyan-400 to-teal-300 px-6 py-4 text-lg font-bold text-slate-950 shadow-lg shadow-cyan-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-cyan-400/30"
               >
                 <Bot className="w-5 h-5" />
 
