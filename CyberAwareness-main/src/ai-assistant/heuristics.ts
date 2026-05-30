@@ -3,6 +3,7 @@ export type ScamSignal = {
   summary: string;
   score: number; // 0-100
   confidence: number; // 0-1
+  riskLevel: 'Low' | 'Medium' | 'High' | 'Critical';
   indicators: string[];
   guidance: string[];
   suspiciousUrls: string[];
@@ -20,7 +21,7 @@ const rules: Array<{
 }> = [
   {
     type: 'otp-scam',
-    category: 'OTP Scam',
+    category: 'OTP Fraud',
     label: 'OTP or verification code request',
     weight: 25,
     re: /\b(otp|one[- ]time pass(code)?|verification code|m-pin|mpin|cvv|atm pin)\b/i,
@@ -46,8 +47,8 @@ const rules: Array<{
     guidance: ['Do not share account or card details in messages.', 'Contact your bank directly through official channels.', 'Avoid replying to unverified banking messages.'],
   },
   {
-    type: 'payment-scam',
-    category: 'UPI / Payment Scam',
+    type: 'upi-fraud',
+    category: 'UPI Fraud',
     label: 'Payment or UPI request',
     weight: 18,
     re: /\b(pay now|request money|collect request|scan to pay|scan this qr|upi collect|send money|refund request)\b/i,
@@ -82,13 +83,58 @@ const rules: Array<{
     guidance: ['Do not provide remote access unless you initiated the support session.', 'Disconnect and contact official support directly if asked to share your screen.', 'Avoid installing remote-control tools from unknown senders.'],
   },
   {
-    type: 'investment-scam',
-    category: 'Investment Scam',
-    label: 'Investment or money-flip offer',
-    weight: 17,
-    re: /\b(investment|guaranteed returns|double your money|money flipping|crypto profit|fixed deposit|high return)\b/i,
-    indicator: 'Investment or reward offer language',
-    guidance: ['Be skeptical of guaranteed returns.', 'Never transfer money for unverified investment offers.', 'Verify opportunities through trusted financial advisors.'],
+    type: 'crypto-scam',
+    category: 'Crypto Scam',
+    label: 'Crypto wallet, token, or profit offer',
+    weight: 24,
+    re: /\b(crypto|bitcoin|ethereum|usdt|wallet|seed phrase|private key|airdrop|token|web3|nft|mine|staking|guaranteed returns|double your money|money flipping|pump and dump)\b/i,
+    indicator: 'Crypto investment or wallet request',
+    guidance: ['Never share a seed phrase or private key.', 'Treat guaranteed crypto profits as a red flag.', 'Use only official exchange apps and verify wallet addresses before any transfer.'],
+  },
+  {
+    type: 'ransomware',
+    category: 'Ransomware',
+    label: 'Files locked or ransom demand',
+    weight: 30,
+    re: /\b(ransomware|your files are locked|decrypt key|pay to decrypt|ransom|encrypt(?:ed|ion)? files|restore access|malware locked)\b/i,
+    indicator: 'Ransom demand or file lock message',
+    guidance: ['Disconnect the device from the network immediately.', 'Do not pay the ransom or click recovery links from the attacker.', 'Preserve the affected device for incident response and recovery.'],
+  },
+  {
+    type: 'sextortion',
+    category: 'Sextortion',
+    label: 'Explicit-content blackmail',
+    weight: 30,
+    re: /\b(sextortion|nude|naked|explicit video|intimate video|private photos|blackmail|leak your photos|share the video|send money or I will)\b/i,
+    indicator: 'Blackmail using intimate content',
+    guidance: ['Do not pay or continue the conversation.', 'Save screenshots and block the sender.', 'Tell a trusted person immediately and report the account and evidence.'],
+  },
+  {
+    type: 'ai-voice-scam',
+    category: 'AI Voice Scam',
+    label: 'Cloned or deepfake voice call',
+    weight: 28,
+    re: /\b(ai voice|voice clone|cloned voice|deepfake voice|synthetic voice|audio deepfake|sound like my boss|sound like my family)\b/i,
+    indicator: 'Voice-clone or synthetic audio clue',
+    guidance: ['Verify the caller through a second channel before sending money or data.', 'Treat urgent money requests by voice as suspicious until verified.', 'Ask a challenge question only the real person would know.'],
+  },
+  {
+    type: 'fake-job-scam',
+    category: 'Fake Job Scam',
+    label: 'Job offer or hiring fee trap',
+    weight: 26,
+    re: /\b(job offer|work from home|hiring now|recruiter|interview fee|registration fee|training fee|telegram job|task scam|easy money job|salary too high)\b/i,
+    indicator: 'Employment offer or fee request',
+    guidance: ['Do not pay any hiring, training, or registration fee.', 'Check the company website, email domain, and official careers page.', 'Be wary of jobs that demand fast decisions or instant onboarding.'],
+  },
+  {
+    type: 'deepfake-scam',
+    category: 'Deepfake Scam',
+    label: 'Manipulated image, video, or call',
+    weight: 28,
+    re: /\b(deepfake|fake video|manipulated video|ai video|synthetic media|face swap|edited clip|video call scam|lookalike video)\b/i,
+    indicator: 'Manipulated media or synthetic identity',
+    guidance: ['Do not trust media alone for identity verification.', 'Check for inconsistencies in lighting, lip-sync, and audio delay.', 'Confirm the person through a known, separate contact method.'],
   },
   {
     type: 'reward-scam',
@@ -181,12 +227,20 @@ export function detectScam(message: string): ScamSignal | null {
   const category = Object.entries(categoryScores).sort((a, b) => b[1] - a[1])[0]?.[0] ?? 'General scam';
   const threatType = Object.entries(threatScores).sort((a, b) => b[1] - a[1])[0]?.[0] ?? 'general-scam';
   const summary = indicators.length > 0 ? `Detected ${category} signals` : 'No clear scam signals detected';
+  const riskLevel: ScamSignal['riskLevel'] = totalScore >= 75 || threatType === 'ransomware' || threatType === 'sextortion'
+    ? 'Critical'
+    : totalScore >= 55
+      ? 'High'
+      : totalScore >= 30
+        ? 'Medium'
+        : 'Low';
 
   return {
     category,
     summary,
     score: totalScore,
     confidence,
+    riskLevel,
     indicators: Array.from(new Set(indicators)),
     guidance: Array.from(guidanceSet),
     suspiciousUrls,
@@ -200,6 +254,7 @@ export function ruleBasedReply(message: string) {
   const lines = [
     `⚠️ Possible scam signal detected: ${det.summary}.`,
     `Scam category: ${det.category}.`,
+    `Risk level: ${det.riskLevel}.`,
     `Confidence: ${Math.round(det.confidence * 100)}%.`,
     '',
     'Recommended steps:',

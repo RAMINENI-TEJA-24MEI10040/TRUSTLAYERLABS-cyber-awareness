@@ -23,8 +23,8 @@ const CONTEXT_MAPPING: Record<string, string[]> = {
   '/deepfake': ['deepfake'],
   '/laws': ['law', 'reporting'],
   '/reporting': ['reporting'],
-  '/awareness': ['phishing', 'qr', 'upi', 'otp', 'social', 'deepfake'],
-  'general': ['phishing', 'qr', 'upi', 'otp', 'social', 'deepfake', 'law', 'reporting'],
+  '/awareness': ['phishing', 'qr', 'upi', 'otp', 'social', 'deepfake', 'crypto', 'ransomware', 'sextortion', 'ai-voice', 'fake-job'],
+  'general': ['phishing', 'qr', 'upi', 'otp', 'social', 'deepfake', 'crypto', 'ransomware', 'sextortion', 'ai-voice', 'fake-job', 'law', 'reporting'],
 };
 
 // Unified knowledge base with categories
@@ -37,6 +37,46 @@ const knowledgeBase: KnowledgeChunk[] = [
   ...otpFraudData.map(e => ({ ...e, source: 'OTP Fraud Module', category: 'otp' })),
   ...upiFraudData.map(e => ({ ...e, source: 'UPI Fraud Module', category: 'upi' })),
   ...socialEngineeringData.map(e => ({ ...e, source: 'Social Engineering Module', category: 'social' })),
+  {
+    id: 'crypto-scam-guide',
+    title: 'Crypto scam warning signs',
+    text: 'Crypto scams often promise guaranteed returns, ask for seed phrases or private keys, or push fake wallet transfers and “airdrop” rewards. Verify every exchange and wallet through official apps only.',
+    source: 'Core Threat Guide',
+    keywords: ['crypto', 'bitcoin', 'ethereum', 'wallet', 'seed phrase', 'private key', 'airdrop', 'token', 'web3'],
+    category: 'crypto',
+  },
+  {
+    id: 'ransomware-guide',
+    title: 'Ransomware response basics',
+    text: 'Ransomware locks files or devices and demands payment. Disconnect the affected system, avoid paying the attacker, preserve evidence, and use clean backups or incident response support.',
+    source: 'Core Threat Guide',
+    keywords: ['ransomware', 'locked files', 'ransom', 'decrypt', 'malware'],
+    category: 'ransomware',
+  },
+  {
+    id: 'sextortion-guide',
+    title: 'Sextortion warning signs',
+    text: 'Sextortion uses intimate photos, fake video calls, or threats to leak images unless money is paid. Stop contact, save evidence, block the sender, and report immediately.',
+    source: 'Core Threat Guide',
+    keywords: ['sextortion', 'blackmail', 'explicit', 'nude', 'private photos', 'leak'],
+    category: 'sextortion',
+  },
+  {
+    id: 'ai-voice-guide',
+    title: 'AI voice scam warning signs',
+    text: 'Voice-clone scams imitate a boss, relative, or customer support agent to force quick payment or data sharing. Verify through a second channel before acting on urgent voice requests.',
+    source: 'Core Threat Guide',
+    keywords: ['ai voice', 'voice clone', 'deepfake voice', 'audio deepfake', 'synthetic voice'],
+    category: 'ai-voice',
+  },
+  {
+    id: 'fake-job-guide',
+    title: 'Fake job scam warning signs',
+    text: 'Fake job scams advertise easy money, ask for registration or training fees, or move the conversation to chat apps. Check the company website, official careers page, and email domain before sharing data.',
+    source: 'Core Threat Guide',
+    keywords: ['job offer', 'work from home', 'hiring', 'interview fee', 'registration fee', 'training fee', 'telegram job'],
+    category: 'fake-job',
+  },
 ];
 
 function tokenize(text: string): string[] {
