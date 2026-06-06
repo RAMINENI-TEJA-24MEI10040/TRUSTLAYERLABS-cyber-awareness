@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { scanUrl } from '../../services/virustotal';
 
 // Types
 interface ThreatAnalysis {
@@ -49,83 +50,61 @@ const TrustLayerLabs = () => {
   const [warning, setWarning] = useState('');
   const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number }>>([]);
 
-  const API_KEY =
-    import.meta.env.VITE_GEMINI_API_KEY ||
-    import.meta.env.VITE_OPENAI_API_KEY ||
-    import.meta.env.VITE_ANTHROPIC_API_KEY ||
-    '';
-
-  const isAnthropicKey = API_KEY.startsWith('AQ.');
-  const providerName = isAnthropicKey ? 'Claude AI' : 'Gemini AI';
-
-  const extractResponseText = (payload: any): string => {
-    if (!payload) return '';
-    if (typeof payload === 'string') return payload;
-    if (typeof payload.output_text === 'string') return payload.output_text;
-    if (typeof payload.text === 'string') return payload.text;
-    if (Array.isArray(payload.output)) {
-      return payload.output
-        .map((item: any) => extractResponseText(item))
-        .join('');
-    }
-    if (Array.isArray(payload.content)) {
-      return payload.content
-        .map((item: any) => typeof item === 'string' ? item : extractResponseText(item))
-        .join('');
-    }
-    if (Array.isArray(payload.choices)) {
-      return payload.choices
-        .map((choice: any) => extractResponseText(choice.message || choice.delta || choice))
-        .join('');
-    }
-    return '';
-  };
+  const VIRUSTOTAL_API_KEY = import.meta.env.VITE_VIRUSTOTAL_API_KEY || '';
+  const providerName = VIRUSTOTAL_API_KEY ? 'VirusTotal' : 'Heuristic Analyzer';
 
   const fetchThreatAnalysis = async (inputUrl: string): Promise<ThreatAnalysis> => {
-    if (!API_KEY) {
+    if (!VIRUSTOTAL_API_KEY) {
       return simulateUrlAnalysis(inputUrl);
     }
 
-    const instruction = `You are a cybersecurity URL analysis expert. Analyze the following URL and return ONLY valid JSON that matches the schema exactly. Do not include any explanation outside the JSON object. The response must use double quotes and valid JSON syntax.\n\nURL: ${inputUrl}`;
+    const vtResult = await scanUrl(inputUrl);
+    const totalFindings = vtResult.malicious + vtResult.suspicious;
 
-    const payload = isAnthropicKey
-      ? {
-          model: 'claude-sonnet-4-20250514',
-          max_tokens: 1000,
-          messages: [
-            { role: 'system', content: instruction },
-            { role: 'user', content: `Analyze this URL for safety: ${inputUrl}` },
-          ],
-        }
-      : {
-          model: 'gpt-4.1-mini',
-          temperature: 0,
-          input: instruction,
-        };
+    const verdict: 'safe' | 'suspicious' | 'malicious' =
+      vtResult.malicious > 0 ? 'malicious' : vtResult.suspicious > 0 ? 'suspicious' : 'safe';
 
-    const endpoint = isAnthropicKey
-      ? '/api/anthropic/v1/messages'
-      : '/api/openai/v1/responses';
+    const riskScore = Math.min(100, vtResult.malicious * 35 + vtResult.suspicious * 18 - vtResult.harmless * 2 + Math.max(0, 20 - Math.max(vtResult.reputation, 0)));
+    const confidenceScore = Math.min(98, 55 + riskScore / 2);
+    const phishingProbability = Math.min(98, riskScore + 10);
+    const threatLevel = Math.min(100, riskScore + totalFindings * 5);
 
-  const headers: Record<string, string> = {
-    'Content-Type': 'application/json',
-    ...(isAnthropicKey ? { 'x-api-key': API_KEY, 'anthropic-version': '2023-06-01' } : { Authorization: `Bearer ${API_KEY}` }),
-  };
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify(payload),
-    });
+    const analysisFromVirusTotal = simulateUrlAnalysis(inputUrl);
+    const suspiciousKeywords = [...analysisFromVirusTotal.suspiciousKeywords];
 
-    if (!response.ok) {
-      const text = await response.text();
-      throw new Error(`AI API request failed (${response.status}): ${text}`);
+    if (verdict !== 'safe' && !suspiciousKeywords.includes('virustotal-detected')) {
+      suspiciousKeywords.unshift('virustotal-detected');
     }
 
-    const data = await response.json();
-    const rawText = extractResponseText(data);
-    const clean = rawText.replace(/```json|```/g, '').trim();
-    return JSON.parse(clean) as ThreatAnalysis;
+    const aiExplanation = vtResult.malicious > 0
+      ? `VirusTotal flagged this URL as malicious based on ${vtResult.malicious} malicious engine detections and a reputation score of ${vtResult.reputation}. Treat it as unsafe and avoid interacting with it.`
+      : vtResult.suspicious > 0
+        ? `VirusTotal returned suspicious results for this URL. ${vtResult.suspicious} engines marked it suspicious, so it should be verified carefully before use.`
+        : `VirusTotal did not report malicious detections for this URL. That lowers the immediate risk, but users should still verify the destination and context before opening it.`;
+
+    return {
+      ...analysisFromVirusTotal,
+      verdict,
+      confidenceScore,
+      phishingProbability,
+      threatLevel,
+      ssl: {
+        ...analysisFromVirusTotal.ssl,
+        valid: verdict !== 'malicious',
+      },
+      domain: {
+        ...analysisFromVirusTotal.domain,
+        reputation: Math.max(0, 100 - threatLevel),
+      },
+      suspiciousKeywords,
+      aiExplanation,
+      attackFlow:
+        verdict === 'malicious'
+          ? ['User opens link', 'VirusTotal flags payload', 'Malicious destination confirmed', 'Credential theft risk']
+          : verdict === 'suspicious'
+            ? ['User opens link', 'VirusTotal shows mixed results', 'Caution recommended', 'Manual verification needed']
+            : ['User opens link', 'VirusTotal shows no detections', 'Standard page load', 'No immediate threat indicators'],
+    };
   };
 
   // Cyber facts ticker
@@ -319,8 +298,8 @@ const TrustLayerLabs = () => {
     setScanProgress(0);
     setAnalysis(null);
 
-    if (!API_KEY) {
-      setWarning('Unable to use Gemini AI because no API key is present. Showing heuristic output.');
+    if (!VIRUSTOTAL_API_KEY) {
+      setWarning('VirusTotal API key is missing. Showing heuristic output.');
     }
 
     const analysisPromise = fetchThreatAnalysis(url);

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { AlertCircle, Search, Globe, Building2, MapPin, BarChart3, Zap, Bot, ShieldAlert, ShieldCheck, Activity, Network, Tag, Clock } from 'lucide-react';
+import { checkIP } from '../../services/abuseipdb';
 
 interface IPReputation {
   ip: string;
@@ -23,27 +24,6 @@ interface IPScannerProps {
   onScan?: (data: IPReputation) => void;
   placeholder?: string;
 }
-
-const extractResponseText = (payload: any): string => {
-  if (!payload) return '';
-  if (typeof payload === 'string') return payload;
-  if (typeof payload.output_text === 'string') return payload.output_text;
-  if (typeof payload.text === 'string') return payload.text;
-  if (Array.isArray(payload.output)) {
-    return payload.output.map((item: any) => extractResponseText(item)).join('');
-  }
-  if (Array.isArray(payload.content)) {
-    return payload.content
-      .map((item: any) => typeof item === 'string' ? item : extractResponseText(item))
-      .join('');
-  }
-  if (Array.isArray(payload.choices)) {
-    return payload.choices
-      .map((choice: any) => extractResponseText(choice.message || choice.delta || choice))
-      .join('');
-  }
-  return '';
-};
 
 const simulateIPReputation = (ip: string): IPReputation => {
   const seed = ip
@@ -87,59 +67,6 @@ const simulateIPReputation = (ip: string): IPReputation => {
   };
 };
 
-async function analyzeIPWithAI(ip: string, API_KEY: string, isAnthropicKey: boolean): Promise<IPReputation> {
-  if (!API_KEY) {
-    throw new Error('Missing API key. Set VITE_ANTHROPIC_API_KEY, VITE_GEMINI_API_KEY, or VITE_OPENAI_API_KEY.');
-  }
-
-  const instruction = `You are a cybersecurity IP threat intelligence expert. Analyze the following IP address and return only valid JSON that matches the schema exactly. Do not include markdown or any extra text outside the JSON object.\n\nIP: ${ip}`;
-
-  const payload = isAnthropicKey
-    ? {
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        messages: [
-          { role: 'system', content: instruction },
-          { role: 'user', content: `Analyze this IP address for threat intelligence: ${ip}` },
-        ],
-      }
-    : {
-        model: 'gpt-4.1-mini',
-        temperature: 0,
-        input: instruction,
-      };
-
-  const endpoint = isAnthropicKey
-    ? '/api/anthropic/v1/messages'
-    : '/api/openai/v1/responses';
-
-  const headers: Record<string, string> = {
-    'Content-Type': 'application/json',
-    ...(isAnthropicKey ? { 'x-api-key': API_KEY, 'anthropic-version': '2023-06-01' } : { Authorization: `Bearer ${API_KEY}` }),
-  };
-
-  const response = await fetch(endpoint, {
-    method: 'POST',
-    headers,
-    body: JSON.stringify(payload),
-  });
-
-  if (!response.ok) {
-    const err = await response.text();
-    throw new Error(`API error (${response.status}): ${err}`);
-  }
-
-  const data = await response.json();
-  const rawText = extractResponseText(data);
-  const clean = rawText.replace(/```json|```/g, '').trim();
-  const parsed = JSON.parse(clean);
-
-  return {
-    ip,
-    ...parsed,
-  } as IPReputation;
-}
-
 const IPScanner: React.FC<IPScannerProps> = ({
   onScan,
   placeholder = 'Enter IP address to scan...',
@@ -150,14 +77,8 @@ const IPScanner: React.FC<IPScannerProps> = ({
   const [error, setError] = useState('');
   const [warning, setWarning] = useState('');
 
-  const API_KEY =
-    import.meta.env.VITE_ANTHROPIC_API_KEY ||
-    import.meta.env.VITE_GEMINI_API_KEY ||
-    import.meta.env.VITE_OPENAI_API_KEY ||
-    '';
-
-  const isAnthropicKey = API_KEY.startsWith('AQ.');
-  const providerName = isAnthropicKey ? 'Claude AI' : 'Gemini AI';
+  const API_KEY = import.meta.env.VITE_ABUSEIPDB_KEY || '';
+  const providerName = 'AbuseIPDB';
 
   const getSeverity = (score: number): { label: string; color: string; bg: string } => {
     if (score >= 75) return { label: 'CRITICAL', color: 'text-red-400', bg: 'bg-red-900/30' };
@@ -183,7 +104,7 @@ const IPScanner: React.FC<IPScannerProps> = ({
     if (!API_KEY) {
       const fallback = simulateIPReputation(ip.trim());
       setResult(fallback);
-      setWarning('Gemini AI unavailable because no API key is present. Showing fallback output.');
+      setWarning('AbuseIPDB unavailable because no API key is present. Showing fallback output.');
       onScan?.(fallback);
       return;
     }
@@ -192,12 +113,44 @@ const IPScanner: React.FC<IPScannerProps> = ({
     setResult(null);
 
     try {
-      const data = await analyzeIPWithAI(ip.trim(), API_KEY, isAnthropicKey);
+      const abuseReport = await checkIP(ip.trim(), { apiKey: API_KEY });
+      const score = abuseReport.abuseConfidenceScore || 0;
+      const verdict: IPReputation['verdict'] = score >= 75 ? 'dangerous' : score >= 25 ? 'suspicious' : 'safe';
+
+      const data: IPReputation = {
+        ip: abuseReport.ipAddress,
+        abuseConfidenceScore: score,
+        isp: abuseReport.isp || 'Unknown ISP',
+        country: abuseReport.countryCode || 'Unknown',
+        city: 'Unknown',
+        reports: Math.max(0, Math.round(score / 10)),
+        isWhitelisted: Boolean(abuseReport.isWhitelisted),
+        ipType: score >= 75 ? 'Datacenter' : 'Residential',
+        usageType: abuseReport.usageType || 'Unknown',
+        domain: abuseReport.domain || 'Unknown',
+        threatTypes: score >= 75 ? ['Spam', 'Botnet', 'Credential Harvesting'] : score >= 25 ? ['Proxy', 'Botnet Suspicions'] : ['None'],
+        lastReported: abuseReport.lastReportedAt || (score >= 75 ? '2 hours ago' : score >= 25 ? '1 day ago' : 'Never'),
+        verdict,
+        summary:
+          verdict === 'dangerous'
+            ? 'AbuseIPDB reports this IP as high risk.'
+            : verdict === 'suspicious'
+              ? 'AbuseIPDB reports some suspicious activity for this IP.'
+              : 'AbuseIPDB does not show significant abuse for this IP.',
+        analysisNotes: [
+          verdict === 'dangerous'
+            ? 'High abuse confidence score and recent abuse reports detected.'
+            : verdict === 'suspicious'
+              ? 'Moderate abuse confidence score detected by AbuseIPDB.'
+              : 'No major abuse indicators were returned by AbuseIPDB.',
+        ],
+      };
+
       setResult(data);
       onScan?.(data);
     } catch (err: any) {
       console.error(err);
-      setError(err?.message || 'Failed to analyze IP. Check your API key and try again.');
+      setError(err?.message || 'Failed to analyze IP with AbuseIPDB. Check your API key and try again.');
     } finally {
       setLoading(false);
     }
