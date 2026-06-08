@@ -272,8 +272,9 @@ const NeuralSide = ({ side }: { side: "left" | "right" }) => {
       {nodes.map((n, i) => (
         <motion.circle
           key={i}
-          cx={n.x} cy={n.y} r="3"
+          cx={n.x} cy={n.y} r={3}
           fill="#22d3ee"
+          initial={{ r: 3, opacity: 0.4 }}
           animate={{ r: [2.5, 4, 2.5], opacity: [0.4, 1, 0.4] }}
           transition={{ duration: 1.8 + (i % 3) * 0.5, repeat: Infinity, delay: i * 0.2, ease: "easeInOut" }}
         />

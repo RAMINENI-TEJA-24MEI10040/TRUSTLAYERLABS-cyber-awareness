@@ -145,6 +145,16 @@ const NAV_ITEMS: NavItem[] = [
     color: "#06b6d4",
   },
   {
+    id: "ciw",
+    labelKey: "nav.ciw",
+    descriptionKey: "nav.ciw_desc",
+    href: "/ciw",
+    icon: <IconRadar />,
+    status: "new",
+    description: "Cyber Investigation Workspace — unified OSINT console",
+    color: "#06b6d4",
+  },
+  {
     id: "scam-library",
     labelKey: "nav.scam_library",
     descriptionKey: "nav.scam_library_desc",

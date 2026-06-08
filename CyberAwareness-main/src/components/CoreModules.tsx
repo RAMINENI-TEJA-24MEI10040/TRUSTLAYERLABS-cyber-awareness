@@ -15,6 +15,7 @@ const MODULE_ROUTES: Record<string, string> = {
   "ip-scanner": "/ip-scanner",
   "url-scanner": "/url-scanner",
   "scam-library": "/scam-library",
+  "ciw": "/ciw",
 };
 
 // ─── Types ────────────────────────────────────────────────────────────────────

@@ -41,6 +41,7 @@ const UPICaseStudy = lazy(() => import('./pages/upi/CaseStudy'));
 const UPIDemo = lazy(() => import('./pages/upi/Demo'));
 const UPIReport = lazy(() => import('./pages/upi/Report'));
 const CaseStudies = lazy(() => import('./pages/casestudies/CaseStudiesPage'));
+const CIWDashboard = lazy(() => import('./modules/osint-center/pages/CIWDashboard'));
 const CaseStudyDetailPage = lazy(() => import('./pages/casestudies/CaseStudyDetailPage'));
 
 const Laws = lazy(() => import('./pages/laws'));
@@ -143,6 +144,7 @@ export default function App() {
             <Route path="/cyber-justice-ai" element={<CyberJusticeAI />} />
             <Route path="/legal-ai" element={<Navigate to="/cyber-justice-ai" replace />} />
             <Route path="/cyber-crime-locator" element={<CyberCrimeLocatorPage />} />
+            <Route path="/ciw" element={<CIWDashboard />} />
 
             <Route path="/cyber-laws" element={<Navigate to="/cyber-justice-ai" replace />} />
             <Route path="/laws" element={<Laws />} />
