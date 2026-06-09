@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Activity, Crosshair, Flame, Gauge } from "lucide-react";
 import { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { badges, phishingScenarios, type Badge } from "../data";
 import BadgeUnlock from "./BadgeUnlock";
 import EmailCard from "./EmailCard";
@@ -12,6 +13,7 @@ import ScorePopup from "./ScorePopup";
 const initialStats: FinalStats = { score: 0, correct: 0, total: phishingScenarios.length, bestStreak: 0, earnedBadges: [] };
 
 export default function Simulator() {
+  const { t } = useTranslation();
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
@@ -101,23 +103,23 @@ export default function Simulator() {
   return (
     <section id="simulator" className="ph-shell ph-section">
       <div className="ph-section-head">
-        <span className="ph-kicker">Interactive simulator</span>
-        <h2>Safe or phishing?</h2>
+        <span className="ph-kicker">{t("phishing.simulator.kicker", "Interactive simulator")}</span>
+        <h2>{t("phishing.simulator.title", "Safe or phishing?")}</h2>
       </div>
       <div className="ph-sim-grid">
         <motion.div className="ph-panel" initial={{ opacity: 0, x: -24 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-          <ProgressBar value={progress} label={`Scenario ${index + 1} of ${phishingScenarios.length}`} />
+          <ProgressBar value={progress} label={t("phishing.simulator.scenarioLabel", "Scenario {{current}} of {{total}}", { current: index + 1, total: phishingScenarios.length })} />
           <div className="ph-metrics">
-            <div><Activity size={18} /><strong>{score}</strong><span>Score</span></div>
-            <div><Flame size={18} /><strong>{streak}</strong><span>Streak</span></div>
-            <div><Gauge size={18} /><strong>{accuracy}%</strong><span>Accuracy</span></div>
-            <div><Crosshair size={18} /><strong>{correctCount}</strong><span>Correct</span></div>
+            <div><Activity size={18} /><strong>{score}</strong><span>{t("phishing.simulator.score", "Score")}</span></div>
+            <div><Flame size={18} /><strong>{streak}</strong><span>{t("phishing.simulator.streak", "Streak")}</span></div>
+            <div><Gauge size={18} /><strong>{accuracy}%</strong><span>{t("phishing.simulator.accuracy", "Accuracy")}</span></div>
+            <div><Crosshair size={18} /><strong>{correctCount}</strong><span>{t("phishing.simulator.correct", "Correct")}</span></div>
           </div>
         </motion.div>
-        <EmailCard scenario={scenario} answered={answered} choice={choice} onAnswer={answer} />
+        <EmailCard scenario={scenario} index={index} answered={answered} choice={choice} onAnswer={answer} />
       </div>
       <ScorePopup show={showPopup} correct={choice === scenario.isPhishing} streak={streak} />
-      <ResultModal open={showModal} correct={choice === scenario.isPhishing} scenario={scenario} onNext={next} isLast={index === phishingScenarios.length - 1} />
+      <ResultModal open={showModal} correct={choice === scenario.isPhishing} scenario={scenario} index={index} onNext={next} isLast={index === phishingScenarios.length - 1} />
       <BadgeUnlock badge={toast} onClose={() => setToast(null)} />
     </section>
   );

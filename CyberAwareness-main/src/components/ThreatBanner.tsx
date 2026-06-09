@@ -3,6 +3,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -133,6 +134,7 @@ const RadarBlip = ({ x, severity, delay }: { x: number; severity: Severity; dela
 // ─── Ticker item ──────────────────────────────────────────────────────────────
 
 const TickerItem = ({ alert }: { alert: ThreatAlert }) => {
+  const { t } = useTranslation();
   const c = SEVERITY_CONFIG[alert.severity];
   return (
     <span className="inline-flex items-center gap-3 px-6 whitespace-nowrap select-none">
@@ -143,16 +145,16 @@ const TickerItem = ({ alert }: { alert: ThreatAlert }) => {
           animate={{ opacity: [1, 0.3, 1] }}
           transition={{ duration: 1.2, repeat: Infinity }}
         />
-        {alert.category}
+        {t(`threatBanner.categories.${alert.category}`, alert.category)}
       </span>
       {/* Message */}
       <span className={`text-[12px] font-mono tracking-wide ${c.text} opacity-90`}>
-        {alert.message}
+        {t("threatBanner.alerts.T" + String(alert.id).padStart(3, "0"))}
       </span>
       {/* Code + region */}
       <span className="text-slate-600 text-[10px] font-mono">
         [{alert.code}
-        {alert.region ? ` · ${alert.region}` : ""}]
+        {alert.region ? ` · ${t("threatBanner.regions." + alert.region, alert.region)}` : ""}]
       </span>
       {/* Separator */}
       <span className="text-slate-700 text-sm mx-2">◈</span>
@@ -163,6 +165,7 @@ const TickerItem = ({ alert }: { alert: ThreatAlert }) => {
 // ─── Infinite ticker ──────────────────────────────────────────────────────────
 
 const InfiniteTicker = ({ speed = 42 }: { speed?: number }) => {
+  const { t } = useTranslation();
   const [paused, setPaused] = useState(false);
   const trackRef = useRef<HTMLDivElement>(null);
   const [trackWidth, setTrackWidth] = useState(0);
@@ -208,7 +211,7 @@ const InfiniteTicker = ({ speed = 42 }: { speed?: number }) => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
-          PAUSED
+          {t("threatBanner.paused")}
         </motion.div>
       )}
     </div>
@@ -218,6 +221,7 @@ const InfiniteTicker = ({ speed = 42 }: { speed?: number }) => {
 // ─── Status left panel ────────────────────────────────────────────────────────
 
 const LiveStatusBadge = ({ criticalCount }: { criticalCount: number }) => {
+  const { t } = useTranslation();
   const [flash, setFlash] = useState(false);
 
   useEffect(() => {
@@ -239,7 +243,7 @@ const LiveStatusBadge = ({ criticalCount }: { criticalCount: number }) => {
           />
           <span className="w-2 h-2 rounded-full bg-red-400 block" style={{ boxShadow: "0 0 8px #ef4444" }} />
         </motion.div>
-        <span className="text-[10px] font-mono font-bold tracking-[0.18em] text-red-400 uppercase">Live</span>
+        <span className="text-[10px] font-mono font-bold tracking-[0.18em] text-red-400 uppercase">{t("threatBanner.live")}</span>
       </div>
 
       {/* Divider */}
@@ -252,7 +256,7 @@ const LiveStatusBadge = ({ criticalCount }: { criticalCount: number }) => {
         transition={{ duration: 0.3 }}
       >
         <span className="text-[10px] font-mono text-red-400 font-bold">{criticalCount}</span>
-        <span className="text-[9px] font-mono text-slate-500 tracking-wider uppercase">Critical</span>
+        <span className="text-[9px] font-mono text-slate-500 tracking-wider uppercase">{t("threatBanner.critical")}</span>
       </motion.div>
     </div>
   );
@@ -261,6 +265,7 @@ const LiveStatusBadge = ({ criticalCount }: { criticalCount: number }) => {
 // ─── Right panel: system status ───────────────────────────────────────────────
 
 const SystemStatusPanel = () => {
+  const { t } = useTranslation();
   const [tick, setTick] = useState(0);
   useEffect(() => {
     const t = setInterval(() => setTick((n) => n + 1), 1800);
@@ -291,7 +296,7 @@ const SystemStatusPanel = () => {
       {/* Scan info */}
       <div className="hidden sm:flex flex-col gap-0.5">
         <div className="flex items-center gap-1.5">
-          <span className="text-[9px] font-mono text-slate-500 uppercase tracking-wider">AI Scan</span>
+          <span className="text-[9px] font-mono text-slate-500 uppercase tracking-wider">{t("threatBanner.aiScan")}</span>
           <motion.span
             className="text-[10px] font-mono text-cyan-400 font-bold"
             key={scanPct}
@@ -317,6 +322,7 @@ const SystemStatusPanel = () => {
 // ─── ThreatBanner Root ────────────────────────────────────────────────────────
 
 const ThreatBanner: React.FC = () => {
+  const { t } = useTranslation();
   const criticalCount = THREAT_ALERTS.filter((a) => a.severity === "critical").length;
 
   const blips: Array<{ x: number; severity: Severity; delay: number }> = [
@@ -380,7 +386,7 @@ const ThreatBanner: React.FC = () => {
         <div className="flex items-center gap-2 shrink-0 px-3 border-r border-cyan-500/15">
           <SignalWave color="#22d3ee" delay={0} />
           <span className="text-[9px] font-mono uppercase tracking-[0.18em] text-cyan-500/70 hidden md:block">
-            Threat Intel
+            {t("threatBanner.threatIntel")}
           </span>
         </div>
 

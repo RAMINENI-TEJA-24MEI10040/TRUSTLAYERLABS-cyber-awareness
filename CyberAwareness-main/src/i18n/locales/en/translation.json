@@ -13,6 +13,25 @@
     "aiAssistant": "AI Guidance Assistant"
   },
   "hero": {
+    "eyebrow": "AI Cyber Intelligence",
+    "commandCenter": "Command Center",
+    "stayAware": "Stay Aware.",
+    "stayProtected": "Stay Protected.",
+    "stayInControl": "Stay in Control.",
+    "subCopy": "AI-powered threat intelligence that helps you recognize phishing, deepfakes, QR scams, and social engineering — before they reach you. Real awareness. Real protection.",
+    "commandCenterBtn": "Enter the Command Center",
+    "learnThreatsBtn": "Learn the Threats",
+    "indicatorAi": "AI-powered detection",
+    "indicatorRadar": "Real-time threat mapping",
+    "indicatorHuman": "Human-first awareness",
+    "cycleTitle": "The Awareness Cycle",
+    "cycleSteps": {
+      "detect": "Detect",
+      "understand": "Understand",
+      "learn": "Learn",
+      "protect": "Protect",
+      "act": "Act"
+    },
     "badgeText": "AI Powered Cyber Awareness Platform",
     "title": "Protect Yourself From Cyber Threats",
     "subtitle": "Learn cyber safety, scam awareness, and digital protection.",
@@ -20,9 +39,216 @@
     "dashboardBtn": "Admin Dashboard"
   },
   "coreModules": {
+    "launchModule": "LAUNCH MODULE →",
+    "liveIntelligence": "Live Intelligence",
+    "modules": {
+      "scam-analyzer": {
+        "title": "AI Scam Analyzer",
+        "subtitle": "Neural Threat Recognition",
+        "description": "Feed suspicious messages, calls, or links into our AI engine. Detects social engineering patterns, urgency manipulation, and impersonation tactics in real time.",
+        "statusLabel": "ANALYZING PATTERNS",
+        "tags": {
+          "tag0": "Social Engineering",
+          "tag1": "SMS Fraud",
+          "tag2": "Voice Cloning"
+        },
+        "liveData": {
+          "item0": "Voice scam detected — India +91",
+          "item1": "SMS phishing blocked",
+          "item2": "Credential harvest attempt"
+        }
+      },
+      "url-scanner": {
+        "title": "URL Safety Scanner",
+        "subtitle": "Link Threat Assessment",
+        "description": "Paste any suspicious link for instant deep analysis. Detects typosquatting, malware payloads, phishing pages, fake login portals, and redirect-based deception chains.",
+        "statusLabel": "LINK SCANNER",
+        "tags": {
+          "tag0": "Typosquatting",
+          "tag1": "Malware Payload",
+          "tag2": "Redirect Chain"
+        },
+        "liveData": {
+          "item0": "Phishing URL detected",
+          "item1": "Typosquat identified",
+          "item2": "Clean URL — safe"
+        }
+      },
+      "deepfake-lab": {
+        "title": "Deepfake Detection Lab",
+        "subtitle": "Synthetic Media Analysis",
+        "description": "Upload images or video clips. Our multimodal AI identifies facial synthesis artifacts, voice cloning signatures, and AI-generated content used in fraud and disinformation.",
+        "statusLabel": "MODEL ACTIVE",
+        "tags": {
+          "tag0": "Face Swap",
+          "tag1": "Voice Synthesis",
+          "tag2": "Video Forensics"
+        },
+        "liveData": {
+          "item0": "Deepfake video analyzed",
+          "item1": "Synthetic audio confirmed",
+          "item2": "Real face — verified"
+        }
+      },
+      "qr-scanner": {
+        "title": "QR Scam Scanner",
+        "subtitle": "Malicious Code Detection",
+        "description": "Scan any QR code before you pay or visit. Our engine decodes hidden redirect chains, UPI manipulation, malware distribution URLs, and payment fraud embedded in QR.",
+        "statusLabel": "SCAN READY",
+        "tags": {
+          "tag0": "UPI Redirect",
+          "tag1": "Malware Links",
+          "tag2": "Fake Payments"
+        },
+        "liveData": {
+          "item0": "Malicious UPI QR blocked",
+          "item1": "Redirect chain exposed",
+          "item2": "Safe QR confirmed"
+        }
+      },
+      "phishing-sim": {
+        "title": "Phishing Simulator",
+        "subtitle": "Awareness Training Engine",
+        "description": "Experience simulated phishing attacks in a safe environment. Learn to identify deceptive links, spoofed domains, fake login pages, and urgency-based manipulation tactics.",
+        "statusLabel": "SIM ACTIVE",
+        "tags": {
+          "tag0": "Domain Spoofing",
+          "tag1": "Credential Harvest",
+          "tag2": "Urgency Baiting"
+        },
+        "liveData": {
+          "item0": "Simulation: bank phish",
+          "item1": "User caught fake login",
+          "item2": "Awareness score: HIGH"
+        }
+      },
+      "cyber-laws": {
+        "title": "Legal AI Command Center",
+        "subtitle": "Complaint Intelligence System",
+        "description": "Transform cybercrime incident narratives into structured complaints with guided interviews, legal mapping, evidence summaries, and PDF export.",
+        "statusLabel": "KNOWLEDGE BASE",
+        "tags": {
+          "tag0": "IT Act 2000",
+          "tag1": "DPDP Bill",
+          "tag2": "Cyber Rights"
+        },
+        "liveData": {
+          "item0": "Complaint draft generated",
+          "item1": "Legal sections mapped",
+          "item2": "PDF export ready"
+        }
+      },
+      "challenges": {
+        "title": "Awareness Challenges",
+        "subtitle": "Cyber Defense Training",
+        "description": "Gamified cyber awareness missions. Identify scam screenshots, decode phishing emails, spot fake websites — build real-world recognition skills through immersive challenges.",
+        "statusLabel": "MISSION ACTIVE",
+        "tags": {
+          "tag0": "Gamified Learning",
+          "tag1": "Scam Spotting",
+          "tag2": "Security IQ"
+        },
+        "liveData": {
+          "item0": "Challenge: spot the phish",
+          "item1": "Level 4 unlocked",
+          "item2": "Security IQ improved"
+        }
+      },
+      "reporting": {
+        "title": "Reporting Center",
+        "subtitle": "Incident Documentation",
+        "description": "Structured cyber incident reporting with AI-assisted form completion. Automatically routes reports to CERT-In, Cyber Crime Portal, or RBI Ombudsman based on incident type.",
+        "statusLabel": "REPORTS OPEN",
+        "tags": {
+          "tag0": "CERT-In",
+          "tag1": "Cyber Crime Portal",
+          "tag2": "RBI Ombudsman"
+        },
+        "liveData": {
+          "item0": "Report filed to CERT-In",
+          "item1": "Case number generated",
+          "item2": "Escalation triggered"
+        }
+      },
+      "upi-fraud": {
+        "title": "UPI Fraud Awareness",
+        "subtitle": "Payment Safety Intelligence",
+        "description": "Understand how UPI scams operate — collect requests, screen share fraud, fake payment screenshots, and merchant impersonation. Interactive fraud map of common attack patterns.",
+        "statusLabel": "FRAUD MAP LIVE",
+        "tags": {
+          "tag0": "Collect Scams",
+          "tag1": "Screen Fraud",
+          "tag2": "Fake Screenshots"
+        },
+        "liveData": {
+          "item0": "Collect request scam wave",
+          "item1": "New screen share attack",
+          "item2": "Fake receipt pattern"
+        }
+      },
+      "ip-scanner": {
+        "title": "IP Intelligence Scanner",
+        "subtitle": "Network Origin Analysis",
+        "description": "Analyze IP addresses for threat reputation, geolocation, hosting provider, and blacklist status. Understand if a caller, website, or sender originates from known threat infrastructure.",
+        "statusLabel": "SCANNER ONLINE",
+        "tags": {
+          "tag0": "Reputation Check",
+          "tag1": "Blacklist Status",
+          "tag2": "Geo Trace"
+        },
+        "liveData": {
+          "item0": "IP blacklisted — flagged",
+          "item1": "VPN origin detected",
+          "item2": "Clean IP — verified"
+        }
+      },
+      "threat-feed": {
+        "title": "Live Threat Feed",
+        "subtitle": "Global Cyber Intelligence",
+        "description": "Real-time aggregation of emerging scam campaigns, ransomware spreads, and social fraud vectors from public threat intelligence sources across India and globally.",
+        "statusLabel": "LIVE MONITORING",
+        "tags": {
+          "tag0": "Ransomware Alerts",
+          "tag1": "Scam Campaigns",
+          "tag2": "Dark Web Signals"
+        },
+        "liveData": {
+          "item0": "New OTP scam wave detected",
+          "item1": "Govt impersonation surge",
+          "item2": "Banking fraud pattern flagged"
+        }
+      },
+      "scam-library": {
+        "title": "Scam Intelligence Archive",
+        "subtitle": "Fraud Pattern Database",
+        "description": "Comprehensive classified archive of documented scams, fraud schemes, and deception patterns. Search historical scam campaigns, analyze fraud tactics, and explore indexed threat intelligence from India's cyber threat landscape.",
+        "statusLabel": "ARCHIVE INDEXED",
+        "tags": {
+          "tag0": "Fraud Patterns",
+          "tag1": "Scam History",
+          "tag2": "Threat Intelligence"
+        },
+        "liveData": {
+          "item0": "Archive entries: 2,400+",
+          "item1": "Scam patterns categorized",
+          "item2": "Fraud threats mapped"
+        }
+      }
+    },
     "sectionLabel": "Core Modules",
     "title": "Everything You Need to Stay Protected",
     "subtitle": "From cyber awareness and phishing defense to AI deepfake detection and Indian cyber law — explore a complete cybersecurity learning ecosystem built for modern digital threats.",
+    "titleHeader": "Command Center",
+    "titleHeaderColored": "Core Modules",
+    "subtitleHeader": "Eleven AI-powered awareness systems designed to educate, protect, and empower citizens against the evolving landscape of cyber threats.",
+    "systemCounts": {
+      "activeModules": "ACTIVE MODULES",
+      "threatVectors": "THREAT VECTORS",
+      "awarenessSystems": "AWARENESS SYSTEMS"
+    },
+    "bottomCtaTitle": "All modules are free and educational",
+    "bottomCtaDesc": "No data stored · No accounts required · Public cyber intelligence",
+    "bottomCtaBtn": "ENTER COMMAND CENTER",
     "cyberAwareness": "Cyber Awareness",
     "cyberAwarenessDesc": "Protect yourself against phishing, UPI fraud, identity theft, MFA attacks, and social engineering scams.",
     "cyberAwarenessTag": "Essential",
@@ -50,9 +276,75 @@
     "exploreModule": "Explore Module"
   },
   "dashboardPreview": {
-    "sectionLabel": "Intelligence Dashboard",
-    "title": "Threat Insights & Guided Actions",
-    "subtitle": "Real-time threat intelligence combined with personalized guidance for every type of user.",
+    "sectionLabel": "COMMAND CENTER · LIVE ENVIRONMENT",
+    "title": "AI INTELLIGENCE",
+    "titleColored": "OPERATIONS CORE",
+    "subtitle": "Every second, our AI monitors the digital threat landscape — detecting phishing, deepfakes, and scams before they reach you.",
+    "subtitleShield": "This is your shield. This is AEGIS.",
+    "panels": {
+      "threatRadar": {
+        "title": "THREAT RADAR",
+        "badge": "GLOBAL"
+      },
+      "urlScanner": {
+        "title": "URL SAFETY SCANNER",
+        "badge": "LINK DEFENSE"
+      },
+      "aiLinkScanner": {
+        "title": "AI LINK SCANNER",
+        "badge": "GPT-VERIFIED"
+      },
+      "neuralNet": {
+        "title": "AI THREAT NEURAL NET",
+        "badge": "LIVE INFERENCE"
+      },
+      "protectionIntel": {
+        "title": "PROTECTION INTELLIGENCE",
+        "badge": "INDIA·2025"
+      },
+      "deepfakeDetector": {
+        "title": "DEEPFAKE DETECTOR",
+        "badge": "AI VISION"
+      },
+      "dataSignalFeed": {
+        "title": "DATA SIGNAL FEED",
+        "badge": "LIVE"
+      },
+      "qrFraudAnalysis": {
+        "title": "QR FRAUD ANALYSIS",
+        "badge": "LIVE"
+      }
+    },
+    "legend": {
+      "critical": "Critical",
+      "high": "High",
+      "monitoring": "Monitoring",
+      "resolved": "Resolved"
+    },
+    "accuracy": "Accuracy",
+    "latency": "Latency",
+    "threats": "Threats",
+    "recentScans": "Recent scans",
+    "manipulationScore": "Manipulation Score",
+    "highManipulation": "⚠ HIGH MANIPULATION DETECTED",
+    "lowRisk": "✓ LOW RISK — AUTHENTIC",
+    "alerts": {
+      "title": "◉ ALERT",
+      "list": [
+        "⚠ NEW PHISHING WAVE TARGETING UPI USERS IN MH/KA REGION",
+        "🔴 DEEPFAKE VIDEO CIRCULATING — PM IMPERSONATION CONFIRMED",
+        "⚡ AI SCANNER BLOCKED 18,432 MALICIOUS LINKS IN LAST HOUR",
+        "🟡 QR CODE FRAUD SPIKE DETECTED — METRO CITIES AT RISK",
+        "🛡 CYBER LAW UPDATE: IT ACT AMENDMENT 2025 NOW IN EFFECT",
+        "🤖 VOICE CLONE SCAM WAVE REPORTED ACROSS BANKING SECTOR"
+      ]
+    },
+    "streamActive": "█ STREAM ACTIVE · 4.2 TB/s · ENCRYPTED",
+    "deltaWeek": "this week",
+    "scanners": {
+      "scanning": "SCANNING...",
+      "complete": "ANALYSIS COMPLETE"
+    },
     "threatIntelligence": "Threat Intelligence",
     "activeScamCategories": "Active scam categories — May 2026",
     "live": "Live",
@@ -73,9 +365,79 @@
     "smallBusinesses": "Small Businesses",
     "businessActions1": "Protect against ransomware",
     "businessActions2": "Secure payment gateways",
-    "businessActions3": "Employee phishing awareness"
+    "businessActions3": "Employee phishing awareness",
+    "results": {
+      "phishing": "Phishing",
+      "suspicious": "Suspicious",
+      "deepfake": "Deepfake",
+      "safe": "Safe"
+    },
+    "stats": {
+      "phishing": "Phishing Links Flagged",
+      "qr": "QR Scams Blocked",
+      "deepfake": "Deepfakes Detected",
+      "citizens": "Citizens Protected"
+    },
+    "qrPhases": [
+      "DECODING QR MATRIX",
+      "RESOLVING REDIRECT CHAIN",
+      "AI RISK ANALYSIS",
+      "THREAT CONFIRMED"
+    ],
+    "bottomCta": {
+      "updated": "Live intelligence updated every",
+      "seconds": "30 seconds",
+      "divider": "·",
+      "protected": "Protected by",
+      "aegis": "AEGIS AI Core v4.2"
+    },
+    "scannerWidget": {
+      "placeholder": "https://example.com",
+      "scanUrl": "Scan URL",
+      "failedScan": "Failed to analyze URL",
+      "suspiciousDetected": "Suspicious URL Detected",
+      "appearsSafe": "URL Appears Safe",
+      "liveAnalysis": "Live VirusTotal analysis",
+      "malicious": "Malicious",
+      "suspicious": "Suspicious",
+      "harmless": "Harmless",
+      "reputation": "Reputation"
+    }
   },
   "threatBanner": {
+    "live": "Live",
+    "critical": "Critical",
+    "threatIntel": "Threat Intel",
+    "paused": "PAUSED",
+    "aiScan": "AI Scan",
+    "categories": {
+      "QR SCAM": "QR Scam",
+      "DEEPFAKE": "Deepfake",
+      "PHISHING": "Phishing",
+      "UPI FRAUD": "UPI Fraud",
+      "AI VOICE": "AI Voice",
+      "APP SCAM": "App Scam",
+      "SMS LURE": "SMS Lure",
+      "SOC-ENG": "Social Eng",
+      "AWARENESS": "Awareness",
+      "MALWARE": "Malware",
+      "ROM-SCAM": "Romance Scam",
+      "BROADCAST": "Broadcast"
+    },
+    "alerts": {
+      "T001": "QR payment scam activity rising — verify before scanning",
+      "T002": "Deepfake impersonation attempts detected across social platforms",
+      "T003": "Phishing campaigns targeting college students — stay alert",
+      "T004": "Fraudulent UPI payment links spreading via WhatsApp",
+      "T005": "AI-generated scam calls impersonating bank officials increasing",
+      "T006": "Fake investment app scheme flagged — do not download",
+      "T007": "SMS phishing surge targeting Aadhaar-linked accounts",
+      "T008": "Social engineering playbook variant detected in the wild",
+      "T009": "Lottery scam wave active — awareness broadcast in progress",
+      "T010": "Malicious PDF attachments posing as government notices",
+      "T011": "Romance scam vector expanding on dating platforms",
+      "T012": "Cyber awareness alert — verify sources before sharing links"
+    },
     "liveThreats": "LIVE THREATS",
     "alert1": "Alert: Surge in UPI Fraud & QR Code Scams — Learn how to protect yourself",
     "alert2": "Alert: Deepfake scams are rising — Verify before you trust",
@@ -84,6 +446,30 @@
     "alert5": "Alert: OTP-based SIM swap fraud on the rise — Never share OTPs"
   },
   "threatTicker": {
+    "title": "Threat Feed",
+    "aiMonitor": "AI·Monitor",
+    "live": "Live",
+    "encrypted": "Encrypted",
+    "alerts": {
+      "T001": "Deepfake impersonation activity increasing across social platforms",
+      "T002": "Phishing links targeting students detected — verify before clicking",
+      "T003": "QR payment scam campaign active in metro regions",
+      "T004": "AI-generated fraud calls rising — verify caller identity",
+      "T005": "Suspicious UPI clone websites detected — use official apps only",
+      "T006": "Cyber awareness broadcast active — threat intelligence synchronized",
+      "T007": "Credential harvesting attempts detected on education portals",
+      "T008": "Malicious APK files circulating via encrypted messaging apps",
+      "T009": "Fake job offer campaigns targeting fresh graduates — verify recruiters",
+      "T010": "SMS OTP interception vulnerability reported — enable app-based 2FA",
+      "T011": "Threat intelligence channels synchronized — all nodes operational",
+      "T012": "Romance scam operations using AI-generated profiles detected"
+    },
+    "levels": {
+      "critical": "Critical",
+      "high": "High",
+      "medium": "Medium",
+      "advisory": "Info"
+    },
     "threat1": "Fake RBI KYC update scams increasing across India.",
     "threat2": "Deepfake investment scams targeting social media users.",
     "threat3": "QR refund scams affecting UPI users nationwide.",
@@ -109,29 +495,14 @@
     "fakeJobOfferPhishing": "Fake job offer phishing attacks rising."
   },
   "auth": {
-    "loginTitle": "Welcome Back",
-    "loginDescription": "Login to access the cyber awareness dashboard.",
-    "emailLabel": "Email Address",
-    "emailPlaceholder": "Enter your email",
-    "passwordLabel": "Password",
-    "passwordPlaceholder": "Enter your password",
+    "accessTerminal": "Access Terminal",
     "loginBtn": "Login",
-    "loggingIn": "Logging in...",
-    "loginFooter": "Secure cyber awareness platform access",
-    "signupTitle": "Create Account",
-    "signupDescription": "Join the cyber awareness platform securely.",
-    "passwordPlaceholderSignup": "Create a password",
-    "signupBtn": "Signup",
-    "creatingAccount": "Creating Account...",
-    "signupFooter": "Secure cyber platform registration",
-    "loginFailed": "Login failed",
-    "signupFailed": "Signup failed"
+    "signupBtn": "Signup"
   },
   "analyzer": "AI Scam Analyzer",
   "dashboard": "Cyber Dashboard",
   "login": "Login",
   "signup": "Signup",
-
   "nav": {
     "threat_feed": "Threat Feed",
     "threat_feed_desc": "Real-time global cyber threat intelligence",
@@ -156,13 +527,6 @@
     "stayProtected": "Stay Protected",
     "languageSelector": "Select language"
   },
-
-  "auth": {
-    "accessTerminal": "Access Terminal",
-    "loginBtn": "Login",
-    "signupBtn": "Signup"
-  },
-
   "complaint": {
     "coverTitle": "Official Cybercrime Complaint Packet",
     "packetNumberLabel": "Packet Number:",
@@ -259,28 +623,56 @@
           "description": "Description",
           "descriptionPlaceholder": "What happened at this moment"
         },
-        "option": { "noLinkedEvidence": "No linked evidence" },
-        "button": { "addEvent": "Add event" },
+        "option": {
+          "noLinkedEvidence": "No linked evidence"
+        },
+        "button": {
+          "addEvent": "Add event"
+        },
         "confirmed": "Confirmed",
         "confirm": "Confirm",
         "noTimelineEvents": "No timeline events yet."
       },
       "evidence": {
         "title": "Evidence vault",
-        "description": "Add evidence records and paste extracted text, OCR, transcripts, or parsed statement rows. The existing entity extractor finds identifiers.",
-        "label": { "type": "Evidence type" },
-        "name": { "label": "Name", "placeholder": "WhatsApp screenshot, bank statement, call recording..." },
-        "timestamp": { "label": "Timestamp", "placeholder": "2026-05-29T10:30:00+05:30" },
-        "description": { "label": "Description", "placeholder": "What this item proves" },
+        "description": {
+          "label": "Description",
+          "placeholder": "What this item proves"
+        },
+        "label": {
+          "type": "Evidence type"
+        },
+        "name": {
+          "label": "Name",
+          "placeholder": "WhatsApp screenshot, bank statement, call recording..."
+        },
+        "timestamp": {
+          "label": "Timestamp",
+          "placeholder": "2026-05-29T10:30:00+05:30"
+        },
         "extractableLabel": "Extractable text",
-        "extractable": { "placeholder": "Paste OCR text, email body, chat export, transcript, statement text, UTR/RRN, UPI IDs, URLs, wallet IDs..." },
+        "extractable": {
+          "placeholder": "Paste OCR text, email body, chat export, transcript, statement text, UTR/RRN, UPI IDs, URLs, wallet IDs..."
+        },
         "addButton": "Add evidence",
-        "stat": { "vaultItems": "Vault items", "verified": "Verified", "extracted": "Extracted entities" },
+        "stat": {
+          "vaultItems": "Vault items",
+          "verified": "Verified",
+          "extracted": "Extracted entities"
+        },
         "noDescription": "No description provided.",
         "verified": "Verified",
         "markVerified": "Mark verified",
         "noEvidence": "No evidence added yet.",
-        "types": { "SCREENSHOT": "Screenshot", "PDF": "PDF", "AUDIO": "Audio", "VIDEO": "Video", "CHAT": "Chat", "EMAIL": "Email", "BANK_STATEMENT": "Bank Statement" }
+        "types": {
+          "SCREENSHOT": "Screenshot",
+          "PDF": "PDF",
+          "AUDIO": "Audio",
+          "VIDEO": "Video",
+          "CHAT": "Chat",
+          "EMAIL": "Email",
+          "BANK_STATEMENT": "Bank Statement"
+        }
       },
       "analysis": {
         "noNarrative": "Add an incident narrative first, then run analysis.",
@@ -305,7 +697,14 @@
         "verified": "Verified",
         "pendingReview": "Pending review",
         "financialLoss": "Financial loss",
-        "fields": { "amount": "Amount", "currency": "Currency", "bank": "Bank", "transactionId": "Transaction ID", "paymentMethod": "Payment Method", "recoveryStatus": "Recovery Status" },
+        "fields": {
+          "amount": "Amount",
+          "currency": "Currency",
+          "bank": "Bank",
+          "transactionId": "Transaction ID",
+          "paymentMethod": "Payment Method",
+          "recoveryStatus": "Recovery Status"
+        },
         "victim": "Victim",
         "accused": "Accused",
         "timeline": "Timeline",
@@ -313,10 +712,24 @@
         "extractedEntities": "Extracted entities",
         "officialPacketTitle": "Official packet generation",
         "officialPacketDesc": "Creates a complaint packet with cover page, annexures, page numbers, and signature block.",
-        "generatePacket": { "generating": "Generating...", "button": "Generate Packet" },
+        "generatePacket": {
+          "generating": "Generating...",
+          "button": "Generate Packet"
+        },
         "downloadPdf": "Download PDF",
         "exportSummary": "Export summary",
-        "summary": { "packetNumber": "Packet Number", "annexures": "Annexures", "evidenceItems": "Evidence Items", "timelineEvents": "Timeline Events", "mappedLaws": "Mapped Laws", "financialLossIncluded": "Included", "financialLossNotRecorded": "Not recorded", "pdfReady": "Ready", "pdfPending": "Pending", "generated": "Generated" },
+        "summary": {
+          "packetNumber": "Packet Number",
+          "annexures": "Annexures",
+          "evidenceItems": "Evidence Items",
+          "timelineEvents": "Timeline Events",
+          "mappedLaws": "Mapped Laws",
+          "financialLossIncluded": "Included",
+          "financialLossNotRecorded": "Not recorded",
+          "pdfReady": "Ready",
+          "pdfPending": "Pending",
+          "generated": "Generated"
+        },
         "pdfErrorPrefix": "PDF error:",
         "annexurePreview": "Annexure preview",
         "packetPreview": "Packet preview"
@@ -335,74 +748,233 @@
         "required": "Required",
         "recommended": "Recommended"
       },
-      "authority": { "title": "Recommended authorities" },
+      "authority": {
+        "title": "Recommended authorities"
+      },
       "engines": {
         "timeline": {
           "suggestions": {
-            "instagram": { "title": "Instagram contact established", "description": "The narrative mentions the suspect first contacted the victim through Instagram.", "reason": "Social media platform was explicitly referenced in the incident report." },
-            "videoCall": { "title": "Video call interaction occurred", "description": "A video call happened during the incident.", "reason": "The user described a video call exchange, which is a key timeline event in sextortion cases." },
-            "recording": { "title": "Recording or footage was captured", "description": "A recording or similar media was referenced in the incident narrative.", "reason": "Recording of the victim or interaction can anchor an extortion timeline event." },
-            "threat": { "title": "Threat or extortion demand was issued", "description": "A direct threat or extortion demand was described by the victim.", "reason": "Threat language is an important event marker for sextortion timelines." },
-            "paymentDemand": { "title": "Payment demand was requested", "description": "The user mentioned a monetary demand or amount in the narrative.", "reason": "Monetary demands are essential to reconstruct the incident timeline." },
-            "narrative": { "title": "Incident described by complainant", "reason": "The user provided a natural-language incident account." },
-            "evidence": { "title": "{{type}} evidence available", "description": "{{name}}: {{desc}}", "defaultDescription": "Evidence item added to vault.", "reason": "Evidence vault item has a timestamp and can anchor the case timeline." }
+            "instagram": {
+              "title": "Instagram contact established",
+              "description": "The narrative mentions the suspect first contacted the victim through Instagram.",
+              "reason": "Social media platform was explicitly referenced in the incident report."
+            },
+            "videoCall": {
+              "title": "Video call interaction occurred",
+              "description": "A video call happened during the incident.",
+              "reason": "The user described a video call exchange, which is a key timeline event in sextortion cases."
+            },
+            "recording": {
+              "title": "Recording or footage was captured",
+              "description": "A recording or similar media was referenced in the incident narrative.",
+              "reason": "Recording of the victim or interaction can anchor an extortion timeline event."
+            },
+            "threat": {
+              "title": "Threat or extortion demand was issued",
+              "description": "A direct threat or extortion demand was described by the victim.",
+              "reason": "Threat language is an important event marker for sextortion timelines."
+            },
+            "paymentDemand": {
+              "title": "Payment demand was requested",
+              "description": "The user mentioned a monetary demand or amount in the narrative.",
+              "reason": "Monetary demands are essential to reconstruct the incident timeline."
+            },
+            "narrative": {
+              "title": "Incident described by complainant",
+              "reason": "The user provided a natural-language incident account."
+            },
+            "evidence": {
+              "title": "{{type}} evidence available",
+              "description": "{{name}}: {{desc}}",
+              "defaultDescription": "Evidence item added to vault.",
+              "reason": "Evidence vault item has a timestamp and can anchor the case timeline."
+            }
           },
           "entityGroups": {
-            "utr": { "title": "UTR/RRN reference identified" },
-            "upi": { "title": "UPI ID identified" },
-            "url": { "title": "Suspicious URL identified" },
-            "contact": { "title": "Suspect contact identified" },
-            "wallet": { "title": "Wallet ID identified" },
+            "utr": {
+              "title": "UTR/RRN reference identified"
+            },
+            "upi": {
+              "title": "UPI ID identified"
+            },
+            "url": {
+              "title": "Suspicious URL identified"
+            },
+            "contact": {
+              "title": "Suspect contact identified"
+            },
+            "wallet": {
+              "title": "Wallet ID identified"
+            },
             "reason": "The deterministic entity extractor found identifiers that may belong on the incident timeline."
           }
         },
         "emergency": {
-          "preserveEvidence": { "title": "Preserve evidence", "detail": "Take screenshots, save messages, download attachments and do not delete logs." },
-          "contactHelpline": { "title": "Call 1930", "detail": "Contact National Cyber Crime Helpline 1930 for guidance and immediate assistance." },
-          "call1930": { "title": "Call 1930", "detail": "Call the National Cyber Crime Helpline 1930 immediately and report the unauthorized transaction." },
-          "contactBank": { "title": "Contact your bank", "detail": "Notify your bank, request account freeze and reversal, provide transaction IDs and evidence." },
-          "otpCall": { "title": "Call 1930", "detail": "Report OTP interception or misuse via the helpline for immediate advice." },
-          "notifyBank": { "title": "Notify bank", "detail": "Inform the bank and request account freeze. Change banking credentials and enable stronger 2FA." },
-          "preservePhishing": { "title": "Preserve phishing sample", "detail": "Save the email, screenshot the URL and download headers where possible." },
-          "doNotClick": { "title": "Do not click links", "detail": "Do not follow any links or provide credentials. Change passwords for exposed accounts." },
-          "reportPlatform": { "title": "Report to platform", "detail": "Report the phishing page to the hosting platform and to CERT-In / National portal." },
-          "doNotPay": { "title": "Do not pay", "detail": "Do not pay or negotiate with extortionists — payment often escalates demands." },
-          "contactPolice": { "title": "Contact Cyber Police", "detail": "File a complaint with local cyber cell and the National Cyber Crime Portal." },
-          "blockReport": { "title": "Block and report", "detail": "Block the perpetrator on platforms and report to platform grievance officers." },
-          "freezeAccounts": { "title": "Freeze affected accounts", "detail": "Contact banks and platforms to freeze or secure accounts." },
-          "collectProof": { "title": "Collect proof", "detail": "Gather evidence of impersonation, fake profiles, and transactions." },
-          "changeCredentials": { "title": "Change credentials", "detail": "Change passwords for affected accounts and enable MFA immediately." },
-          "notifyPlatforms": { "title": "Notify affected platforms", "detail": "Inform service providers and follow their incident response guidance." },
-          "reportCert": { "title": "Report to CERT-In", "detail": "File a report with CERT-In for technical advisory and mitigation." },
-          "isolateSystems": { "title": "Isolate affected systems", "detail": "Disconnect compromised devices from network to prevent further access." },
-          "preserveLogs": { "title": "Preserve logs", "detail": "Collect and preserve logs, system images and timestamps for forensic analysis." }
+          "preserveEvidence": {
+            "title": "Preserve evidence",
+            "detail": "Take screenshots, save messages, download attachments and do not delete logs."
+          },
+          "contactHelpline": {
+            "title": "Call 1930",
+            "detail": "Contact National Cyber Crime Helpline 1930 for guidance and immediate assistance."
+          },
+          "call1930": {
+            "title": "Call 1930",
+            "detail": "Call the National Cyber Crime Helpline 1930 immediately and report the unauthorized transaction."
+          },
+          "contactBank": {
+            "title": "Contact your bank",
+            "detail": "Notify your bank, request account freeze and reversal, provide transaction IDs and evidence."
+          },
+          "otpCall": {
+            "title": "Call 1930",
+            "detail": "Report OTP interception or misuse via the helpline for immediate advice."
+          },
+          "notifyBank": {
+            "title": "Notify bank",
+            "detail": "Inform the bank and request account freeze. Change banking credentials and enable stronger 2FA."
+          },
+          "preservePhishing": {
+            "title": "Preserve phishing sample",
+            "detail": "Save the email, screenshot the URL and download headers where possible."
+          },
+          "doNotClick": {
+            "title": "Do not click links",
+            "detail": "Do not follow any links or provide credentials. Change passwords for exposed accounts."
+          },
+          "reportPlatform": {
+            "title": "Report to platform",
+            "detail": "Report the phishing page to the hosting platform and to CERT-In / National portal."
+          },
+          "doNotPay": {
+            "title": "Do not pay",
+            "detail": "Do not pay or negotiate with extortionists — payment often escalates demands."
+          },
+          "contactPolice": {
+            "title": "Contact Cyber Police",
+            "detail": "File a complaint with local cyber cell and the National Cyber Crime Portal."
+          },
+          "blockReport": {
+            "title": "Block and report",
+            "detail": "Block the perpetrator on platforms and report to platform grievance officers."
+          },
+          "freezeAccounts": {
+            "title": "Freeze affected accounts",
+            "detail": "Contact banks and platforms to freeze or secure accounts."
+          },
+          "collectProof": {
+            "title": "Collect proof",
+            "detail": "Gather evidence of impersonation, fake profiles, and transactions."
+          },
+          "changeCredentials": {
+            "title": "Change credentials",
+            "detail": "Change passwords for affected accounts and enable MFA immediately."
+          },
+          "notifyPlatforms": {
+            "title": "Notify affected platforms",
+            "detail": "Inform service providers and follow their incident response guidance."
+          },
+          "reportCert": {
+            "title": "Report to CERT-In",
+            "detail": "File a report with CERT-In for technical advisory and mitigation."
+          },
+          "isolateSystems": {
+            "title": "Isolate affected systems",
+            "detail": "Disconnect compromised devices from network to prevent further access."
+          },
+          "preserveLogs": {
+            "title": "Preserve logs",
+            "detail": "Collect and preserve logs, system images and timestamps for forensic analysis."
+          }
         },
         "evidence": {
           "recommendations": {
-            "upi-transaction-screenshot": { "title": "Transaction screenshot", "description": "Upload a screenshot showing the fraudulent UPI transaction, amount, UPI ID, or reference number.", "reason": "This proves the transfer details and supports bank escalation." },
-            "upi-bank-statement": { "title": "Bank statement", "description": "Upload a statement or passbook entry showing the debit.", "reason": "This validates the claimed financial loss." },
-            "phishing-page-record": { "title": "Phishing page or message record", "description": "Upload the suspicious page, email, or message that led to the incident.", "reason": "This preserves the deception path and malicious URL before it disappears." },
-            "sextortion-threat-record": { "title": "Threat messages or recordings", "description": "Upload chats, screenshots, audio, or video showing threats or coercion.", "reason": "Threat content is central to intimidation and extortion claims." },
-            "profile-impersonation-proof": { "title": "Profile or impersonation proof", "description": "Upload screenshots of fake profiles, job posts, or impersonation pages.", "reason": "This connects the accused identity or fake profile to the harm." },
-            "crypto-wallet-transaction": { "title": "Wallet or investment transaction record", "description": "Upload wallet transfer proof, investment dashboard screenshots, or payment records.", "reason": "This links wallet IDs and payment trail to the complaint." },
-            "communication-history": { "title": "Communication history", "description": "Upload chats, emails, or screenshots showing how the suspect contacted you.", "reason": "Communication records explain the deception and suspect identifiers." }
+            "upi-transaction-screenshot": {
+              "title": "Transaction screenshot",
+              "description": "Upload a screenshot showing the fraudulent UPI transaction, amount, UPI ID, or reference number.",
+              "reason": "This proves the transfer details and supports bank escalation."
+            },
+            "upi-bank-statement": {
+              "title": "Bank statement",
+              "description": "Upload a statement or passbook entry showing the debit.",
+              "reason": "This validates the claimed financial loss."
+            },
+            "phishing-page-record": {
+              "title": "Phishing page or message record",
+              "description": "Upload the suspicious page, email, or message that led to the incident.",
+              "reason": "This preserves the deception path and malicious URL before it disappears."
+            },
+            "sextortion-threat-record": {
+              "title": "Threat messages or recordings",
+              "description": "Upload chats, screenshots, audio, or video showing threats or coercion.",
+              "reason": "Threat content is central to intimidation and extortion claims."
+            },
+            "profile-impersonation-proof": {
+              "title": "Profile or impersonation proof",
+              "description": "Upload screenshots of fake profiles, job posts, or impersonation pages.",
+              "reason": "This connects the accused identity or fake profile to the harm."
+            },
+            "crypto-wallet-transaction": {
+              "title": "Wallet or investment transaction record",
+              "description": "Upload wallet transfer proof, investment dashboard screenshots, or payment records.",
+              "reason": "This links wallet IDs and payment trail to the complaint."
+            },
+            "communication-history": {
+              "title": "Communication history",
+              "description": "Upload chats, emails, or screenshots showing how the suspect contacted you.",
+              "reason": "Communication records explain the deception and suspect identifiers."
+            }
           }
         },
         "authority": {
-          "nationalPortal": { "name": "National Cyber Crime Portal", "notes": "Official government portal for cybercrime complaints" },
-          "cyberPolice": { "name": "Cyber Police (Local Cyber Cell)", "notes": "Visit or contact your nearest cyber crime police station with printed evidence" },
-          "nationalHelpline": { "name": "National Cyber Crime Helpline", "notes": "24x7 helpline — call for urgent assistance" },
-          "cert": { "name": "CERT-In", "notes": "Computer Emergency Response Team — report breaches and incidents" },
-          "phishing": { "notes": "Report phishing incidents and provide evidence", "localNotes": "File FIR at local cyber cell if financial loss occurred", "certNotes": "CERT-In accepts technical reports of phishing campaigns" },
-          "dataBreach": { "certNotes": "Report data breaches for mitigation and advisories", "localNotes": "Notify local cyber cell for investigation and FIR" },
-          "hacking": { "certNotes": "Report intrusions and request incident response guidance", "localNotes": "Contact local cyber cell for criminal investigation" }
+          "nationalPortal": {
+            "name": "National Cyber Crime Portal",
+            "notes": "Official government portal for cybercrime complaints"
+          },
+          "cyberPolice": {
+            "name": "Cyber Police (Local Cyber Cell)",
+            "notes": "Visit or contact your nearest cyber crime police station with printed evidence"
+          },
+          "nationalHelpline": {
+            "name": "National Cyber Crime Helpline",
+            "notes": "24x7 helpline — call for urgent assistance"
+          },
+          "cert": {
+            "name": "CERT-In",
+            "notes": "Computer Emergency Response Team — report breaches and incidents"
+          },
+          "phishing": {
+            "notes": "Report phishing incidents and provide evidence",
+            "localNotes": "File FIR at local cyber cell if financial loss occurred",
+            "certNotes": "CERT-In accepts technical reports of phishing campaigns"
+          },
+          "dataBreach": {
+            "certNotes": "Report data breaches for mitigation and advisories",
+            "localNotes": "Notify local cyber cell for investigation and FIR"
+          },
+          "hacking": {
+            "certNotes": "Report intrusions and request incident response guidance",
+            "localNotes": "Contact local cyber cell for criminal investigation"
+          }
         },
         "law": {
           "evidenceNeeds": {
-            "financial": { "label": "Transaction and bank proof", "description": "Transaction screenshot, bank statement, UTR/RRN, or payment reference." },
-            "communication": { "label": "Suspect communication", "description": "Chats, emails, screenshots, calls, or recordings showing deception, threats, or demands." },
-            "identity": { "label": "Impersonation or account proof", "description": "Fake profile, forged document, account compromise, or impersonation screenshots." },
-            "platform": { "label": "Platform record", "description": "Platform profile URL, account handle, report/takedown reference, or message export." }
+            "financial": {
+              "label": "Transaction and bank proof",
+              "description": "Transaction screenshot, bank statement, UTR/RRN, or payment reference."
+            },
+            "communication": {
+              "label": "Suspect communication",
+              "description": "Chats, emails, screenshots, calls, or recordings showing deception, threats, or demands."
+            },
+            "identity": {
+              "label": "Impersonation or account proof",
+              "description": "Fake profile, forged document, account compromise, or impersonation screenshots."
+            },
+            "platform": {
+              "label": "Platform record",
+              "description": "Platform profile URL, account handle, report/takedown reference, or message export."
+            }
           },
           "whyMapped": "Mapped for {{category}}."
         },
@@ -438,5 +1010,1671 @@
         }
       }
     }
+  },
+  "footer": {
+    "branding": "CYBER AWARE",
+    "brandTagline": "Cyber awareness is digital self-defense.",
+    "brandSubtitle": "AI-powered public cyber safety — free, open, and built for everyone.",
+    "emergencyTitle": "Emergency Resources",
+    "modulesTitle": "Protection Modules",
+    "awarenessTitle": "Awareness & Help",
+    "copyright": "Stay aware · Stay protected · Threat intelligence for everyone",
+    "version": "CYBERAWARE · PUBLIC SAFETY PLATFORM · v2.0",
+    "statuses": {
+      "threatFeed": "Threat Feed",
+      "aiEngine": "AI Engine",
+      "scamMonitor": "Scam Monitor"
+    }
+  },
+  "cyberLawsPage": {
+    "nav": {
+      "brand": "Cyber Law SOC",
+      "emergencyResponse": "EMERGENCY RESPONSE — LEVEL ALPHA",
+      "cyberEmergency": "CYBER EMERGENCY",
+      "responseCommand": "RESPONSE COMMAND",
+      "center": "CENTER",
+      "sub": "Rapid response to cybercrime, digital fraud, phishing, identity theft, and online scams. Protecting India's digital citizens with AI-powered intelligence and 24×7 emergency guidance.",
+      "reportBtn": "REPORT INCIDENT",
+      "guidanceBtn": "EMERGENCY GUIDANCE",
+      "threatLevel": "THREAT LEVEL: ELEVATED",
+      "monitoringActive": "MONITORING ACTIVE",
+      "incidentsCount": "23 INCIDENTS/24H",
+      "systemUptime": "SYSTEM STATUS: OPERATIONAL | UPTIME: 99.97%",
+      "copNetwork": "TRUSTLAYERLABS © 2025 — CYBER EMERGENCY RESPONSE COMMAND CENTER",
+      "irLabel": "Incident Response",
+      "irDesc": "Rapid triage & action",
+      "epLabel": "Evidence Protection",
+      "epDesc": "Forensic-grade vault",
+      "aiLabel": "AI Guidance",
+      "aiDesc": "Real-time intelligence",
+      "ncaLabel": "National Cyber Awareness",
+      "ncaDesc": "Policy & legal support"
+    },
+    "legend": {
+      "title": "LEGEND",
+      "highThreat": "HIGH THREAT",
+      "medium": "MEDIUM",
+      "responseNode": "RESPONSE NODE"
+    },
+    "dashboard": {
+      "live": "LIVE",
+      "title": "COMMAND DASHBOARD — LIVE",
+      "radarTitle": "ACTIVE THREAT RADAR",
+      "radarLegend": {
+        "threat": "THREAT",
+        "warning": "WARNING",
+        "safe": "SAFE"
+      },
+      "radarLive": "THREAT RADAR — LIVE",
+      "signalTitle": "THREAT SIGNAL ANALYSIS",
+      "incidentTitle": "LIVE INCIDENT FEED",
+      "responseNetwork": "RESPONSE NETWORK",
+      "systemStatus": "SYSTEM STATUS",
+      "operational": "OPERATIONAL",
+      "responseTime": "RESPONSE TIME",
+      "secureChannel": "SECURE CHANNEL",
+      "active": "ACTIVE"
+    },
+    "tickerTitle": "LIVE THREAT ALERTS",
+    "timeline": {
+      "eyebrow": "INCIDENT RESPONSE PROTOCOL",
+      "title": "Emergency Response Timeline",
+      "sub": "Follow this sequence immediately after a cyber incident. Time is critical — every minute matters for preserving evidence and limiting damage."
+    },
+    "reporting": {
+      "eyebrow": "INCIDENT CLASSIFICATION SYSTEM",
+      "title": "Reporting Command Center",
+      "sub": "Select the type of cybercrime you've experienced. Our AI guidance system will adapt its recommendations based on your incident category.",
+      "selectCategory": "SELECT INCIDENT CATEGORY",
+      "detailsHeader": "INCIDENT DETAILS",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Your name",
+      "contactNumber": "Contact Number",
+      "contactNumberPlaceholder": "+91 XXXXX XXXXX",
+      "description": "Incident Description",
+      "descriptionPlaceholder": "Describe what happened in detail — include dates, times, amounts, platforms used by the attacker...",
+      "loss": "Approximate Loss (₹)",
+      "date": "Incident Date",
+      "attacker": "Attacker's Contact / URL / UPI ID",
+      "attackerPlaceholder": "Phone number, URL, email, or UPI ID used by attacker",
+      "submitBtn": "⚡ SUBMIT INCIDENT REPORT"
+    },
+    "aiPanel": {
+      "title": "AI RESPONSE SYSTEM",
+      "subtitle": "Real-time guidance engine",
+      "analyzing": "ANALYZING THREAT PROFILE...",
+      "actionsHeader": "IMMEDIATE ACTIONS REQUIRED",
+      "numbersHeader": "EMERGENCY NUMBERS",
+      "numbers": {
+        "helpline": "Cybercrime Helpline",
+        "police": "Police Emergency",
+        "ombudsman": "Banking Ombudsman"
+      }
+    },
+    "vault": {
+      "eyebrow": "FORENSIC EVIDENCE MANAGEMENT",
+      "title": "Evidence Vault",
+      "sub": "Securely submit digital evidence for forensic analysis. All uploads are encrypted with AES-256 and stored in isolated secure containers.",
+      "protocol": "VAULT SECURITY PROTOCOL",
+      "protocolText": "All evidence is encrypted with AES-256 before transmission. Files are stored in isolated forensic containers with chain-of-custody logging. Your data is never shared without your explicit consent and is only accessible to authorized cybercrime investigators.",
+      "encrypted": "🔒 AES-256 ENCRYPTED"
+    },
+    "actions": {
+      "eyebrow": "IMMEDIATE RESPONSE PROTOCOLS",
+      "title": "Emergency Action Center",
+      "sub": "Execute these critical actions immediately after a cyber incident. Speed is your greatest advantage — act within the first 4 hours."
+    },
+    "alerts": {
+      "eyebrow": "INTELLIGENCE BROADCAST SYSTEM",
+      "title": "Live Cyber Threat Alerts",
+      "sub": "Active threat campaigns identified by our intelligence network. Stay informed and share these warnings with your community."
+    },
+    "support": {
+      "eyebrow": "OFFICIAL RESOURCES & CONTACTS",
+      "title": "National Cyber Support Hub",
+      "sub": "Official channels, emergency contacts, and legal resources for cybercrime victims in India."
+    },
+    "awareness": {
+      "eyebrow": "CLASSIFIED INTELLIGENCE BRIEFING",
+      "title": "Cyber Awareness Protocol",
+      "sub": "Critical behavioral intelligence to protect yourself and minimize damage during a cyber incident."
+    },
+    "map": {
+      "eyebrow": "NATIONAL THREAT INTELLIGENCE",
+      "title": "India Cyber Incident Map",
+      "sub": "Real-time visualization of cyber threat activity across India's major cities. Data sourced from national cybercrime reporting infrastructure."
+    },
+    "cta": {
+      "active": "EMERGENCY RESPONSE SYSTEM ACTIVE",
+      "titlePart1": "RESPOND FAST.",
+      "titlePart2": "PRESERVE EVIDENCE.",
+      "titlePart3": "DEFEND YOUR DIGITAL IDENTITY.",
+      "sub": "Every second counts after a cyber incident. Our emergency response system is active 24×7 to guide you through crisis, protect your evidence, and connect you with national law enforcement.",
+      "reportBtn": "⚡ LAUNCH INCIDENT REPORT",
+      "awarenessBtn": "EXPLORE CYBER AWARENESS"
+    },
+    "crimeTips": {
+      "phishing": [
+        "Do NOT click the link — it may install malware",
+        "Forward the phishing SMS to 7726 (SPAM)",
+        "Report the URL to Google Safe Browsing",
+        "Check if credentials were entered on the fake site",
+        "Change passwords immediately for affected accounts"
+      ],
+      "upi": [
+        "Immediately call your bank fraud line",
+        "File complaint on NPCI portal (npci.org.in)",
+        "Collect UTR/transaction ID from SMS",
+        "Report the fraudulent UPI ID to your payment app",
+        "Call 1930 within 1 hour for best recovery chances"
+      ],
+      "deepfake": [
+        "Record the suspicious call if possible",
+        "Verify the identity through a separate known channel",
+        "Never transfer money based on video/voice calls alone",
+        "Report to cybercrime.gov.in with call recording",
+        "Alert your contacts — attackers may impersonate you too"
+      ],
+      "impersonation": [
+        "Document all communications from the impersonator",
+        "File complaint under IT Act Section 66D",
+        "Contact the impersonated organization officially",
+        "Request platform takedown of fraudulent profiles",
+        "Collect all evidence before reporting to police"
+      ],
+      "qrscam": [
+        "Check bank statement for unauthorized debits",
+        "Report the QR code location to local police",
+        "Alert the merchant whose QR was replaced",
+        "File UPI dispute with your payment app",
+        "Collect transaction proof from app history"
+      ],
+      "hacking": [
+        "Immediately revoke all active sessions",
+        "Enable 2FA on all compromised accounts",
+        "Change passwords from a DIFFERENT device",
+        "Check if email forwarding rules were added by attacker",
+        "Review connected third-party app permissions"
+      ],
+      "investment": [
+        "Do NOT invest more money expecting recovery",
+        "Collect all communication and payment receipts",
+        "Report to SEBI at scores.sebi.gov.in",
+        "File case under Section 420 (cheating)",
+        "Alert your bank to flag any related accounts"
+      ],
+      "identity": [
+        "File complaint with UIDAI if Aadhaar misused",
+        "Alert credit bureaus (CIBIL) about potential fraud",
+        "Check form 26AS for unauthorized ITR filings",
+        "Report to respective platform where identity was used",
+        "File police FIR for identity theft"
+      ]
+    },
+    "timelineSteps": [
+      {
+        "title": "Incident Detected",
+        "status": "CRITICAL",
+        "desc": "You've identified a cyber attack, fraud attempt, or suspicious activity targeting your digital accounts or finances.",
+        "expand": "⚡ STAY CALM. Do not panic — panicking leads to mistakes. Note the exact time, platform, and nature of the incident. Do NOT delete any messages, calls, or transaction history yet. Take a screenshot immediately. Your next 60 seconds determine how much evidence you preserve."
+      },
+      {
+        "title": "Secure Your Accounts",
+        "status": "IMMEDIATE",
+        "desc": "Immediately change passwords for all critical accounts — banking, email, social media, UPI apps.",
+        "expand": "🔑 PRIORITY ORDER: 1) Email account (it's the master key) 2) Banking apps 3) UPI/Payment apps 4) Social media. Enable Two-Factor Authentication (2FA) on all accounts. If you suspect SIM swap, contact your telecom operator NOW. Log out of all active sessions from other devices."
+      },
+      {
+        "title": "Preserve All Evidence",
+        "status": "CRITICAL",
+        "desc": "Document everything before attempting to undo the damage. Evidence is your most powerful legal asset.",
+        "expand": "📸 COLLECT: Screenshots of all suspicious messages/calls/transactions. Transaction IDs, UTR numbers, UPI IDs. Phone numbers, email addresses, website URLs used by attackers. Record approximate time and sequence of events. Save bank SMS alerts. Do NOT format your phone or computer yet."
+      },
+      {
+        "title": "Contact Your Bank",
+        "status": "URGENT",
+        "desc": "For financial fraud, contact your bank's 24×7 fraud helpline within the first 4 hours to maximize recovery chances.",
+        "expand": "📞 CALL: Your bank's 24×7 fraud helpline immediately. Request a HOLD on the fraudulent transaction. File a formal Fraud Complaint in writing. Ask for the complaint reference number. The RBI directive requires banks to reverse unauthorized transactions reported within 3 days of notification."
+      },
+      {
+        "title": "Submit Cyber Complaint",
+        "status": "ACTION",
+        "desc": "File an official complaint on the National Cybercrime Reporting Portal or call the helpline 1930.",
+        "expand": "🌐 FILE AT: cybercrime.gov.in — available 24×7. Call: 1930 (National Cybercrime Helpline). You'll receive a complaint acknowledgement number — save it. For financial fraud over ₹1 lakh, also file at your nearest police station. Attach all evidence you've collected."
+      },
+      {
+        "title": "Follow Investigation",
+        "status": "ONGOING",
+        "desc": "Track your complaint, cooperate with investigators, and follow up regularly on the portal.",
+        "expand": "📊 TRACK: Visit cybercrime.gov.in/complaint/trackComplaint to track status. Keep all communication with bank and police in writing. Follow up every 7 days if no update. Engage a cybercrime lawyer if the amount exceeds ₹5 lakh. Document all follow-up interactions with reference numbers."
+      }
+    ],
+    "crimeCards": [
+      {
+        "label": "Phishing Attack"
+      },
+      {
+        "label": "UPI / Payment Fraud"
+      },
+      {
+        "label": "Deepfake / AI Fraud"
+      },
+      {
+        "label": "Impersonation"
+      },
+      {
+        "label": "QR Code Scam"
+      },
+      {
+        "label": "Account Hacking"
+      },
+      {
+        "label": "Fake Investment"
+      },
+      {
+        "label": "Identity Theft"
+      }
+    ],
+    "vaultSlots": [
+      {
+        "label": "Screenshots",
+        "desc": "Chat screenshots, fraud messages"
+      },
+      {
+        "label": "Video Evidence",
+        "desc": "Screen recordings, call recordings"
+      },
+      {
+        "label": "Chat Logs",
+        "desc": "WhatsApp exports, Telegram chats"
+      },
+      {
+        "label": "Transaction Proof",
+        "desc": "Bank statements, UPI receipts"
+      },
+      {
+        "label": "URLs & Links",
+        "desc": "Suspicious websites, phishing links"
+      },
+      {
+        "label": "Phone Numbers",
+        "desc": "Attacker contact details"
+      }
+    ],
+    "emergencyCards": [
+      {
+        "title": "Freeze Bank Account",
+        "desc": "Immediately block all transactions on compromised accounts to prevent further unauthorized withdrawals.",
+        "action": "⚡ CALL BANK NOW →"
+      },
+      {
+        "title": "Contact Bank Fraud Cell",
+        "desc": "Report fraud to your bank's 24×7 emergency fraud helpline. Golden window: first 4 hours for transaction reversal.",
+        "action": "⚡ CALL 24×7 HELPLINE →"
+      },
+      {
+        "title": "Block SIM Card",
+        "desc": "If SIM swap is suspected, call your telecom operator immediately. BSNL: 1503, Airtel: 121, Jio: 199, Vi: 9889.",
+        "action": "⚡ BLOCK SIM →"
+      },
+      {
+        "title": "Report UPI Fraud",
+        "desc": "File UPI fraud complaint via NPCI portal or call 1800-120-1740. Also report to your payment app's fraud team.",
+        "action": "⚡ REPORT UPI FRAUD →"
+      },
+      {
+        "title": "Change All Passwords",
+        "desc": "Immediately change passwords for email, banking, and social media. Use unique strong passwords for each account.",
+        "action": "🔐 SECURE ACCOUNTS →"
+      },
+      {
+        "title": "Enable MFA Everywhere",
+        "desc": "Turn on multi-factor authentication for all critical accounts. Use authenticator apps over SMS where possible.",
+        "action": "🔐 ENABLE 2FA →"
+      },
+      {
+        "title": "National Cybercrime Portal",
+        "desc": "File official complaint at cybercrime.gov.in or call 1930. Required for police FIR and legal proceedings.",
+        "action": "📋 FILE COMPLAINT →"
+      },
+      {
+        "title": "File Police FIR",
+        "desc": "Visit nearest police station with all evidence for formal FIR. Mandatory for losses above ₹25,000 or identity theft.",
+        "action": "📋 GET FIR →"
+      }
+    ],
+    "alertCards": [
+      {
+        "title": "Fake RBI/SBI KYC Phishing Campaign",
+        "desc": "Fraudsters are sending SMS messages mimicking RBI and SBI requesting urgent KYC update via malicious links. Clicking installs credential-stealing malware."
+      },
+      {
+        "title": "AI Voice Clone Fraud Calls",
+        "desc": "Highly convincing AI-cloned voice calls impersonating relatives or senior officials demanding immediate money transfer for emergencies. Verify independently."
+      },
+      {
+        "title": "QR Code Payment Swap Attack",
+        "desc": "Fraudsters physically replacing QR codes at shops and restaurants with their own. Customers scanning think they're paying the merchant but are paying attackers."
+      },
+      {
+        "title": "Fake Crypto/Stock Investment Platforms",
+        "desc": "Fraudulent investment apps showing fake returns encouraging victims to invest more before exit scamming. Uses fake celebrity endorsements and doctored SEBI approvals."
+      },
+      {
+        "title": "\"Digital Arrest\" Extortion Scam",
+        "desc": "Callers posing as CBI/ED/Customs officers via video call claim you're under \"digital arrest\" for money laundering. No such thing exists in Indian law — it's fraud."
+      },
+      {
+        "title": "Coordinated SIM Swap Banking Attacks",
+        "desc": "Fraudsters using insider telecom contacts to perform unauthorized SIM swaps, then emptying bank accounts via OTP interception before victims notice loss of signal."
+      }
+    ],
+    "tickerItems": [
+      {
+        "text": "Fake SBI KYC update links circulating via WhatsApp"
+      },
+      {
+        "text": "Fake payment QR codes replacing merchant codes in Delhi NCR"
+      },
+      {
+        "text": "AI-generated voice calls impersonating senior officials reported"
+      },
+      {
+        "text": "Fake crypto trading platforms with celebrity endorsements spreading"
+      },
+      {
+        "text": "Coordinated SIM swap attacks targeting Mumbai banking customers"
+      },
+      {
+        "text": "Fake ED/CBI calls demanding payment to avoid \"digital arrest\""
+      }
+    ],
+    "supportCards": [
+      {
+        "title": "Cybercrime Helpline",
+        "badge": "24×7 NATIONAL",
+        "info": "National cybercrime helpline operated by the Ministry of Home Affairs. Report financial cybercrime, phishing, and online fraud. Available round the clock."
+      },
+      {
+        "title": "National Cyber Crime Portal",
+        "badge": "OFFICIAL GOV PORTAL",
+        "info": "Official government portal for filing cybercrime complaints online. Mandatory for FIR registration and tracking investigation status. Available 24×7."
+      },
+      {
+        "title": "Banking Emergency Contacts",
+        "badge": "FINANCIAL FRAUD",
+        "info": "SBI: 1800 11 2211 | HDFC: 1800 202 6161 | ICICI: 1800 1080 | Axis: 1800 419 5959 | RBI Ombudsman: 14448"
+      },
+      {
+        "title": "Digital Arrest Awareness",
+        "badge": "SCAM ALERT",
+        "info": "\"Digital Arrest\" does not exist in Indian law. No government agency ever demands payment over video call. Hang up immediately and call 1930 to report.",
+        "warn": "NO SUCH THING AS DIGITAL ARREST"
+      },
+      {
+        "title": "Legal Rights Guidance",
+        "badge": "IT ACT 2000",
+        "info": "Under IT Act Section 66C (identity theft) and 66D (cheating by impersonation), cybercriminals face up to 3 years imprisonment and ₹1 lakh fine. You have legal protection.",
+        "tag": "IT Act 2000 — Section 66C/66D"
+      },
+      {
+        "title": "CERT-In Emergency",
+        "badge": "CERT-IN GOV.IN",
+        "info": "Indian Computer Emergency Response Team — handles critical cyber incidents. For major security breaches affecting organizations or critical infrastructure."
+      }
+    ],
+    "awarenessPanels": [
+      {
+        "title": "What To Do Immediately",
+        "sub": "CORRECT RESPONSE PROTOCOL",
+        "items": [
+          "Stay calm and think clearly before taking any action",
+          "Screenshot everything — messages, transaction details, URLs",
+          "Disconnect the compromised device from the internet",
+          "Call your bank's fraud helpline within 60 minutes",
+          "File complaint at cybercrime.gov.in with all evidence",
+          "Inform family and trusted contacts about the incident"
+        ]
+      },
+      {
+        "title": "What NOT To Do",
+        "sub": "CRITICAL MISTAKES TO AVOID",
+        "items": [
+          "Do NOT transfer money even if told it will be recovered",
+          "Do NOT share OTPs with anyone — ever — including 'bank officials'",
+          "Do NOT install apps suggested by unknown callers",
+          "Do NOT delete messages, call logs, or transaction records",
+          "Do NOT format your phone or computer before evidence collection",
+          "Do NOT engage further with the attacker — block and report"
+        ]
+      },
+      {
+        "title": "Emotional Manipulation Warning",
+        "sub": "PSYCHOLOGICAL ATTACK PATTERNS",
+        "items": [
+          "Urgency pressure: 'Act now or lose everything' is a manipulation tactic",
+          "Fear induction: Fake arrest threats, legal action, account closure",
+          "Authority impersonation: Fake RBI/CBI/ED/police officer claims",
+          "Greed exploitation: 'You've won a prize' or 'guaranteed returns'",
+          "Isolation tactics: 'Don't tell anyone or you'll be arrested'",
+          "Love/relationship scams targeting loneliness or grief"
+        ]
+      },
+      {
+        "title": "Preserving Digital Evidence",
+        "sub": "FORENSIC COLLECTION GUIDE",
+        "items": [
+          "Export full chat history — not just selected screenshots",
+          "Save bank SMS alerts and email confirmations",
+          "Note call logs with timestamps and call duration",
+          "Record full URLs — not just domain names",
+          "Back up all evidence to a secure cloud or separate device",
+          "Write a chronological account of events with exact times"
+        ]
+      }
+    ],
+    "legacyNav": {
+      "brand": "Cyber Law SOC",
+      "backDashboard": "Back to Dashboard",
+      "ipc": "IPC",
+      "bns": "BNS",
+      "itAct": "IT Act",
+      "reporting": "Reporting",
+      "rights": "Rights",
+      "awareness": "Awareness",
+      "penalties": "Penalties",
+      "cases": "Cases",
+      "dashboard": "Dashboard"
+    },
+    "legacyPages": {
+      "bns": {
+        "eyebrow": "BNS active map",
+        "title": "Bharatiya Nyaya Sanhita Explorer",
+        "lead": "Map cyber incidents to modern offence families: cheating, forgery, criminal intimidation, organized crime, sexual harassment, and identity-linked misconduct.",
+        "searchPlaceholder": "Search BNS topic, harm, section family...",
+        "chips": {
+          "all": "All",
+          "fraud": "Fraud",
+          "harassment": "Harassment",
+          "threat": "Threat"
+        },
+        "map": {
+          "cheat": {
+            "title": "Cheating family",
+            "desc": "Online deception, fake platforms, payment traps."
+          },
+          "forgery": {
+            "title": "Forgery family",
+            "desc": "Fake records, fabricated proof, identity documents."
+          },
+          "threat": {
+            "title": "Intimidation family",
+            "desc": "Cyber blackmail, doxxing threats, coercion."
+          },
+          "harass": {
+            "title": "Harassment and stalking contexts",
+            "desc": "Sexual harassment, stalking, image abuse contexts."
+          }
+        },
+        "accordions": {
+          "cheat": {
+            "title": "Cheating through digital channels",
+            "desc": "Use for dishonest inducement in online investments, job scams, marketplace fraud, support impersonation, and payment manipulation."
+          },
+          "forgery": {
+            "title": "Forgery and false records",
+            "desc": "Relevant when screenshots, IDs, signatures, invoices, certificates, or electronic records are fabricated or used as genuine."
+          },
+          "threat": {
+            "title": "Criminal intimidation",
+            "desc": "Covers threats to reputation, body, property, family, or livelihood delivered through chats, calls, posts, and emails."
+          },
+          "harass": {
+            "title": "Harassment and stalking contexts",
+            "desc": "Useful for repeated unwanted contact, sexualized threats, and stalking behavior alongside IT Act provisions."
+          }
+        }
+      },
+      "ipc": {
+        "eyebrow": "IPC legacy explorer",
+        "title": "Indian Penal Code Cyber Links",
+        "lead": "Use this searchable explorer for older references, FIR language, and cyber-adjacent offences such as cheating, forgery, defamation, intimidation, and obscenity.",
+        "searchPlaceholder": "Search IPC section, offence, keyword...",
+        "empty": "No matching IPC signal found.",
+        "chips": {
+          "all": "All",
+          "fraud": "Fraud",
+          "speech": "Speech",
+          "safety": "Safety"
+        },
+        "map": {
+          "ipc420": {
+            "title": "IPC 420",
+            "desc": "Cheating and dishonestly inducing delivery of property."
+          },
+          "ipc468": {
+            "title": "IPC 468",
+            "desc": "Forgery for purpose of cheating."
+          },
+          "ipc471": {
+            "title": "IPC 471",
+            "desc": "Using forged electronic or physical records as genuine."
+          },
+          "ipc499": {
+            "title": "IPC 499/500",
+            "desc": "Defamation through harmful publication."
+          },
+          "ipc503": {
+            "title": "IPC 503/506",
+            "desc": "Criminal intimidation, threats, extortion pressure."
+          }
+        },
+        "accordions": {
+          "ipc420": {
+            "title": "Cheating online",
+            "desc": "Commonly referenced for cyber fraud, marketplace scams, fake investment portals, and social engineering that causes wrongful loss."
+          },
+          "ipc468": {
+            "title": "Forgery for cheating",
+            "desc": "Applies when forged documents, identities, screenshots, emails, or records are created to deceive a victim or organization."
+          },
+          "ipc471": {
+            "title": "Using forged records",
+            "desc": "Useful when a forged record is presented as genuine, including fake KYC, payment proof, or doctored communication."
+          },
+          "ipc499": {
+            "title": "Defamation",
+            "desc": "May arise in reputational attacks, false posts, impersonation campaigns, or targeted harmful publication."
+          },
+          "ipc503": {
+            "title": "Threats and intimidation",
+            "desc": "Relevant to extortion threats, doxxing threats, blackmail messages, and coercive online intimidation."
+          },
+          "copyBtn": "Copy section"
+        }
+      },
+      "itAct": {
+        "eyebrow": "IT Act control layer",
+        "title": "Information Technology Act Matrix",
+        "lead": "Search practical IT Act anchors for unauthorized access, identity theft, privacy breach, obscene material, protected systems, and intermediary response.",
+        "searchPlaceholder": "Search section, offence, evidence...",
+        "chips": {
+          "report": "Report incident",
+          "penalties": "See penalties"
+        },
+        "accordions": {
+          "sec43": {
+            "title": "Unauthorized access and damage",
+            "desc": "Use for unauthorized access, data extraction, malware, denial of service, account compromise, and system damage. Preserve logs, IP traces, device images, and timestamps."
+          },
+          "sec66C": {
+            "title": "Identity theft",
+            "desc": "Applies to fraudulent use of passwords, digital signatures, usernames, OTPs, or other unique identification features."
+          },
+          "sec66D": {
+            "title": "Cheating by personation",
+            "desc": "Relevant for fake support agents, spoofed profiles, romance scams, job scams, marketplace impersonation, and payment redirection."
+          },
+          "sec66E": {
+            "title": "Privacy violation",
+            "desc": "Covers capture, publication, or transmission of private images in violation of privacy expectations."
+          },
+          "sec67": {
+            "title": "Obscene and sexually explicit material",
+            "desc": "Used for publication or transmission of obscene, sexually explicit, or child sexual abuse material, with serious escalation requirements."
+          }
+        }
+      },
+      "rights": {
+        "eyebrow": "Citizen rights layer",
+        "title": "Know Your Digital Rights",
+        "lead": "A practical rights console for cybercrime victims, students, employees, creators, and everyday internet users.",
+        "cards": {
+          "privacy": {
+            "title": "Right to privacy",
+            "desc": "You can object to unauthorized capture, publication, or misuse of private information and intimate images."
+          },
+          "evidence": {
+            "title": "Right to preserve proof",
+            "desc": "You can document threats and fraud without engaging with the offender or destroying the trail."
+          },
+          "report": {
+            "title": "Right to report",
+            "desc": "Victims can approach cyber police, local police, helplines, portals, banks, platforms, and institutional authorities."
+          },
+          "safety": {
+            "title": "Right to protection",
+            "desc": "Threats, extortion, stalking, doxxing, and sexual harassment should be escalated quickly and safely."
+          }
+        },
+        "accordions": {
+          "avoid": {
+            "title": "What should I avoid after an incident?",
+            "desc": "Avoid paying extortion, deleting evidence, forwarding abusive content widely, or publicly naming suspects before formal reporting."
+          },
+          "takedown": {
+            "title": "Can I ask for takedown?",
+            "desc": "Yes. Use platform reporting tools for impersonation, abuse, non-consensual content, and fraud pages while keeping proof of the report."
+          }
+        }
+      },
+      "penalties": {
+        "eyebrow": "Penalty intelligence",
+        "title": "Punishment and Penalty Cards",
+        "lead": "Scan common cyber offence categories, likely legal tracks, and severity signals. Exact punishment depends on facts, applicable law, and investigation.",
+        "searchPlaceholder": "Search fraud, identity, privacy, obscene, malware...",
+        "chips": {
+          "cases": "Practice cases"
+        },
+        "cards": {
+          "identity": {
+            "title": "Identity theft",
+            "desc": "Fraudulent use of passwords, signatures, OTPs, or identity features. Preserve account logs and impersonation proof."
+          },
+          "personation": {
+            "title": "Cheating by personation",
+            "desc": "Fake support, fake profiles, phishing, and deception through communication devices."
+          },
+          "privacy": {
+            "title": "Privacy violation",
+            "desc": "Capturing or sharing private images without consent. Escalate fast and request takedown."
+          },
+          "obscene": {
+            "title": "Obscene content",
+            "desc": "Publication or transmission of obscene or sexually explicit material can trigger serious penalties."
+          },
+          "unauthorized": {
+            "title": "Unauthorized access",
+            "desc": "Hacking, malware, account compromise, data extraction, or system damage."
+          },
+          "threat": {
+            "title": "Threat and extortion",
+            "desc": "Blackmail, doxxing threats, intimidation, and coercive demands may involve criminal intimidation and extortion tracks."
+          }
+        }
+      },
+      "cases": {
+        "eyebrow": "Interactive case desk",
+        "title": "Choose the Legal Response Path",
+        "lead": "Work through realistic cyber incidents and select the safest evidence-first response.",
+        "nextCase": "Next case",
+        "openFlow": "Open report flow"
+      },
+      "awareness": {
+        "eyebrow": "Awareness shield",
+        "title": "Prevention Tips With Legal Readiness",
+        "lead": "Good cyber hygiene is also good evidence hygiene. These tips help reduce risk and keep response options open.",
+        "cards": {
+          "otp": {
+            "title": "Never share OTPs",
+            "desc": "No bank, police, delivery agent, or support desk should ask for OTPs, PINs, or screen-share access."
+          },
+          "logs": {
+            "title": "Keep the trail",
+            "desc": "Do not delete messages, call logs, emails, app names, or URLs after a cyber incident."
+          },
+          "verify": {
+            "title": "Verify channels",
+            "desc": "Use official websites, verified app stores, known customer care numbers, and direct institution portals."
+          },
+          "extortion": {
+            "title": "Do not negotiate alone",
+            "desc": "For blackmail, intimate image threats, or doxxing, preserve evidence and involve trusted support quickly."
+          }
+        },
+        "timeline": {
+          "before": {
+            "title": "Before",
+            "desc": "Use password managers, MFA, privacy settings, and trusted contacts for account recovery."
+          },
+          "during": {
+            "title": "During",
+            "desc": "Stop interaction, capture proof, isolate accounts, and notify banks or platforms immediately."
+          },
+          "after": {
+            "title": "After",
+            "desc": "File reports, monitor accounts, update evidence, and seek institutional or legal support where needed."
+          }
+        }
+      }
+    }
+  },
+  "quizPage": {
+    "nav": {
+      "command": "COMMAND",
+      "quiz": "QUIZ",
+      "challenge": "CHALLENGE",
+      "cases": "CASES",
+      "leaderboard": "LEADERBOARD",
+      "systemsOnline": "SYSTEMS ONLINE",
+      "logo": "CYBRSHLD",
+      "homeLink": "Module Home",
+      "quizLink": "Quizzes",
+      "challengeLink": "Challenge",
+      "leaderboardLink": "Leaderboard",
+      "caseStudiesLink": "Case Studies"
+    },
+    "home": {
+      "eyebrow": "// AI CYBER AWARENESS COMMAND CENTER",
+      "titlePart1": "CYBER",
+      "titlePart2": "TRAINING",
+      "titlePart3": "MISSION",
+      "description": "You are now connected to the cyber threat intelligence grid. Complete awareness missions, analyze real threats, and build your digital defense profile.",
+      "threatsActive": "THREATS ACTIVE",
+      "operatorsOnline": "OPERATORS ONLINE",
+      "yourXp": "YOUR XP",
+      "radarLive": "THREAT RADAR — LIVE",
+      "cards": {
+        "cyberAwareness": {
+          "label": "CYBER AWARENESS",
+          "desc": "Phishing, social engineering, and digital hygiene scenarios"
+        },
+        "scamSimulator": {
+          "label": "SCAM SIMULATOR",
+          "desc": "Classify real threats under pressure — build instant decision confidence"
+        },
+        "cases": {
+          "label": "CASE STUDIES",
+          "desc": "Analyze confirmed incidents and master response patterns"
+        },
+        "leaderboard": {
+          "label": "LEADERBOARD",
+          "desc": "Track XP, cyber rank, and training progress against peers"
+        }
+      },
+      "enterMission": "ENTER MISSION",
+      "header": "// AI CYBER AWARENESS COMMAND CENTER",
+      "titleCyber": "CYBER",
+      "titleTraining": "TRAINING",
+      "titleMission": "MISSION",
+      "desc": "You are now connected to the cyber threat intelligence grid. Complete awareness missions, analyze real threats, and build your digital defense profile.",
+      "threatRadarLive": "THREAT RADAR — LIVE",
+      "moduleCyber": "CYBER AWARENESS",
+      "moduleCyberDesc": "Phishing, social engineering, and digital hygiene scenarios",
+      "moduleScam": "SCAM SIMULATOR",
+      "moduleScamDesc": "Classify real threats under pressure — build instant decision confidence",
+      "moduleCases": "CASE STUDIES",
+      "moduleCasesDesc": "Analyze confirmed incidents and master response patterns",
+      "moduleLeaderboard": "LEADERBOARD",
+      "moduleLeaderboardDesc": "Track XP, cyber rank, and training progress against peers"
+    },
+    "quiz": {
+      "activeMission": "ACTIVE MISSION",
+      "title": "CYBER AWARENESS QUIZ",
+      "feedback": {
+        "correct": "// THREAT IDENTIFIED — CORRECT ANALYSIS",
+        "wrong": "// ANALYSIS ERROR — REVIEW REQUIRED",
+        "xpAwarded": "+{{xp}} XP AWARDED"
+      },
+      "aiAnalysis": "AI ANALYSIS",
+      "advice": {
+        "initial": "Analyze the scenario carefully. Look for social engineering patterns and URL anomalies.",
+        "correct": "Excellent situational awareness. You identified the core phishing signal pattern.",
+        "wrong": "Review threat vectors: urgency signals combined with URL mismatch are primary indicators."
+      },
+      "questions": {
+        "0": {
+          "missionType": "PHISHING DETECTION",
+          "text": "Which of the following is a sign of a phishing email?",
+          "options": {
+            "A": "Personalized greeting with your full name",
+            "B": "Sent from your company's verified domain",
+            "C": "Urgent language plus a mismatched sender URL",
+            "D": "Contains a calendar invite with correct details"
+          },
+          "explanation": "Urgency combined with mismatched sender URLs is a classic phishing signal. Attackers create artificial time pressure to override rational thinking."
+        }
+      },
+      "header": "// ACTIVE MISSION",
+      "feedbackCorrect": "// THREAT IDENTIFIED — CORRECT ANALYSIS",
+      "feedbackWrong": "// ANALYSIS ERROR — REVIEW REQUIRED",
+      "xpAwarded": "+ {{xp}} XP AWARDED",
+      "aiFeedbackCorrect": "Excellent situational awareness. You identified the core phishing signal pattern.",
+      "aiFeedbackWrong": "Review threat vectors: urgency signals combined with URL mismatch are primary indicators.",
+      "aiFeedbackDefault": "Analyze the scenario carefully. Look for social engineering patterns and URL anomalies."
+    },
+    "challenge": {
+      "missionComplete": "MISSION COMPLETE",
+      "allCleared": "ALL CHALLENGES CLEARED",
+      "totalXp": "TOTAL XP EARNED",
+      "restart": "RESTART MISSION",
+      "feedback": {
+        "correct": "// CORRECT CLASSIFICATION",
+        "wrong": "// RECLASSIFICATION REQUIRED"
+      },
+      "complete": "COMPLETE MISSION",
+      "next": "NEXT CHALLENGE →",
+      "score": "MISSION SCORE",
+      "xpEarned": "XP EARNED",
+      "missionsCount": "{{idx}} / {{total}} MISSIONS",
+      "activeThreats": "ACTIVE THREATS",
+      "challenges": {
+        "0": {
+          "title": "Phishing Detection",
+          "missionType": "THREAT CLASSIFICATION",
+          "scenario": "A message says your bank account will be locked in 20 minutes and asks you to verify through bit.ly/bank-safe.",
+          "options": [
+            "Safe notification",
+            "Phishing attempt",
+            "System update"
+          ],
+          "explanation": "Urgency + shortened URLs + credential requests = textbook phishing. Never click shortened links from unsolicited messages."
+        },
+        "1": {
+          "title": "Password Strength Analysis",
+          "missionType": "SECURITY ASSESSMENT",
+          "scenario": "Which password is strongest for a new account?",
+          "options": [
+            "Summer2026",
+            "Aditi@123",
+            "river-Quartz-91!vault"
+          ],
+          "explanation": "Length + randomness + mixed character classes = entropy. 'river-Quartz-91!vault' has superior entropy making it exponentially harder to crack."
+        },
+        "2": {
+          "title": "Social Engineering Defense",
+          "missionType": "SOCIAL THREAT",
+          "scenario": "A caller claiming to be IT asks for your OTP to close an urgent ticket.",
+          "options": [
+            "Share OTP",
+            "Verify independently",
+            "Install remote app"
+          ],
+          "explanation": "Legitimate IT never requests OTPs. Always verify caller identity through official channels before taking any action."
+        }
+      },
+      "completeTitle": "MISSION COMPLETE",
+      "completeSub": "ALL CHALLENGES CLEARED",
+      "missions": "{{current}} / {{total}} MISSIONS",
+      "correctHeader": "// CORRECT CLASSIFICATION",
+      "wrongHeader": "// RECLASSIFICATION REQUIRED",
+      "completeBtn": "COMPLETE MISSION",
+      "nextBtn": "NEXT CHALLENGE →"
+    },
+    "cases": {
+      "intelligenceCaseFiles": "INTELLIGENCE CASE FILES",
+      "incidentAnalysis": "INCIDENT ANALYSIS",
+      "indicators": "THREAT INDICATORS",
+      "decryptBtn": "DECRYPT INTELLIGENCE FILE — +{{xp}} XP",
+      "protocolDecrypted": "// DEFENSE PROTOCOL DECRYPTED",
+      "xpAwarded": "+{{xp}} XP AWARDED",
+      "prev": "← PREV CASE",
+      "next": "NEXT CASE →",
+      "caseStudies": {
+        "0": {
+          "title": "Fake Job Offer Scam",
+          "category": "FINANCIAL FRAUD",
+          "body": "A candidate receives a premium-looking offer letter and is asked to pay a refundable equipment fee before their start date.",
+          "lesson": "Verify recruiter identity, company domain, and interview history. Legitimate employers never ask candidates to pay fees to receive a job offer.",
+          "indicators": [
+            "Unsolicited offer",
+            "Equipment fee demand",
+            "Urgency to pay quickly"
+          ]
+        },
+        "1": {
+          "title": "UPI Refund Trap",
+          "category": "DIGITAL PAYMENT FRAUD",
+          "body": "A caller sends a QR code to receive money, but scanning it opens a collect request that prompts for your UPI PIN.",
+          "lesson": "Entering UPI PIN always authorizes a payment FROM your account. Refunds never require a PIN entry on your device.",
+          "indicators": [
+            "QR code via message",
+            "PIN request on receive",
+            "Caller pressure"
+          ]
+        },
+        "2": {
+          "title": "Account Lock Phishing",
+          "category": "CREDENTIAL THEFT",
+          "body": "An email claims your account will be permanently closed today unless you sign in through a provided shortened link immediately.",
+          "lesson": "Urgency, shortened links, and credential requests are the highest-risk signals. Always navigate directly to the service's official website.",
+          "indicators": [
+            "Artificial urgency",
+            "Shortened link",
+            "Threat of account loss"
+          ]
+        }
+      }
+    },
+    "leaderboard": {
+      "globalRankingMatrix": "GLOBAL RANKING MATRIX",
+      "operatorLeaderboard": "OPERATOR LEADERBOARD",
+      "you": "[YOU]",
+      "xp": "XP",
+      "totalOperators": "TOTAL OPERATORS",
+      "completedToday": "MISSIONS COMPLETED TODAY",
+      "sessionXp": "YOUR SESSION XP",
+      "rankTitles": {
+        "CYBER SENTINEL": "CYBER SENTINEL",
+        "THREAT ANALYST": "THREAT ANALYST",
+        "NET DEFENDER": "NET DEFENDER",
+        "RECRUIT": "RECRUIT"
+      },
+      "names": {
+        "Nisha": "Nisha",
+        "Rahul": "Rahul",
+        "Aditi": "Aditi",
+        "Kabir": "Kabir",
+        "Meera": "Meera"
+      },
+      "header": "// GLOBAL RANKING MATRIX",
+      "title": "OPERATOR LEADERBOARD",
+      "totalOps": "TOTAL OPERATORS"
+    },
+    "links": {
+      "home": "Module Home",
+      "quizzes": "Quizzes",
+      "challenge": "Challenge",
+      "leaderboard": "Leaderboard",
+      "caseStudies": "Case Studies"
+    },
+    "caseStudy": {
+      "header": "// INTELLIGENCE CASE FILES",
+      "title": "INCIDENT ANALYSIS",
+      "indicators": "THREAT INDICATORS",
+      "decryptBtn": "DECRYPT INTELLIGENCE FILE — +{{xp}} XP",
+      "decryptHeader": "// DEFENSE PROTOCOL DECRYPTED",
+      "xpAwarded": "+ {{xp}} XP AWARDED",
+      "prevBtn": "← PREV CASE",
+      "nextBtn": "NEXT CASE →"
+    },
+    "threatLevels": {
+      "CRITICAL": "CRITICAL",
+      "HIGH": "HIGH",
+      "MEDIUM": "MEDIUM"
+    },
+    "questions": {
+      "1": {
+        "text": "Which of the following is a sign of a phishing email?",
+        "options": {
+          "A": "Personalized greeting with your full name",
+          "B": "Sent from your company's verified domain",
+          "C": "Urgent language plus a mismatched sender URL",
+          "D": "Contains a calendar invite with correct details"
+        },
+        "explanation": "Urgency combined with mismatched sender URLs is a classic phishing signal. Attackers create artificial time pressure to override rational thinking."
+      }
+    },
+    "challenges": {
+      "1": {
+        "title": "Phishing Detection",
+        "scenario": "A message says your bank account will be locked in 20 minutes and asks you to verify through bit.ly/bank-safe.",
+        "explanation": "Urgency + shortened URLs + credential requests = textbook phishing. Never click shortened links from unsolicited messages."
+      },
+      "2": {
+        "title": "Password Strength Analysis",
+        "scenario": "Which password is strongest for a new account?",
+        "options": {
+          "Summer2026": "Summer2026"
+        },
+        "explanation": "Length + randomness + mixed character classes = entropy. 'river-Quartz-91!vault' has superior entropy making it exponentially harder to crack."
+      },
+      "3": {
+        "title": "Social Engineering Defense",
+        "scenario": "A caller claiming to be IT asks for your OTP to close an urgent ticket.",
+        "explanation": "Legitimate IT never requests OTPs. Always verify caller identity through official channels before taking any action."
+      }
+    },
+    "caseStudies": {
+      "1": {
+        "title": "Fake Job Offer Scam",
+        "category": "FINANCIAL FRAUD",
+        "body": "A candidate receives a premium-looking offer letter and is asked to pay a refundable equipment fee before their start date.",
+        "lesson": "Verify recruiter identity, company domain, and interview history. Legitimate employers never ask candidates to pay fees to receive a job offer."
+      },
+      "2": {
+        "title": "UPI Refund Trap",
+        "category": "DIGITAL PAYMENT FRAUD",
+        "body": "A caller sends a QR code to receive money, but scanning it opens a collect request that prompts for your UPI PIN.",
+        "lesson": "Entering UPI PIN always authorizes a payment FROM your account. Refunds never require a PIN entry on your device."
+      },
+      "3": {
+        "title": "Account Lock Phishing",
+        "category": "CREDENTIAL THEFT",
+        "body": "An email claims your account will be permanently closed today unless you sign in through a provided shortened link immediately.",
+        "lesson": "Urgency, shortened links, and credential requests are the highest-risk signals. Always navigate directly to the service's official website."
+      }
+    }
+  },
+  "breachChecker": {
+    "errors": {
+      "invalidEmail": "Invalid email",
+      "scanFailed": "Scan failed"
+    },
+    "mockData": {
+      "1": {
+        "name": "ShadowNet Leak",
+        "description": "Large credential dump from multiple services."
+      },
+      "2": {
+        "name": "CloudStorage Misconfig",
+        "description": "Exposed PII in public buckets."
+      }
+    },
+    "title": "Breach Checker",
+    "subtitle": "Dark Cyber ┬╖ Secure Scan",
+    "placeholder": "name@example.com",
+    "scanning": "Scanning...",
+    "scan": "Scan",
+    "prompt": "Enter an email and click Scan to check exposures.",
+    "riskLabel": "Risk: Elevated",
+    "actionLabel": "Action: Review",
+    "idLabel": "ID:",
+    "exposedDataLabel": "Exposed Data",
+    "recommendationsTitle": "Recommendations",
+    "recommendation1": "Change passwords and enable MFA on affected accounts.",
+    "recommendation2": "Search for unique passwords reused across services.",
+    "recommendation3": "Monitor accounts for suspicious activity; consider credit freeze if PII exposed.",
+    "recommendation4": "Run a full security review and rotate API keys if applicable."
+  },
+  "scamAnalyzerPage": {
+    "stageOcrHeading": "OCR EXTRACTION",
+    "stageOcrDesc": "Parsing visual signal matrix...",
+    "stageThreatHeading": "THREAT ANALYSIS",
+    "stageThreatDesc": "Cross-referencing threat database...",
+    "stageBriefHeading": "AI INTELLIGENCE BRIEF",
+    "stageBriefDesc": "Synthesizing neural assessment...",
+    "version": "CYBERSHIELD Γùê INTELLIGENCE SYSTEM Γùê v4.1",
+    "headerTitle": "CYBERSHIELD Γùê INTELLIGENCE SYSTEM Γùê v4.1",
+    "headerTitleColored": "AI SCAM INTELLIGENCE\" \"",
+    "headerSubtitle": "CENTER",
+    "terminalLabel": "Signal Input Terminal",
+    "textareaPlaceholder": "placeholder=\"Paste suspicious SMS, phishing email, WhatsApp message, or scam text...\"",
+    "chars": "text.length chars",
+    "dragDropActive": "isDragActive ? \"Drop to initiate OCR scan...\" : \"Upload Threat Screenshot\"",
+    "dragDropNormal": "isDragActive ? \"Drop to initiate OCR scan...\" : \"Upload Threat Screenshot\"",
+    "dragDropSub": "isDragActive ? \"Drop to initiate OCR scan...\" : \"Upload Threat Screenshot\"",
+    "ocrScanning": "? \"OCR EXTRACTION...\"",
+    "threatAnalyzing": "? \"OCR EXTRACTION...\"",
+    "aiSynthesizing": "? \"OCR EXTRACTION...\"",
+    "btnScan": "? \"THREAT ANALYSIS...\"",
+    "btnDemo": "Γùê Demo Signal",
+    "ocrScanningHeading": "Γùê OCR SCANNING Γùê",
+    "ocrScanningText": "Γùê OCR SCANNING Γùê",
+    "verdictTitle": "Intelligence Assessment Complete",
+    "threatClassification": "Threat Classification",
+    "aiConfidence": "AI CONFIDENCE",
+    "btnDownloadCompiling": "generatingPdf ? \"Compiling...\" : \"Intel Report\"",
+    "btnDownload": "generatingPdf ? \"Compiling...\" : \"Intel Report\"",
+    "statRiskLevel": "label=\"INDICATORS\"",
+    "statThreatScore": "label=\"INDICATORS\"",
+    "statOutOf100": "label=\"INDICATORS\"",
+    "statConfidence": "label=\"INDICATORS\"",
+    "statIndicators": "label=\"INDICATORS\"",
+    "statSignals": "label=\"INDICATORS\"",
+    "panelIndicators": "title=\"Threat Indicators\"",
+    "noIndicators": "No threat indicators detected.",
+    "panelFlaggedUrls": "title=\"Flagged URLs\"",
+    "panelSafetyDirective": "title=\"Safety Directive\"",
+    "panelAiBrief": "title=\"AI Intelligence Brief\"",
+    "generatedBy": "Generated by Groq ┬╖ Heuristic + Neural Analysis",
+    "footerNote": "CyberShield Intelligence ┬╖ Public safety awareness tool ┬╖ Always verify through official channels"
+  },
+  "breachCheckerPage": {
+    "title": "Breach Checker",
+    "description": "Check if an email appears in known breaches (mocked for demo)."
+  },
+  "deepfake": {
+    "hero": {
+      "badge": "CLASSIFIED // ACTIVE SYSTEM",
+      "titlePart1": "AI FORENSIC",
+      "titlePart2": "DEEPFAKE",
+      "titlePart3": "COMMAND CENTER",
+      "kicker": "TRUSTLAYERLABS",
+      "description": "Military-grade AI forensic intelligence system. Detecting synthetic media, AI-generated fraud, and deepfake manipulation in real-time ΓÇö protecting truth at the edge of synthetic deception.",
+      "pills": {
+        "0": "AI Analysis",
+        "1": "Neural Detection",
+        "2": "Face Authenticity",
+        "3": "Voice Scan"
+      },
+      "analyzeBtn": "Γ¼í ANALYZE MEDIA",
+      "risksBtn": "Γ¼í DEEPFAKE RISKS"
+    },
+    "live": {
+      "tag": "// FORENSIC ANALYSIS ENGINE",
+      "title": "LIVE",
+      "titleHighlight": "DETECTION PANEL",
+      "desc": "Real-time AI forensic analysis with multi-layer neural detection and confidence scoring",
+      "cards": {
+        "0": {
+          "label": "Authenticity Score",
+          "title": "FACE BIOMETRIC ANALYSIS",
+          "tags": {
+            "0": "Facial Landmarks Γ£ô",
+            "1": "Blink Rate Γ£ô",
+            "2": "Micro-expression ΓÜá"
+          },
+          "bars": {
+            "0": "Neural Consistency",
+            "1": "Skin Texture",
+            "2": "Lip Sync Match"
+          }
+        },
+        "1": {
+          "label": "Manipulation Score",
+          "title": "SYNTHETIC ARTIFACT DETECTION",
+          "tags": {
+            "0": "Voice Clone ΓÜá",
+            "1": "Lip-Sync Mismatch",
+            "2": "Synthetic Artifact",
+            "3": "Metadata Anomaly"
+          },
+          "bars": {
+            "0": "AI Generation Prob",
+            "1": "Voice Synthesis"
+          },
+          "warning": "VOICE CLONE PATTERN DETECTED ΓÇö REVIEW REQUIRED"
+        }
+      }
+    },
+    "analyzer": {
+      "tag": "// AI FORENSIC SCANNER",
+      "title": "MEDIA",
+      "titleHighlight": "ANALYZER",
+      "desc": "Submit image, video, or audio for immediate AI forensic investigation",
+      "state": {
+        "scanning": "AI ANALYSIS IN PROGRESS",
+        "done": "ANALYSIS COMPLETE ΓÇö DROP ANOTHER",
+        "idle": "DROP MEDIA FOR ANALYSIS"
+      },
+      "prompt": {
+        "scanning": "Neural forensic scan running...",
+        "idle": "Drag & drop or click to select ΓÇö maximum security forensic scan"
+      },
+      "types": {
+        "0": "IMAGE",
+        "1": "VIDEO",
+        "2": "AUDIO",
+        "3": "PDF"
+      }
+    },
+    "result": {
+      "verdictLabel": "FORENSIC VERDICT",
+      "verdictValue": "ΓÜá MANIPULATION DETECTED",
+      "riskLabel": "Risk Score",
+      "explanationLabel": "FORENSIC EXPLANATION",
+      "explanationValue": "Neural analysis has identified characteristic GAN artifacts in facial regions. Frequency domain analysis reveals spectral inconsistencies typical of diffusion model synthesis. Voice pattern shows 67% match to known voice-clone architectures.",
+      "actionsLabel": "RECOMMENDED ACTIONS",
+      "actionsValue": "Γæá Do not share or trust this media Γæí Report to platform administrators Γæó Contact originating source for verification Γæú Preserve evidence chain for investigation"
+    },
+    "forensics": {
+      "tag": "// CINEMATIC FORENSICS",
+      "title": "FORENSIC",
+      "titleHighlight": "VISUALIZATION",
+      "desc": "Advanced multi-layer forensic intelligence panels with neural pattern analysis"
+    },
+    "panels": {
+      "0": {
+        "label": "Face Landmark Mapping"
+      },
+      "1": {
+        "label": "Waveform Comparison",
+        "original": "Original",
+        "cloneSignal": "Clone Signal"
+      },
+      "2": {
+        "label": "Heatmap Overlay",
+        "anomalyDetected": "ANOMALY DETECTED",
+        "desc": "GAN fingerprint residuals detected in eye region. Spectral anomaly confidence: 78%"
+      },
+      "3": {
+        "label": "Frame Anomaly Timeline",
+        "desc": "3 anomalous frames detected @ 0:04, 0:12, 0:19"
+      },
+      "4": {
+        "label": "Metadata Intelligence",
+        "rows": {
+          "0": {
+            "key": "Device",
+            "val": "REDACTED ΓÜá"
+          },
+          "1": {
+            "key": "GPS",
+            "val": "STRIPPED ΓÜá"
+          },
+          "2": {
+            "key": "Created"
+          },
+          "3": {
+            "key": "Modified",
+            "val": "2025-03-15 ΓÜá"
+          },
+          "4": {
+            "key": "Software",
+            "val": "Stable Diffusion ΓÜá"
+          }
+        }
+      },
+      "5": {
+        "label": "AI Behavior Graph",
+        "badge": "AI PATTERN Γåæ"
+      }
+    },
+    "awareness": {
+      "tag": "// THREAT INTELLIGENCE",
+      "title": "DEEPFAKE SCAM",
+      "titleHighlight": "AWARENESS",
+      "desc": "Active threat vectors and countermeasures for AI-generated fraud patterns"
+    },
+    "timeline": {
+      "tag": "// CYBER INCIDENT RECORD",
+      "title": "FORENSIC",
+      "titleHighlight": "CASE TIMELINE",
+      "desc": "Documented cyber incident breakdown ΓÇö from initial deepfake deployment to forensic resolution"
+    },
+    "stats": {
+      "tag": "// LIVE INTELLIGENCE METRICS",
+      "title": "FORENSIC",
+      "titleHighlight": "COMMAND STATS",
+      "cards": {
+        "0": "Deepfakes Detected",
+        "1": "Media Analyzed",
+        "2": "Fraud Prevented",
+        "3": "AI Models Tagged"
+      }
+    },
+    "protocols": {
+      "tag": "// CLASSIFIED BRIEFING",
+      "title": "CYBER DEFENSE",
+      "titleHighlight": "PROTOCOLS",
+      "desc": "Field-tested countermeasures for active deepfake threat environments"
+    },
+    "cta": {
+      "tag": "// DEFEND TRUTH",
+      "titlePart1": "DEFEND REALITY",
+      "titlePart2": "AGAINST SYNTHETIC",
+      "titlePart3": "DECEPTION",
+      "desc": "The frontier of AI manipulation advances daily. Deploy military-grade forensic intelligence before the next synthetic attack reaches your network.",
+      "scanBtn": "Γ¼í START AI SCAN",
+      "exploreBtn": "Γ¼í EXPLORE AWARENESS",
+      "footer": "TRUSTLAYERLABS // AI FORENSIC INTELLIGENCE SYSTEM // v4.2.1 // CLASSIFIED"
+    }
+  },
+  "ipScannerPage": {
+    "radar": {
+      "scanning": "SCANNING",
+      "live": "LIVE"
+    },
+    "pipeline": {
+      "intelPipeline": "INTELLIGENCE PIPELINE",
+      "title": "Analyzing Threat Vectors"
+    },
+    "verdicts": {
+      "SAFE": "SAFE",
+      "SUSPICIOUS": "SUSPICIOUS",
+      "MALICIOUS": "MALICIOUS"
+    },
+    "threatVerdict": "THREAT VERDICT",
+    "analysisConfidence": "Analysis confidence:",
+    "threatIndicators": "THREAT INDICATORS",
+    "abuseScore": "Abuse Score",
+    "botnetProbability": "Botnet Probability",
+    "spamReputation": "Spam Reputation",
+    "detectionFlags": "DETECTION FLAGS",
+    "proxyDetected": "Proxy Detected",
+    "vpnMasking": "VPN Masking",
+    "torExitNode": "TOR Exit Node",
+    "blacklisted": "Blacklisted",
+    "networkIntelligence": "NETWORK INTELLIGENCE",
+    "ipAddress": "IP Address",
+    "asn": "ASN",
+    "isp": "ISP",
+    "country": "Country",
+    "region": "Region",
+    "timezone": "Timezone",
+    "reverseDns": "Reverse DNS",
+    "hostname": "Hostname",
+    "networkOwner": "Network Owner",
+    "openPorts": "Open Ports",
+    "attackEvents": "Attack Events",
+    "aiThreatAnalysis": "AI THREAT ANALYSIS",
+    "analyzeAnotherIp": "ANALYZE ANOTHER IP",
+    "threatMap": {
+      "legend": {
+        "attackOrigin": "Attack Origin",
+        "targetNode": "Target Node",
+        "liveThreatFeed": "LIVE THREAT FEED"
+      }
+    },
+    "header": {
+      "trustlayerlabs": "TRUSTLAYERLABS",
+      "threatIntel": "IP THREAT INTELLIGENCE",
+      "live": "LIVE"
+    },
+    "hero": {
+      "intelCommandCenter": "INTELLIGENCE COMMAND CENTER",
+      "titlePart1": "TRACE THE THREATS",
+      "titlePart2": "BEFORE THEY TRACE YOU",
+      "description": "AI-powered IP intelligence that analyzes malicious infrastructure, attack origins, botnets, abuse reports, VPN masking, and cyber threat patterns.",
+      "poweredBy": "Powered by Gemini AI",
+      "poweredBySuffix": "ΓÇö threat intelligence analysis",
+      "placeholder": "Enter IP address ΓÇö e.g. 8.8.8.8",
+      "analyzeButton": "ANALYZE IP",
+      "learnButton": "LEARN THREATS"
+    },
+    "map": {
+      "subtitle": "GLOBAL INTELLIGENCE",
+      "title": "Live Threat Map",
+      "desc": "Animated representation of active attack vectors being monitored across threat intelligence feeds."
+    },
+    "attackChain": {
+      "subtitle": "ATTACK CHAIN ANALYSIS",
+      "title": "Cyber Attack Lifecycle",
+      "desc": "Modern cyberattacks follow predictable operational patterns. Understanding attack chains enables defenders to identify indicators of compromise (IOCs) at each stage and break the kill chain before impact.",
+      "aiInsight": "AI INSIGHT ΓÇö ",
+      "aiInsightDesc": "IP intelligence analysis can identify C2 servers, botnet enrollment endpoints, and phishing infrastructure at the network layer ΓÇö often before campaigns reach end users."
+    },
+    "education": {
+      "subtitle": "CYBER AWARENESS",
+      "title": "Intelligence Education"
+    },
+    "cta": {
+      "commandCenter": "COMMAND CENTER",
+      "titlePart1": "EVERY CONNECTION",
+      "titlePart2": "TELLS A STORY.",
+      "desc": "Analyze IPs. Understand threats. Stay informed.",
+      "analyzeAnother": "ANALYZE ANOTHER IP",
+      "exploreAwareness": "EXPLORE AWARENESS"
+    },
+    "footer": "TRUSTLAYERLABS ΓÇö IP THREAT INTELLIGENCE COMMAND CENTER Γùê FOR EDUCATIONAL AND AWARENESS PURPOSES"
+  },
+  "phishing": {
+    "badge": {
+      "unlocked": "Badge unlocked"
+    },
+    "edu": {
+      "kicker": "Threat intelligence",
+      "title": "Learn the signals attackers hope you miss."
+    },
+    "simulator": {
+      "correctFeedback": "You classified this correctly.",
+      "incorrectFeedback": "Review the indicators before continuing.",
+      "safeBtn": "Safe",
+      "phishBtn": "Phishing",
+      "score": "Score",
+      "accuracy": "Accuracy",
+      "correct": "Correct",
+      "bestStreak": "Best streak",
+      "correctCall": "Correct call",
+      "missedSignal": "Missed signal",
+      "wasPhishing": "This scenario was phishing.",
+      "wasSafe": "This scenario was safe.",
+      "viewResults": "View final results",
+      "nextScenario": "Next scenario",
+      "kicker": "Interactive simulator",
+      "title": "Safe or phishing?",
+      "streak": "Streak"
+    },
+    "results": {
+      "subtitle": "Final results",
+      "earnedBadges": "Earned badges",
+      "noBadges": "No badges yet. Try another run.",
+      "restartBtn": "Restart simulator"
+    },
+    "hero": {
+      "kicker": "Frontend threat lab online",
+      "title": "Phishing Awareness Simulator",
+      "copy": "Train with realistic emails, SMS alerts, QR traps, fake domains, refund lures, and social engineering pressure.",
+      "startButton": "Start simulator",
+      "learnButton": "Learn signals"
+    }
+  },
+  "upi": {
+    "awareness": {
+      "backBtn": "ΓåÉ Back to UPI Module",
+      "title": "UPI Fraud Awareness",
+      "description": "Protect your UPI account by learning key scam patterns, approval traps, and safe payment rules.",
+      "card1": {
+        "title": "ΓÜá∩╕Å Common UPI Scam Types"
+      },
+      "scams": {
+        "0": "Fake collect requests disguised as refunds, prizes, or order payments.",
+        "1": "Screen sharing or remote support calls asking you to open UPI apps.",
+        "2": "Impersonation of customer care numbers or bank officials.",
+        "3": "Requests to enter UPI PIN to \\'receive\\' money or validate a refund.",
+        "4": "Fake QR codes and payment links sent by strangers or buyers."
+      },
+      "card2": {
+        "title": "Γ£à How to Stay Safe"
+      },
+      "safe": {
+        "0": "Never share your UPI PIN, OTP, or account details with anyone.",
+        "1": "Use your own bank/UPI app to initiate payments ΓÇö not a link from a stranger.",
+        "2": "Verify the recipient VPA, amount, and purpose before approving.",
+        "3": "Decline unexpected collect requests and confirm refunds from the sender.",
+        "4": "Set daily UPI limits and enable app notifications for every transaction."
+      },
+      "card3": {
+        "title": "≡ƒç«≡ƒç│ Indian Reporting Tips"
+      },
+      "reporting": {
+        "0": "Report fraud at cybercrime.gov.in and retain transaction receipts.",
+        "1": "Call 1930 for cybercrime support and bank help lines quickly.",
+        "2": "Share UPI IDs, transaction IDs, timings, and sender details with authorities.",
+        "3": "NPCI regulates UPI ΓÇö report suspicious merchant behavior to your bank."
+      }
+    },
+    "caseStudy": {
+      "backBtn": "ΓåÉ Back to UPI Module",
+      "moduleTitle": "UPI Scam Case Study",
+      "title": "Real UPI Scam: Refund Collect Request",
+      "desc": "A user receives a message from a buyer on a marketplace platform. The buyer claims they will send a refund and shares a UPI payment link. The user clicks and approves the request without verifying the payee or the prompt.",
+      "whatHappenedTitle": "What happened",
+      "whatHappened": {
+        "0": "The buyer sent a UPI collect request claiming to refund excess payment.",
+        "1": "The request asked the user to approve the amount through their UPI app.",
+        "2": "The UPI approval screen required the UPI PIN, which the user entered.",
+        "3": "Money was debited from the user\\'s account instead of being received."
+      },
+      "whyScamTitle": "Why it was a scam",
+      "whyScam": {
+        "0": "Real refunds do not require UPI PIN approval from the receiver.",
+        "1": "The collect request was disguised as incoming money but actually authorized a payment.",
+        "2": "The sender was an unknown contact, not a verified buyer or service provider."
+      },
+      "lessonsTitle": "Lessons Learned",
+      "lessons": {
+        "0": {
+          "title": "Always verify payee details",
+          "desc": "Check the VPA, name, and purpose before approving any collect request."
+        },
+        "1": {
+          "title": "Never enter PIN to receive money",
+          "desc": "Entering a UPI PIN means you are authorizing money to leave your account."
+        },
+        "2": {
+          "title": "Use trusted channels",
+          "desc": "Initiate refunds or payments from official apps instead of clicking links from strangers."
+        },
+        "3": {
+          "title": "Report suspicious requests",
+          "desc": "Report fraud quickly and keep evidence like screenshots, UPI IDs, and transaction times."
+        }
+      }
+    },
+    "demo": {
+      "backBtn": "ΓåÉ Back to UPI Module",
+      "moduleTitle": "UPI Fraud Demo",
+      "title": "Practice UPI Scam Detection",
+      "desc": "Select an example to see whether the UPI request is safe or suspicious, and learn the red flags to watch for.",
+      "selectedScenarioTitle": "Selected Scenario",
+      "descriptionKicker": "Description",
+      "mattersKicker": "Why this matters",
+      "tipKicker": "Tip",
+      "defaultTip": "Always verify the payee name, UPI ID, and transaction context. If you are unsure, cancel and confirm directly with the sender."
+    },
+    "report": {
+      "backBtn": "ΓåÉ Back to UPI Module",
+      "moduleTitle": "Report UPI Fraud",
+      "title": "Report UPI Fraud Quickly",
+      "desc": "If you suspect UPI fraud, preserve evidence and notify authorities right away. Fast action improves your chances of recovery.",
+      "step1Title": "Step 1: Preserve evidence",
+      "step1": {
+        "0": "Screenshot the UPI approval screen, collect request, and chat messages.",
+        "1": "Save the senderΓÇÖs phone number, UPI ID, and transaction details.",
+        "2": "Note the date, time, bank, and amount involved in the incident."
+      },
+      "step2Title": "Step 2: Contact your bank",
+      "step2": {
+        "0": "Call your bankΓÇÖs fraud helpline and explain the suspicious UPI transaction.",
+        "1": "Request a temporary block or reset of your UPI PIN if needed.",
+        "2": "Ask the bank to trace the fraudulent UPI ID and freeze the transaction trail."
+      },
+      "step3Title": "Step 3: File an official complaint",
+      "step3": {
+        "0": "Go to cybercrime.gov.in and file a complaint under UPI/payment fraud.",
+        "1": "Include UPI transaction IDs, messages, phone numbers, and screenshots.",
+        "2": "Keep copies of complaint receipts and reference numbers."
+      },
+      "contactsTitle": "Quick contacts",
+      "contacts": {
+        "helpline": "National Cyber Crime Helpline:",
+        "portal": "Cybercrime portal:",
+        "regulator": "UPI regulator:"
+      }
+    },
+    "home": {
+      "backBtn": "ΓåÉ Back to Home",
+      "moduleTitle": "UPI Fraud Module",
+      "labKicker": "UPI Fraud Lab",
+      "heroTitle": "Understand UPI scams, protect your PIN, and pay safely.",
+      "heroDesc": "This module helps you spot fake collect requests, screen-share traps, and phishing payment prompts ΓÇö without using any real payment APIs.",
+      "startBtn": "Start Awareness",
+      "tryDemoBtn": "Try Demo",
+      "mattersTitle": "Why this matters",
+      "mattersDesc": "UPI fraud is one of the fastest-growing payment scams in India. This lab helps you identify the red flags before you approve a transaction.",
+      "fact1": "Fake collect requests often appear like refunds, prizes, or customer support.",
+      "fact2": "If an app asks for your UPI PIN to receive money, treat it as a high-risk scam.",
+      "fact3": "Always verify the recipient, the amount, and the expected flow before approving payments.",
+      "sectionsKicker": "Module sections",
+      "sectionsTitle": "Explore the UPI Fraud learning path",
+      "sectionsDesc": "Go deeper into scam awareness, real case learning, interactive UPI checks, and reporting best practices.",
+      "cardOpen": "Open",
+      "fastFactsTitle": "Fast facts",
+      "fastFacts": {
+        "0": "Never share your UPI PIN or OTP with anyone.",
+        "1": "Validate the payee VPA and amount before approving collect requests.",
+        "2": "Use official bank apps or UPI apps, not links sent by strangers."
+      },
+      "watchTitle": "What to watch",
+      "watch": {
+        "0": "Unexpected refund or prize requests that ask for payment approval.",
+        "1": "Screen sharing or remote-control calls that ask you to open UPI apps.",
+        "2": "Impersonation of banks, merchants, or government officials."
+      },
+      "reportTitle": "Report quickly",
+      "report": {
+        "0": "Call 1930 for cybercrime assistance.",
+        "1": "File at cybercrime.gov.in with UPI transaction details.",
+        "2": "Keep screenshots, UPI IDs, and bank reference numbers."
+      }
+    }
+  },
+  "urlScannerPage": {
+    "cyberFacts": {
+      "0": "78% of phishing attacks now use HTTPS encryption",
+      "1": "Shortened URLs are weaponized in 64% of WhatsApp scams",
+      "2": "Fake courier delivery scams increased 340% this quarter",
+      "3": "43% of breaches started with a phishing email",
+      "4": "QR code phishing attacks grew 587% in 2024",
+      "5": "Visual similarity attacks bypass 82% of users",
+      "6": "Credential theft takes average 16 seconds after click",
+      "7": "Mobile users are 3x more likely to fall for phishing"
+    },
+    "stages": {
+      "sslVerification": "SSL Verification",
+      "redirectMapping": "Redirect Mapping",
+      "domainReputation": "Domain Reputation",
+      "scriptInspection": "Script Inspection",
+      "threatIntelligence": "Threat Intelligence",
+      "heuristicAnalysis": "AI Risk Analysis"
+    },
+    "intelDivision": "THREAT INTELLIGENCE DIVISION",
+    "systemActive": "SYSTEM ACTIVE",
+    "threatIntel": "THREAT INTEL",
+    "headerTitle": "INVESTIGATE LINKS",
+    "headerTitleColored": "BEFORE THEY INVESTIGATE YOU",
+    "headerSubtitle": "Advanced {{provider}} powered threat intelligence system for analyzing suspicious URLs, domain health, and redirect logic.",
+    "poweredBy": "Powered by",
+    "targetInput": "TARGET URL INPUT",
+    "inputPlaceholder": "https://suspicious-link.example.com",
+    "btnScanning": "SCANNING...",
+    "btnScan": "INITIATE THREAT SCAN",
+    "aiUnavailable": "VirusTotal API key is missing. Showing heuristic output.",
+    "aiScanFailed": "AI scan failed.",
+    "scanProgress": "Scan Progress",
+    "threatVerdict": "THREAT VERDICT",
+    "confidence": "Confidence",
+    "phishingRisk": "Phishing Risk",
+    "sslCertificate": "SSL Certificate",
+    "status": "Status",
+    "verdicts": {
+      "safe": "Safe",
+      "suspicious": "Suspicious",
+      "malicious": "Malicious"
+    },
+    "issuer": "Issuer",
+    "expires": "Expires",
+    "domainIntel": "Domain Intelligence",
+    "age": "Age",
+    "registrar": "Registrar",
+    "reputation": "Reputation",
+    "threatLevel": "Threat Level",
+    "urlStructureAnalysis": "URL Structure Analysis",
+    "protocol": "Protocol",
+    "subdomain": "Subdomain",
+    "domain": "Domain",
+    "path": "Path",
+    "parameters": "Parameters",
+    "socialEngineeringIndicators": "Social Engineering Indicators",
+    "tactics": {
+      "urgency": "Urgency",
+      "reward": "Reward",
+      "authority": "Authority",
+      "fear": "Fear",
+      "verification": "Verification"
+    },
+    "suspiciousPatterns": "Suspicious Patterns",
+    "redirectChainDetected": "Redirect Chain Detected",
+    "attackFlowPattern": "Attack Flow Pattern",
+    "scanAnotherUrl": "Scan Another URL",
+    "exploreCyberAwareness": "Explore Cyber Awareness",
+    "cyberAwarenessIntelligence": "Cyber Awareness Intelligence",
+    "understandingThreats": "Understanding how malicious links deceive you is the first line of digital defense.",
+    "cards": {
+      "phishingWork": {
+        "title": "How Phishing Links Work",
+        "desc": "Phishing links disguise themselves as legitimate URLs to steal credentials. Attackers use visual similarity, subdomain tricks, and homograph attacks to deceive users.",
+        "item1": "Typosquatting: paypa1.com instead of paypal.com",
+        "item2": "Subdomain tricks: paypal.secure-login.phisher.com",
+        "item3": "Homograph attacks: using similar-looking characters"
+      },
+      "domainHiding": {
+        "title": "Domain Hiding Techniques",
+        "desc": "Cybercriminals use sophisticated methods to conceal malicious domains and make them appear legitimate. Understanding these tactics helps you identify suspicious links before clicking.",
+        "item1": "URL shorteners hiding the real destination",
+        "item2": "Multiple redirects to obscure the final target",
+        "item3": "Encoding techniques and obfuscated parameters"
+      },
+      "httpsEnough": {
+        "title": "HTTPS Alone Isn't Enough",
+        "desc": "The presence of HTTPS and a padlock icon does NOT guarantee a site is safe. 78% of phishing sites now use SSL certificates to appear trustworthy. Always verify the domain itself.",
+        "item1": "Free SSL certificates are available to anyone",
+        "item2": "Attackers use HTTPS to build false credibility",
+        "item3": "Check the domain name, not just the lock icon"
+      },
+      "qrShortened": {
+        "title": "QR & Shortened URL Dangers",
+        "desc": "QR codes and shortened URLs completely hide the destination, making them perfect vectors for phishing. QR phishing (quishing) attacks increased 587% in 2024.",
+        "item1": "Can't preview destination before scanning/clicking",
+        "item2": "Commonly used in parking, delivery, and payment scams",
+        "item3": "Always verify the source before scanning QR codes"
+      }
+    },
+    "thinkBeforeYouClick": "THINK BEFORE YOU CLICK",
+    "everyLinkThreat": "Every link is a potential threat vector. Stay vigilant, verify sources, and trust your instincts.",
+    "eduPlatform": "Educational awareness platform • Not affiliated with security vendors",
+    "forDemoOnly": "For demonstration and learning purposes only"
   }
 }

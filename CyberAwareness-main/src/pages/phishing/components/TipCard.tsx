@@ -1,7 +1,9 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import type { Tip } from "../data";
 
-export default function TipCard({ tip, delay = 0 }: { tip: Tip; delay?: number }) {
+export default function TipCard({ tip, index, delay = 0 }: { tip: Tip; index: number; delay?: number }) {
+  const { t } = useTranslation();
   const Icon = tip.Icon;
   return (
     <motion.article
@@ -12,8 +14,8 @@ export default function TipCard({ tip, delay = 0 }: { tip: Tip; delay?: number }
       transition={{ delay, duration: 0.45 }}
     >
       <div className="ph-card-icon"><Icon size={22} /></div>
-      <h3>{tip.title}</h3>
-      <p>{tip.body}</p>
+      <h3>{t(`phishing.identifyTips.${index}.title`, tip.title)}</h3>
+      <p>{t(`phishing.identifyTips.${index}.body`, tip.body)}</p>
     </motion.article>
   );
 }

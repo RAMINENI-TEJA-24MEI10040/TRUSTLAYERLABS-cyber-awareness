@@ -38,7 +38,7 @@ export default function ProtectedRoute({
     }, 5000);
 
     const unsubscribe = onAuthStateChanged(
-      auth,
+      auth!,
       (currentUser) => {
         clearTimeout(timeoutId);
         setUser(currentUser);

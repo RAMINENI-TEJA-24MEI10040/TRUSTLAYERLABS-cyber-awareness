@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 interface ThreatResult {
@@ -117,6 +118,7 @@ function FloatingParticles() {
 
 // ─── Radar ────────────────────────────────────────────────────────────────────
 function RadarRing() {
+  const { t } = useTranslation();
   return (
     <div className="relative w-64 h-64 flex items-center justify-center">
       {[1, 0.7, 0.45, 0.25].map((scale, i) => (
@@ -155,8 +157,8 @@ function RadarRing() {
         />
       ))}
       <div className="relative z-10 text-center">
-        <div className="text-[10px] text-cyan-400/60 tracking-widest font-mono">SCANNING</div>
-        <div className="text-cyan-400 font-mono text-xs tracking-wider">LIVE</div>
+        <div className="text-[10px] text-cyan-400/60 tracking-widest font-mono">{t("ipScannerPage.radar.scanning", "SCANNING")}</div>
+        <div className="text-cyan-400 font-mono text-xs tracking-wider">{t("ipScannerPage.radar.live", "LIVE")}</div>
       </div>
     </div>
   );
@@ -176,6 +178,7 @@ const PIPELINE_STAGES = [
 ];
 
 function PipelineView({ onComplete }: { onComplete: () => void }) {
+  const { t } = useTranslation();
   const [activeStage, setActiveStage] = useState(0);
   const [completedStages, setCompletedStages] = useState<number[]>([]);
 
@@ -199,8 +202,8 @@ function PipelineView({ onComplete }: { onComplete: () => void }) {
   return (
     <div className="w-full max-w-2xl mx-auto py-8">
       <div className="text-center mb-8">
-        <div className="text-xs tracking-[0.3em] text-cyan-400/60 font-mono mb-2">INTELLIGENCE PIPELINE</div>
-        <h2 className="text-2xl font-light text-white tracking-wide">Analyzing Threat Vectors</h2>
+        <div className="text-xs tracking-[0.3em] text-cyan-400/60 font-mono mb-2">{t('ipScannerPage.pipeline.intelPipeline', 'INTELLIGENCE PIPELINE')}</div>
+        <h2 className="text-2xl font-light text-white tracking-wide">{t('ipScannerPage.pipeline.title', 'Analyzing Threat Vectors')}</h2>
       </div>
       <div className="space-y-3">
         {PIPELINE_STAGES.map((stage, i) => {
@@ -222,7 +225,7 @@ function PipelineView({ onComplete }: { onComplete: () => void }) {
                 {stage.icon}
               </span>
               <span className="flex-1 text-sm font-mono tracking-wider" style={{ color: isDone ? "#e2e8f0" : isActive ? "#ffffff" : "#475569" }}>
-                {stage.label}
+                {t(`ipScannerPage.pipelineStages.${i}`, stage.label)}
               </span>
               <div className="w-20 h-px relative overflow-hidden rounded">
                 <div className="absolute inset-0 bg-slate-800" />
@@ -255,10 +258,11 @@ function PipelineView({ onComplete }: { onComplete: () => void }) {
 
 // ─── Verdict Badge ────────────────────────────────────────────────────────────
 function VerdictBadge({ verdict }: { verdict: ThreatResult["verdict"] }) {
+  const { t } = useTranslation();
   const cfg = {
-    SAFE: { color: "#22c55e", glow: "rgba(34,197,94,0.3)", label: "SAFE" },
-    SUSPICIOUS: { color: "#f97316", glow: "rgba(249,115,22,0.3)", label: "SUSPICIOUS" },
-    MALICIOUS: { color: "#ef4444", glow: "rgba(239,68,68,0.35)", label: "MALICIOUS" },
+    SAFE: { color: "#22c55e", glow: "rgba(34,197,94,0.3)", label: t("ipScannerPage.verdicts.SAFE", "SAFE") },
+    SUSPICIOUS: { color: "#f97316", glow: "rgba(249,115,22,0.3)", label: t("ipScannerPage.verdicts.SUSPICIOUS", "SUSPICIOUS") },
+    MALICIOUS: { color: "#ef4444", glow: "rgba(239,68,68,0.35)", label: t("ipScannerPage.verdicts.MALICIOUS", "MALICIOUS") },
   }[verdict];
   return (
     <motion.div
@@ -324,6 +328,7 @@ const ATTACK_STEPS = [
 ];
 
 function AttackFlow() {
+  const { t } = useTranslation();
   return (
     <div className="relative">
       {ATTACK_STEPS.map((step, i) => (
@@ -354,8 +359,8 @@ function AttackFlow() {
             )}
           </div>
           <div className="pb-8">
-            <div className="text-sm font-mono text-white tracking-wide">{step.label}</div>
-            <div className="text-xs text-slate-500 mt-0.5">{step.desc}</div>
+            <div className="text-sm font-mono text-white tracking-wide">{t(`ipScannerPage.attackFlow.${i}.label`, step.label)}</div>
+            <div className="text-xs text-slate-500 mt-0.5">{t(`ipScannerPage.attackFlow.${i}.desc`, step.desc)}</div>
           </div>
         </motion.div>
       ))}
@@ -376,10 +381,11 @@ const CYBER_FACTS = [
 ];
 
 function CyberFacts() {
+  const { t } = useTranslation();
   const [idx, setIdx] = useState(0);
   useEffect(() => {
-    const t = setInterval(() => setIdx((p) => (p + 1) % CYBER_FACTS.length), 4500);
-    return () => clearInterval(t);
+    const tInterval = setInterval(() => setIdx((p) => (p + 1) % CYBER_FACTS.length), 4500);
+    return () => clearInterval(tInterval);
   }, []);
   return (
     <div className="relative overflow-hidden h-16 flex items-center">
@@ -393,7 +399,7 @@ function CyberFacts() {
           className="text-sm font-mono text-cyan-300/80 text-center w-full px-4"
         >
           <span className="text-cyan-400 mr-2">◈</span>
-          {CYBER_FACTS[idx]}
+          {t(`ipScannerPage.cyberFacts.${idx}`, CYBER_FACTS[idx])}
         </motion.p>
       </AnimatePresence>
     </div>
@@ -475,6 +481,7 @@ const EDU_TOPICS = [
 ];
 
 function EducationalSection() {
+  const { t } = useTranslation();
   const [open, setOpen] = useState<number | null>(null);
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -489,7 +496,7 @@ function EducationalSection() {
         >
           <div className="flex items-center gap-3 px-5 py-4">
             <span className="text-cyan-400 text-base">{topic.icon}</span>
-            <span className="text-sm font-mono text-white flex-1">{topic.title}</span>
+            <span className="text-sm font-mono text-white flex-1">{t(`ipScannerPage.eduTopics.${i}.title`, topic.title)}</span>
             <motion.span className="text-cyan-400/50 text-xs" animate={{ rotate: open === i ? 90 : 0 }}>▶</motion.span>
           </div>
           <AnimatePresence>
@@ -500,7 +507,7 @@ function EducationalSection() {
                 exit={{ height: 0, opacity: 0 }}
                 className="px-5 pb-4"
               >
-                <p className="text-xs text-slate-400 leading-relaxed border-t border-cyan-400/10 pt-3">{topic.content}</p>
+                <p className="text-xs text-slate-400 leading-relaxed border-t border-cyan-400/10 pt-3">{t(`ipScannerPage.eduTopics.${i}.content`, topic.content)}</p>
               </motion.div>
             )}
           </AnimatePresence>
@@ -512,50 +519,51 @@ function EducationalSection() {
 
 // ─── Results Panel ────────────────────────────────────────────────────────────
 function ResultsPanel({ result, onReset }: { result: ThreatResult; onReset: () => void }) {
+  const { t } = useTranslation();
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="w-full max-w-4xl mx-auto space-y-6 py-8">
       {/* Verdict */}
       <div className="text-center space-y-3">
-        <div className="text-[10px] tracking-[0.35em] text-cyan-400/50 font-mono">THREAT VERDICT</div>
+        <div className="text-[10px] tracking-[0.35em] text-cyan-400/50 font-mono">{t("ipScannerPage.threatVerdict", "THREAT VERDICT")}</div>
         <VerdictBadge verdict={result.verdict} />
-        <div className="text-xs font-mono text-slate-400">Analysis confidence: <span className="text-cyan-400">{result.confidence}%</span></div>
+        <div className="text-xs font-mono text-slate-400">{t("ipScannerPage.analysisConfidence", "Analysis confidence:")} <span className="text-cyan-400">{result.confidence}%</span></div>
       </div>
 
       {/* Threat metrics */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-5 rounded border border-cyan-400/10 bg-white/[0.02]">
         <div className="space-y-4">
-          <div className="text-[10px] tracking-widest text-cyan-400/50 font-mono mb-3">THREAT INDICATORS</div>
-          <MetricBar label="Abuse Score" value={result.abuseScore} danger />
-          <MetricBar label="Botnet Probability" value={result.botnetnProb} danger />
-          <MetricBar label="Spam Reputation" value={result.spamRep} danger />
+          <div className="text-[10px] tracking-widest text-cyan-400/50 font-mono mb-3">{t("ipScannerPage.threatIndicators", "THREAT INDICATORS")}</div>
+          <MetricBar label={t("ipScannerPage.abuseScore", "Abuse Score")} value={result.abuseScore} danger />
+          <MetricBar label={t("ipScannerPage.botnetProbability", "Botnet Probability")} value={result.botnetnProb} danger />
+          <MetricBar label={t("ipScannerPage.spamReputation", "Spam Reputation")} value={result.spamRep} danger />
         </div>
         <div className="space-y-3">
-          <div className="text-[10px] tracking-widest text-cyan-400/50 font-mono mb-3">DETECTION FLAGS</div>
-          <BoolBadge label="Proxy Detected" value={result.isProxy} />
-          <BoolBadge label="VPN Masking" value={result.isVPN} />
-          <BoolBadge label="TOR Exit Node" value={result.isTOR} />
-          <BoolBadge label="Blacklisted" value={result.blacklisted} />
+          <div className="text-[10px] tracking-widest text-cyan-400/50 font-mono mb-3">{t("ipScannerPage.detectionFlags", "DETECTION FLAGS")}</div>
+          <BoolBadge label={t("ipScannerPage.proxyDetected", "Proxy Detected")} value={result.isProxy} />
+          <BoolBadge label={t("ipScannerPage.vpnMasking", "VPN Masking")} value={result.isVPN} />
+          <BoolBadge label={t("ipScannerPage.torExitNode", "TOR Exit Node")} value={result.isTOR} />
+          <BoolBadge label={t("ipScannerPage.blacklisted", "Blacklisted")} value={result.blacklisted} />
         </div>
       </div>
 
       {/* Network info */}
       <div className="p-5 rounded border border-cyan-400/10 bg-white/[0.02]">
-        <div className="text-[10px] tracking-widest text-cyan-400/50 font-mono mb-4">NETWORK INTELLIGENCE</div>
+        <div className="text-[10px] tracking-widest text-cyan-400/50 font-mono mb-4">{t("ipScannerPage.networkIntelligence", "NETWORK INTELLIGENCE")}</div>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
-          <InfoCard label="IP Address" value={result.ip} icon="◈" />
-          <InfoCard label="ASN" value={result.asn} icon="⬡" />
-          <InfoCard label="ISP" value={result.isp} icon="◎" />
-          <InfoCard label="Country" value={result.country} icon="⊕" />
-          <InfoCard label="Region" value={result.region} icon="◉" />
-          <InfoCard label="Timezone" value={result.timezone} icon="◈" />
-          <InfoCard label="Reverse DNS" value={result.reverseDNS} icon="⬡" />
-          <InfoCard label="Hostname" value={result.hostname} icon="◎" />
-          <InfoCard label="Network Owner" value={result.netOwner} icon="⊕" />
+          <InfoCard label={t("ipScannerPage.ipAddress", "IP Address")} value={result.ip} icon="◈" />
+          <InfoCard label={t("ipScannerPage.asn", "ASN")} value={result.asn} icon="⬡" />
+          <InfoCard label={t("ipScannerPage.isp", "ISP")} value={result.isp} icon="◎" />
+          <InfoCard label={t("ipScannerPage.country", "Country")} value={t(`ipScannerPage.countries.${result.country}`, result.country)} icon="⊕" />
+          <InfoCard label={t("ipScannerPage.region", "Region")} value={result.region} icon="◉" />
+          <InfoCard label={t("ipScannerPage.timezone", "Timezone")} value={result.timezone} icon="◈" />
+          <InfoCard label={t("ipScannerPage.reverseDns", "Reverse DNS")} value={result.reverseDNS} icon="⬡" />
+          <InfoCard label={t("ipScannerPage.hostname", "Hostname")} value={result.hostname} icon="◎" />
+          <InfoCard label={t("ipScannerPage.networkOwner", "Network Owner")} value={result.netOwner} icon="⊕" />
           {result.openPorts.length > 0 && (
-            <InfoCard label="Open Ports" value={result.openPorts.join(", ")} icon="◈" />
+            <InfoCard label={t("ipScannerPage.openPorts", "Open Ports")} value={result.openPorts.join(", ")} icon="◈" />
           )}
           {result.attackHistory > 0 && (
-            <InfoCard label="Attack Events" value={`${result.attackHistory} recorded`} icon="⚠" />
+            <InfoCard label={t("ipScannerPage.attackEvents", "Attack Events")} value={t("ipScannerPage.recordedEvents", { count: result.attackHistory }, `${result.attackHistory} recorded`)} icon="⚠" />
           )}
         </div>
       </div>
@@ -564,9 +572,9 @@ function ResultsPanel({ result, onReset }: { result: ThreatResult; onReset: () =
       <div className="p-5 rounded border border-cyan-400/20 bg-cyan-400/[0.03]">
         <div className="flex items-center gap-2 mb-3">
           <motion.span className="text-cyan-400" animate={{ opacity: [1, 0.4, 1] }} transition={{ duration: 2, repeat: Infinity }}>◉</motion.span>
-          <span className="text-[10px] tracking-widest text-cyan-400/60 font-mono">AI THREAT ANALYSIS</span>
+          <span className="text-[10px] tracking-widest text-cyan-400/60 font-mono">{t("ipScannerPage.aiThreatAnalysis", "AI THREAT ANALYSIS")}</span>
         </div>
-        <p className="text-sm text-slate-300 leading-relaxed font-light">{result.aiExplanation}</p>
+        <p className="text-sm text-slate-300 leading-relaxed font-light">{t(`ipScannerPage.mockExplanations.${result.ip}`, result.aiExplanation)}</p>
       </div>
 
       {/* Reset */}
@@ -575,7 +583,7 @@ function ResultsPanel({ result, onReset }: { result: ThreatResult; onReset: () =
           onClick={onReset}
           className="px-8 py-3 rounded border border-cyan-400/40 text-cyan-400 font-mono text-sm tracking-widest hover:bg-cyan-400/10 transition-all"
         >
-          ANALYZE ANOTHER IP
+          {t("ipScannerPage.analyzeAnotherIp", "ANALYZE ANOTHER IP")}
         </button>
       </div>
     </motion.div>
@@ -584,6 +592,7 @@ function ResultsPanel({ result, onReset }: { result: ThreatResult; onReset: () =
 
 // ─── Threat Map ───────────────────────────────────────────────────────────────
 function ThreatMap() {
+  const { t } = useTranslation();
   const attackLines = [
     { x1: 15, y1: 30, x2: 55, y2: 50 },
     { x1: 70, y1: 20, x2: 55, y2: 50 },
@@ -631,10 +640,10 @@ function ThreatMap() {
         ))}
       </svg>
       <div className="absolute bottom-3 left-4 flex items-center gap-4 text-[10px] font-mono">
-        <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-red-500 inline-block" /> Attack Origin</span>
-        <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-cyan-400 inline-block" /> Target Node</span>
+        <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-red-500 inline-block" /> {t("ipScannerPage.threatMap.legend.attackOrigin", "Attack Origin")}</span>
+        <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-cyan-400 inline-block" /> {t("ipScannerPage.threatMap.legend.targetNode", "Target Node")}</span>
       </div>
-      <div className="absolute top-3 right-4 text-[10px] font-mono text-cyan-400/50 tracking-widest">LIVE THREAT FEED</div>
+      <div className="absolute top-3 right-4 text-[10px] font-mono text-cyan-400/50 tracking-widest">{t("ipScannerPage.threatMap.legend.liveThreatFeed", "LIVE THREAT FEED")}</div>
     </div>
   );
 }
@@ -656,6 +665,7 @@ function Section({ title, subtitle, children }: { title: string; subtitle?: stri
 
 // ─── Main App ─────────────────────────────────────────────────────────────────
 export default function App() {
+  const { t } = useTranslation();
   const [ip, setIp] = useState("");
   const [phase, setPhase] = useState<"hero" | "scanning" | "results">("hero");
   const [result, setResult] = useState<ThreatResult | null>(null);
@@ -688,13 +698,13 @@ export default function App() {
             <motion.div className="w-6 h-6 rounded border border-cyan-400/50 flex items-center justify-center text-cyan-400 text-xs"
               animate={{ boxShadow: ["0 0 4px rgba(0,229,255,0.3)", "0 0 12px rgba(0,229,255,0.6)", "0 0 4px rgba(0,229,255,0.3)"] }}
               transition={{ duration: 2, repeat: Infinity }}>◈</motion.div>
-            <span className="text-xs tracking-[0.25em] text-white/80">TRUSTLAYERLABS</span>
+            <span className="text-xs tracking-[0.25em] text-white/80">{t("ipScannerPage.header.trustlayerlabs", "TRUSTLAYERLABS")}</span>
           </div>
           <div className="flex items-center gap-6 text-[10px] tracking-widest text-slate-500">
-            <span className="hidden md:block">IP THREAT INTELLIGENCE</span>
+            <span className="hidden md:block">{t("ipScannerPage.header.threatIntel", "IP THREAT INTELLIGENCE")}</span>
             <div className="flex items-center gap-1.5">
               <motion.span className="w-1.5 h-1.5 rounded-full bg-cyan-400" animate={{ opacity: [1, 0.3, 1] }} transition={{ duration: 1.5, repeat: Infinity }} />
-              <span className="text-cyan-400/70">LIVE</span>
+              <span className="text-cyan-400/70">{t("ipScannerPage.header.live", "LIVE")}</span>
             </div>
           </div>
         </div>
@@ -711,19 +721,19 @@ export default function App() {
         </div>
 
         <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="text-[10px] tracking-[0.5em] text-cyan-400/50 mb-8">
-          INTELLIGENCE COMMAND CENTER
+          {t("ipScannerPage.hero.intelCommandCenter", "INTELLIGENCE COMMAND CENTER")}
         </motion.div>
 
         <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
           className="text-3xl md:text-5xl font-light tracking-tight text-white mb-6 max-w-3xl leading-tight"
           style={{ textShadow: "0 0 40px rgba(0,229,255,0.15)" }}>
-          TRACE THE THREATS<br />
-          <span style={{ color: "#00e5ff" }}>BEFORE THEY TRACE YOU</span>
+          {t("ipScannerPage.hero.titlePart1", "TRACE THE THREATS")}<br />
+          <span style={{ color: "#00e5ff" }}>{t("ipScannerPage.hero.titlePart2", "BEFORE THEY TRACE YOU")}</span>
         </motion.h1>
 
         <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
           className="text-sm text-slate-400 max-w-xl mb-12 leading-relaxed font-light">
-          AI-powered IP intelligence that analyzes malicious infrastructure, attack origins, botnets, abuse reports, VPN masking, and cyber threat patterns.
+          {t("ipScannerPage.hero.description", "AI-powered IP intelligence that analyzes malicious infrastructure, attack origins, botnets, abuse reports, VPN masking, and cyber threat patterns.")}
         </motion.p>
 
         {/* Globe + Radar */}
@@ -743,8 +753,8 @@ export default function App() {
           {phase === "hero" && (
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="w-full max-w-md space-y-4">
               <div className="flex items-center justify-center gap-2 text-xs text-cyan-300/80">
-                <span className="font-medium text-cyan-200">Powered by Gemini AI</span>
-                <span className="text-slate-500">— threat intelligence analysis</span>
+                <span className="font-medium text-cyan-200">{t("ipScannerPage.hero.poweredBy", "Powered by Gemini AI")}</span>
+                <span className="text-slate-500">{t("ipScannerPage.hero.poweredBySuffix", "— threat intelligence analysis")}</span>
               </div>
               <div className="relative">
                 <input
@@ -752,7 +762,7 @@ export default function App() {
                   value={ip}
                   onChange={(e) => setIp(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && handleAnalyze()}
-                  placeholder="Enter IP address — e.g. 8.8.8.8"
+                  placeholder={t("ipScannerPage.hero.placeholder", "Enter IP address — e.g. 8.8.8.8")}
                   className="w-full px-5 py-4 rounded border bg-transparent text-sm text-white placeholder-slate-600 focus:outline-none transition-all font-mono tracking-wider"
                   style={{ borderColor: ip ? "rgba(0,229,255,0.4)" : "rgba(255,255,255,0.08)", boxShadow: ip ? "0 0 20px rgba(0,229,255,0.08)" : "none" }}
                 />
@@ -768,7 +778,7 @@ export default function App() {
                   className="flex-1 py-3 rounded border text-sm tracking-widest font-mono transition-all"
                   style={{ borderColor: "rgba(0,229,255,0.5)", color: "#00e5ff", background: "rgba(0,229,255,0.08)" }}
                 >
-                  ANALYZE IP
+                  {t("ipScannerPage.hero.analyzeButton", "ANALYZE IP")}
                 </motion.button>
                 <motion.button
                   onClick={() => document.getElementById("education")?.scrollIntoView({ behavior: "smooth" })}
@@ -776,7 +786,7 @@ export default function App() {
                   className="flex-1 py-3 rounded border text-sm tracking-widest font-mono transition-all"
                   style={{ borderColor: "rgba(255,255,255,0.1)", color: "#94a3b8" }}
                 >
-                  LEARN THREATS
+                  {t("ipScannerPage.hero.learnButton", "LEARN THREATS")}
                 </motion.button>
               </div>
             </motion.div>
@@ -795,20 +805,20 @@ export default function App() {
       </section>
 
       {/* ── THREAT MAP ─────────────────────────────────────────────────────── */}
-      <Section subtitle="GLOBAL INTELLIGENCE" title="Live Threat Map">
+      <Section subtitle={t("ipScannerPage.map.subtitle", "GLOBAL INTELLIGENCE")} title={t("ipScannerPage.map.title", "Live Threat Map")}>
         <ThreatMap />
-        <p className="text-xs text-slate-500 mt-3">Animated representation of active attack vectors being monitored across threat intelligence feeds.</p>
+        <p className="text-xs text-slate-500 mt-3">{t("ipScannerPage.map.desc", "Animated representation of active attack vectors being monitored across threat intelligence feeds.")}</p>
       </Section>
 
       {/* ── ATTACK FLOW ────────────────────────────────────────────────────── */}
-      <Section subtitle="ATTACK CHAIN ANALYSIS" title="Cyber Attack Lifecycle">
+      <Section subtitle={t("ipScannerPage.attackChain.subtitle", "ATTACK CHAIN ANALYSIS")} title={t("ipScannerPage.attackChain.title", "Cyber Attack Lifecycle")}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
           <AttackFlow />
           <div className="space-y-4">
-            <p className="text-sm text-slate-400 leading-relaxed">Modern cyberattacks follow predictable operational patterns. Understanding attack chains enables defenders to identify indicators of compromise (IOCs) at each stage and break the kill chain before impact.</p>
+            <p className="text-sm text-slate-400 leading-relaxed">{t("ipScannerPage.attackChain.desc", "Modern cyberattacks follow predictable operational patterns. Understanding attack chains enables defenders to identify indicators of compromise (IOCs) at each stage and break the kill chain before impact.")}</p>
             <div className="p-4 rounded border border-cyan-400/15 bg-cyan-400/[0.03] text-xs text-cyan-300/80 leading-relaxed">
-              <span className="text-cyan-400 font-mono">◉ AI INSIGHT — </span>
-              IP intelligence analysis can identify C2 servers, botnet enrollment endpoints, and phishing infrastructure at the network layer — often before campaigns reach end users.
+              <span className="text-cyan-400 font-mono">{t("ipScannerPage.attackChain.aiInsight", "AI INSIGHT — ")}</span>
+              {t("ipScannerPage.attackChain.aiInsightDesc", "IP intelligence analysis can identify C2 servers, botnet enrollment endpoints, and phishing infrastructure at the network layer — often before campaigns reach end users.")}
             </div>
           </div>
         </div>
@@ -816,7 +826,7 @@ export default function App() {
 
       {/* ── EDUCATION ──────────────────────────────────────────────────────── */}
       <div id="education">
-        <Section subtitle="CYBER AWARENESS" title="Intelligence Education">
+        <Section subtitle={t("ipScannerPage.education.subtitle", "CYBER AWARENESS")} title={t("ipScannerPage.education.title", "Intelligence Education")}>
           <EducationalSection />
         </Section>
       </div>
@@ -824,20 +834,20 @@ export default function App() {
       {/* ── CTA ────────────────────────────────────────────────────────────── */}
       <section className="py-24 px-6 text-center border-t border-white/[0.04]">
         <div className="max-w-2xl mx-auto">
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="text-[10px] tracking-[0.4em] text-cyan-400/40 font-mono mb-6">COMMAND CENTER</motion.div>
+          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="text-[10px] tracking-[0.4em] text-cyan-400/40 font-mono mb-6">{t("ipScannerPage.cta.commandCenter", "COMMAND CENTER")}</motion.div>
           <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             className="text-3xl md:text-4xl font-light text-white mb-4 tracking-wide">
-            EVERY CONNECTION<br /><span className="text-cyan-400">TELLS A STORY.</span>
+            {t("ipScannerPage.cta.titlePart1", "EVERY CONNECTION")}<br /><span className="text-cyan-400">{t("ipScannerPage.cta.titlePart2", "TELLS A STORY.")}</span>
           </motion.h2>
-          <p className="text-sm text-slate-500 mb-10">Analyze IPs. Understand threats. Stay informed.</p>
+          <p className="text-sm text-slate-500 mb-10">{t("ipScannerPage.cta.desc", "Analyze IPs. Understand threats. Stay informed.")}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button onClick={handleReset}
               className="px-8 py-3 rounded border border-cyan-400/50 text-cyan-400 font-mono text-sm tracking-widest hover:bg-cyan-400/10 transition-all">
-              ANALYZE ANOTHER IP
+              {t("ipScannerPage.cta.analyzeAnother", "ANALYZE ANOTHER IP")}
             </button>
             <button onClick={() => document.getElementById("education")?.scrollIntoView({ behavior: "smooth" })}
               className="px-8 py-3 rounded border border-white/10 text-slate-400 font-mono text-sm tracking-widest hover:border-white/20 transition-all">
-              EXPLORE AWARENESS
+              {t("ipScannerPage.cta.exploreAwareness", "EXPLORE AWARENESS")}
             </button>
           </div>
         </div>
@@ -845,7 +855,7 @@ export default function App() {
 
       {/* ── FOOTER ─────────────────────────────────────────────────────────── */}
       <footer className="border-t border-white/[0.04] px-6 py-6 text-center text-[10px] font-mono text-slate-600 tracking-widest">
-        TRUSTLAYERLABS — IP THREAT INTELLIGENCE COMMAND CENTER &nbsp;◈&nbsp; FOR EDUCATIONAL AND AWARENESS PURPOSES
+        {t("ipScannerPage.footer", "TRUSTLAYERLABS — IP THREAT INTELLIGENCE COMMAND CENTER ◈ FOR EDUCATIONAL AND AWARENESS PURPOSES")}
       </footer>
     </div>
   );

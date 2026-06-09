@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const MODULE_ROUTES: Record<string, string> = {
   "scam-analyzer": "/analyzer",
@@ -488,8 +489,9 @@ const statusConfig = {
   learning: { color: "bg-sky-400", label: "text-sky-400", ring: "rgba(56,189,248,0.4)" },
 };
 
-const StatusDot: React.FC<{ type: CyberModule["statusType"]; label: string }> = ({ type, label }) => {
+const StatusDot: React.FC<{ type: CyberModule["statusType"]; label: string; moduleId: string }> = ({ type, label, moduleId }) => {
   const cfg = statusConfig[type];
+  const { t } = useTranslation();
   return (
     <div className="flex items-center gap-2">
       <div className="relative flex items-center justify-center">
@@ -505,15 +507,18 @@ const StatusDot: React.FC<{ type: CyberModule["statusType"]; label: string }> = 
           style={{ borderColor: cfg.ring }}
         />
       </div>
-      <span className={`text-[10px] font-mono tracking-widest ${cfg.label}`}>{label}</span>
+      <span className={`text-[10px] font-mono tracking-widest ${cfg.label}`}>
+        {t(`coreModules.modules.${moduleId}.statusLabel`, label)}
+      </span>
     </div>
   );
 };
 
 // ─── Live Data Ticker ─────────────────────────────────────────────────────────
 
-const LiveTicker: React.FC<{ items: string[]; accentColor: string }> = ({ items, accentColor }) => {
+const LiveTicker: React.FC<{ items: string[]; accentColor: string; moduleId: string }> = ({ items, accentColor, moduleId }) => {
   const [index, setIndex] = useState(0);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -534,7 +539,7 @@ const LiveTicker: React.FC<{ items: string[]; accentColor: string }> = ({ items,
           transition={{ duration: 0.3 }}
           className={`text-[10px] font-mono truncate ${accentColor} opacity-70`}
         >
-          {items[index]}
+          {t(`coreModules.modules.${moduleId}.liveData.item${index}`, items[index])}
         </motion.span>
       </AnimatePresence>
     </div>
@@ -593,6 +598,7 @@ const RadarPulse: React.FC<{ rings: number; color: string }> = ({ rings, color }
 const ModuleCard: React.FC<{ module: CyberModule; index: number }> = ({ module, index }) => {
   const navigate = useNavigate();
   const ref = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
   const [isHovered, setIsHovered] = useState(false);
   const [scanPosition, setScanPosition] = useState(0);
   const moduleRoute = MODULE_ROUTES[module.id];
@@ -738,10 +744,10 @@ const ModuleCard: React.FC<{ module: CyberModule; index: number }> = ({ module, 
               {/* Title + subtitle */}
               <div>
                 <h3 className="text-white font-semibold text-base leading-tight font-mono tracking-tight">
-                  {module.title}
+                  {t(`coreModules.modules.${module.id}.title`, module.title)}
                 </h3>
                 <p className={`text-xs mt-0.5 font-mono tracking-widest uppercase ${module.accentColor} opacity-60`}>
-                  {module.subtitle}
+                  {t(`coreModules.modules.${module.id}.subtitle`, module.subtitle)}
                 </p>
               </div>
             </div>
@@ -749,19 +755,19 @@ const ModuleCard: React.FC<{ module: CyberModule; index: number }> = ({ module, 
 
           {/* Status row */}
           <div className="flex items-center justify-between">
-            <StatusDot type={module.statusType} label={module.statusLabel} />
+            <StatusDot type={module.statusType} label={module.statusLabel} moduleId={module.id} />
             <div className="h-px flex-1 mx-3" style={{ background: `linear-gradient(90deg, ${module.borderColor}, transparent)` }} />
             <span className="text-[9px] font-mono text-white/20 tracking-widest">SYS/{module.id.toUpperCase().slice(0, 6)}</span>
           </div>
 
           {/* Description */}
           <p className="text-white/50 text-[13px] leading-relaxed font-light flex-1">
-            {module.description}
+            {t(`coreModules.modules.${module.id}.description`, module.description)}
           </p>
 
           {/* Tags */}
           <div className="flex flex-wrap gap-2">
-            {module.tags.map((tag) => (
+            {module.tags.map((tag, i) => (
               <span
                 key={tag}
                 className="px-2 py-0.5 rounded text-[10px] font-mono tracking-wide"
@@ -771,7 +777,7 @@ const ModuleCard: React.FC<{ module: CyberModule; index: number }> = ({ module, 
                   color: module.borderColor.replace("rgba(", "").replace(", 0.3)", "").split(",").map((n) => parseInt(n)).join(","),
                 }}
               >
-                {tag}
+                {t(`coreModules.modules.${module.id}.tags.tag${i}`, tag)}
               </span>
             ))}
           </div>
@@ -786,9 +792,9 @@ const ModuleCard: React.FC<{ module: CyberModule; index: number }> = ({ module, 
           >
             <div className="flex items-center gap-2 mb-1">
               <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
-              <span className="text-[9px] font-mono text-white/30 tracking-widest uppercase">Live Intelligence</span>
+              <span className="text-[9px] font-mono text-white/30 tracking-widest uppercase">{t('coreModules.liveIntelligence', 'Live Intelligence')}</span>
             </div>
-            <LiveTicker items={module.liveData} accentColor={module.accentColor} />
+            <LiveTicker items={module.liveData} accentColor={module.accentColor} moduleId={module.id} />
           </div>
 
           {/* CTA row */}
@@ -798,7 +804,7 @@ const ModuleCard: React.FC<{ module: CyberModule; index: number }> = ({ module, 
             transition={{ duration: 0.3 }}
           >
             <span className={`text-xs font-mono ${module.accentColor} tracking-widest`}>
-              LAUNCH MODULE →
+              {t('coreModules.launchModule', 'LAUNCH MODULE →')}
             </span>
             <div className="flex gap-1">
               {[1, 2, 3].map((i) => (
@@ -820,90 +826,93 @@ const ModuleCard: React.FC<{ module: CyberModule; index: number }> = ({ module, 
 
 // ─── Section Header ───────────────────────────────────────────────────────────
 
-const SectionHeader: React.FC = () => (
-  <div className="text-center mb-20 relative z-10 px-4">
-    {/* Overline */}
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-      className="flex items-center justify-center gap-4 mb-6"
-    >
-      <div className="h-px w-16 bg-gradient-to-r from-transparent to-cyan-500/50" />
-      <span className="text-[11px] font-mono tracking-[0.3em] text-cyan-400/60 uppercase">
-        AI · Awareness · Intelligence
-      </span>
-      <div className="h-px w-16 bg-gradient-to-l from-transparent to-cyan-500/50" />
-    </motion.div>
+const SectionHeader: React.FC = () => {
+  const { t } = useTranslation();
+  return (
+    <div className="text-center mb-20 relative z-10 px-4">
+      {/* Overline */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="flex items-center justify-center gap-4 mb-6"
+      >
+        <div className="h-px w-16 bg-gradient-to-r from-transparent to-cyan-500/50" />
+        <span className="text-[11px] font-mono tracking-[0.3em] text-cyan-400/60 uppercase">
+          {t('coreModules.sectionLabel', 'AI · Awareness · Intelligence')}
+        </span>
+        <div className="h-px w-16 bg-gradient-to-l from-transparent to-cyan-500/50" />
+      </motion.div>
 
-    {/* Title */}
-    <motion.h2
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, delay: 0.1 }}
-      className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight"
-      style={{ fontFamily: "'Space Grotesk', 'SF Pro Display', system-ui, sans-serif", letterSpacing: "-0.02em" }}
-    >
-      Command Center
-      <span className="block text-transparent bg-clip-text"
-        style={{ backgroundImage: "linear-gradient(135deg, #22d3ee 0%, #34d399 50%, #818cf8 100%)" }}>
-        Core Modules
-      </span>
-    </motion.h2>
+      {/* Title */}
+      <motion.h2
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.1 }}
+        className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight"
+        style={{ fontFamily: "'Space Grotesk', 'SF Pro Display', system-ui, sans-serif", letterSpacing: "-0.02em" }}
+      >
+        {t('coreModules.titleHeader', 'Command Center')}
+        <span className="block text-transparent bg-clip-text"
+          style={{ backgroundImage: "linear-gradient(135deg, #22d3ee 0%, #34d399 50%, #818cf8 100%)" }}>
+          {t('coreModules.titleHeaderColored', 'Core Modules')}
+        </span>
+      </motion.h2>
 
-    {/* Subtitle */}
-    <motion.p
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: 0.2 }}
-      className="text-white/40 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light"
-    >
-      Eleven AI-powered awareness systems designed to educate, protect, and empower
-      citizens against the evolving landscape of cyber threats.
-    </motion.p>
+      {/* Subtitle */}
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="text-white/40 text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light"
+      >
+        {t('coreModules.subtitleHeader', 'Eleven AI-powered awareness systems designed to educate, protect, and empower citizens against the evolving landscape of cyber threats.')}
+      </motion.p>
 
-    {/* Animated divider */}
-    <motion.div
-      initial={{ scaleX: 0 }}
-      whileInView={{ scaleX: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 1, delay: 0.4 }}
-      className="mt-10 h-px max-w-lg mx-auto"
-      style={{
-        background: "linear-gradient(90deg, transparent, rgba(34,211,238,0.5), rgba(52,211,153,0.5), transparent)",
-      }}
-    />
+      {/* Animated divider */}
+      <motion.div
+        initial={{ scaleX: 0 }}
+        whileInView={{ scaleX: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, delay: 0.4 }}
+        className="mt-10 h-px max-w-lg mx-auto"
+        style={{
+          background: "linear-gradient(90deg, transparent, rgba(34,211,238,0.5), rgba(52,211,153,0.5), transparent)",
+        }}
+      />
 
-    {/* Live system count */}
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ delay: 0.6 }}
-      className="mt-6 flex items-center justify-center gap-6 text-[11px] font-mono text-white/30"
-    >
-      {[
-        { label: "ACTIVE MODULES", value: "12" },
-        { label: "THREAT VECTORS", value: "40+" },
-        { label: "AWARENESS SYSTEMS", value: "ONLINE" },
-      ].map(({ label, value }) => (
-        <div key={label} className="flex items-center gap-2">
-          <div className="w-1 h-1 rounded-full bg-cyan-400 animate-pulse" />
-          <span className="text-cyan-400/60">{value}</span>
-          <span>{label}</span>
-        </div>
-      ))}
-    </motion.div>
-  </div>
-);
+      {/* Live system count */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.6 }}
+        className="mt-6 flex items-center justify-center gap-6 text-[11px] font-mono text-white/30"
+      >
+        {[
+          { labelKey: "coreModules.systemCounts.activeModules", label: "ACTIVE MODULES", value: "12" },
+          { labelKey: "coreModules.systemCounts.threatVectors", label: "THREAT VECTORS", value: "40+" },
+          { labelKey: "coreModules.systemCounts.awarenessSystems", label: "AWARENESS SYSTEMS", value: "ONLINE" },
+        ].map(({ labelKey, label, value }) => (
+          <div key={label} className="flex items-center gap-2">
+            <div className="w-1 h-1 rounded-full bg-cyan-400 animate-pulse" />
+            <span className="text-cyan-400/60">{value}</span>
+            <span>{t(labelKey, label)}</span>
+          </div>
+        ))}
+      </motion.div>
+    </div>
+  );
+};
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 const CoreModules: React.FC = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <section
@@ -966,8 +975,8 @@ const CoreModules: React.FC = () => {
             }}
           >
             <div className="text-left">
-              <p className="text-white font-medium text-sm">All modules are free and educational</p>
-              <p className="text-white/40 text-xs mt-0.5 font-mono">No data stored · No accounts required · Public cyber intelligence</p>
+              <p className="text-white font-medium text-sm">{t('coreModules.bottomCtaTitle', 'All modules are free and educational')}</p>
+              <p className="text-white/40 text-xs mt-0.5 font-mono">{t('coreModules.bottomCtaDesc', 'No data stored · No accounts required · Public cyber intelligence')}</p>
             </div>
             <motion.button
               type="button"
@@ -980,7 +989,7 @@ const CoreModules: React.FC = () => {
                 boxShadow: "0 4px 20px rgba(34,211,238,0.3)",
               }}
             >
-              <span className="relative z-10 tracking-widest text-xs">ENTER COMMAND CENTER</span>
+              <span className="relative z-10 tracking-widest text-xs">{t('coreModules.bottomCtaBtn', 'ENTER COMMAND CENTER')}</span>
             </motion.button>
           </div>
         </motion.div>

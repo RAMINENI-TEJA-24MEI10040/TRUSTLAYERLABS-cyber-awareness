@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 
@@ -722,7 +723,7 @@ function ThreatBadge({ level }) {
   return (
     <span className={`threat-badge ${cls}`}>
       <span className="threat-dot"/>
-      {level}
+      {t("quizPage.threatLevels."+String(level), level)}
     </span>
   );
 }
@@ -746,30 +747,31 @@ function XPPopup({ xp, show }) {
 // ─── VIEWS ───────────────────────────────────────────────────────────────────
 
 function HomeView({ onNav, totalXP }) {
+  const { t } = useTranslation();
   const modules = [
-    { view: "quiz", icon: "⬡", label: "CYBER AWARENESS", desc: "Phishing, social engineering, and digital hygiene scenarios", color: "#00d4ff", bgColor: "rgba(0,212,255,0.1)" },
-    { view: "challenge", icon: "⚠", label: "SCAM SIMULATOR", desc: "Classify real threats under pressure — build instant decision confidence", color: "#ff8c00", bgColor: "rgba(255,140,0,0.1)" },
-    { view: "casestudy", icon: "◈", label: "CASE STUDIES", desc: "Analyze confirmed incidents and master response patterns", color: "#a855f7", bgColor: "rgba(168,85,247,0.1)" },
-    { view: "leaderboard", icon: "▲", label: "LEADERBOARD", desc: "Track XP, cyber rank, and training progress against peers", color: "#00ff9d", bgColor: "rgba(0,255,157,0.1)" },
+    { view: "quiz", icon: "⬡", label: t("quizPage.home.moduleCyber", "CYBER AWARENESS"), desc: t("quizPage.home.moduleCyberDesc", "Phishing, social engineering, and digital hygiene scenarios"), color: "#00d4ff", bgColor: "rgba(0,212,255,0.1)" },
+    { view: "challenge", icon: "⚠", label: t("quizPage.home.moduleScam", "SCAM SIMULATOR"), desc: t("quizPage.home.moduleScamDesc", "Classify real threats under pressure — build instant decision confidence"), color: "#ff8c00", bgColor: "rgba(255,140,0,0.1)" },
+    { view: "casestudy", icon: "◈", label: t("quizPage.home.moduleCases", "CASE STUDIES"), desc: t("quizPage.home.moduleCasesDesc", "Analyze confirmed incidents and master response patterns"), color: "#a855f7", bgColor: "rgba(168,85,247,0.1)" },
+    { view: "leaderboard", icon: "▲", label: t("quizPage.home.moduleLeaderboard", "LEADERBOARD"), desc: t("quizPage.home.moduleLeaderboardDesc", "Track XP, cyber rank, and training progress against peers"), color: "#00ff9d", bgColor: "rgba(0,255,157,0.1)" },
   ];
 
   return (
     <div className="content-wrap" style={{ paddingTop: 48, paddingBottom: 64 }}>
       <div style={{ display: "flex", gap: 40, alignItems: "flex-start", flexWrap: "wrap" }}>
         <div style={{ flex: "1 1 400px" }} className="fade-in">
-          <div className="section-header">// AI CYBER AWARENESS COMMAND CENTER</div>
+          <div className="section-header">{t("quizPage.home.header", "// AI CYBER AWARENESS COMMAND CENTER")}</div>
           <h1 className="big-title" style={{ fontSize: "clamp(32px, 5vw, 56px)", lineHeight: 1.05, marginBottom: 20, marginTop: 8 }}>
-            <span style={{ color: "var(--c-cyan)" }}>CYBER</span>
+            <span style={{ color: "var(--c-cyan)" }}>{t("quizPage.home.titleCyber", "CYBER")}</span>
             <br/>
-            <span style={{ color: "#fff" }}>TRAINING</span>
+            <span style={{ color: "#fff" }}>{t("quizPage.home.titleTraining", "TRAINING")}</span>
             <br/>
-            <span style={{ color: "var(--c-emerald)" }}>MISSION</span>
+            <span style={{ color: "var(--c-emerald)" }}>{t("quizPage.home.titleMission", "MISSION")}</span>
           </h1>
           <p style={{ color: "var(--c-text2)", fontSize: 17, lineHeight: 1.7, maxWidth: 460, fontFamily: "var(--font-ui)" }}>
-            You are now connected to the cyber threat intelligence grid. Complete awareness missions, analyze real threats, and build your digital defense profile.
+            {t("quizPage.home.desc", "You are now connected to the cyber threat intelligence grid. Complete awareness missions, analyze real threats, and build your digital defense profile.")}
           </p>
           <div style={{ marginTop: 28, display: "flex", gap: 24, flexWrap: "wrap" }}>
-            {[["THREATS ACTIVE", "247"], ["OPERATORS ONLINE", "1,842"], ["YOUR XP", totalXP.toLocaleString()]].map(([label, val]) => (
+            {[[t("quizPage.home.threatsActive", "THREATS ACTIVE"), "247"], [t("quizPage.home.operatorsOnline", "OPERATORS ONLINE"), "1,842"], [t("quizPage.home.yourXp", "YOUR XP"), totalXP.toLocaleString()]].map(([label, val]) => (
               <div key={label}>
                 <div className="mono" style={{ fontSize: 10, color: "var(--c-text2)", letterSpacing: "0.15em", marginBottom: 4 }}>{label}</div>
                 <div className="big-title" style={{ fontSize: 24, color: label.includes("XP") ? "var(--c-emerald)" : "var(--c-cyan)" }}>{val}</div>
@@ -779,7 +781,7 @@ function HomeView({ onNav, totalXP }) {
         </div>
         <div className="fade-in-delay" style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
           <RadarWidget/>
-          <div className="mono" style={{ fontSize: 10, color: "var(--c-text2)", letterSpacing: "0.15em" }}>THREAT RADAR — LIVE</div>
+          <div className="mono" style={{ fontSize: 10, color: "var(--c-text2)", letterSpacing: "0.15em" }}>{t("quizPage.home.threatRadarLive", "THREAT RADAR — LIVE")}</div>
         </div>
       </div>
 
@@ -800,7 +802,7 @@ function HomeView({ onNav, totalXP }) {
             <div className="mono" style={{ fontSize: 10, letterSpacing: "0.2em", color: mod.color, marginBottom: 8 }}>{mod.label}</div>
             <p style={{ color: "var(--c-text2)", fontSize: 14, lineHeight: 1.6 }}>{mod.desc}</p>
             <div style={{ marginTop: 20, display: "flex", alignItems: "center", gap: 8, color: mod.color, fontSize: 12, fontFamily: "var(--font-mono)" }}>
-              ENTER MISSION <span style={{ fontSize: 16 }}>→</span>
+              {t("quizPage.home.enterMission", "ENTER MISSION")} <span style={{ fontSize: 16 }}>→</span>
             </div>
           </div>
         ))}
@@ -810,6 +812,7 @@ function HomeView({ onNav, totalXP }) {
 }
 
 function QuizView({ onXP }) {
+  const { t } = useTranslation();
   const [selected, setSelected] = useState(null);
   const [showXP, setShowXP] = useState(false);
   const q = QUIZ_QUESTIONS[0];
@@ -833,8 +836,8 @@ function QuizView({ onXP }) {
       <div style={{ maxWidth: 780, margin: "0 auto" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 32, flexWrap: "wrap", gap: 12 }} className="fade-in">
           <div>
-            <div className="section-header">// ACTIVE MISSION</div>
-            <div className="big-title" style={{ fontSize: 22, color: "#fff", marginTop: 4 }}>CYBER AWARENESS QUIZ</div>
+            <div className="section-header">{t("quizPage.quiz.header", "// ACTIVE MISSION")}</div>
+            <div className="big-title" style={{ fontSize: 22, color: "#fff", marginTop: 4 }}>{t("quizPage.quiz.title", "CYBER AWARENESS QUIZ")}</div>
           </div>
           <ThreatBadge level={q.threatLevel}/>
         </div>
@@ -850,7 +853,7 @@ function QuizView({ onXP }) {
           </div>
 
           <h2 style={{ fontSize: "clamp(17px, 2.5vw, 22px)", fontWeight: 600, lineHeight: 1.5, color: "#fff", marginBottom: 28, fontFamily: "var(--font-ui)" }}>
-            {q.text}
+            {t("quizPage.questions."+String(q.id)+".text", q.text)}
           </h2>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -864,7 +867,7 @@ function QuizView({ onXP }) {
               return (
                 <button key={opt.key} className={cls} disabled={answered} onClick={() => choose(opt.key)}>
                   <span className="key-badge">{opt.key}</span>
-                  <span>{opt.text}</span>
+                  <span>{t("quizPage.questions."+String(q.id)+".options."+opt.key, opt.text)}</span>
                   {answered && opt.correct && <span style={{ marginLeft: "auto", color: "var(--c-emerald)", fontSize: 18 }}>✓</span>}
                   {answered && opt.key === selected && !opt.correct && <span style={{ marginLeft: "auto", color: "var(--c-red)", fontSize: 18 }}>✗</span>}
                 </button>
@@ -875,12 +878,12 @@ function QuizView({ onXP }) {
           {answered && (
             <div className={`feedback-panel ${correct ? "correct" : "wrong"}`}>
               <div className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", marginBottom: 8, color: correct ? "var(--c-emerald)" : "var(--c-red)" }}>
-                {correct ? "// THREAT IDENTIFIED — CORRECT ANALYSIS" : "// ANALYSIS ERROR — REVIEW REQUIRED"}
+                {correct ? t("quizPage.quiz.feedbackCorrect", "// THREAT IDENTIFIED — CORRECT ANALYSIS") : t("quizPage.quiz.feedbackWrong", "// ANALYSIS ERROR — REVIEW REQUIRED")}
               </div>
-              <p style={{ color: "var(--c-text)", fontSize: 15, lineHeight: 1.6, fontFamily: "var(--font-ui)" }}>{q.explanation}</p>
+              <p style={{ color: "var(--c-text)", fontSize: 15, lineHeight: 1.6, fontFamily: "var(--font-ui)" }}>{t("quizPage.questions."+String(q.id)+".explanation", q.explanation)}</p>
               {correct && (
                 <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 8 }}>
-                  <div className="mono" style={{ fontSize: 11, color: "var(--c-emerald)" }}>+{q.xp} XP AWARDED</div>
+                  <div className="mono" style={{ fontSize: 11, color: "var(--c-emerald)" }}>{t("quizPage.quiz.xpAwarded", "+{{xp}} XP AWARDED", {xp: q.xp})}</div>
                 </div>
               )}
             </div>
@@ -888,13 +891,13 @@ function QuizView({ onXP }) {
         </div>
 
         <div style={{ marginTop: 16, padding: "16px 20px", display: "flex", alignItems: "center", gap: 16 }} className="glass-panel fade-in-delay2">
-          <div className="mono" style={{ fontSize: 10, color: "var(--c-text2)", letterSpacing: "0.12em" }}>AI ANALYSIS</div>
+          <div className="mono" style={{ fontSize: 10, color: "var(--c-text2)", letterSpacing: "0.12em" }}>{t("quizPage.quiz.aiAnalysis", "AI ANALYSIS")}</div>
           <div style={{ flex: 1, fontSize: 13, color: "var(--c-text2)", fontFamily: "var(--font-ui)" }}>
             {answered
               ? correct
-                ? "Excellent situational awareness. You identified the core phishing signal pattern."
-                : "Review threat vectors: urgency signals combined with URL mismatch are primary indicators."
-              : "Analyze the scenario carefully. Look for social engineering patterns and URL anomalies."}
+                ? t("quizPage.quiz.aiFeedbackCorrect", "Excellent situational awareness. You identified the core phishing signal pattern.")
+                : t("quizPage.quiz.aiFeedbackWrong", "Review threat vectors: urgency signals combined with URL mismatch are primary indicators.")
+              : t("quizPage.quiz.aiFeedbackDefault", "Analyze the scenario carefully. Look for social engineering patterns and URL anomalies.")}
           </div>
           <div style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--c-cyan)", boxShadow: "0 0 8px var(--c-cyan)", animation: "logoPulse 1.5s ease-in-out infinite" }}/>
         </div>
@@ -904,6 +907,7 @@ function QuizView({ onXP }) {
 }
 
 function ChallengeView({ onXP }) {
+  const { t } = useTranslation();
   const [idx, setIdx] = useState(0);
   const [score, setScore] = useState(0);
   const [selected, setSelected] = useState(null);
@@ -935,12 +939,12 @@ function ChallengeView({ onXP }) {
           <div className="glass-panel" style={{ padding: 48 }}>
             <BracketCorners variant="success"/>
             <div style={{ fontSize: 48, marginBottom: 20 }}>◈</div>
-            <div className="big-title" style={{ fontSize: 32, color: "var(--c-emerald)", marginBottom: 12 }}>MISSION COMPLETE</div>
-            <div className="mono" style={{ fontSize: 14, color: "var(--c-text2)", marginBottom: 24 }}>ALL CHALLENGES CLEARED</div>
+            <div className="big-title" style={{ fontSize: 32, color: "var(--c-emerald)", marginBottom: 12 }}>{t("quizPage.challenge.completeTitle", "MISSION COMPLETE")}</div>
+            <div className="mono" style={{ fontSize: 14, color: "var(--c-text2)", marginBottom: 24 }}>{t("quizPage.challenge.completeSub", "ALL CHALLENGES CLEARED")}</div>
             <div className="big-title" style={{ fontSize: 48, color: "var(--c-cyan)" }}>{score.toLocaleString()}</div>
-            <div className="mono" style={{ fontSize: 11, color: "var(--c-text2)", marginTop: 4, marginBottom: 32 }}>TOTAL XP EARNED</div>
+            <div className="mono" style={{ fontSize: 11, color: "var(--c-text2)", marginTop: 4, marginBottom: 32 }}>{t("quizPage.challenge.totalXp", "TOTAL XP EARNED")}</div>
             <button className="cyber-btn primary" onClick={() => { setIdx(0); setSelected(null); setScore(0); setCompletedAll(false); }}>
-              RESTART MISSION
+              {t("quizPage.challenge.restart", "RESTART MISSION")}
             </button>
           </div>
         </div>
@@ -967,7 +971,7 @@ function ChallengeView({ onXP }) {
           </div>
 
           <h2 style={{ fontSize: "clamp(18px, 2vw, 22px)", fontWeight: 700, color: "#fff", marginBottom: 20, fontFamily: "var(--font-display)", letterSpacing: "0.05em" }}>
-            {ch.title}
+            {t("quizPage.challenges."+String(ch.id)+".title", ch.title)}
           </h2>
 
           <div style={{
@@ -981,7 +985,7 @@ function ChallengeView({ onXP }) {
             color: "var(--c-text)",
             fontFamily: "var(--font-ui)",
           }}>
-            {ch.scenario}
+            {t("quizPage.challenges."+String(ch.id)+".scenario", ch.scenario)}
           </div>
 
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -994,7 +998,7 @@ function ChallengeView({ onXP }) {
               }
               return (
                 <button key={opt} className={cls} disabled={answered} onClick={() => choose(opt)}>
-                  <span>{opt}</span>
+                  <span>{t("quizPage.challenges."+String(ch.id)+".options."+String(opt), opt)}</span>
                   {answered && opt === ch.answer && <span style={{ marginLeft: "auto", color: "var(--c-emerald)" }}>✓</span>}
                   {answered && opt === selected && opt !== ch.answer && <span style={{ marginLeft: "auto", color: "var(--c-red)" }}>✗</span>}
                 </button>
@@ -1005,9 +1009,9 @@ function ChallengeView({ onXP }) {
           {answered && (
             <div className={`feedback-panel ${correct ? "correct" : "wrong"}`}>
               <div className="mono" style={{ fontSize: 11, letterSpacing: "0.15em", marginBottom: 8, color: correct ? "var(--c-emerald)" : "var(--c-red)" }}>
-                {correct ? "// CORRECT CLASSIFICATION" : "// RECLASSIFICATION REQUIRED"}
+                {correct ? t("quizPage.challenge.correctHeader", "// CORRECT CLASSIFICATION") : t("quizPage.challenge.wrongHeader", "// RECLASSIFICATION REQUIRED")}
               </div>
-              <p style={{ color: "var(--c-text)", fontSize: 14, lineHeight: 1.6 }}>{ch.explanation}</p>
+              <p style={{ color: "var(--c-text)", fontSize: 14, lineHeight: 1.6 }}>{t("quizPage.challenges."+String(ch.id)+".explanation", ch.explanation)}</p>
               <div style={{ marginTop: 16 }}>
                 <button className={`cyber-btn ${correct ? "primary" : "danger"}`} onClick={next}>
                   {idx + 1 >= CHALLENGES.length ? "COMPLETE MISSION" : "NEXT CHALLENGE →"}
@@ -1020,9 +1024,9 @@ function ChallengeView({ onXP }) {
         <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
           <div className="glass-panel" style={{ padding: 20 }}>
             <BracketCorners/>
-            <div className="mono" style={{ fontSize: 10, color: "var(--c-text2)", letterSpacing: "0.15em", marginBottom: 12 }}>MISSION SCORE</div>
+            <div className="mono" style={{ fontSize: 10, color: "var(--c-text2)", letterSpacing: "0.15em", marginBottom: 12 }}>{t("quizPage.challenge.score", "MISSION SCORE")}</div>
             <div className="big-title" style={{ fontSize: 40, color: "var(--c-cyan)" }}>{score.toLocaleString()}</div>
-            <div className="mono" style={{ fontSize: 10, color: "var(--c-text2)", marginTop: 4 }}>XP EARNED</div>
+            <div className="mono" style={{ fontSize: 10, color: "var(--c-text2)", marginTop: 4 }}>{t("quizPage.challenge.xpEarned", "XP EARNED")}</div>
             <div className="divider"/>
             <div style={{ display: "flex", gap: 6 }}>
               {CHALLENGES.map((_, i) => (
@@ -1033,13 +1037,13 @@ function ChallengeView({ onXP }) {
               ))}
             </div>
             <div className="mono" style={{ fontSize: 10, color: "var(--c-text2)", marginTop: 10 }}>
-              {idx + 1} / {CHALLENGES.length} MISSIONS
+              {t("quizPage.challenge.missions", "{{current}} / {{total}} MISSIONS", {current: idx + 1, total: CHALLENGES.length})}
             </div>
           </div>
 
           <div className="glass-panel" style={{ padding: 20 }}>
             <RadarWidget/>
-            <div className="mono" style={{ fontSize: 10, color: "var(--c-text2)", marginTop: 8, letterSpacing: "0.12em", textAlign: "center" }}>ACTIVE THREATS</div>
+            <div className="mono" style={{ fontSize: 10, color: "var(--c-text2)", marginTop: 8, letterSpacing: "0.12em", textAlign: "center" }}>{t("quizPage.challenge.activeThreats", "ACTIVE THREATS")}</div>
           </div>
         </div>
       </div>
@@ -1048,6 +1052,7 @@ function ChallengeView({ onXP }) {
 }
 
 function CaseStudyView({ onXP }) {
+  const { t } = useTranslation();
   const [idx, setIdx] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const cs = CASE_STUDIES[idx];
@@ -1063,8 +1068,8 @@ function CaseStudyView({ onXP }) {
       <div style={{ maxWidth: 820, margin: "0 auto" }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 32, flexWrap: "wrap", gap: 12 }} className="fade-in">
           <div>
-            <div className="section-header">// INTELLIGENCE CASE FILES</div>
-            <div className="big-title" style={{ fontSize: 22, color: "#fff", marginTop: 4 }}>INCIDENT ANALYSIS</div>
+            <div className="section-header">{t("quizPage.caseStudy.header", "// INTELLIGENCE CASE FILES")}</div>
+            <div className="big-title" style={{ fontSize: 22, color: "#fff", marginTop: 4 }}>{t("quizPage.caseStudy.title", "INCIDENT ANALYSIS")}</div>
           </div>
           <div style={{ display: "flex", gap: 8 }}>
             {CASE_STUDIES.map((c, i) => (
@@ -1084,31 +1089,31 @@ function CaseStudyView({ onXP }) {
           <BracketCorners variant="danger"/>
 
           <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 20, flexWrap: "wrap" }}>
-            <div className="mission-tag">{cs.category}</div>
+            <div className="mission-tag">{t("quizPage.caseStudies."+String(cs.id)+".category", cs.category)}</div>
             <div style={{ flex: 1, height: 1, background: "rgba(0,212,255,0.08)" }}/>
             <ThreatBadge level={cs.threatLevel}/>
           </div>
 
           <h2 style={{ fontSize: "clamp(20px, 3vw, 28px)", fontWeight: 700, color: "#fff", marginBottom: 20, fontFamily: "var(--font-display)", letterSpacing: "0.05em" }}>
-            {cs.title}
+            {t("quizPage.caseStudies."+String(cs.id)+".title", cs.title)}
           </h2>
 
           <p style={{ fontSize: 16, lineHeight: 1.75, color: "var(--c-text)", marginBottom: 24, fontFamily: "var(--font-ui)" }}>
-            {cs.body}
+            {t("quizPage.caseStudies."+String(cs.id)+".body", cs.body)}
           </p>
 
           <div style={{ marginBottom: 28 }}>
-            <div className="mono" style={{ fontSize: 10, color: "var(--c-red)", letterSpacing: "0.15em", marginBottom: 12 }}>THREAT INDICATORS</div>
+            <div className="mono" style={{ fontSize: 10, color: "var(--c-red)", letterSpacing: "0.15em", marginBottom: 12 }}>{t("quizPage.caseStudy.indicators", "THREAT INDICATORS")}</div>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               {cs.indicators.map(ind => (
-                <span key={ind} className="indicator-chip">{ind}</span>
+                <span key={t("quizPage.caseStudies."+String(cs.id)+".indicators."+String(ind), ind)} className="indicator-chip">{t("quizPage.caseStudies."+String(cs.id)+".indicators."+String(ind), ind)}</span>
               ))}
             </div>
           </div>
 
           {!revealed ? (
             <button className="cyber-btn" onClick={handleReveal} style={{ position: "relative", overflow: "hidden" }}>
-              DECRYPT INTELLIGENCE FILE — +{cs.xp} XP
+              {t("quizPage.caseStudy.decryptBtn", "DECRYPT INTELLIGENCE FILE — +{{xp}} XP", {xp: cs.xp})}
             </button>
           ) : (
             <div className="fade-in" style={{
@@ -1118,17 +1123,17 @@ function CaseStudyView({ onXP }) {
               borderRadius: 6,
             }}>
               <div className="mono" style={{ fontSize: 10, color: "var(--c-emerald)", letterSpacing: "0.2em", marginBottom: 12 }}>
-                // DEFENSE PROTOCOL DECRYPTED
+                {t("quizPage.caseStudy.decryptHeader", "// DEFENSE PROTOCOL DECRYPTED")}
               </div>
-              <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--c-text)", fontFamily: "var(--font-ui)" }}>{cs.lesson}</p>
-              <div className="mono" style={{ fontSize: 11, color: "var(--c-emerald)", marginTop: 12 }}>+{cs.xp} XP AWARDED</div>
+              <p style={{ fontSize: 15, lineHeight: 1.7, color: "var(--c-text)", fontFamily: "var(--font-ui)" }}>{t("quizPage.caseStudies."+String(cs.id)+".lesson", cs.lesson)}</p>
+              <div className="mono" style={{ fontSize: 11, color: "var(--c-emerald)", marginTop: 12 }}>{t("quizPage.caseStudy.xpAwarded", "+{{xp}} XP AWARDED", {xp: cs.xp})}</div>
             </div>
           )}
         </div>
 
         <div style={{ display: "flex", gap: 12, marginTop: 16, justifyContent: "center", flexWrap: "wrap" }}>
-          {idx > 0 && <button className="cyber-btn" onClick={() => goto(idx - 1)}>← PREV CASE</button>}
-          {idx < CASE_STUDIES.length - 1 && <button className="cyber-btn primary" onClick={() => goto(idx + 1)}>NEXT CASE →</button>}
+          {idx > 0 && <button className="cyber-btn" onClick={() => goto(idx - 1)}>{t("quizPage.caseStudy.prevBtn", "← PREV CASE")}</button>}
+          {idx < CASE_STUDIES.length - 1 && <button className="cyber-btn primary" onClick={() => goto(idx + 1)}>{t("quizPage.caseStudy.nextBtn", "NEXT CASE →")}</button>}
         </div>
       </div>
     </div>
@@ -1136,6 +1141,7 @@ function CaseStudyView({ onXP }) {
 }
 
 function LeaderboardView({ totalXP }) {
+  const { t } = useTranslation();
   const userRank = { rank: "?", name: "YOU", xp: totalXP, rank_title: "RECRUIT", badge: "△" };
   const allEntries = [...LEADERBOARD, { ...userRank, isUser: true }].sort((a, b) => b.xp - a.xp);
 
@@ -1144,8 +1150,8 @@ function LeaderboardView({ totalXP }) {
       <div style={{ maxWidth: 680, margin: "0 auto" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 20, marginBottom: 36, flexWrap: "wrap" }} className="fade-in">
           <div>
-            <div className="section-header">// GLOBAL RANKING MATRIX</div>
-            <div className="big-title" style={{ fontSize: 26, color: "#fff", marginTop: 4 }}>OPERATOR LEADERBOARD</div>
+            <div className="section-header">{t("quizPage.leaderboard.header", "// GLOBAL RANKING MATRIX")}</div>
+            <div className="big-title" style={{ fontSize: 26, color: "#fff", marginTop: 4 }}>{t("quizPage.leaderboard.title", "OPERATOR LEADERBOARD")}</div>
           </div>
           <RadarWidget/>
         </div>
@@ -1178,7 +1184,7 @@ function LeaderboardView({ totalXP }) {
                 </div>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontWeight: 700, fontSize: 16, color: entry.isUser ? "var(--c-emerald)" : "#fff", fontFamily: "var(--font-ui)" }}>
-                    {entry.name} {entry.isUser && <span className="mono" style={{ fontSize: 10, color: "var(--c-emerald)", marginLeft: 6 }}>[YOU]</span>}
+                    {entry.name} {entry.isUser && <span className="mono" style={{ fontSize: 10, color: "var(--c-emerald)", marginLeft: 6 }}>{t("quizPage.leaderboard.you", "[YOU]")}</span>}
                   </div>
                   <div className="mono" style={{ fontSize: 10, color: "var(--c-text2)", letterSpacing: "0.12em" }}>{entry.rank_title}</div>
                 </div>
@@ -1195,7 +1201,7 @@ function LeaderboardView({ totalXP }) {
 
         <div className="glass-panel fade-in" style={{ padding: 20, marginTop: 24 }}>
           <div style={{ display: "flex", gap: 32, flexWrap: "wrap" }}>
-            {[["TOTAL OPERATORS", "1,842"], ["MISSIONS COMPLETED TODAY", "3,241"], ["YOUR SESSION XP", totalXP.toLocaleString()]].map(([label, val]) => (
+            {[[t("quizPage.leaderboard.totalOps", "TOTAL OPERATORS"), "1,842"], [t("quizPage.leaderboard.completedToday", "MISSIONS COMPLETED TODAY"), "3,241"], [t("quizPage.leaderboard.sessionXp", "YOUR SESSION XP"), totalXP.toLocaleString()]].map(([label, val]) => (
               <div key={label}>
                 <div className="mono" style={{ fontSize: 10, color: "var(--c-text2)", letterSpacing: "0.12em", marginBottom: 6 }}>{label}</div>
                 <div className="big-title" style={{ fontSize: 22, color: label.includes("SESSION") ? "var(--c-emerald)" : "var(--c-cyan)" }}>{val}</div>
@@ -1211,6 +1217,7 @@ function LeaderboardView({ totalXP }) {
 // ─── ROOT ─────────────────────────────────────────────────────────────────────
 
 export default function CyberAwarenessCommandCenter({ initialView = "home" }) {
+  const { t } = useTranslation();
   const [view, setView] = useState(initialView);
   const [totalXP, setTotalXP] = useState(0);
   const [timeStr, setTimeStr] = useState("");
@@ -1232,11 +1239,11 @@ export default function CyberAwarenessCommandCenter({ initialView = "home" }) {
   const addXP = useCallback((xp) => setTotalXP(x => x + xp), []);
 
   const tabs = [
-    { id: "home", label: "COMMAND" },
-    { id: "quiz", label: "QUIZ" },
-    { id: "challenge", label: "CHALLENGE" },
-    { id: "casestudy", label: "CASES" },
-    { id: "leaderboard", label: "LEADERBOARD" },
+    { id: "home", label: t("quizPage.nav.command", "COMMAND") },
+    { id: "quiz", label: t("quizPage.nav.quiz", "QUIZ") },
+    { id: "challenge", label: t("quizPage.nav.challenge", "CHALLENGE") },
+    { id: "casestudy", label: t("quizPage.nav.cases", "CASES") },
+    { id: "leaderboard", label: t("quizPage.nav.leaderboard", "LEADERBOARD") },
   ];
 
   return (
@@ -1268,7 +1275,7 @@ export default function CyberAwarenessCommandCenter({ initialView = "home" }) {
             <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 2, minWidth: 0 }}>
               <div className="nav-status">
                 <div className="status-dot"/>
-                SYSTEMS ONLINE
+                {t("quizPage.nav.systemsOnline", "SYSTEMS ONLINE")}
               </div>
               <div className="mono" style={{ fontSize: 9, color: "var(--c-text2)", letterSpacing: "0.08em" }}>
                 {timeStr}

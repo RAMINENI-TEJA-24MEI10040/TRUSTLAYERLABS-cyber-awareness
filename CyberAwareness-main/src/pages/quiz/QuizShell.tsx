@@ -1,16 +1,18 @@
 import { type ReactNode } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const links = [
-  { to: '/quiz', label: 'Module Home' },
-  { to: '/quiz/play', label: 'Quizzes' },
-  { to: '/quiz/challenge', label: 'Challenge' },
-  { to: '/quiz/leaderboard', label: 'Leaderboard' },
-  { to: '/quiz/case-study', label: 'Case Studies' },
+  { to: '/quiz', label: 'Module Home', labelKey: 'quizPage.links.home' },
+  { to: '/quiz/play', label: 'Quizzes', labelKey: 'quizPage.links.quizzes' },
+  { to: '/quiz/challenge', label: 'Challenge', labelKey: 'quizPage.links.challenge' },
+  { to: '/quiz/leaderboard', label: 'Leaderboard', labelKey: 'quizPage.links.leaderboard' },
+  { to: '/quiz/case-study', label: 'Case Studies', labelKey: 'quizPage.links.caseStudies' },
 ];
 
 export function QuizShell({ children }: { children: ReactNode }) {
   const location = useLocation();
+  const { t } = useTranslation();
 
   return (
     <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-white transition-colors duration-300">
@@ -26,7 +28,7 @@ export function QuizShell({ children }: { children: ReactNode }) {
                   : 'border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900/70 text-gray-700 dark:text-gray-300 hover:border-cyan-400/40 dark:hover:border-cyan-500/40 hover:text-cyan-500 transition-colors'
               }`}
             >
-              {link.label}
+              {t(link.labelKey, link.label)}
             </Link>
           ))}
         </div>

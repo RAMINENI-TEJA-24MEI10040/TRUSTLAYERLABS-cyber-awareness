@@ -4,6 +4,7 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, useMotionValue, useSpring, AnimatePresence } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -582,73 +583,82 @@ const CyberScene = ({ mouseX, mouseY }: { mouseX: number; mouseY: number }) => {
 
 // ─── Left side ────────────────────────────────────────────────────────────────
 
-const Eyebrow = () => (
-  <motion.div
-    className="flex items-center gap-2 mb-6"
-    initial={{ opacity: 0, y: 16 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.2, duration: 0.6 }}
-  >
+const Eyebrow = () => {
+  const { t } = useTranslation();
+  return (
     <motion.div
-      className="h-px w-8 bg-gradient-to-r from-transparent to-cyan-400"
-      animate={{ scaleX: [0, 1] }}
-      transition={{ delay: 0.4, duration: 0.5 }}
-    />
-    <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-cyan-400/80 font-medium">
-      AI Cyber Intelligence
-    </span>
+      className="flex items-center gap-2 mb-6"
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.2, duration: 0.6 }}
+    >
+      <motion.div
+        className="h-px w-8 bg-gradient-to-r from-transparent to-cyan-400"
+        animate={{ scaleX: [0, 1] }}
+        transition={{ delay: 0.4, duration: 0.5 }}
+      />
+      <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-cyan-400/80 font-medium">
+        {t('hero.eyebrow', 'AI Cyber Intelligence')}
+      </span>
+      <motion.div
+        className="w-1.5 h-1.5 rounded-full bg-cyan-400"
+        animate={{ opacity: [1, 0.3, 1] }}
+        transition={{ duration: 1.4, repeat: Infinity }}
+      />
+      <span className="text-[11px] font-mono uppercase tracking-[0.15em] text-emerald-400/70">
+        {t('hero.commandCenter', 'Command Center')}
+      </span>
+    </motion.div>
+  );
+};
+
+const Headline = () => {
+  const { t } = useTranslation();
+  return (
     <motion.div
-      className="w-1.5 h-1.5 rounded-full bg-cyan-400"
-      animate={{ opacity: [1, 0.3, 1] }}
-      transition={{ duration: 1.4, repeat: Infinity }}
-    />
-    <span className="text-[11px] font-mono uppercase tracking-[0.15em] text-emerald-400/70">
-      Command Center
-    </span>
-  </motion.div>
-);
+      className="mb-6 space-y-1"
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.35, duration: 0.7 }}
+    >
+      <h1 className="text-4xl sm:text-5xl xl:text-6xl font-black tracking-tight leading-[1.08]" style={{ fontFamily: "'Syne', 'Space Grotesk', sans-serif" }}>
+        <span className="block text-white">{t('hero.stayAware', 'Stay Aware.')}</span>
+        <span
+          className="block"
+          style={{
+            background: "linear-gradient(135deg, #22d3ee 0%, #34d399 60%, #818cf8 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
+          {t('hero.stayProtected', 'Stay Protected.')}
+        </span>
+        <span className="block text-slate-300 text-3xl sm:text-4xl xl:text-5xl font-semibold mt-1">
+          {t('hero.stayInControl', 'Stay in Control.')}
+        </span>
+      </h1>
+    </motion.div>
+  );
+};
 
-const Headline = () => (
-  <motion.div
-    className="mb-6 space-y-1"
-    initial={{ opacity: 0, y: 24 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.35, duration: 0.7 }}
-  >
-    <h1 className="text-4xl sm:text-5xl xl:text-6xl font-black tracking-tight leading-[1.08]" style={{ fontFamily: "'Syne', 'Space Grotesk', sans-serif" }}>
-      <span className="block text-white">Stay Aware.</span>
-      <span
-        className="block"
-        style={{
-          background: "linear-gradient(135deg, #22d3ee 0%, #34d399 60%, #818cf8 100%)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
-        }}
-      >
-        Stay Protected.
-      </span>
-      <span className="block text-slate-300 text-3xl sm:text-4xl xl:text-5xl font-semibold mt-1">
-        Stay in Control.
-      </span>
-    </h1>
-  </motion.div>
-);
-
-const SubCopy = () => (
-  <motion.p
-    className="text-slate-400 text-base sm:text-lg leading-relaxed max-w-md mb-8 font-light"
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ delay: 0.5, duration: 0.6 }}
-  >
-    AI-powered threat intelligence that helps you recognize phishing, deepfakes, QR scams, and social
-    engineering — before they reach you. Real awareness. Real protection.
-  </motion.p>
-);
+const SubCopy = () => {
+  const { t } = useTranslation();
+  return (
+    <motion.p
+      className="text-slate-400 text-base sm:text-lg leading-relaxed max-w-md mb-8 font-light"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.5, duration: 0.6 }}
+    >
+      {t('hero.subCopy', 'AI-powered threat intelligence that helps you recognize phishing, deepfakes, QR scams, and social engineering — before they reach you. Real awareness. Real protection.')}
+    </motion.p>
+  );
+};
 
 const CTAButtons = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   return (
     <motion.div
@@ -672,7 +682,7 @@ const CTAButtons = () => {
           className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
           style={{ background: "linear-gradient(135deg, #0891b2 0%, #0f766e 100%)" }}
         />
-        <span className="relative text-white">Enter the Command Center</span>
+        <span className="relative text-white">{t('hero.commandCenterBtn', 'Enter the Command Center')}</span>
         <motion.span
           className="relative text-cyan-200 text-lg pointer-events-none"
           animate={{ x: [0, 3, 0] }}
@@ -689,17 +699,18 @@ const CTAButtons = () => {
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
       >
-        <span>Learn the Threats</span>
+        <span>{t('hero.learnThreatsBtn', 'Learn the Threats')}</span>
       </motion.button>
     </motion.div>
   );
 };
 
 const TrustIndicators = () => {
+  const { t } = useTranslation();
   const indicators = [
-    { icon: "⬡", label: "AI-powered detection", color: "text-cyan-400" },
-    { icon: "◈", label: "Real-time threat mapping", color: "text-emerald-400" },
-    { icon: "◎", label: "Human-first awareness", color: "text-violet-400" },
+    { icon: "⬡", labelKey: "hero.indicatorAi", label: "AI-powered detection", color: "text-cyan-400" },
+    { icon: "◈", labelKey: "hero.indicatorRadar", label: "Real-time threat mapping", color: "text-emerald-400" },
+    { icon: "◎", labelKey: "hero.indicatorHuman", label: "Human-first awareness", color: "text-violet-400" },
   ];
   return (
     <motion.div
@@ -717,7 +728,7 @@ const TrustIndicators = () => {
           transition={{ delay: 0.85 + i * 0.1, duration: 0.4 }}
         >
           <span className={`text-base ${item.color}`}>{item.icon}</span>
-          <span>{item.label}</span>
+          <span>{t(item.labelKey, item.label)}</span>
         </motion.div>
       ))}
     </motion.div>
@@ -725,7 +736,14 @@ const TrustIndicators = () => {
 };
 
 const AwarenessJourney = () => {
-  const steps = ["Detect", "Understand", "Learn", "Protect", "Act"];
+  const { t } = useTranslation();
+  const steps = [
+    { key: "hero.cycleSteps.detect", val: "Detect" },
+    { key: "hero.cycleSteps.understand", val: "Understand" },
+    { key: "hero.cycleSteps.learn", val: "Learn" },
+    { key: "hero.cycleSteps.protect", val: "Protect" },
+    { key: "hero.cycleSteps.act", val: "Act" }
+  ];
   return (
     <motion.div
       className="mt-10 pt-8 border-t border-slate-800/60"
@@ -733,16 +751,16 @@ const AwarenessJourney = () => {
       animate={{ opacity: 1 }}
       transition={{ delay: 1.1, duration: 0.6 }}
     >
-      <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-600 mb-3">The Awareness Cycle</p>
+      <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-slate-600 mb-3">{t('hero.cycleTitle', 'The Awareness Cycle')}</p>
       <div className="flex items-center gap-1.5 flex-wrap">
         {steps.map((step, i) => (
-          <div key={step} className="flex items-center gap-1.5">
+          <div key={step.key} className="flex items-center gap-1.5">
             <motion.div
               className="px-3 py-1 rounded-full text-xs font-mono border border-cyan-500/20 bg-cyan-500/5 text-cyan-300/80"
               animate={{ borderColor: ["rgba(34,211,238,0.2)", "rgba(34,211,238,0.5)", "rgba(34,211,238,0.2)"] }}
               transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.4 }}
             >
-              {step}
+              {t(step.key, step.val)}
             </motion.div>
             {i < steps.length - 1 && (
               <motion.span

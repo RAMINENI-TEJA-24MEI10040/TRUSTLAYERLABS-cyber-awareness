@@ -8,6 +8,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { jsPDF } from "jspdf";
 import { useDropzone } from "react-dropzone";
+import { useTranslation } from "react-i18next";
 import {
   ShieldAlert,
   AlertTriangle,
@@ -246,9 +247,24 @@ function ScanBeam({ active }: { active: boolean }) {
 
 /** Status ticker showing active phase label */
 function PhaseTicker({ phase }: { phase: LoadingPhase }) {
+  const { t } = useTranslation();
   const stage = SCAN_STAGES.find((s) => s.phase === phase);
   if (!stage) return null;
   const Icon = stage.icon;
+
+  let stageLabel = stage.label;
+  let stageDetail = stage.detail;
+  if (phase === "scanning") {
+    stageLabel = t("scamAnalyzerPage.stageOcrHeading");
+    stageDetail = t("scamAnalyzerPage.stageOcrDesc");
+  } else if (phase === "analyzing") {
+    stageLabel = t("scamAnalyzerPage.stageThreatHeading");
+    stageDetail = t("scamAnalyzerPage.stageThreatDesc");
+  } else if (phase === "generating") {
+    stageLabel = t("scamAnalyzerPage.stageBriefHeading");
+    stageDetail = t("scamAnalyzerPage.stageBriefDesc");
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 8 }}
@@ -258,8 +274,8 @@ function PhaseTicker({ phase }: { phase: LoadingPhase }) {
     >
       <Icon className="w-4 h-4 text-cyan-400 shrink-0" />
       <div>
-        <div className="text-[10px] font-mono text-cyan-500 tracking-widest">{stage.label}</div>
-        <div className="text-xs text-cyan-300/70 mt-0.5">{stage.detail}</div>
+        <div className="text-[10px] font-mono text-cyan-500 tracking-widest">{stageLabel}</div>
+        <div className="text-xs text-cyan-300/70 mt-0.5">{stageDetail}</div>
       </div>
       {/* Blinking dot — sound hook: "scan-pulse" */}
       <motion.div
@@ -467,6 +483,7 @@ function CyberParticles() {
 
 /** Main header with holographic ring */
 function IntelHeader() {
+  const { t } = useTranslation();
   return (
     <motion.div
       initial={{ opacity: 0, y: -30 }}
@@ -501,21 +518,21 @@ function IntelHeader() {
       </div>
 
       <div className="text-[10px] font-mono tracking-[0.4em] text-cyan-500/70 mb-2 uppercase">
-        CYBERSHIELD ◈ INTELLIGENCE SYSTEM ◈ v4.1
+        {t("scamAnalyzerPage.version")}
       </div>
       <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-white leading-none mb-3">
-        AI SCAM INTELLIGENCE{" "}
+        {t("scamAnalyzerPage.headerTitle")}{" "}
         <span
           className="text-transparent bg-clip-text"
           style={{
             backgroundImage: "linear-gradient(135deg, #00d4ff 0%, #0066ff 100%)",
           }}
         >
-          CENTER
+          {t("scamAnalyzerPage.headerTitleColored")}
         </span>
       </h1>
       <p className="text-sm text-white/40 font-mono max-w-xl mx-auto">
-        Advanced neural threat analysis · Heuristic pattern recognition · AI-powered forensic assessment
+        {t("scamAnalyzerPage.headerSubtitle")}
       </p>
 
       {/* Horizontal line decoration */}
@@ -533,6 +550,7 @@ function IntelHeader() {
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function ScamAnalyzer() {
+  const { t } = useTranslation();
   // ── All original state preserved exactly ──
   const [text, setText] = useState("");
   const [result, setResult] = useState<AnalysisResult | null>(null);
@@ -735,7 +753,7 @@ export default function ScamAnalyzer() {
           <div className="flex items-center gap-2 mb-5">
             <Radio className="w-3 h-3 text-cyan-500" />
             <span className="text-[10px] font-mono tracking-[0.3em] text-cyan-500/70 uppercase">
-              Signal Input Terminal
+              {t("scamAnalyzerPage.terminalLabel")}
             </span>
             <motion.div
               className="w-1.5 h-1.5 rounded-full bg-cyan-500 ml-auto"
@@ -748,7 +766,7 @@ export default function ScamAnalyzer() {
           <div className="relative mb-6">
             <CornerBrackets color="#00d4ff40" size={8} />
             <textarea
-              placeholder="Paste suspicious SMS, phishing email, WhatsApp message, or scam text..."
+              placeholder={t("scamAnalyzerPage.textareaPlaceholder")}
               value={text}
               onChange={(e) => setText(e.target.value)}
               disabled={isLoading}
@@ -757,7 +775,7 @@ export default function ScamAnalyzer() {
             />
             {/* Character count */}
             <div className="absolute bottom-3 right-3 text-[10px] text-white/20">
-              {text.length} chars
+              {text.length} {t("scamAnalyzerPage.chars")}
             </div>
           </div>
 
@@ -783,10 +801,10 @@ export default function ScamAnalyzer() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-white/70">
-                  {isDragActive ? "Drop to initiate OCR scan..." : "Upload Threat Screenshot"}
+                  {isDragActive ? t("scamAnalyzerPage.dragDropActive") : t("scamAnalyzerPage.dragDropNormal")}
                 </p>
                 <p className="text-[11px] text-white/30 mt-1">
-                  Drag & drop or click · Image OCR extraction enabled
+                  {t("scamAnalyzerPage.dragDropSub")}
                 </p>
               </div>
             </div>
@@ -819,15 +837,15 @@ export default function ScamAnalyzer() {
                     ◌
                   </motion.span>
                   {loadingPhase === "scanning"
-                    ? "OCR EXTRACTION..."
+                    ? t("scamAnalyzerPage.ocrScanning")
                     : loadingPhase === "analyzing"
-                    ? "THREAT ANALYSIS..."
-                    : "AI SYNTHESIS..."}
+                    ? t("scamAnalyzerPage.threatAnalyzing")
+                    : t("scamAnalyzerPage.aiSynthesizing")}
                 </span>
               ) : (
                 <span className="flex items-center justify-center gap-2">
                   <Target className="w-4 h-4" />
-                  Initiate Intelligence Scan
+                  {t("scamAnalyzerPage.btnScan")}
                 </span>
               )}
             </motion.button>
@@ -839,7 +857,7 @@ export default function ScamAnalyzer() {
               disabled={isLoading}
               className="sm:w-auto px-5 py-3.5 rounded-xl text-sm font-semibold border border-white/15 text-white/50 hover:border-cyan-500/40 hover:text-cyan-400/80 disabled:opacity-50 disabled:cursor-not-allowed transition-all tracking-wider uppercase"
             >
-              ◈ Demo Signal
+              {t("scamAnalyzerPage.btnDemo")}
             </motion.button>
           </div>
 
@@ -916,9 +934,9 @@ export default function ScamAnalyzer() {
                       animate={{ opacity: [1, 0.3, 1] }}
                       transition={{ duration: 0.6, repeat: Infinity }}
                     >
-                      ◈ OCR SCANNING ◈
+                      {t("scamAnalyzerPage.ocrScanningHeading")}
                     </motion.div>
-                    <p className="text-xs text-cyan-300/60 font-mono">Extracting text matrix...</p>
+                    <p className="text-xs text-cyan-300/60 font-mono">{t("scamAnalyzerPage.ocrScanningText")}</p>
                   </div>
                 </div>
               )}
@@ -947,7 +965,7 @@ export default function ScamAnalyzer() {
                 <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest uppercase"
                   style={{ color: riskColors.hex }}>
                   <Eye className="w-3 h-3" />
-                  Intelligence Assessment Complete
+                  {t("scamAnalyzerPage.verdictTitle")}
                 </div>
                 <div className="h-px flex-1"
                   style={{ backgroundImage: `linear-gradient(90deg, ${riskColors.hex}50, transparent)` }}
@@ -981,7 +999,7 @@ export default function ScamAnalyzer() {
                   {/* Classification details */}
                   <div className="flex-1 min-w-0">
                     <div className="text-[10px] font-mono tracking-widest text-white/40 mb-1 uppercase">
-                      Threat Classification
+                      {t("scamAnalyzerPage.threatClassification")}
                     </div>
                     <div
                       className="text-3xl sm:text-4xl font-black tracking-tight mb-1"
@@ -993,7 +1011,7 @@ export default function ScamAnalyzer() {
 
                     {/* Confidence bar */}
                     <div className="mb-1 flex justify-between text-[10px] font-mono text-white/30">
-                      <span>AI CONFIDENCE</span>
+                      <span>{t("scamAnalyzerPage.aiConfidence")}</span>
                       <span>{result.confidence}%</span>
                     </div>
                     <ConfidenceBar value={result.confidence} color={riskColors.hex} />
@@ -1014,20 +1032,20 @@ export default function ScamAnalyzer() {
                   >
                     {/* Sound hook: "download-ping" */}
                     <Download className="w-3.5 h-3.5" />
-                    {generatingPdf ? "Compiling..." : "Intel Report"}
+                    {generatingPdf ? t("scamAnalyzerPage.btnDownloadCompiling") : t("scamAnalyzerPage.btnDownload")}
                   </motion.button>
                 </div>
               </motion.div>
 
               {/* Stat grid */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
-                <StatCard label="RISK LEVEL" value={result.risk} color={riskColors.hex} delay={0.15} />
-                <StatCard label="THREAT SCORE" value={`${result.score}`} sub="out of 100" color={riskColors.hex} delay={0.2} />
-                <StatCard label="CONFIDENCE" value={`${result.confidence}%`} color="#00d4ff" delay={0.25} />
+                <StatCard label={t("scamAnalyzerPage.statRiskLevel")} value={result.risk} color={riskColors.hex} delay={0.15} />
+                <StatCard label={t("scamAnalyzerPage.statThreatScore")} value={`${result.score}`} sub={t("scamAnalyzerPage.statOutOf100")} color={riskColors.hex} delay={0.2} />
+                <StatCard label={t("scamAnalyzerPage.statConfidence")} value={`${result.confidence}%`} color="#00d4ff" delay={0.25} />
                 <StatCard
-                  label="INDICATORS"
+                  label={t("scamAnalyzerPage.statIndicators")}
                   value={`${result.indicators.length}`}
-                  sub="signals detected"
+                  sub={t("scamAnalyzerPage.statSignals")}
                   color={result.indicators.length > 3 ? riskColors.hex : "#00d4ff"}
                   delay={0.3}
                 />
@@ -1039,7 +1057,7 @@ export default function ScamAnalyzer() {
                 {/* Why Flagged */}
                 <IntelPanel
                   id="why-flagged"
-                  title="Threat Indicators"
+                  title={t("scamAnalyzerPage.panelIndicators")}
                   icon={AlertTriangle}
                   expanded={expandedPanel === "why-flagged"}
                   onToggle={() => setExpandedPanel(expandedPanel === "why-flagged" ? null : "why-flagged")}
@@ -1065,7 +1083,7 @@ export default function ScamAnalyzer() {
                       ))}
                     </ul>
                   ) : (
-                    <p className="text-sm text-white/30 font-mono">No threat indicators detected.</p>
+                    <p className="text-sm text-white/30 font-mono">{t("scamAnalyzerPage.noIndicators")}</p>
                   )}
                 </IntelPanel>
 
@@ -1073,7 +1091,7 @@ export default function ScamAnalyzer() {
                 {result.suspiciousUrls.length > 0 && (
                   <IntelPanel
                     id="urls"
-                    title="Flagged URLs"
+                    title={t("scamAnalyzerPage.panelFlaggedUrls")}
                     icon={Globe}
                     expanded={expandedPanel === "urls"}
                     onToggle={() => setExpandedPanel(expandedPanel === "urls" ? null : "urls")}
@@ -1094,7 +1112,7 @@ export default function ScamAnalyzer() {
                 {/* Recommendation */}
                 <IntelPanel
                   id="recommendation"
-                  title="Safety Directive"
+                  title={t("scamAnalyzerPage.panelSafetyDirective")}
                   icon={Lock}
                   expanded={expandedPanel === "recommendation"}
                   onToggle={() => setExpandedPanel(expandedPanel === "recommendation" ? null : "recommendation")}
@@ -1115,7 +1133,7 @@ export default function ScamAnalyzer() {
                 {/* AI Explanation */}
                 <IntelPanel
                   id="ai-explanation"
-                  title="AI Intelligence Brief"
+                  title={t("scamAnalyzerPage.panelAiBrief")}
                   icon={Cpu}
                   expanded={expandedPanel === "ai-explanation"}
                   onToggle={() => setExpandedPanel(expandedPanel === "ai-explanation" ? null : "ai-explanation")}
@@ -1127,7 +1145,7 @@ export default function ScamAnalyzer() {
                   </div>
                   <div className="mt-4 pt-3 border-t border-white/5 flex items-center gap-2 text-[10px] font-mono text-white/25">
                     <Zap className="w-3 h-3" />
-                    Generated by Groq · Heuristic + Neural Analysis
+                    {t("scamAnalyzerPage.generatedBy")}
                   </div>
                 </IntelPanel>
 
@@ -1141,7 +1159,7 @@ export default function ScamAnalyzer() {
                 className="mt-6 text-center text-[10px] font-mono text-white/20 flex items-center justify-center gap-2"
               >
                 <ShieldCheck className="w-3 h-3" />
-                CyberShield Intelligence · Public safety awareness tool · Always verify through official channels
+                {t("scamAnalyzerPage.footerNote")}
               </motion.div>
             </motion.div>
           )}

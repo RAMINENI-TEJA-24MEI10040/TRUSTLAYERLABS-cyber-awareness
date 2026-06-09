@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, useCallback } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 // ─── TYPES ────────────────────────────────────────────────────────────────────
 type CrimeType =
@@ -413,13 +414,14 @@ function Waveform() {
 
 // ─── HERO DASHBOARD ───────────────────────────────────────────────────────────
 function HeroDashboard({ clock }: { clock: string }) {
+  const { t } = useTranslation();
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1, delay: 0.4 }} className="hidden lg:block">
       <div className="border border-cyan-900/40 rounded-md bg-[rgba(5,15,35,0.85)] backdrop-blur-xl overflow-hidden relative">
         <div className="absolute inset-0 bg-radial-gradient pointer-events-none" style={{ background: "radial-gradient(ellipse at 30% 20%, rgba(0,229,255,0.04), transparent 60%)" }} />
         <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.06] bg-cyan-950/10">
           <div className="flex items-center gap-2 font-mono text-[11px] font-bold text-cyan-400 tracking-widest uppercase">
-            <PulseDot color="cyan" />COMMAND DASHBOARD — LIVE
+            <PulseDot color="cyan" />{t('cyberLawsPage.dashboard.title', 'COMMAND DASHBOARD — LIVE')}
           </div>
           <div className="flex gap-1.5">
             <div className="w-2 h-2 rounded-full bg-red-500" />
@@ -430,10 +432,10 @@ function HeroDashboard({ clock }: { clock: string }) {
         <div className="grid grid-cols-2 gap-px bg-white/[0.06]">
           {/* RADAR */}
           <div className="bg-[#050A14] p-4">
-            <div className="font-mono text-[9px] font-bold tracking-widest text-slate-500 uppercase mb-2">ACTIVE THREAT RADAR</div>
+            <div className="font-mono text-[9px] font-bold tracking-widest text-slate-500 uppercase mb-2">{t('cyberLawsPage.dashboard.radarTitle', 'ACTIVE THREAT RADAR')}</div>
             <RadarDisplay />
             <div className="flex gap-4 mt-2 justify-center">
-              {[{ color: "bg-red-500", label: "THREAT" }, { color: "bg-amber-400", label: "WARNING" }, { color: "bg-cyan-400", label: "SAFE" }].map((l) => (
+              {[{ color: "bg-red-500", label: t('cyberLawsPage.dashboard.radarLegend.threat', 'THREAT') }, { color: "bg-amber-400", label: t('cyberLawsPage.dashboard.radarLegend.warning', 'WARNING') }, { color: "bg-cyan-400", label: t('cyberLawsPage.dashboard.radarLegend.safe', 'SAFE') }].map((l) => (
                 <div key={l.label} className="flex items-center gap-1 font-mono text-[9px] text-slate-500">
                   <div className={`w-1.5 h-1.5 rounded-full ${l.color}`} />{l.label}
                 </div>
@@ -442,7 +444,7 @@ function HeroDashboard({ clock }: { clock: string }) {
           </div>
           {/* WAVEFORM */}
           <div className="bg-[#050A14] p-4">
-            <div className="font-mono text-[9px] font-bold tracking-widest text-slate-500 uppercase mb-2">THREAT SIGNAL ANALYSIS</div>
+            <div className="font-mono text-[9px] font-bold tracking-widest text-slate-500 uppercase mb-2">{t('cyberLawsPage.dashboard.signalTitle', 'THREAT SIGNAL ANALYSIS')}</div>
             <Waveform />
             {[{ label: "PHISHING", val: "▲ 34%", width: "74%", barColor: "bg-red-500", txtColor: "text-red-500" }, { label: "UPI FRAUD", val: "▲ 18%", width: "52%", barColor: "bg-amber-400", txtColor: "text-amber-400" }, { label: "DEEPFAKE", val: "▲ 61%", width: "61%", barColor: "bg-cyan-400", txtColor: "text-cyan-400" }].map((s) => (
               <div key={s.label} className="mb-1.5">
@@ -458,7 +460,7 @@ function HeroDashboard({ clock }: { clock: string }) {
           </div>
           {/* ALERT FEED */}
           <div className="bg-[#050A14] p-4">
-            <div className="font-mono text-[9px] font-bold tracking-widest text-slate-500 uppercase mb-2">LIVE INCIDENT FEED</div>
+            <div className="font-mono text-[9px] font-bold tracking-widest text-slate-500 uppercase mb-2">{t('cyberLawsPage.dashboard.incidentTitle', 'LIVE INCIDENT FEED')}</div>
             <div className="flex flex-col gap-2">
               {[["Fake RBI SMS — Mumbai", "red"], ["UPI QR Scam — Delhi NCR", "red"], ["Investment Fraud Alert", "amber"], ["Deepfake Loan Call", "red"], ["SIM Swap Attempt", "red"]].map(([text, c], i) => (
                 <motion.div key={i} className="flex items-center gap-2 px-2.5 py-1.5 border-l-2 rounded-r font-mono text-[10px] text-slate-400"
@@ -473,7 +475,7 @@ function HeroDashboard({ clock }: { clock: string }) {
           </div>
           {/* NODES */}
           <div className="bg-[#050A14] p-4">
-            <div className="font-mono text-[9px] font-bold tracking-widest text-slate-500 uppercase mb-2">RESPONSE NETWORK</div>
+            <div className="font-mono text-[9px] font-bold tracking-widest text-slate-500 uppercase mb-2">{t('cyberLawsPage.dashboard.responseNetwork', 'RESPONSE NETWORK')}</div>
             <div className="flex flex-wrap gap-2 items-center justify-center p-2">
               {[{ icon: "🛡", label: "CERT-IN", type: "active" }, { icon: "🏛", label: "Cybercrime Portal", type: "active" }, { icon: "💳", label: "Banking Alert", type: "warn" }, { icon: "📡", label: "TRAI Monitor", type: "active" }, { icon: "⚠", label: "I4C Active", type: "alert" }, { icon: "🔐", label: "MHA Cyber", type: "active" }].map((n) => {
                 const colors = { active: { border: "border-cyan-400", text: "text-cyan-400", ring: "border-cyan-400", glow: "shadow-cyan-400/30" }, warn: { border: "border-amber-400", text: "text-amber-400", ring: "border-amber-400", glow: "shadow-amber-400/30" }, alert: { border: "border-red-500", text: "text-red-500", ring: "border-red-500", glow: "shadow-red-500/30" } }[n.type]!;
@@ -491,7 +493,7 @@ function HeroDashboard({ clock }: { clock: string }) {
           </div>
         </div>
         <div className="px-4 py-2.5 bg-black/50 border-t border-white/[0.06] flex items-center justify-between gap-4">
-          {[["SYSTEM STATUS", "OPERATIONAL", "text-green-400"], ["RESPONSE TIME", "~4.2min", "text-cyan-400"], ["SECURE CHANNEL", "ACTIVE", "text-green-400"]].map(([k, v, c]) => (
+          {[[t('cyberLawsPage.dashboard.systemStatus', 'SYSTEM STATUS'), t('cyberLawsPage.dashboard.operational', 'OPERATIONAL'), "text-green-400"], [t('cyberLawsPage.dashboard.responseTime', 'RESPONSE TIME'), "~4.2min", "text-cyan-400"], [t('cyberLawsPage.dashboard.secureChannel', 'SECURE CHANNEL'), t('cyberLawsPage.dashboard.active', 'ACTIVE'), "text-green-400"]].map(([k, v, c]) => (
             <div key={k} className="font-mono text-[9px] text-slate-500">{k}: <span className={c}>{v}</span></div>
           ))}
           <div className="font-mono text-[9px] text-cyan-400">{clock}</div>
@@ -553,19 +555,19 @@ export default function CyberLawCommandCenter() {
           </div>
           <div>
             <div className="font-mono text-xs font-bold tracking-[0.15em] text-[#E8F4FF]">TRUSTLAYERLABS</div>
-            <div className="font-mono text-[9px] text-slate-400 tracking-[0.1em]">CYBER EMERGENCY RESPONSE COMMAND CENTER</div>
+            <div className="font-mono text-[9px] text-slate-400 tracking-[0.1em]">{t('cyberLawsPage.nav.copNetwork', 'CYBER EMERGENCY RESPONSE COMMAND CENTER')}</div>
           </div>
         </div>
         <div className="flex items-center gap-6">
           <div className="hidden md:flex items-center gap-6">
-            {[{ dot: "red" as const, label: "THREAT LEVEL: ELEVATED" }, { dot: "cyan" as const, label: "MONITORING ACTIVE" }, { dot: "amber" as const, label: "23 INCIDENTS/24H" }].map((s) => (
+            {[{ dot: "red" as const, label: t('cyberLawsPage.nav.threatLevel', 'THREAT LEVEL: ELEVATED') }, { dot: "cyan" as const, label: t('cyberLawsPage.nav.monitoringActive', 'MONITORING ACTIVE') }, { dot: "amber" as const, label: t('cyberLawsPage.nav.incidentsCount', '23 INCIDENTS/24H') }].map((s) => (
               <div key={s.label} className="flex items-center gap-1.5 font-mono text-[10px] text-slate-400 tracking-[0.08em]">
                 <PulseDot color={s.dot} />{s.label}
               </div>
             ))}
           </div>
           <button onClick={() => scrollTo("reporting")} className="font-mono text-[10px] font-bold tracking-[0.1em] px-5 py-2 rounded border border-red-500 text-red-500 bg-red-500/10 uppercase hover:bg-red-500 hover:text-white transition-all">
-            REPORT INCIDENT
+            {t('cyberLawsPage.nav.reportBtn', 'REPORT INCIDENT')}
           </button>
         </div>
       </nav>
@@ -575,21 +577,21 @@ export default function CyberLawCommandCenter() {
         <div>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8 }}
             className="inline-flex items-center gap-2 font-mono text-[10px] font-bold tracking-[0.15em] px-4 py-1.5 border border-red-500 text-red-500 bg-red-500/10 rounded-sm mb-6 uppercase">
-            <PulseDot color="red" />EMERGENCY RESPONSE — LEVEL ALPHA
+            <PulseDot color="red" />{t('cyberLawsPage.nav.emergencyResponse', 'EMERGENCY RESPONSE — LEVEL ALPHA')}
           </motion.div>
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl xl:text-6xl font-black leading-[1.05] tracking-tight mb-6">
-            <span className="text-red-500 block">CYBER EMERGENCY</span>
-            <span className="text-cyan-400 block">RESPONSE COMMAND</span>
-            CENTER
+            <span className="text-red-500 block">{t('cyberLawsPage.nav.cyberEmergency', 'CYBER EMERGENCY')}</span>
+            <span className="text-cyan-400 block">{t('cyberLawsPage.nav.responseCommand', 'RESPONSE COMMAND')}</span>
+            {t('cyberLawsPage.nav.center', 'CENTER')}
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }}
             className="text-[#7B9BB8] text-base leading-relaxed max-w-xl mb-8">
-            Rapid response to cybercrime, digital fraud, phishing, identity theft, and online scams. Protecting India's digital citizens with AI-powered intelligence and 24×7 emergency guidance.
+            {t('cyberLawsPage.nav.sub', "Rapid response to cybercrime, digital fraud, phishing, identity theft, and online scams. Protecting India's digital citizens with AI-powered intelligence and 24×7 emergency guidance.")}
           </motion.p>
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.6 }}
             className="grid grid-cols-2 gap-3 mb-10">
-            {[{ icon: "🛡️", label: "Incident Response", desc: "Rapid triage & action" }, { icon: "🔒", label: "Evidence Protection", desc: "Forensic-grade vault" }, { icon: "🤖", label: "AI Guidance", desc: "Real-time intelligence" }, { icon: "🌐", label: "National Cyber Awareness", desc: "Policy & legal support" }].map((t) => (
+            {[{ icon: "🛡️", label: t('cyberLawsPage.nav.irLabel', 'Incident Response'), desc: t('cyberLawsPage.nav.irDesc', 'Rapid triage & action') }, { icon: "🔒", label: t('cyberLawsPage.nav.epLabel', 'Evidence Protection'), desc: t('cyberLawsPage.nav.epDesc', 'Forensic-grade vault') }, { icon: "🤖", label: t('cyberLawsPage.nav.aiLabel', 'AI Guidance'), desc: t('cyberLawsPage.nav.aiDesc', 'Real-time intelligence') }, { icon: "🌐", label: t('cyberLawsPage.nav.ncaLabel', 'National Cyber Awareness'), desc: t('cyberLawsPage.nav.ncaDesc', 'Policy & legal support') }].map((t) => (
               <div key={t.label} className="flex items-center gap-2.5 px-3.5 py-2.5 bg-cyan-950/10 border border-cyan-900/30 rounded">
                 <div className="w-7 h-7 rounded bg-cyan-950/20 border border-cyan-900/30 flex items-center justify-center text-sm flex-shrink-0">{t.icon}</div>
                 <div>
@@ -602,11 +604,11 @@ export default function CyberLawCommandCenter() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.8 }} className="flex gap-4">
             <button onClick={() => scrollTo("reporting")}
               className="font-mono text-xs font-bold tracking-widest px-8 py-3.5 rounded bg-red-500 border border-red-500 text-white uppercase hover:shadow-[0_0_30px_rgba(255,23,68,0.5)] transition-all">
-              ⚠ REPORT INCIDENT
+              ⚠ {t('cyberLawsPage.nav.reportBtn', 'REPORT INCIDENT')}
             </button>
             <button onClick={() => scrollTo("awareness")}
               className="font-mono text-xs font-bold tracking-widest px-8 py-3.5 rounded bg-transparent border border-cyan-900/40 text-cyan-400 uppercase hover:bg-cyan-950/20 hover:shadow-[0_0_20px_rgba(0,229,255,0.2)] transition-all">
-              EMERGENCY GUIDANCE
+              {t('cyberLawsPage.nav.guidanceBtn', 'EMERGENCY GUIDANCE')}
             </button>
           </motion.div>
         </div>
@@ -616,14 +618,14 @@ export default function CyberLawCommandCenter() {
       {/* ── TICKER ── */}
       <div className="relative z-10 bg-red-500/5 border-y border-red-500/25 overflow-hidden">
         <div className="absolute left-0 top-0 bottom-0 z-10 flex items-center px-6 bg-red-500 font-mono text-[10px] font-bold tracking-widest text-white whitespace-nowrap">
-          ⚠ LIVE THREAT ALERTS
+          ⚠ {t('cyberLawsPage.tickerTitle', 'LIVE THREAT ALERTS')}
         </div>
         <div className="overflow-hidden py-3 pl-40">
           <div className="ticker-inner flex gap-16 whitespace-nowrap">
-            {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
-              <div key={i} className="flex items-center gap-2 font-mono text-[11px] text-slate-400 flex-shrink-0">
+            {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, idx) => (
+              <div key={idx} className="flex items-center gap-2 font-mono text-[11px] text-slate-400 flex-shrink-0">
                 <div className="w-1.5 h-1.5 rounded-full bg-red-500 flex-shrink-0" />
-                <span className="text-red-500 font-bold mr-1">{item.cat}:</span>{item.text}
+                <span className="text-red-500 font-bold mr-1">{item.cat}:</span>{t('cyberLawsPage.tickerItems.' + (idx % TICKER_ITEMS.length) + '.text', item.text)}
               </div>
             ))}
           </div>
@@ -633,9 +635,9 @@ export default function CyberLawCommandCenter() {
       {/* ── TIMELINE ── */}
       <section id="timeline" className="relative z-10">
         <div className="max-w-[1400px] mx-auto px-16 py-20">
-          <RevealSection><div className="font-mono text-[10px] font-bold tracking-[0.2em] text-red-500 uppercase mb-3">INCIDENT RESPONSE PROTOCOL</div></RevealSection>
-          <RevealSection><h2 className="text-4xl font-extrabold tracking-tight mb-4">Emergency Response Timeline</h2></RevealSection>
-          <RevealSection><p className="text-[#7B9BB8] text-base leading-relaxed max-w-2xl mb-8">Follow this sequence immediately after a cyber incident. Time is critical — every minute matters for preserving evidence and limiting damage.</p></RevealSection>
+          <RevealSection><div className="font-mono text-[10px] font-bold tracking-[0.2em] text-red-500 uppercase mb-3">{t('cyberLawsPage.timeline.eyebrow', 'INCIDENT RESPONSE PROTOCOL')}</div></RevealSection>
+          <RevealSection><h2 className="text-4xl font-extrabold tracking-tight mb-4">{t('cyberLawsPage.timeline.title', 'Emergency Response Timeline')}</h2></RevealSection>
+          <RevealSection><p className="text-[#7B9BB8] text-base leading-relaxed max-w-2xl mb-8">{t('cyberLawsPage.timeline.sub', 'Follow this sequence immediately after a cyber incident. Time is critical — every minute matters for preserving evidence and limiting damage.')}</p></RevealSection>
           <RevealSection>
             <div className="flex flex-col gap-px bg-white/[0.06] border border-white/[0.06] rounded-md overflow-hidden">
               {TIMELINE_STEPS.map((step, idx) => {
@@ -649,16 +651,16 @@ export default function CyberLawCommandCenter() {
                     <div>
                       <div className="flex items-center gap-3 mb-1">
                         <div className={`w-10 h-10 rounded border flex items-center justify-center text-xl flex-shrink-0 ${step.danger ? "border-red-500/30 bg-red-500/10" : "border-cyan-900/30 bg-cyan-950/10"}`}>{step.icon}</div>
-                        <span className="font-bold text-base">{step.title}</span>
-                        <span className={`font-mono text-[9px] font-bold tracking-widest px-2 py-0.5 rounded border uppercase ${statusColors[step.statusType as keyof typeof statusColors]}`}>{step.status}</span>
+                        <span className="font-bold text-base">{t('cyberLawsPage.timelineSteps.' + idx + '.title', step.title)}</span>
+                        <span className={`font-mono text-[9px] font-bold tracking-widest px-2 py-0.5 rounded border uppercase ${statusColors[step.statusType as keyof typeof statusColors]}`}>{t('cyberLawsPage.timelineSteps.' + idx + '.status', step.status)}</span>
                       </div>
-                      <p className="text-sm text-slate-400 leading-relaxed mt-1">{step.desc}</p>
+                      <p className="text-sm text-slate-400 leading-relaxed mt-1">{t('cyberLawsPage.timelineSteps.' + idx + '.desc', step.desc)}</p>
                       <AnimatePresence>
                         {isActive && (
                           <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }}
                             className="overflow-hidden">
                             <div className="mt-3 px-3 py-3 bg-cyan-950/10 border border-cyan-900/30 rounded text-[13px] text-slate-300 leading-relaxed font-mono text-[11px]">
-                              {step.expand}
+                              {t('cyberLawsPage.timelineSteps.' + idx + '.expand', step.expand)}
                             </div>
                           </motion.div>
                         )}
@@ -678,56 +680,56 @@ export default function CyberLawCommandCenter() {
       {/* ── REPORTING CENTER ── */}
       <section id="reporting" className="relative z-10">
         <div className="max-w-[1400px] mx-auto px-16 py-20">
-          <RevealSection><div className="font-mono text-[10px] font-bold tracking-[0.2em] text-red-500 uppercase mb-3">INCIDENT CLASSIFICATION SYSTEM</div></RevealSection>
-          <RevealSection><h2 className="text-4xl font-extrabold tracking-tight mb-4">Reporting Command Center</h2></RevealSection>
-          <RevealSection><p className="text-[#7B9BB8] text-base leading-relaxed max-w-2xl mb-10">Select the type of cybercrime you've experienced. Our AI guidance system will adapt its recommendations based on your incident category.</p></RevealSection>
+          <RevealSection><div className="font-mono text-[10px] font-bold tracking-[0.2em] text-red-500 uppercase mb-3">{t('cyberLawsPage.reporting.eyebrow', 'INCIDENT CLASSIFICATION SYSTEM')}</div></RevealSection>
+          <RevealSection><h2 className="text-4xl font-extrabold tracking-tight mb-4">{t('cyberLawsPage.reporting.title', 'Reporting Command Center')}</h2></RevealSection>
+          <RevealSection><p className="text-[#7B9BB8] text-base leading-relaxed max-w-2xl mb-10">{t('cyberLawsPage.reporting.sub', 'Select the type of cybercrime you\'ve experienced. Our AI guidance system will adapt its recommendations based on your incident category.')}</p></RevealSection>
           <div className="grid lg:grid-cols-[1fr_380px] gap-8 items-start">
             <div>
               <RevealSection>
-                <div className="font-mono text-[9px] font-bold text-slate-500 tracking-[0.15em] uppercase mb-3">SELECT INCIDENT CATEGORY</div>
+                <div className="font-mono text-[9px] font-bold text-slate-500 tracking-[0.15em] uppercase mb-3">{t('cyberLawsPage.reporting.selectCategory', 'SELECT INCIDENT CATEGORY')}</div>
                 <div className="grid grid-cols-4 gap-3 mb-6">
-                  {CRIME_CARDS.map((card) => (
+                  {CRIME_CARDS.map((card, idx) => (
                     <motion.div key={card.type} onClick={() => handleCrimeSelect(card.type)} whileHover={{ scale: 1.02 }}
                       className={`p-4 bg-[#050A14] border rounded cursor-pointer transition-all text-center relative overflow-hidden ${selectedCrime === card.type ? "border-cyan-400 shadow-[0_0_20px_rgba(0,229,255,0.1)] bg-cyan-950/10" : "border-white/[0.06] hover:border-cyan-900/50"}`}>
                       <span className="text-2xl block mb-2">{card.icon}</span>
-                      <div className={`font-mono text-[9px] font-bold tracking-wider uppercase leading-tight ${selectedCrime === card.type ? "text-cyan-400" : "text-slate-400"}`}>{card.label}</div>
+                      <div className={`font-mono text-[9px] font-bold tracking-wider uppercase leading-tight ${selectedCrime === card.type ? "text-cyan-400" : "text-slate-400"}`}>{t('cyberLawsPage.crimeCards.' + idx + '.label', card.label)}</div>
                     </motion.div>
                   ))}
                 </div>
               </RevealSection>
               <RevealSection>
                 <div className="relative overflow-hidden bg-[rgba(5,15,35,0.85)] border border-cyan-900/40 rounded-md p-6 holo-scan">
-                  <div className="font-mono text-[9px] font-bold text-slate-500 tracking-[0.15em] uppercase mb-4">INCIDENT DETAILS</div>
+                  <div className="font-mono text-[9px] font-bold text-slate-500 tracking-[0.15em] uppercase mb-4">{t('cyberLawsPage.reporting.detailsHeader', 'INCIDENT DETAILS')}</div>
                   <div className="grid grid-cols-2 gap-3.5 mb-3">
                     <div>
-                      <label className="font-mono text-[9px] font-bold text-slate-400 tracking-widest uppercase block mb-1.5">Full Name</label>
-                      <input type="text" placeholder="Your name" className="w-full bg-black/50 border border-white/[0.1] rounded px-3.5 py-2.5 text-[#E8F4FF] font-mono text-sm outline-none focus:border-cyan-400 focus:shadow-[0_0_0_3px_rgba(0,229,255,0.08)] transition-all" />
+                      <label className="font-mono text-[9px] font-bold text-slate-400 tracking-widest uppercase block mb-1.5">{t('cyberLawsPage.reporting.fullName', 'Full Name')}</label>
+                      <input type="text" placeholder={t('cyberLawsPage.reporting.fullNamePlaceholder', 'Your name')} className="w-full bg-black/50 border border-white/[0.1] rounded px-3.5 py-2.5 text-[#E8F4FF] font-mono text-sm outline-none focus:border-cyan-400 focus:shadow-[0_0_0_3px_rgba(0,229,255,0.08)] transition-all" />
                     </div>
                     <div>
-                      <label className="font-mono text-[9px] font-bold text-slate-400 tracking-widest uppercase block mb-1.5">Contact Number</label>
-                      <input type="tel" placeholder="+91 XXXXX XXXXX" className="w-full bg-black/50 border border-white/[0.1] rounded px-3.5 py-2.5 text-[#E8F4FF] font-mono text-sm outline-none focus:border-cyan-400 focus:shadow-[0_0_0_3px_rgba(0,229,255,0.08)] transition-all" />
+                      <label className="font-mono text-[9px] font-bold text-slate-400 tracking-widest uppercase block mb-1.5">{t('cyberLawsPage.reporting.contactNumber', 'Contact Number')}</label>
+                      <input type="tel" placeholder={t('cyberLawsPage.reporting.contactNumberPlaceholder', '+91 XXXXX XXXXX')} className="w-full bg-black/50 border border-white/[0.1] rounded px-3.5 py-2.5 text-[#E8F4FF] font-mono text-sm outline-none focus:border-cyan-400 focus:shadow-[0_0_0_3px_rgba(0,229,255,0.08)] transition-all" />
                     </div>
                   </div>
                   <div className="mb-3">
-                    <label className="font-mono text-[9px] font-bold text-slate-400 tracking-widest uppercase block mb-1.5">Incident Description</label>
-                    <textarea placeholder="Describe what happened in detail — include dates, times, amounts, platforms used by the attacker..." className="w-full h-24 bg-black/50 border border-white/[0.1] rounded px-3.5 py-2.5 text-[#E8F4FF] text-sm outline-none focus:border-cyan-400 focus:shadow-[0_0_0_3px_rgba(0,229,255,0.08)] transition-all resize-y" />
+                    <label className="font-mono text-[9px] font-bold text-slate-400 tracking-widest uppercase block mb-1.5">{t('cyberLawsPage.reporting.description', 'Incident Description')}</label>
+                    <textarea placeholder={t('cyberLawsPage.reporting.descriptionPlaceholder', 'Describe what happened in detail — include dates, times, amounts, platforms used by the attacker...')} className="w-full h-24 bg-black/50 border border-white/[0.1] rounded px-3.5 py-2.5 text-[#E8F4FF] text-sm outline-none focus:border-cyan-400 focus:shadow-[0_0_0_3px_rgba(0,229,255,0.08)] transition-all resize-y" />
                   </div>
                   <div className="grid grid-cols-2 gap-3.5 mb-3">
                     <div>
-                      <label className="font-mono text-[9px] font-bold text-slate-400 tracking-widest uppercase block mb-1.5">Approximate Loss (₹)</label>
+                      <label className="font-mono text-[9px] font-bold text-slate-400 tracking-widest uppercase block mb-1.5">{t('cyberLawsPage.reporting.loss', 'Approximate Loss (₹)')}</label>
                       <input type="number" placeholder="0" className="w-full bg-black/50 border border-white/[0.1] rounded px-3.5 py-2.5 text-[#E8F4FF] font-mono text-sm outline-none focus:border-cyan-400 focus:shadow-[0_0_0_3px_rgba(0,229,255,0.08)] transition-all" />
                     </div>
                     <div>
-                      <label className="font-mono text-[9px] font-bold text-slate-400 tracking-widest uppercase block mb-1.5">Incident Date</label>
+                      <label className="font-mono text-[9px] font-bold text-slate-400 tracking-widest uppercase block mb-1.5">{t('cyberLawsPage.reporting.date', 'Incident Date')}</label>
                       <input type="date" className="w-full bg-black/50 border border-white/[0.1] rounded px-3.5 py-2.5 text-[#E8F4FF] font-mono text-sm outline-none focus:border-cyan-400 focus:shadow-[0_0_0_3px_rgba(0,229,255,0.08)] transition-all" />
                     </div>
                   </div>
                   <div className="mb-4">
-                    <label className="font-mono text-[9px] font-bold text-slate-400 tracking-widest uppercase block mb-1.5">Attacker's Contact / URL / UPI ID</label>
-                    <input type="text" placeholder="Phone number, URL, email, or UPI ID used by attacker" className="w-full bg-black/50 border border-white/[0.1] rounded px-3.5 py-2.5 text-[#E8F4FF] font-mono text-sm outline-none focus:border-cyan-400 focus:shadow-[0_0_0_3px_rgba(0,229,255,0.08)] transition-all" />
+                    <label className="font-mono text-[9px] font-bold text-slate-400 tracking-widest uppercase block mb-1.5">{t('cyberLawsPage.reporting.attacker', "Attacker's Contact / URL / UPI ID")}</label>
+                    <input type="text" placeholder={t('cyberLawsPage.reporting.attackerPlaceholder', 'Phone number, URL, email, or UPI ID used by attacker')} className="w-full bg-black/50 border border-white/[0.1] rounded px-3.5 py-2.5 text-[#E8F4FF] font-mono text-sm outline-none focus:border-cyan-400 focus:shadow-[0_0_0_3px_rgba(0,229,255,0.08)] transition-all" />
                   </div>
                   <motion.button whileHover={{ boxShadow: "0 0 30px rgba(255,23,68,0.5)" }} className="w-full font-mono text-xs font-bold tracking-widest py-3.5 rounded bg-red-500 border border-red-500 text-white uppercase transition-all">
-                    ⚡ SUBMIT INCIDENT REPORT
+                    ⚡ {t('cyberLawsPage.reporting.submitBtn', 'SUBMIT INCIDENT REPORT')}
                   </motion.button>
                 </div>
               </RevealSection>
@@ -739,27 +741,31 @@ export default function CyberLawCommandCenter() {
                 <div className="px-4 py-3 bg-red-500/10 border-b border-red-500/25 flex items-center gap-2.5">
                   <div className="w-8 h-8 rounded bg-red-500 flex items-center justify-center text-base">🤖</div>
                   <div>
-                    <div className="font-mono text-[11px] font-bold text-red-500 tracking-widest uppercase">AI RESPONSE SYSTEM</div>
-                    <div className="text-[10px] text-slate-500">Real-time guidance engine</div>
+                    <div className="font-mono text-[11px] font-bold text-red-500 tracking-widest uppercase">{t('cyberLawsPage.aiPanel.title', 'AI RESPONSE SYSTEM')}</div>
+                    <div className="text-[10px] text-slate-500">{t('cyberLawsPage.aiPanel.subtitle', 'Real-time guidance engine')}</div>
                   </div>
                 </div>
                 <div className="p-4">
                   <div className="flex items-center gap-2 px-3 py-2.5 bg-cyan-950/10 border border-cyan-900/30 rounded font-mono text-[10px] text-cyan-400 mb-4">
-                    <PulseDot color="cyan" />ANALYZING THREAT PROFILE...
+                    <PulseDot color="cyan" /><span className="uppercase">{t('cyberLawsPage.aiPanel.analyzing', 'ANALYZING THREAT PROFILE...')}</span>
                   </div>
-                  <div className="font-mono text-[9px] font-bold text-slate-500 tracking-widest uppercase mb-3">IMMEDIATE ACTIONS REQUIRED</div>
+                  <div className="font-mono text-[9px] font-bold text-slate-500 tracking-widest uppercase mb-3">{t('cyberLawsPage.aiPanel.actionsHeader', 'IMMEDIATE ACTIONS REQUIRED')}</div>
                   <div className="flex flex-col gap-3 mb-6">
                     {tips.map((tip, i) => (
                       <motion.div key={`${selectedCrime}-${i}`} initial={{ opacity: 0, x: -10 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: i * 0.05 }}
                         className="flex gap-2.5 p-3 bg-red-500/5 border-l-2 border-red-500 rounded-r">
                         <div className="font-mono text-[10px] font-bold text-red-500 flex-shrink-0 min-w-[18px]">{String(i + 1).padStart(2, "0")}</div>
-                        <div className="text-[12px] text-slate-400 leading-relaxed">{tip}</div>
+                        <div className="text-[12px] text-slate-400 leading-relaxed">
+                          {selectedCrime
+                            ? t('cyberLawsPage.crimeTips.' + selectedCrime + '.' + i, tip)
+                            : t('cyberLawsPage.crimeTips.phishing.' + i, tip)}
+                        </div>
                       </motion.div>
                     ))}
                   </div>
                   <div className="pt-4 border-t border-white/[0.06]">
-                    <div className="font-mono text-[9px] font-bold text-slate-500 tracking-widest uppercase mb-3">EMERGENCY NUMBERS</div>
-                    {[{ label: "Cybercrime Helpline", num: "1930", color: "text-cyan-400" }, { label: "Police Emergency", num: "100", color: "text-red-500" }, { label: "Banking Ombudsman", num: "14448", color: "text-amber-400" }].map((n) => (
+                    <div className="font-mono text-[9px] font-bold text-slate-500 tracking-widest uppercase mb-3">{t('cyberLawsPage.aiPanel.numbersHeader', 'EMERGENCY NUMBERS')}</div>
+                    {[{ label: t('cyberLawsPage.aiPanel.numbers.helpline', 'Cybercrime Helpline'), num: "1930", color: "text-cyan-400" }, { label: t('cyberLawsPage.aiPanel.numbers.police', 'Police Emergency'), num: "100", color: "text-red-500" }, { label: t('cyberLawsPage.aiPanel.numbers.ombudsman', 'Banking Ombudsman'), num: "14448", color: "text-amber-400" }].map((n) => (
                       <div key={n.label} className="flex justify-between font-mono text-[12px] mb-2">
                         <span className="text-slate-400">{n.label}</span>
                         <span className={`${n.color} font-bold`}>{n.num}</span>
@@ -778,18 +784,18 @@ export default function CyberLawCommandCenter() {
       {/* ── EVIDENCE VAULT ── */}
       <section id="vault" className="relative z-10">
         <div className="max-w-[1400px] mx-auto px-16 py-20">
-          <RevealSection><div className="font-mono text-[10px] font-bold tracking-[0.2em] text-red-500 uppercase mb-3">FORENSIC EVIDENCE MANAGEMENT</div></RevealSection>
-          <RevealSection><h2 className="text-4xl font-extrabold tracking-tight mb-4">Evidence Vault</h2></RevealSection>
-          <RevealSection><p className="text-[#7B9BB8] text-base leading-relaxed max-w-2xl mb-8">Securely submit digital evidence for forensic analysis. All uploads are encrypted with AES-256 and stored in isolated secure containers.</p></RevealSection>
+          <RevealSection><div className="font-mono text-[10px] font-bold tracking-[0.2em] text-red-500 uppercase mb-3">{t('cyberLawsPage.vault.eyebrow', 'FORENSIC EVIDENCE MANAGEMENT')}</div></RevealSection>
+          <RevealSection><h2 className="text-4xl font-extrabold tracking-tight mb-4">{t('cyberLawsPage.vault.title', 'Evidence Vault')}</h2></RevealSection>
+          <RevealSection><p className="text-[#7B9BB8] text-base leading-relaxed max-w-2xl mb-8">{t('cyberLawsPage.vault.sub', 'Securely submit digital evidence for forensic analysis. All uploads are encrypted with AES-256 and stored in isolated secure containers.')}</p></RevealSection>
           <RevealSection>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
-              {VAULT_SLOTS.map((slot) => (
+              {VAULT_SLOTS.map((slot, idx) => (
                 <motion.div key={slot.label} whileHover={{ scale: 1.02 }}
                   className="vault-slot relative border border-dashed border-cyan-900/40 rounded p-6 text-center cursor-pointer bg-cyan-950/5 overflow-hidden hover:border-cyan-400 hover:shadow-[0_0_25px_rgba(0,229,255,0.08)] transition-all group">
                   <div className="vault-scan-line" />
                   <span className="text-3xl block mb-3">{slot.icon}</span>
-                  <div className="font-mono text-[10px] font-bold text-cyan-400 tracking-wider uppercase mb-1">{slot.label}</div>
-                  <div className="text-[11px] text-slate-500">{slot.desc}</div>
+                  <div className="font-mono text-[10px] font-bold text-cyan-400 tracking-wider uppercase mb-1">{t('cyberLawsPage.vaultSlots.' + idx + '.label', slot.label)}</div>
+                  <div className="text-[11px] text-slate-500">{t('cyberLawsPage.vaultSlots.' + idx + '.desc', slot.desc)}</div>
                 </motion.div>
               ))}
             </div>
@@ -798,10 +804,10 @@ export default function CyberLawCommandCenter() {
             <div className="flex items-center gap-4 px-5 py-4 bg-cyan-950/10 border border-cyan-900/30 rounded">
               <span className="text-2xl">🔐</span>
               <div>
-                <div className="font-mono text-[10px] font-bold text-cyan-400 tracking-wider mb-1">VAULT SECURITY PROTOCOL</div>
-                <div className="text-[13px] text-slate-400 leading-relaxed">All evidence is encrypted with AES-256 before transmission. Files are stored in isolated forensic containers with chain-of-custody logging. Your data is never shared without your explicit consent and is only accessible to authorized cybercrime investigators.</div>
+                <div className="font-mono text-[10px] font-bold text-cyan-400 tracking-wider mb-1">{t('cyberLawsPage.vault.protocol', 'VAULT SECURITY PROTOCOL')}</div>
+                <div className="text-[13px] text-slate-400 leading-relaxed">{t('cyberLawsPage.vault.protocolText', 'All evidence is encrypted with AES-256 before transmission. Files are stored in isolated forensic containers with chain-of-custody logging. Your data is never shared without your explicit consent and is only accessible to authorized cybercrime investigators.')}</div>
               </div>
-              <div className="flex items-center gap-1.5 font-mono text-[10px] text-cyan-400 bg-cyan-950/20 border border-cyan-900/30 px-3 py-1.5 rounded whitespace-nowrap flex-shrink-0">🔒 AES-256 ENCRYPTED</div>
+              <div className="flex items-center gap-1.5 font-mono text-[10px] text-cyan-400 bg-cyan-950/20 border border-cyan-900/30 px-3 py-1.5 rounded whitespace-nowrap flex-shrink-0">{t('cyberLawsPage.vault.encrypted', '🔒 AES-256 ENCRYPTED')}</div>
             </div>
           </RevealSection>
         </div>
@@ -812,20 +818,20 @@ export default function CyberLawCommandCenter() {
       {/* ── EMERGENCY ACTIONS ── */}
       <section id="actions" className="relative z-10">
         <div className="max-w-[1400px] mx-auto px-16 py-20">
-          <RevealSection><div className="font-mono text-[10px] font-bold tracking-[0.2em] text-red-500 uppercase mb-3">IMMEDIATE RESPONSE PROTOCOLS</div></RevealSection>
-          <RevealSection><h2 className="text-4xl font-extrabold tracking-tight mb-4">Emergency Action Center</h2></RevealSection>
-          <RevealSection><p className="text-[#7B9BB8] text-base leading-relaxed max-w-2xl mb-8">Execute these critical actions immediately after a cyber incident. Speed is your greatest advantage — act within the first 4 hours.</p></RevealSection>
+          <RevealSection><div className="font-mono text-[10px] font-bold tracking-[0.2em] text-red-500 uppercase mb-3">{t('cyberLawsPage.actions.eyebrow', 'IMMEDIATE RESPONSE PROTOCOLS')}</div></RevealSection>
+          <RevealSection><h2 className="text-4xl font-extrabold tracking-tight mb-4">{t('cyberLawsPage.actions.title', 'Emergency Action Center')}</h2></RevealSection>
+          <RevealSection><p className="text-[#7B9BB8] text-base leading-relaxed max-w-2xl mb-8">{t('cyberLawsPage.actions.sub', 'Execute these critical actions immediately after a cyber incident. Speed is your greatest advantage — act within the first 4 hours.')}</p></RevealSection>
           <RevealSection>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {EMERGENCY_CARDS.map((card) => (
+              {EMERGENCY_CARDS.map((card, idx) => (
                 <motion.div key={card.title} whileHover={{ y: -3 }}
                   className={`bg-[#050A14] border border-white/[0.06] rounded-md p-5 cursor-pointer transition-all relative overflow-hidden ${card.urgent ? "hover:border-red-500 hover:shadow-[0_8px_40px_rgba(255,23,68,0.15)]" : "hover:border-cyan-400 hover:shadow-[0_8px_40px_rgba(0,229,255,0.1)]"}`}>
                   <motion.div className={`absolute top-3 right-3 w-2 h-2 rounded-full ${card.urgent ? "bg-red-500 shadow-red-500" : "bg-cyan-400 shadow-cyan-400"} shadow-md`}
                     animate={{ opacity: [1, 0.3, 1], scale: [1, 0.6, 1] }} transition={{ duration: 1.5, repeat: Infinity }} />
                   <span className="text-3xl block mb-3">{card.icon}</span>
-                  <div className="font-bold text-[15px] mb-1.5">{card.title}</div>
-                  <div className="text-[12px] text-slate-400 leading-relaxed mb-4">{card.desc}</div>
-                  <div className={`font-mono text-[10px] font-bold tracking-widest uppercase flex items-center gap-1.5 ${card.urgent ? "text-red-500" : "text-cyan-400"}`}>{card.action}</div>
+                  <div className="font-bold text-[15px] mb-1.5">{t('cyberLawsPage.emergencyCards.' + idx + '.title', card.title)}</div>
+                  <div className="text-[12px] text-slate-400 leading-relaxed mb-4">{t('cyberLawsPage.emergencyCards.' + idx + '.desc', card.desc)}</div>
+                  <div className={`font-mono text-[10px] font-bold tracking-widest uppercase flex items-center gap-1.5 ${card.urgent ? "text-red-500" : "text-cyan-400"}`}>{t('cyberLawsPage.emergencyCards.' + idx + '.action', card.action)}</div>
                 </motion.div>
               ))}
             </div>

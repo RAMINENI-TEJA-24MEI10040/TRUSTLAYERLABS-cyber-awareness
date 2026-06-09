@@ -6,6 +6,7 @@ import React, {
   useMemo,
 } from "react";
 import { motion, useAnimationFrame } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 // ─────────────────────────────────────────────
 // SOUND ARCHITECTURE — ready for future audio integration
@@ -313,6 +314,7 @@ function DataParticle({ index }: { index: number }) {
 
 // AI status label with animated dot
 function AIStatusLabel() {
+  const { t } = useTranslation();
   return (
     <div className="flex items-center gap-1.5 select-none">
       <motion.div
@@ -324,7 +326,7 @@ function AIStatusLabel() {
         className="text-[9px] font-bold tracking-[0.2em] text-emerald-400/90"
         style={{ fontFamily: "'JetBrains Mono', 'Fira Code', monospace" }}
       >
-        AI·MONITOR
+        {t('threatTicker.aiMonitor', 'AI·MONITOR')}
       </span>
     </div>
   );
@@ -339,6 +341,7 @@ function AlertPill({
   isActive: boolean;
 }) {
   const cfg = LEVEL_CONFIG[alert.level];
+  const { t } = useTranslation();
 
   return (
     <motion.div
@@ -374,7 +377,7 @@ function AlertPill({
       <span
         className={`text-[9px] font-black tracking-widest px-1.5 py-0.5 rounded ${cfg.bg} ${cfg.color} border border-current/20`}
       >
-        {cfg.label}
+        {t(`threatTicker.levels.${alert.level}`, cfg.label)}
       </span>
 
       {/* Tag */}
@@ -384,7 +387,7 @@ function AlertPill({
 
       {/* Message */}
       <span className="text-[11px] font-medium tracking-wide text-white/85">
-        {alert.message}
+        {t(`threatTicker.alerts.${alert.id}`, alert.message)}
       </span>
 
       {/* Source */}
@@ -443,11 +446,12 @@ export default function ThreatTicker({
   className = "",
 }: ThreatTickerProps) {
   const { trigger: triggerSound } = useSoundSystem(soundConfig);
+  const { t } = useTranslation();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
-  const [hovered, setHovered] = useState(false);
+  const [paused, setPaused] = useState(false);
   const [activeId, setActiveId] = useState<string | null>(null);
   const [alerts] = useState<ThreatAlert[]>(() =>
     hydrateTimestamps(THREAT_ALERTS)
@@ -490,7 +494,7 @@ export default function ThreatTicker({
   }, [alerts, triggerSound]);
 
   // Scroll engine
-  useContinuousScroll(containerRef, contentRef, hovered, scrollSpeed);
+  useContinuousScroll(containerRef, contentRef, paused, scrollSpeed);
 
   const doubledAlerts = useMemo(() => [...alerts, ...alerts], [alerts]);
 
@@ -614,7 +618,7 @@ export default function ThreatTicker({
               className="text-[8px] font-black tracking-[0.25em] text-cyan-400"
               style={{ fontFamily: "'JetBrains Mono', monospace" }}
             >
-              THREAT·FEED
+              {t('threatTicker.title', 'THREAT·FEED')}
             </span>
             <RadarPing />
           </div>
@@ -631,10 +635,10 @@ export default function ThreatTicker({
         className="absolute inset-0 flex items-center overflow-hidden"
         style={{ left: "200px", right: "120px" }}
         onMouseEnter={() => {
-          setHovered(true);
+          setPaused(true);
           triggerSound("holographic_transmission");
         }}
-        onMouseLeave={() => setHovered(false)}
+        onMouseLeave={() => setPaused(false)}
       >
         <div
           ref={contentRef}
@@ -669,19 +673,19 @@ export default function ThreatTicker({
             animate={{ opacity: [0.7, 1, 0.7] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            LIVE
+            {t('threatTicker.live', 'LIVE')}
           </motion.span>
           <span
             className="text-[7px] tracking-widest text-white/25"
             style={{ fontFamily: "'JetBrains Mono', monospace" }}
           >
-            ENCRYPTED
+            {t('threatTicker.encrypted', 'ENCRYPTED')}
           </span>
         </div>
       </div>
 
       {/* Hover pause vignette */}
-      {hovered && (
+      {paused && (
         <motion.div
           className="absolute inset-0 pointer-events-none z-10"
           style={{

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { scanUrl } from '../../services/virustotal';
 
 // Types
@@ -41,6 +42,7 @@ interface ThreatAnalysis {
 }
 
 const TrustLayerLabs = () => {
+  const { t } = useTranslation();
   const [url, setUrl] = useState('');
   const [isScanning, setIsScanning] = useState(false);
   const [scanProgress, setScanProgress] = useState(0);
@@ -109,14 +111,14 @@ const TrustLayerLabs = () => {
 
   // Cyber facts ticker
   const cyberFacts = [
-    "78% of phishing attacks now use HTTPS encryption",
-    "Shortened URLs are weaponized in 64% of WhatsApp scams",
-    "Fake courier delivery scams increased 340% this quarter",
-    "43% of breaches started with a phishing email",
-    "QR code phishing attacks grew 587% in 2024",
-    "Visual similarity attacks bypass 82% of users",
-    "Credential theft takes average 16 seconds after click",
-    "Mobile users are 3x more likely to fall for phishing"
+    t('urlScannerPage.cyberFacts.0'),
+    t('urlScannerPage.cyberFacts.1'),
+    t('urlScannerPage.cyberFacts.2'),
+    t('urlScannerPage.cyberFacts.3'),
+    t('urlScannerPage.cyberFacts.4'),
+    t('urlScannerPage.cyberFacts.5'),
+    t('urlScannerPage.cyberFacts.6'),
+    t('urlScannerPage.cyberFacts.7'),
   ];
 
   const [currentFact, setCurrentFact] = useState(0);
@@ -142,12 +144,12 @@ const TrustLayerLabs = () => {
   }, []);
 
   const scanStages = [
-    { name: 'SSL Verification', duration: 800 },
-    { name: 'Redirect Mapping', duration: 1000 },
-    { name: 'Domain Reputation', duration: 900 },
-    { name: 'Script Inspection', duration: 1100 },
-    { name: 'Threat Intelligence', duration: 1000 },
-    { name: `${providerName} Analysis`, duration: 1200 },
+    { name: t('urlScannerPage.stages.sslVerification'), duration: 800 },
+    { name: t('urlScannerPage.stages.redirectMapping'), duration: 1000 },
+    { name: t('urlScannerPage.stages.domainReputation'), duration: 900 },
+    { name: t('urlScannerPage.stages.scriptInspection'), duration: 1100 },
+    { name: t('urlScannerPage.stages.threatIntelligence'), duration: 1000 },
+    { name: t('urlScannerPage.stages.heuristicAnalysis', { provider: providerName }), duration: 1200 },
   ];
 
   const simulateUrlAnalysis = (inputUrl: string): ThreatAnalysis => {
@@ -401,13 +403,13 @@ const TrustLayerLabs = () => {
                 <h1 className="text-2xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-[#22d3ee] via-cyan-400 to-[#06b6d4]">
                   TRUSTLAYERLABS
                 </h1>
-                <p className="text-xs text-cyan-300/50 tracking-widest">THREAT INTELLIGENCE DIVISION</p>
+                <p className="text-xs text-cyan-300/50 tracking-widest">{t('urlScannerPage.intelDivision')}</p>
               </div>
             </div>
             <div className="flex gap-4 text-sm">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-                <span className="text-cyan-300/70">SYSTEM ACTIVE</span>
+                <span className="text-cyan-300/70">{t('urlScannerPage.systemActive')}</span>
               </div>
             </div>
           </div>
@@ -427,7 +429,7 @@ const TrustLayerLabs = () => {
                 transition={{ duration: 2, repeat: Infinity }}
                 className="w-2 h-2 bg-cyan-400 rounded-full"
               />
-              <span className="text-xs font-bold tracking-wider">THREAT INTEL</span>
+              <span className="text-xs font-bold tracking-wider">{t('urlScannerPage.threatIntel')}</span>
             </div>
             <AnimatePresence mode="wait">
               <motion.p
@@ -459,22 +461,21 @@ const TrustLayerLabs = () => {
             >
               <h2 className="text-6xl md:text-7xl font-black tracking-tight mb-4">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#22d3ee] via-cyan-300 to-[#06b6d4]">
-                  INVESTIGATE LINKS
+                  {t('urlScannerPage.headerTitle')}
                 </span>
               </h2>
               <h2 className="text-5xl md:text-6xl font-black tracking-tight">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-[#22d3ee] to-[#06b6d4]">
-                  BEFORE THEY INVESTIGATE YOU
+                  {t('urlScannerPage.headerTitleColored')}
                 </span>
               </h2>
             </motion.div>
             <p className="text-lg text-cyan-100/60 max-w-2xl mx-auto">
-              Advanced {providerName} powered threat intelligence system for analyzing suspicious URLs, 
-              detecting phishing attacks, and understanding social engineering tactics
+              {t('urlScannerPage.headerSubtitle', { provider: providerName })}
             </p>
             <div className="mt-6 inline-flex items-center justify-center gap-3 text-sm text-cyan-200/80">
               <span className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-cyan-100 tracking-wide">
-                Powered by
+                {t('urlScannerPage.poweredBy')}
               </span>
               <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-[#22d3ee] via-cyan-400 to-[#06b6d4]">
                 {providerName}
@@ -518,7 +519,7 @@ const TrustLayerLabs = () => {
                       transition={{ duration: 2, repeat: Infinity }}
                       className="w-2 h-2 bg-cyan-400 rounded-full"
                     />
-                    TARGET URL INPUT
+                    {t('urlScannerPage.targetInput')}
                   </label>
                   <div className="relative">
                     <input
@@ -526,7 +527,7 @@ const TrustLayerLabs = () => {
                       value={url}
                       onChange={(e) => setUrl(e.target.value)}
                       onKeyPress={(e) => e.key === 'Enter' && handleScan()}
-                      placeholder="https://suspicious-link.example.com"
+                      placeholder={t('urlScannerPage.inputPlaceholder')}
                       className="w-full bg-[#050816]/80 border-2 border-cyan-500/25 rounded-xl px-6 py-5 text-lg text-white placeholder-cyan-300/25 focus:border-cyan-400 focus:outline-none focus:shadow-[0_0_14px_rgba(0,229,255,0.2)] transition-all"
                       disabled={isScanning}
                     />
@@ -555,19 +556,19 @@ const TrustLayerLabs = () => {
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
                   />
                   <span className="relative z-10">
-                    {isScanning ? 'SCANNING...' : 'INITIATE THREAT SCAN'}
+                    {isScanning ? t('urlScannerPage.btnScanning') : t('urlScannerPage.btnScan')}
                   </span>
                 </motion.button>
 
                 {warning && (
                   <div className="mt-6 rounded-2xl border border-amber-500/20 bg-amber-500/10 p-4 text-sm text-amber-100">
-                    <strong className="font-semibold">AI unavailable:</strong> {warning}
+                    <strong className="font-semibold">{t('urlScannerPage.aiUnavailable')}</strong> {warning}
                   </div>
                 )}
 
                 {error && (
                   <div className="mt-6 rounded-2xl border border-red-500/20 bg-red-500/10 p-4 text-sm text-red-300">
-                    <strong className="font-semibold">AI scan failed:</strong> {error}
+                    <strong className="font-semibold">{t('urlScannerPage.aiScanFailed')}</strong> {error}
                   </div>
                 )}
 
@@ -582,7 +583,7 @@ const TrustLayerLabs = () => {
                     >
                       <div className="flex items-center justify-between text-sm">
                         <span className="text-cyan-400 font-bold tracking-wider">{currentStage}</span>
-                        <span className="text-cyan-300/60">{Math.round(scanProgress)}%</span>
+                        <span className="text-cyan-300/60">{t('urlScannerPage.scanProgress')} {Math.round(scanProgress)}%</span>
                       </div>
                       <div className="h-2 bg-black/60 rounded-full overflow-hidden border border-cyan-500/30">
                         <motion.div
@@ -662,20 +663,20 @@ const TrustLayerLabs = () => {
                               : 'bg-[#ef4444]'
                           }`}
                         />
-                        <span className="text-sm font-bold tracking-widest text-white/60">THREAT VERDICT</span>
+                        <span className="text-sm font-bold tracking-widest text-white/60">{t('urlScannerPage.threatVerdict')}</span>
                       </div>
                       <h3 className={`text-5xl font-black tracking-tight uppercase bg-gradient-to-r ${getVerdictColor(analysis.verdict)} text-transparent bg-clip-text`}>
-                        {analysis.verdict}
+                        {t(`urlScannerPage.verdicts.${analysis.verdict}`)}
                       </h3>
                     </div>
                     <div className="grid grid-cols-2 gap-6">
                       <div className="text-center">
                         <div className="text-3xl font-bold text-white mb-1">{analysis.confidenceScore}%</div>
-                        <div className="text-xs text-white/60 tracking-wider">CONFIDENCE</div>
+                        <div className="text-xs text-white/60 tracking-wider">{t('urlScannerPage.confidence')}</div>
                       </div>
                       <div className="text-center">
                         <div className="text-3xl font-bold text-white mb-1">{Math.round(analysis.phishingProbability)}%</div>
-                        <div className="text-xs text-white/60 tracking-wider">PHISHING RISK</div>
+                        <div className="text-xs text-white/60 tracking-wider">{t('urlScannerPage.phishingRisk')}</div>
                       </div>
                     </div>
                   </div>
@@ -695,7 +696,7 @@ const TrustLayerLabs = () => {
                       className="w-8 h-8 border-2 border-[#8b5cf6]/50 rounded-lg shrink-0"
                     />
                     <div>
-                      <h4 className="text-lg font-bold text-[#a78bfa] mb-3 tracking-wide">{providerName} THREAT ANALYSIS</h4>
+                      <h4 className="text-lg font-bold text-[#a78bfa] mb-3 tracking-wide">{t('urlScannerPage.threatAnalysisHeader', { provider: providerName })}</h4>
                       <p className="text-cyan-100/80 leading-relaxed">{analysis.aiExplanation}</p>
                     </div>
                   </div>
@@ -712,19 +713,19 @@ const TrustLayerLabs = () => {
                   >
                     <div className="flex items-center gap-2 mb-4">
                       <div className={`w-3 h-3 rounded-full ${analysis.ssl.valid ? 'bg-cyan-400' : 'bg-[#ef4444]'} animate-pulse`} />
-                      <h5 className="text-sm font-bold text-cyan-300 tracking-wider">SSL CERTIFICATE</h5>
+                      <h5 className="text-sm font-bold text-cyan-300 tracking-wider">{t('urlScannerPage.sslCertificate')}</h5>
                     </div>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-cyan-100/60">Status:</span>
-                        <span className={analysis.ssl.valid ? 'text-cyan-400' : 'text-[#ef4444]'}>{analysis.ssl.valid ? 'Valid' : 'Invalid'}</span>
+                        <span className="text-cyan-100/60">{t('urlScannerPage.status')}</span>
+                        <span className={analysis.ssl.valid ? 'text-cyan-400' : 'text-[#ef4444]'}>{analysis.ssl.valid ? t('urlScannerPage.verdicts.safe') : t('urlScannerPage.verdicts.malicious')}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-cyan-100/60">Issuer:</span>
+                        <span className="text-cyan-100/60">{t('urlScannerPage.issuer')}</span>
                         <span className="text-white">{analysis.ssl.issuer}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-cyan-100/60">Expires:</span>
+                        <span className="text-cyan-100/60">{t('urlScannerPage.expires')}</span>
                         <span className="text-white">{analysis.ssl.expiry}</span>
                       </div>
                     </div>
@@ -743,19 +744,19 @@ const TrustLayerLabs = () => {
                         transition={{ duration: 2, repeat: Infinity }}
                         className="w-3 h-3 bg-cyan-400 rounded-full"
                       />
-                      <h5 className="text-sm font-bold text-cyan-300 tracking-wider">DOMAIN INTEL</h5>
+                      <h5 className="text-sm font-bold text-cyan-300 tracking-wider">{t('urlScannerPage.domainIntel')}</h5>
                     </div>
                     <div className="space-y-2 text-sm">
                       <div className="flex justify-between">
-                        <span className="text-cyan-100/60">Age:</span>
+                        <span className="text-cyan-100/60">{t('urlScannerPage.age')}</span>
                         <span className="text-white">{analysis.domain.age}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-cyan-100/60">Registrar:</span>
+                        <span className="text-cyan-100/60">{t('urlScannerPage.registrar')}</span>
                         <span className="text-white">{analysis.domain.registrar}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-cyan-100/60">Reputation:</span>
+                        <span className="text-cyan-100/60">{t('urlScannerPage.reputation')}</span>
                         <span className="text-white">{analysis.domain.reputation}/100</span>
                       </div>
                     </div>
@@ -776,7 +777,7 @@ const TrustLayerLabs = () => {
                           analysis.verdict === 'malicious' ? 'bg-[#ef4444]' : analysis.verdict === 'suspicious' ? 'bg-[#f97316]' : 'bg-cyan-400'
                         }`}
                       />
-                      <h5 className="text-sm font-bold text-cyan-300 tracking-wider">THREAT LEVEL</h5>
+                      <h5 className="text-sm font-bold text-cyan-300 tracking-wider">{t('urlScannerPage.threatLevel')}</h5>
                     </div>
                     <div className="mb-3">
                       <div className="text-4xl font-black text-white">{analysis.threatLevel}<span className="text-xl text-white/60">/100</span></div>
@@ -801,7 +802,7 @@ const TrustLayerLabs = () => {
                 >
                   <h4 className="text-lg font-bold text-cyan-300 mb-6 tracking-wide flex items-center gap-2">
                     <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-                    URL STRUCTURE ANALYSIS
+                    {t('urlScannerPage.urlStructureAnalysis')}
                   </h4>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {Object.entries(analysis.urlBreakdown).filter(([key]) => key !== 'suspicious').map(([key, value]) => (
@@ -813,7 +814,7 @@ const TrustLayerLabs = () => {
                             : 'border-cyan-500/15 bg-cyan-500/5'
                         }`}
                       >
-                        <div className="text-xs text-cyan-400/50 mb-1 uppercase tracking-wider">{key}</div>
+                        <div className="text-xs text-cyan-400/50 mb-1 uppercase tracking-wider">{t(`urlScannerPage.${key}`, key)}</div>
                         <div className="text-sm text-white font-mono break-all">{value as string}</div>
                       </div>
                     ))}
@@ -834,7 +835,7 @@ const TrustLayerLabs = () => {
                         transition={{ duration: 2, repeat: Infinity }}
                         className="w-2 h-2 bg-[#f97316] rounded-full"
                       />
-                      SOCIAL ENGINEERING INDICATORS
+                      {t('urlScannerPage.socialEngineeringIndicators')}
                     </h4>
                     <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                       {Object.entries(analysis.socialEngineering).map(([tactic, detected]) => (
@@ -852,7 +853,7 @@ const TrustLayerLabs = () => {
                               {tactic === 'fear' && '⚠️'}
                               {tactic === 'verification' && '✓'}
                             </div>
-                            <div className="text-xs text-orange-200/90 uppercase tracking-wider">{tactic}</div>
+                            <div className="text-xs text-orange-200/90 uppercase tracking-wider">{t(`urlScannerPage.tactics.${tactic}`, tactic)}</div>
                           </motion.div>
                         )
                       ))}
@@ -868,7 +869,7 @@ const TrustLayerLabs = () => {
                     transition={{ delay: 0.8 }}
                     className={`${glassCard} border-[#f97316]/20 rounded-2xl p-8`}
                   >
-                    <h4 className="text-lg font-bold text-[#f97316] mb-6 tracking-wide">SUSPICIOUS PATTERNS DETECTED</h4>
+                    <h4 className="text-lg font-bold text-[#f97316] mb-6 tracking-wide">{t('urlScannerPage.suspiciousPatterns')}</h4>
                     <div className="flex flex-wrap gap-3">
                       {analysis.suspiciousKeywords.map((keyword, idx) => (
                         <motion.div
@@ -893,7 +894,7 @@ const TrustLayerLabs = () => {
                     transition={{ delay: 0.9 }}
                     className={`${glassCard} border-[#ef4444]/25 rounded-2xl p-8`}
                   >
-                    <h4 className="text-lg font-bold text-[#ef4444] mb-6 tracking-wide">REDIRECT CHAIN DETECTED</h4>
+                    <h4 className="text-lg font-bold text-[#ef4444] mb-6 tracking-wide">{t('urlScannerPage.redirectChainDetected')}</h4>
                     <div className="space-y-3">
                       {analysis.redirectChain.map((redirect, idx) => (
                         <motion.div
@@ -925,7 +926,7 @@ const TrustLayerLabs = () => {
                   transition={{ delay: 1.0 }}
                   className={`${glassCard} border-[#8b5cf6]/20 rounded-2xl p-8`}
                 >
-                  <h4 className="text-lg font-bold text-[#a78bfa] mb-8 tracking-wide">ATTACK FLOW PATTERN</h4>
+                  <h4 className="text-lg font-bold text-[#a78bfa] mb-8 tracking-wide">{t('urlScannerPage.attackFlowPattern')}</h4>
                   <div className="relative">
                     {analysis.attackFlow.map((step, idx) => (
                       <motion.div
@@ -977,7 +978,7 @@ const TrustLayerLabs = () => {
                     }}
                     className="flex-1 bg-gradient-to-r from-cyan-600 to-[#06b6d4] hover:from-cyan-500 hover:to-[#22d3ee] text-white font-bold py-4 px-6 rounded-xl shadow-[0_0_14px_rgba(0,229,255,0.22)] transition-all"
                   >
-                    SCAN ANOTHER URL
+                    {t('urlScannerPage.scanAnotherUrl')}
                   </motion.button>
                   <motion.button
                     whileHover={{ scale: 1.02 }}
@@ -987,7 +988,7 @@ const TrustLayerLabs = () => {
                     }}
                     className="flex-1 bg-[#070b1a]/80 border border-cyan-500/25 hover:border-cyan-400/40 hover:bg-cyan-500/10 text-cyan-100 font-bold py-4 px-6 rounded-xl shadow-[0_0_10px_rgba(0,229,255,0.12)] transition-all"
                   >
-                    EXPLORE CYBER AWARENESS
+                    {t('urlScannerPage.exploreCyberAwareness')}
                   </motion.button>
                 </motion.div>
               </motion.div>
@@ -1011,11 +1012,11 @@ const TrustLayerLabs = () => {
                 className="text-4xl md:text-5xl font-black tracking-tight mb-4"
               >
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#22d3ee] via-cyan-300 to-[#06b6d4]">
-                  CYBER AWARENESS INTELLIGENCE
+                  {t('urlScannerPage.cyberAwarenessIntelligence')}
                 </span>
               </motion.h3>
               <p className="text-lg text-cyan-100/60">
-                Understanding threats is your first line of defense
+                {t('urlScannerPage.understandingThreats')}
               </p>
             </div>
 
@@ -1030,24 +1031,23 @@ const TrustLayerLabs = () => {
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 bg-cyan-500/10 border border-cyan-500/20 rounded-lg flex items-center justify-center text-2xl">🔒</div>
-                  <h4 className="text-xl font-bold text-cyan-300">How Phishing Links Work</h4>
+                  <h4 className="text-xl font-bold text-cyan-300">{t('urlScannerPage.cards.phishingWork.title')}</h4>
                 </div>
                 <p className="text-slate-300/80 leading-relaxed mb-4">
-                  Phishing links disguise themselves as legitimate URLs to steal credentials. Attackers use visual similarity, 
-                  shortened URLs, and redirect chains to bypass detection and trick users into entering sensitive information.
+                  {t('urlScannerPage.cards.phishingWork.desc')}
                 </p>
                 <ul className="space-y-2 text-sm text-cyan-100/60">
                   <li className="flex items-start gap-2">
                     <span className="text-cyan-400/80 mt-1">•</span>
-                    <span>Typosquatting: paypa1.com instead of paypal.com</span>
+                    <span>{t('urlScannerPage.cards.phishingWork.item1')}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-cyan-400/80 mt-1">•</span>
-                    <span>Subdomain tricks: paypal.secure-login.phisher.com</span>
+                    <span>{t('urlScannerPage.cards.phishingWork.item2')}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-cyan-400/80 mt-1">•</span>
-                    <span>Homograph attacks: using similar-looking characters</span>
+                    <span>{t('urlScannerPage.cards.phishingWork.item3')}</span>
                   </li>
                 </ul>
               </motion.div>
@@ -1061,24 +1061,23 @@ const TrustLayerLabs = () => {
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 bg-cyan-500/10 border border-cyan-500/20 rounded-lg flex items-center justify-center text-2xl">🎭</div>
-                  <h4 className="text-xl font-bold text-cyan-300">Domain Hiding Techniques</h4>
+                  <h4 className="text-xl font-bold text-cyan-300">{t('urlScannerPage.cards.domainHiding.title')}</h4>
                 </div>
                 <p className="text-slate-300/80 leading-relaxed mb-4">
-                  Cybercriminals use sophisticated methods to conceal malicious domains and make them appear legitimate. 
-                  Understanding these tactics helps you identify suspicious links before clicking.
+                  {t('urlScannerPage.cards.domainHiding.desc')}
                 </p>
                 <ul className="space-y-2 text-sm text-cyan-100/60">
                   <li className="flex items-start gap-2">
                     <span className="text-cyan-400/80 mt-1">•</span>
-                    <span>URL shorteners hiding the real destination</span>
+                    <span>{t('urlScannerPage.cards.domainHiding.item1')}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-cyan-400/80 mt-1">•</span>
-                    <span>Multiple redirects to obscure the final target</span>
+                    <span>{t('urlScannerPage.cards.domainHiding.item2')}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-cyan-400/80 mt-1">•</span>
-                    <span>Encoding techniques and obfuscated parameters</span>
+                    <span>{t('urlScannerPage.cards.domainHiding.item3')}</span>
                   </li>
                 </ul>
               </motion.div>
@@ -1092,24 +1091,23 @@ const TrustLayerLabs = () => {
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 bg-cyan-500/10 border border-cyan-500/20 rounded-lg flex items-center justify-center text-2xl">🛡️</div>
-                  <h4 className="text-xl font-bold text-cyan-300">HTTPS Alone Isn&apos;t Enough</h4>
+                  <h4 className="text-xl font-bold text-cyan-300">{t('urlScannerPage.cards.httpsEnough.title')}</h4>
                 </div>
                 <p className="text-slate-300/80 leading-relaxed mb-4">
-                  The presence of HTTPS and a padlock icon does NOT guarantee a site is safe. 78% of phishing sites now use 
-                  SSL certificates to appear trustworthy. Always verify the domain itself.
+                  {t('urlScannerPage.cards.httpsEnough.desc')}
                 </p>
                 <ul className="space-y-2 text-sm text-cyan-100/60">
                   <li className="flex items-start gap-2">
                     <span className="text-cyan-400/80 mt-1">•</span>
-                    <span>Free SSL certificates are available to anyone</span>
+                    <span>{t('urlScannerPage.cards.httpsEnough.item1')}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-cyan-400/80 mt-1">•</span>
-                    <span>Attackers use HTTPS to build false credibility</span>
+                    <span>{t('urlScannerPage.cards.httpsEnough.item2')}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-cyan-400/80 mt-1">•</span>
-                    <span>Check the domain name, not just the lock icon</span>
+                    <span>{t('urlScannerPage.cards.httpsEnough.item3')}</span>
                   </li>
                 </ul>
               </motion.div>
@@ -1123,24 +1121,23 @@ const TrustLayerLabs = () => {
               >
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 bg-cyan-500/10 border border-cyan-500/20 rounded-lg flex items-center justify-center text-2xl">📱</div>
-                  <h4 className="text-xl font-bold text-cyan-300">QR & Shortened URL Dangers</h4>
+                  <h4 className="text-xl font-bold text-cyan-300">{t('urlScannerPage.cards.qrShortened.title')}</h4>
                 </div>
                 <p className="text-slate-300/80 leading-relaxed mb-4">
-                  QR codes and shortened URLs completely hide the destination, making them perfect vectors for phishing. 
-                  QR phishing (quishing) attacks increased 587% in 2024.
+                  {t('urlScannerPage.cards.qrShortened.desc')}
                 </p>
                 <ul className="space-y-2 text-sm text-cyan-100/60">
                   <li className="flex items-start gap-2">
                     <span className="text-cyan-400/80 mt-1">•</span>
-                    <span>Can&apos;t preview destination before scanning/clicking</span>
+                    <span>{t('urlScannerPage.cards.qrShortened.item1')}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-cyan-400/80 mt-1">•</span>
-                    <span>Commonly used in parking, delivery, and payment scams</span>
+                    <span>{t('urlScannerPage.cards.qrShortened.item2')}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-cyan-400/80 mt-1">•</span>
-                    <span>Always verify the source before scanning QR codes</span>
+                    <span>{t('urlScannerPage.cards.qrShortened.item3')}</span>
                   </li>
                 </ul>
               </motion.div>
@@ -1161,16 +1158,16 @@ const TrustLayerLabs = () => {
             >
               <h3 className="text-5xl md:text-6xl font-black tracking-tight mb-6">
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#22d3ee] via-cyan-300 to-[#06b6d4]">
-                  THINK BEFORE YOU CLICK
+                  {t('urlScannerPage.thinkBeforeYouClick')}
                 </span>
               </h3>
             </motion.div>
             <p className="text-xl text-cyan-100/60 mb-8 max-w-2xl mx-auto">
-              Every link is a potential threat vector. Stay vigilant, verify sources, and trust your instincts.
+              {t('urlScannerPage.everyLinkThreat')}
             </p>
             <div className="text-sm text-cyan-100/40 mt-8">
-              <p>Educational awareness platform • Not affiliated with security vendors</p>
-              <p className="mt-2">For demonstration and learning purposes only</p>
+              <p>{t('urlScannerPage.eduPlatform')}</p>
+              <p className="mt-2">{t('urlScannerPage.forDemoOnly')}</p>
             </div>
           </motion.div>
         </div>

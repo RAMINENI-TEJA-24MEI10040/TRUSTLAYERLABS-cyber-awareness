@@ -303,45 +303,48 @@ interface ThreatPillProps {
 const AUTH_LINK_CLASS =
   "hidden lg:inline-flex items-center px-3 py-1.5 rounded-lg text-[11px] font-semibold tracking-wider transition-colors";
 
-const AuthNavLinks: React.FC = () => (
-  <div className="hidden lg:flex items-center gap-1.5">
-    <Link
-      to="/login"
-      className={AUTH_LINK_CLASS}
-      style={{
-        fontFamily: "'Rajdhani', sans-serif",
-        color: "rgba(148,163,184,0.9)",
-        border: "1px solid rgba(148,163,184,0.15)",
-      }}
-    >
-      Login
-    </Link>
-    <Link
-      to="/signup"
-      className={AUTH_LINK_CLASS}
-      style={{
-        fontFamily: "'Rajdhani', sans-serif",
-        color: "#06b6d4",
-        border: "1px solid rgba(6,182,212,0.25)",
-        background: "rgba(6,182,212,0.06)",
-      }}
-    >
-      Signup
-    </Link>
-    <Link
-      to="/admin"
-      className={AUTH_LINK_CLASS}
-      style={{
-        fontFamily: "'Rajdhani', sans-serif",
-        color: "rgba(167,139,250,0.95)",
-        border: "1px solid rgba(139,92,246,0.3)",
-        background: "rgba(139,92,246,0.08)",
-      }}
-    >
-      Access Terminal
-    </Link>
-  </div>
-);
+const AuthNavLinks: React.FC = () => {
+  const { t } = useTranslation();
+  return (
+    <div className="hidden lg:flex items-center gap-1.5">
+      <Link
+        to="/login"
+        className={AUTH_LINK_CLASS}
+        style={{
+          fontFamily: "'Rajdhani', sans-serif",
+          color: "rgba(148,163,184,0.9)",
+          border: "1px solid rgba(148,163,184,0.15)",
+        }}
+      >
+        {t("auth.loginBtn")}
+      </Link>
+      <Link
+        to="/signup"
+        className={AUTH_LINK_CLASS}
+        style={{
+          fontFamily: "'Rajdhani', sans-serif",
+          color: "#06b6d4",
+          border: "1px solid rgba(6,182,212,0.25)",
+          background: "rgba(6,182,212,0.06)",
+        }}
+      >
+        {t("auth.signupBtn")}
+      </Link>
+      <Link
+        to="/admin"
+        className={AUTH_LINK_CLASS}
+        style={{
+          fontFamily: "'Rajdhani', sans-serif",
+          color: "rgba(167,139,250,0.95)",
+          border: "1px solid rgba(139,92,246,0.3)",
+          background: "rgba(139,92,246,0.08)",
+        }}
+      >
+        {t("auth.accessTerminal")}
+      </Link>
+    </div>
+  );
+};
 
 const ThreatPill: React.FC<ThreatPillProps> = ({ threatLevel }) => (
   <motion.div
@@ -594,6 +597,14 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, activeId, onClose, onNa
               </span>
             </div>
 
+            {/* Language Selection (Mobile) */}
+            <div className="flex items-center justify-between px-5 py-3 border-b border-slate-800/60 bg-slate-950/20">
+              <span className="text-[11px] font-bold tracking-wider text-slate-400 uppercase" style={{ fontFamily: "'Rajdhani', sans-serif" }}>
+                {t("nav.languageSelector")}
+              </span>
+              <LanguageSwitcher />
+            </div>
+
             {/* Nav grid */}
             <div className="grid grid-cols-2 gap-2 p-4">
               {NAV_ITEMS.map((item, i) => {
@@ -636,7 +647,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, activeId, onClose, onNa
                           color: isActive ? item.color : "#e2e8f0",
                         }}
                       >
-                        {item.label}
+                        {t(item.labelKey ?? item.label ?? '')}
                       </span>
                       {item.status && <StatusBadge status={item.status} />}
                     </div>
@@ -715,6 +726,7 @@ const CyberGrid: React.FC = () => (
 // ─── Main Navbar ──────────────────────────────────────────────────────────────
 
 const Navbar: React.FC = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const location = useLocation();
   const [activeId, setActiveId] = useState<string>("threat-feed");
@@ -781,7 +793,7 @@ const Navbar: React.FC = () => {
         transition={{ type: "spring", stiffness: 280, damping: 30, delay: 0.1 }}
       >
         <motion.div
-          className="relative mx-4 mt-3 rounded-2xl overflow-hidden"
+          className="relative mx-4 mt-3 rounded-2xl"
           animate={{
             boxShadow: scrolled
               ? "0 8px 40px rgba(0,0,0,0.7), 0 0 0 1px rgba(6,182,212,0.18), 0 0 60px rgba(6,182,212,0.06)"
@@ -791,7 +803,7 @@ const Navbar: React.FC = () => {
         >
           {/* Glassmorphism base */}
           <div
-            className="absolute inset-0"
+            className="absolute inset-0 rounded-2xl"
             style={{
               background: scrolled
                 ? "linear-gradient(135deg, rgba(2,8,20,0.96) 0%, rgba(2,12,28,0.94) 100%)"
@@ -843,7 +855,9 @@ const Navbar: React.FC = () => {
               <AuthNavLinks />
 
               {/* Language switcher */}
-              <LanguageSwitcher />
+              <div className="hidden lg:block">
+                <LanguageSwitcher />
+              </div>
 
               {/* Threat level pill */}
               <ThreatPill threatLevel={threatLevel} />
@@ -873,7 +887,7 @@ const Navbar: React.FC = () => {
                   transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 3 }}
                 />
                 <IconShield />
-                <span className="relative z-10">Stay Protected</span>
+                <span className="relative z-10">{t("nav.stayProtected")}</span>
               </motion.a>
 
               {/* Mobile hamburger */}

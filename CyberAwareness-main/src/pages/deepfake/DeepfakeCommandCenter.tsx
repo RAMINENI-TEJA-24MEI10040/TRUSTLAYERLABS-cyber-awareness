@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -551,7 +552,8 @@ function StatCard({ label, target, prefix = "", suffix = "" }: { label: string; 
   );
 }
 
-function AwarenessCard({ card }: { card: typeof AWARENESS_CARDS[0] }) {
+function AwarenessCard({ card, index }: { card: typeof AWARENESS_CARDS[0]; index: number }) {
+  const { t } = useTranslation();
   const [mousePos, setMousePos] = useState({ x: "50%", y: "50%" });
   const [hovered, setHovered] = useState(false);
 
@@ -589,19 +591,19 @@ function AwarenessCard({ card }: { card: typeof AWARENESS_CARDS[0] }) {
         {card.icon}
       </motion.div>
       <div className="uppercase mb-2" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 8, letterSpacing: 2, color: card.levelColor }}>
-        {card.level}
+        {t(`deepfake.awareness.${index}.level`, card.level)}
       </div>
       <div className="font-bold uppercase mb-3 text-white" style={{ fontSize: 15, letterSpacing: 0.5 }}>
-        {card.title}
+        {t(`deepfake.awareness.${index}.title`, card.title)}
       </div>
       <div className="mb-3.5 leading-relaxed" style={{ fontSize: 12, color: "#7899aa" }}>
-        {card.desc}
+        {t(`deepfake.awareness.${index}.desc`, card.desc)}
       </div>
       <div
         className="border-l-2 px-3 py-2"
         style={{ background: "rgba(0,255,136,0.04)", borderColor: COLORS.emerald, fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#6ec9a4" }}
       >
-        {card.tip}
+        {t(`deepfake.awareness.${index}.tip`, card.tip)}
       </div>
     </motion.div>
   );
@@ -610,6 +612,7 @@ function AwarenessCard({ card }: { card: typeof AWARENESS_CARDS[0] }) {
 // ─── Main Component ───────────────────────────────────────────────────────────
 
 export default function DeepfakeCommandCenter() {
+  const { t } = useTranslation();
   const [particles] = useState<Particle[]>(() =>
     Array.from({ length: 30 }, (_, i) => ({
       id: i,
@@ -720,7 +723,7 @@ export default function DeepfakeCommandCenter() {
                 animate={{ opacity: [1, 0.7, 1], boxShadow: ["0 0 0 0 rgba(0,245,255,0.4)", "0 0 0 6px rgba(0,245,255,0)", "0 0 0 0 rgba(0,245,255,0.4)"] }}
                 transition={{ duration: 1.5, repeat: Infinity }}
               />
-              CLASSIFIED // ACTIVE SYSTEM
+              {t("deepfake.hero.badge", "CLASSIFIED // ACTIVE SYSTEM")}
             </div>
 
             {/* Title */}
@@ -736,23 +739,28 @@ export default function DeepfakeCommandCenter() {
                   backgroundClip: "text",
                 }}
               >
-                AI FORENSIC
+                {t("deepfake.hero.titlePart1", "AI FORENSIC")}
               </span>
-              <br />DEEPFAKE<br />COMMAND CENTER
+              <br />{t("deepfake.hero.titlePart2", "DEEPFAKE")}<br />{t("deepfake.hero.titlePart3", "COMMAND CENTER")}
             </h1>
 
             <p className="font-bold uppercase mb-5" style={{ fontSize: "clamp(18px,2.5vw,28px)", color: "#7ba8c4", letterSpacing: 2 }}>
-              TRUSTLAYERLABS
+              {t("deepfake.hero.kicker", "TRUSTLAYERLABS")}
             </p>
             <p className="mb-8 leading-7" style={{ fontSize: 15, color: "#7899aa", maxWidth: 480 }}>
-              Military-grade AI forensic intelligence system. Detecting synthetic media, AI-generated fraud, and deepfake manipulation in real-time — protecting truth at the edge of synthetic deception.
+              {t("deepfake.hero.description", "Military-grade AI forensic intelligence system. Detecting synthetic media, AI-generated fraud, and deepfake manipulation in real-time — protecting truth at the edge of synthetic deception.")}
             </p>
 
             {/* Trust pills */}
             <div className="flex flex-wrap gap-2.5 mb-9">
-              {["AI Analysis", "Neural Detection", "Face Authenticity", "Voice Scan"].map((t) => (
+              {[
+                t("deepfake.hero.pills.0", "AI Analysis"),
+                t("deepfake.hero.pills.1", "Neural Detection"),
+                t("deepfake.hero.pills.2", "Face Authenticity"),
+                t("deepfake.hero.pills.3", "Voice Scan")
+              ].map((pillText) => (
                 <div
-                  key={t}
+                  key={pillText}
                   className="flex items-center gap-2 uppercase"
                   style={{
                     border: `1px solid ${COLORS.borderGlow}`,
@@ -766,15 +774,15 @@ export default function DeepfakeCommandCenter() {
                   }}
                 >
                   <span className="w-1.5 h-1.5 rounded-full" style={{ background: COLORS.emerald, flexShrink: 0 }} />
-                  {t}
+                  {pillText}
                 </div>
               ))}
             </div>
 
             {/* CTA buttons */}
             <div className="flex flex-wrap gap-4">
-              <CyberButton onClick={() => scrollTo(uploadSectionRef)}>⬡ ANALYZE MEDIA</CyberButton>
-              <SecondaryButton onClick={() => scrollTo(awarenessSectionRef)}>⬡ DEEPFAKE RISKS</SecondaryButton>
+              <CyberButton onClick={() => scrollTo(uploadSectionRef)}>{t("deepfake.hero.analyzeBtn", "⬡ ANALYZE MEDIA")}</CyberButton>
+              <SecondaryButton onClick={() => scrollTo(awarenessSectionRef)}>{t("deepfake.hero.risksBtn", "⬡ DEEPFAKE RISKS")}</SecondaryButton>
             </div>
           </motion.div>
 
@@ -790,10 +798,10 @@ export default function DeepfakeCommandCenter() {
           style={{ background: "linear-gradient(180deg, #020b18 0%, rgba(3,13,30,0.95) 100%)" }}
         >
           <SectionHeader
-            tag="// FORENSIC ANALYSIS ENGINE"
-            title="LIVE"
-            titleHighlight="DETECTION PANEL"
-            desc="Real-time AI forensic analysis with multi-layer neural detection and confidence scoring"
+            tag={t("deepfake.live.tag", "// FORENSIC ANALYSIS ENGINE")}
+            title={t("deepfake.live.title", "LIVE")}
+            titleHighlight={t("deepfake.live.titleHighlight", "DETECTION PANEL")}
+            desc={t("deepfake.live.desc", "Real-time AI forensic analysis with multi-layer neural detection and confidence scoring")}
           />
 
           <motion.div
@@ -806,39 +814,39 @@ export default function DeepfakeCommandCenter() {
           >
             {/* Card 1: Biometric */}
             <DetectionCard
-              label="Authenticity Score"
+              label={t("deepfake.live.cards.0.label", "Authenticity Score")}
               score="94.2"
               scoreColor={COLORS.emerald}
-              title="FACE BIOMETRIC ANALYSIS"
+              title={t("deepfake.live.cards.0.title", "FACE BIOMETRIC ANALYSIS")}
               tags={[
-                { text: "Facial Landmarks ✓", variant: "cyan" },
-                { text: "Blink Rate ✓", variant: "cyan" },
-                { text: "Micro-expression ⚠", variant: "amber" },
+                { text: t("deepfake.live.cards.0.tags.0", "Facial Landmarks ✓"), variant: "cyan" },
+                { text: t("deepfake.live.cards.0.tags.1", "Blink Rate ✓"), variant: "cyan" },
+                { text: t("deepfake.live.cards.0.tags.2", "Micro-expression ⚠"), variant: "amber" },
               ]}
               bars={[
-                { name: "Neural Consistency", value: "96%", fillClass: "bg-gradient-to-r from-green-500 to-emerald-400", width: "96%" },
-                { name: "Skin Texture", value: "91%", fillClass: "", width: "91%", gradient: `linear-gradient(90deg, ${COLORS.cyan2}, ${COLORS.cyan})` },
-                { name: "Lip Sync Match", value: "78%", fillClass: "", width: "78%", gradient: `linear-gradient(90deg, #cc8800, ${COLORS.amber})` },
+                { name: t("deepfake.live.cards.0.bars.0", "Neural Consistency"), value: "96%", fillClass: "bg-gradient-to-r from-green-500 to-emerald-400", width: "96%" },
+                { name: t("deepfake.live.cards.0.bars.1", "Skin Texture"), value: "91%", fillClass: "", width: "91%", gradient: `linear-gradient(90deg, ${COLORS.cyan2}, ${COLORS.cyan})` },
+                { name: t("deepfake.live.cards.0.bars.2", "Lip Sync Match"), value: "78%", fillClass: "", width: "78%", gradient: `linear-gradient(90deg, #cc8800, ${COLORS.amber})` },
               ]}
             />
 
             {/* Card 2: Synthetic */}
             <DetectionCard
-              label="Manipulation Score"
+              label={t("deepfake.live.cards.1.label", "Manipulation Score")}
               score="23.7"
               scoreColor={COLORS.amber}
-              title="SYNTHETIC ARTIFACT DETECTION"
+              title={t("deepfake.live.cards.1.title", "SYNTHETIC ARTIFACT DETECTION")}
               tags={[
-                { text: "Voice Clone ⚠", variant: "red" },
-                { text: "Lip-Sync Mismatch", variant: "red" },
-                { text: "Synthetic Artifact", variant: "amber" },
-                { text: "Metadata Anomaly", variant: "amber" },
+                { text: t("deepfake.live.cards.1.tags.0", "Voice Clone ⚠"), variant: "red" },
+                { text: t("deepfake.live.cards.1.tags.1", "Lip-Sync Mismatch"), variant: "red" },
+                { text: t("deepfake.live.cards.1.tags.2", "Synthetic Artifact"), variant: "amber" },
+                { text: t("deepfake.live.cards.1.tags.3", "Metadata Anomaly"), variant: "amber" },
               ]}
               bars={[
-                { name: "AI Generation Prob", value: "23%", fillClass: "", width: "23%", gradient: `linear-gradient(90deg, #cc8800, ${COLORS.amber})` },
-                { name: "Voice Synthesis", value: "67%", fillClass: "", width: "67%", gradient: `linear-gradient(90deg, #cc2244, ${COLORS.red})` },
+                { name: t("deepfake.live.cards.1.bars.0", "AI Generation Prob"), value: "23%", fillClass: "", width: "23%", gradient: `linear-gradient(90deg, #cc8800, ${COLORS.amber})` },
+                { name: t("deepfake.live.cards.1.bars.1", "Voice Synthesis"), value: "67%", fillClass: "", width: "67%", gradient: `linear-gradient(90deg, #cc2244, ${COLORS.red})` },
               ]}
-              warning="VOICE CLONE PATTERN DETECTED — REVIEW REQUIRED"
+              warning={t("deepfake.live.cards.1.warning", "VOICE CLONE PATTERN DETECTED — REVIEW REQUIRED")}
             />
           </motion.div>
         </section>
@@ -851,10 +859,10 @@ export default function DeepfakeCommandCenter() {
           style={{ background: COLORS.navy }}
         >
           <SectionHeader
-            tag="// AI FORENSIC SCANNER"
-            title="MEDIA"
-            titleHighlight="ANALYZER"
-            desc="Submit image, video, or audio for immediate AI forensic investigation"
+            tag={t("deepfake.analyzer.tag", "// AI FORENSIC SCANNER")}
+            title={t("deepfake.analyzer.title", "MEDIA")}
+            titleHighlight={t("deepfake.analyzer.titleHighlight", "ANALYZER")}
+            desc={t("deepfake.analyzer.desc", "Submit image, video, or audio for immediate AI forensic investigation")}
           />
 
           <motion.div
@@ -887,20 +895,25 @@ export default function DeepfakeCommandCenter() {
 
             <div className="font-bold uppercase mb-2 text-white" style={{ fontSize: 18, letterSpacing: 1 }}>
               {analyzeState === "scanning"
-                ? "AI ANALYSIS IN PROGRESS"
+                ? t("deepfake.analyzer.state.scanning", "AI ANALYSIS IN PROGRESS")
                 : analyzeState === "done"
-                ? "ANALYSIS COMPLETE — DROP ANOTHER"
-                : "DROP MEDIA FOR ANALYSIS"}
+                ? t("deepfake.analyzer.state.done", "ANALYSIS COMPLETE — DROP ANOTHER")
+                : t("deepfake.analyzer.state.idle", "DROP MEDIA FOR ANALYSIS")}
             </div>
             <div className="mb-6" style={{ fontSize: 13, color: "#7899aa" }}>
               {analyzeState === "scanning"
-                ? "Neural forensic scan running..."
-                : "Drag & drop or click to select — maximum security forensic scan"}
+                ? t("deepfake.analyzer.prompt.scanning", "Neural forensic scan running...")
+                : t("deepfake.analyzer.prompt.idle", "Drag & drop or click to select — maximum security forensic scan")}
             </div>
             <div className="flex justify-center gap-3 flex-wrap">
-              {["IMAGE", "VIDEO", "AUDIO", "PDF"].map((t) => (
+              {[
+                t("deepfake.analyzer.types.0", "IMAGE"),
+                t("deepfake.analyzer.types.1", "VIDEO"),
+                t("deepfake.analyzer.types.2", "AUDIO"),
+                t("deepfake.analyzer.types.3", "PDF")
+              ].map((typ) => (
                 <span
-                  key={t}
+                  key={typ}
                   className="uppercase"
                   style={{
                     padding: "6px 14px",
@@ -913,7 +926,7 @@ export default function DeepfakeCommandCenter() {
                     borderRadius: 1,
                   }}
                 >
-                  {t}
+                  {typ}
                 </span>
               ))}
             </div>
@@ -931,7 +944,7 @@ export default function DeepfakeCommandCenter() {
               <div className="flex justify-between items-center mb-5 pb-4" style={{ borderBottom: `1px solid ${COLORS.borderGlow}` }}>
                 <div>
                   <div className="uppercase mb-2" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 8, letterSpacing: 2, color: "#7899aa" }}>
-                    FORENSIC VERDICT
+                    {t("deepfake.result.verdictLabel", "FORENSIC VERDICT")}
                   </div>
                   <div
                     className="uppercase"
@@ -946,28 +959,28 @@ export default function DeepfakeCommandCenter() {
                       borderRadius: 1,
                     }}
                   >
-                    ⚠ MANIPULATION DETECTED
+                    {t("deepfake.result.verdictValue", "⚠ MANIPULATION DETECTED")}
                   </div>
                 </div>
                 <div className="text-right">
-                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "#7899aa", letterSpacing: 2, textTransform: "uppercase", marginBottom: 4 }}>Risk Score</div>
+                  <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "#7899aa", letterSpacing: 2, textTransform: "uppercase", marginBottom: 4 }}>{t("deepfake.result.riskLabel", "Risk Score")}</div>
                   <div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 28, fontWeight: 700, color: COLORS.red }}>7.4</div>
                 </div>
               </div>
               <div className="mb-5">
                 <div className="uppercase mb-3" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#7899aa", letterSpacing: 1 }}>
-                  FORENSIC EXPLANATION
+                  {t("deepfake.result.explanationLabel", "FORENSIC EXPLANATION")}
                 </div>
                 <p className="leading-7" style={{ fontSize: 13, color: "#c8e8f0" }}>
-                  Neural analysis has identified characteristic GAN artifacts in facial regions. Frequency domain analysis reveals spectral inconsistencies typical of diffusion model synthesis. Voice pattern shows 67% match to known voice-clone architectures.
+                  {t("deepfake.result.explanationValue", "Neural analysis has identified characteristic GAN artifacts in facial regions. Frequency domain analysis reveals spectral inconsistencies typical of diffusion model synthesis. Voice pattern shows 67% match to known voice-clone architectures.")}
                 </p>
               </div>
               <div className="p-3.5 rounded-sm" style={{ background: "rgba(255,51,102,0.04)", border: "1px solid rgba(255,51,102,0.2)" }}>
                 <div className="uppercase mb-2" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: COLORS.red, letterSpacing: 2 }}>
-                  RECOMMENDED ACTIONS
+                  {t("deepfake.result.actionsLabel", "RECOMMENDED ACTIONS")}
                 </div>
                 <div style={{ fontSize: 12, color: "#cc8899", lineHeight: 1.7 }}>
-                  ① Do not share or trust this media ② Report to platform administrators ③ Contact originating source for verification ④ Preserve evidence chain for investigation
+                  {t("deepfake.result.actionsValue", "① Do not share or trust this media ② Report to platform administrators ③ Contact originating source for verification ④ Preserve evidence chain for investigation")}
                 </div>
               </div>
             </motion.div>
@@ -980,10 +993,10 @@ export default function DeepfakeCommandCenter() {
           style={{ background: "linear-gradient(180deg, rgba(3,13,30,0.95) 0%, #020b18 100%)" }}
         >
           <SectionHeader
-            tag="// CINEMATIC FORENSICS"
-            title="FORENSIC"
-            titleHighlight="VISUALIZATION"
-            desc="Advanced multi-layer forensic intelligence panels with neural pattern analysis"
+            tag={t("deepfake.forensics.tag", "// CINEMATIC FORENSICS")}
+            title={t("deepfake.forensics.title", "FORENSIC")}
+            titleHighlight={t("deepfake.forensics.titleHighlight", "VISUALIZATION")}
+            desc={t("deepfake.forensics.desc", "Advanced multi-layer forensic intelligence panels with neural pattern analysis")}
           />
 
           <motion.div
@@ -995,7 +1008,7 @@ export default function DeepfakeCommandCenter() {
             transition={{ duration: 0.8 }}
           >
             {/* Panel 1: Landmark */}
-            <ForensicPanel label="Face Landmark Mapping">
+            <ForensicPanel label={t("deepfake.panels.0.label", "Face Landmark Mapping")}>
               <div className="relative" style={{ height: 120 }}>
                 {LANDMARK_PTS.map(([x, y], i) => (
                   <motion.div
@@ -1015,7 +1028,7 @@ export default function DeepfakeCommandCenter() {
             </ForensicPanel>
 
             {/* Panel 2: Waveform compare */}
-            <ForensicPanel label="Waveform Comparison">
+            <ForensicPanel label={t("deepfake.panels.1.label", "Waveform Comparison")}>
               <div className="flex items-center gap-px" style={{ height: 60 }}>
                 {waveCompareBars.map((b) => (
                   <div
@@ -1032,14 +1045,14 @@ export default function DeepfakeCommandCenter() {
               </div>
               <div className="mt-3">
                 <div className="flex justify-between mb-1.5">
-                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.emerald }}>Original</span>
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.emerald }}>{t("deepfake.panels.1.original", "Original")}</span>
                   <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#c8e8f0" }}>95%</span>
                 </div>
                 <div className="h-0.5 rounded-sm overflow-hidden mb-2" style={{ background: "rgba(255,255,255,0.06)" }}>
                   <motion.div className="h-full rounded-sm" style={{ background: `linear-gradient(90deg, #00cc66, ${COLORS.emerald})` }} initial={{ width: 0 }} whileInView={{ width: "95%" }} viewport={{ once: true }} transition={{ duration: 1.5 }} />
                 </div>
                 <div className="flex justify-between mb-1.5">
-                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.red }}>Clone Signal</span>
+                  <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: COLORS.red }}>{t("deepfake.panels.1.cloneSignal", "Clone Signal")}</span>
                   <span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 11, color: "#c8e8f0" }}>67%</span>
                 </div>
                 <div className="h-0.5 rounded-sm overflow-hidden" style={{ background: "rgba(255,255,255,0.06)" }}>
@@ -1049,7 +1062,7 @@ export default function DeepfakeCommandCenter() {
             </ForensicPanel>
 
             {/* Panel 3: Heatmap */}
-            <ForensicPanel label="Heatmap Overlay">
+            <ForensicPanel label={t("deepfake.panels.2.label", "Heatmap Overlay")}>
               <div
                 className="relative overflow-hidden rounded-sm"
                 style={{ height: 100, background: "linear-gradient(135deg, rgba(0,102,255,0.2), rgba(255,51,102,0.3), rgba(255,170,0,0.2))" }}
@@ -1061,16 +1074,16 @@ export default function DeepfakeCommandCenter() {
                     fontFamily: "'JetBrains Mono', monospace", fontSize: 8, letterSpacing: 2, color: "rgba(255,51,102,0.7)",
                   }}
                 >
-                  ANOMALY DETECTED
+                  {t("deepfake.panels.2.anomalyDetected", "ANOMALY DETECTED")}
                 </div>
               </div>
               <div className="mt-3 leading-relaxed" style={{ fontSize: 11, color: "#7899aa", fontFamily: "'JetBrains Mono', monospace" }}>
-                GAN fingerprint residuals detected in eye region. Spectral anomaly confidence: 78%
+                {t("deepfake.panels.2.desc", "GAN fingerprint residuals detected in eye region. Spectral anomaly confidence: 78%")}
               </div>
             </ForensicPanel>
 
             {/* Panel 4: Frame timeline */}
-            <ForensicPanel label="Frame Anomaly Timeline">
+            <ForensicPanel label={t("deepfake.panels.3.label", "Frame Anomaly Timeline")}>
               <div className="flex gap-0.5 items-center" style={{ height: 40 }}>
                 {Array.from({ length: 28 }, (_, i) => {
                   const isAnomaly = ANOMALY_FRAMES.has(i);
@@ -1089,18 +1102,18 @@ export default function DeepfakeCommandCenter() {
                 })}
               </div>
               <div className="mt-2.5" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, color: "#7899aa" }}>
-                3 anomalous frames detected @ 0:04, 0:12, 0:19
+                {t("deepfake.panels.3.desc", "3 anomalous frames detected @ 0:04, 0:12, 0:19")}
               </div>
             </ForensicPanel>
 
             {/* Panel 5: Metadata */}
-            <ForensicPanel label="Metadata Intelligence">
+            <ForensicPanel label={t("deepfake.panels.4.label", "Metadata Intelligence")}>
               {[
-                { key: "Device", val: "REDACTED ⚠", flag: true },
-                { key: "GPS", val: "STRIPPED ⚠", flag: true },
-                { key: "Created", val: "2025-03-14", flag: false },
-                { key: "Modified", val: "2025-03-15 ⚠", flag: true },
-                { key: "Software", val: "Stable Diffusion ⚠", flag: true },
+                { key: t("deepfake.panels.4.rows.0.key", "Device"), val: t("deepfake.panels.4.rows.0.val", "REDACTED ⚠"), flag: true },
+                { key: t("deepfake.panels.4.rows.1.key", "GPS"), val: t("deepfake.panels.4.rows.1.val", "STRIPPED ⚠"), flag: true },
+                { key: t("deepfake.panels.4.rows.2.key", "Created"), val: "2025-03-14", flag: false },
+                { key: t("deepfake.panels.4.rows.3.key", "Modified"), val: t("deepfake.panels.4.rows.3.val", "2025-03-15 ⚠"), flag: true },
+                { key: t("deepfake.panels.4.rows.4.key", "Software"), val: t("deepfake.panels.4.rows.4.val", "Stable Diffusion ⚠"), flag: true },
               ].map((r) => (
                 <div
                   key={r.key}
@@ -1114,7 +1127,7 @@ export default function DeepfakeCommandCenter() {
             </ForensicPanel>
 
             {/* Panel 6: AI Behavior Graph */}
-            <ForensicPanel label="AI Behavior Graph">
+            <ForensicPanel label={t("deepfake.panels.5.label", "AI Behavior Graph")}>
               <div className="relative overflow-hidden" style={{ height: 100 }}>
                 <svg width="100%" height="100" viewBox="0 0 220 100" preserveAspectRatio="none">
                   <polyline
@@ -1130,7 +1143,7 @@ export default function DeepfakeCommandCenter() {
                   className="absolute"
                   style={{ top: 4, right: 4, fontFamily: "'JetBrains Mono', monospace", fontSize: 9, color: COLORS.red }}
                 >
-                  AI PATTERN ↑
+                  {t("deepfake.panels.5.badge", "AI PATTERN ↑")}
                 </div>
               </div>
             </ForensicPanel>
@@ -1145,10 +1158,10 @@ export default function DeepfakeCommandCenter() {
           style={{ background: COLORS.navy }}
         >
           <SectionHeader
-            tag="// THREAT INTELLIGENCE"
-            title="DEEPFAKE SCAM"
-            titleHighlight="AWARENESS"
-            desc="Active threat vectors and countermeasures for AI-generated fraud patterns"
+            tag={t("deepfake.awareness.tag", "// THREAT INTELLIGENCE")}
+            title={t("deepfake.awareness.title", "DEEPFAKE SCAM")}
+            titleHighlight={t("deepfake.awareness.titleHighlight", "AWARENESS")}
+            desc={t("deepfake.awareness.desc", "Active threat vectors and countermeasures for AI-generated fraud patterns")}
           />
 
           <motion.div
@@ -1159,8 +1172,8 @@ export default function DeepfakeCommandCenter() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            {AWARENESS_CARDS.map((card) => (
-              <AwarenessCard key={card.title} card={card} />
+            {AWARENESS_CARDS.map((card, idx) => (
+              <AwarenessCard key={card.title} card={card} index={idx} />
             ))}
           </motion.div>
         </section>
@@ -1171,10 +1184,10 @@ export default function DeepfakeCommandCenter() {
           style={{ background: "linear-gradient(180deg, #020b18 0%, rgba(3,13,30,0.95) 100%)" }}
         >
           <SectionHeader
-            tag="// CYBER INCIDENT RECORD"
-            title="FORENSIC"
-            titleHighlight="CASE TIMELINE"
-            desc="Documented cyber incident breakdown — from initial deepfake deployment to forensic resolution"
+            tag={t("deepfake.timeline.tag", "// CYBER INCIDENT RECORD")}
+            title={t("deepfake.timeline.title", "FORENSIC")}
+            titleHighlight={t("deepfake.timeline.titleHighlight", "CASE TIMELINE")}
+            desc={t("deepfake.timeline.desc", "Documented cyber incident breakdown — from initial deepfake deployment to forensic resolution")}
           />
 
           <motion.div
@@ -1219,13 +1232,13 @@ export default function DeepfakeCommandCenter() {
                     }}
                   />
                   <div className="uppercase mb-2" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 8, letterSpacing: 2, color: COLORS.cyan }}>
-                    {item.step}
+                    {t(`deepfake.timeline.${i}.step`, item.step)}
                   </div>
                   <div className="font-bold uppercase mb-2 text-white" style={{ fontSize: 14, letterSpacing: 0.5 }}>
-                    {item.title}
+                    {t(`deepfake.timeline.${i}.title`, item.title)}
                   </div>
                   <div className="leading-relaxed" style={{ fontSize: 12, color: "#7899aa" }}>
-                    {item.desc}
+                    {t(`deepfake.timeline.${i}.desc`, item.desc)}
                   </div>
                 </div>
 
@@ -1256,9 +1269,9 @@ export default function DeepfakeCommandCenter() {
           style={{ background: "linear-gradient(180deg, rgba(3,13,30,0.95) 0%, #020b18 100%)" }}
         >
           <SectionHeader
-            tag="// LIVE INTELLIGENCE METRICS"
-            title="FORENSIC"
-            titleHighlight="COMMAND STATS"
+            tag={t("deepfake.stats.tag", "// LIVE INTELLIGENCE METRICS")}
+            title={t("deepfake.stats.title", "FORENSIC")}
+            titleHighlight={t("deepfake.stats.titleHighlight", "COMMAND STATS")}
           />
 
           <motion.div
@@ -1269,10 +1282,10 @@ export default function DeepfakeCommandCenter() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <StatCard label="Deepfakes Detected" target={2847193} />
-            <StatCard label="Media Analyzed" target={18400000} />
-            <StatCard label="Fraud Prevented" target={847} prefix="$" suffix="M" />
-            <StatCard label="AI Models Tagged" target={1247} />
+            <StatCard label={t("deepfake.stats.cards.0", "Deepfakes Detected")} target={2847193} />
+            <StatCard label={t("deepfake.stats.cards.1", "Media Analyzed")} target={18400000} />
+            <StatCard label={t("deepfake.stats.cards.2", "Fraud Prevented")} target={847} prefix="$" suffix="M" />
+            <StatCard label={t("deepfake.stats.cards.3", "AI Models Tagged")} target={1247} />
           </motion.div>
         </section>
 
@@ -1282,10 +1295,10 @@ export default function DeepfakeCommandCenter() {
           style={{ background: "linear-gradient(180deg, #020b18 0%, rgba(3,13,30,0.95) 100%)" }}
         >
           <SectionHeader
-            tag="// CLASSIFIED BRIEFING"
-            title="CYBER DEFENSE"
-            titleHighlight="PROTOCOLS"
-            desc="Field-tested countermeasures for active deepfake threat environments"
+            tag={t("deepfake.protocols.tag", "// CLASSIFIED BRIEFING")}
+            title={t("deepfake.protocols.title", "CYBER DEFENSE")}
+            titleHighlight={t("deepfake.protocols.titleHighlight", "PROTOCOLS")}
+            desc={t("deepfake.protocols.desc", "Field-tested countermeasures for active deepfake threat environments")}
           />
 
           <motion.div
@@ -1296,9 +1309,9 @@ export default function DeepfakeCommandCenter() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            {DEFENSE_PROTOCOLS.map((p) => (
+            {DEFENSE_PROTOCOLS.map((prot, idx) => (
               <motion.div
-                key={p.num}
+                key={prot.num}
                 className="flex items-start gap-4 rounded-sm p-5"
                 style={{ background: COLORS.glass, border: `1px solid ${COLORS.borderGlow}` }}
                 whileHover={{ borderColor: COLORS.borderGlow2, background: COLORS.glass2 }}
@@ -1308,17 +1321,17 @@ export default function DeepfakeCommandCenter() {
                   className="flex-shrink-0 leading-none"
                   style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 24, fontWeight: 700, color: "rgba(0,245,255,0.2)" }}
                 >
-                  {p.num}
+                  {prot.num}
                 </div>
                 <div>
                   <div className="uppercase mb-1.5" style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 8, letterSpacing: 2, color: COLORS.amber }}>
-                    {p.label}
+                    {t(`deepfake.protocols.${idx}.label`, prot.label)}
                   </div>
                   <div className="font-bold uppercase mb-1.5 text-white" style={{ fontSize: 14, letterSpacing: 0.5 }}>
-                    {p.title}
+                    {t(`deepfake.protocols.${idx}.title`, prot.title)}
                   </div>
                   <div className="leading-relaxed mb-2" style={{ fontSize: 12, color: "#7899aa" }}>
-                    {p.desc}
+                    {t(`deepfake.protocols.${idx}.desc`, prot.desc)}
                   </div>
                   <div
                     className="uppercase inline-block"
@@ -1331,7 +1344,7 @@ export default function DeepfakeCommandCenter() {
                       padding: "2px 8px",
                     }}
                   >
-                    {p.mark}
+                    {t(`deepfake.protocols.${idx}.mark`, prot.mark)}
                   </div>
                 </div>
               </motion.div>
@@ -1379,13 +1392,13 @@ export default function DeepfakeCommandCenter() {
               className="uppercase mb-4"
               style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 10, letterSpacing: 4, color: COLORS.cyan }}
             >
-              // DEFEND TRUTH
+              {t("deepfake.cta.tag", "// DEFEND TRUTH")}
             </div>
             <h2
               className="font-black uppercase mb-5 text-white"
               style={{ fontSize: "clamp(28px,5vw,60px)", letterSpacing: -2, lineHeight: 1.05 }}
             >
-              DEFEND REALITY<br />
+              {t("deepfake.cta.titlePart1", "DEFEND REALITY")}<br />
               <span
                 style={{
                   background: `linear-gradient(90deg, ${COLORS.cyan}, ${COLORS.blue}, ${COLORS.emerald})`,
@@ -1394,22 +1407,22 @@ export default function DeepfakeCommandCenter() {
                   backgroundClip: "text",
                 }}
               >
-                AGAINST SYNTHETIC
+                {t("deepfake.cta.titlePart2", "AGAINST SYNTHETIC")}
               </span>
-              <br />DECEPTION
+              <br />{t("deepfake.cta.titlePart3", "DECEPTION")}
             </h2>
             <p className="mb-10 mx-auto" style={{ fontSize: 15, color: "#7899aa", maxWidth: 500 }}>
-              The frontier of AI manipulation advances daily. Deploy military-grade forensic intelligence before the next synthetic attack reaches your network.
+              {t("deepfake.cta.desc", "The frontier of AI manipulation advances daily. Deploy military-grade forensic intelligence before the next synthetic attack reaches your network.")}
             </p>
             <div className="flex justify-center gap-5 flex-wrap">
-              <CyberButton onClick={() => scrollTo(uploadSectionRef)}>⬡ START AI SCAN</CyberButton>
-              <SecondaryButton onClick={() => scrollTo(awarenessSectionRef)}>⬡ EXPLORE AWARENESS</SecondaryButton>
+              <CyberButton onClick={() => scrollTo(uploadSectionRef)}>{t("deepfake.cta.scanBtn", "⬡ START AI SCAN")}</CyberButton>
+              <SecondaryButton onClick={() => scrollTo(awarenessSectionRef)}>{t("deepfake.cta.exploreBtn", "⬡ EXPLORE AWARENESS")}</SecondaryButton>
             </div>
             <div
               className="mt-10 uppercase"
               style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: 9, letterSpacing: 2, color: "rgba(120,153,170,0.4)" }}
             >
-              TRUSTLAYERLABS // AI FORENSIC INTELLIGENCE SYSTEM // v4.2.1 // CLASSIFIED
+              {t("deepfake.cta.footer", "TRUSTLAYERLABS // AI FORENSIC INTELLIGENCE SYSTEM // v4.2.1 // CLASSIFIED")}
             </div>
           </motion.div>
         </section>

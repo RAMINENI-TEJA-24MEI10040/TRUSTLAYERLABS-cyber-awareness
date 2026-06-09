@@ -4,6 +4,7 @@ import {
   useMotionValue,
   useSpring,
 } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import UrlScanner from "./scanner/UrlScanner";
 
 // ─── Font Injection ────────────────────────────────────────────────────────────
@@ -192,6 +193,7 @@ const CyberGridBackground: React.FC = () => (
 
 // ─── Radar Panel ───────────────────────────────────────────────────────────────
 const RadarPanel: React.FC = () => {
+  const { t } = useTranslation();
   const threats = [
     { x: 55, y: 40, r: "#f43f5e" }, { x: 30, y: 65, r: "#f59e0b" },
     { x: 70, y: 70, r: "#f43f5e" }, { x: 45, y: 25, r: "#f59e0b" },
@@ -200,7 +202,7 @@ const RadarPanel: React.FC = () => {
 
   return (
     <div className="relative rounded-2xl p-4 overflow-hidden h-full" style={glassStyle("rgba(6,182,212,0.12)", "rgba(6,182,212,0.2)")}>
-      <PanelHeader title="THREAT RADAR" accent="#06b6d4" live badge="GLOBAL" />
+      <PanelHeader title={t("dashboardPreview.panels.threatRadar.title")} accent="#06b6d4" live badge={t("dashboardPreview.panels.threatRadar.badge")} />
       <div className="relative flex items-center justify-center" style={{ height: 200 }}>
         <svg width="180" height="180" viewBox="0 0 180 180" className="absolute">
           {/* Rings */}
@@ -256,8 +258,10 @@ const RadarPanel: React.FC = () => {
       {/* Legend */}
       <div className="grid grid-cols-2 gap-1 mt-1">
         {[
-          { color:"#f43f5e", label:"Critical" }, { color:"#f59e0b", label:"High" },
-          { color:"#06b6d4", label:"Monitoring"}, { color:"#10b981", label:"Resolved"},
+          { color:"#f43f5e", label: t("dashboardPreview.legend.critical") },
+          { color:"#f59e0b", label: t("dashboardPreview.legend.high") },
+          { color:"#06b6d4", label: t("dashboardPreview.legend.monitoring") },
+          { color:"#10b981", label: t("dashboardPreview.legend.resolved") },
         ].map(l => (
           <div key={l.label} className="flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: l.color }}/>
@@ -270,17 +274,21 @@ const RadarPanel: React.FC = () => {
 };
 
 // ─── URL Safety Scanner Panel ────────────────────────────────────────────────
-const UrlSafetyScannerPanel: React.FC = () => (
-  <div className="relative rounded-2xl p-4 overflow-hidden h-full" style={glassStyle("rgba(6,182,212,0.12)", "rgba(6,182,212,0.2)")}>
-    <PanelHeader title="URL SAFETY SCANNER" accent="#06b6d4" live badge="LINK DEFENSE" />
-    <div className="mt-3">
-      <UrlScanner />
+const UrlSafetyScannerPanel: React.FC = () => {
+  const { t } = useTranslation();
+  return (
+    <div className="relative rounded-2xl p-4 overflow-hidden h-full" style={glassStyle("rgba(6,182,212,0.12)", "rgba(6,182,212,0.2)")}>
+      <PanelHeader title={t("dashboardPreview.panels.urlScanner.title")} accent="#06b6d4" live badge={t("dashboardPreview.panels.urlScanner.badge")} />
+      <div className="mt-3">
+        <UrlScanner />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 // ─── AI Scanner Panel ──────────────────────────────────────────────────────────
 const AIScannerPanel: React.FC = () => {
+  const { t } = useTranslation();
   const [scanning, setScanning] = useState(true);
   const [currentScan, setCurrentScan] = useState(SCAN_LOG[0]);
   const scanIdx = useRef(0);
@@ -311,7 +319,7 @@ const AIScannerPanel: React.FC = () => {
 
   return (
     <div className="relative rounded-2xl p-4 overflow-hidden h-full" style={glassStyle("rgba(6,182,212,0.12)", "rgba(6,182,212,0.2)")}>
-      <PanelHeader title="AI LINK SCANNER" accent="#06b6d4" live={scanning} badge="GPT-VERIFIED" />
+      <PanelHeader title={t("dashboardPreview.panels.aiLinkScanner.title")} accent="#06b6d4" live={scanning} badge={t("dashboardPreview.panels.aiLinkScanner.badge")} />
 
       {/* Scanning animation */}
       <div className="relative rounded-xl overflow-hidden mb-3" style={{ height: 80, background: "rgba(6,182,212,0.04)", border: "1px solid rgba(6,182,212,0.12)" }}>
@@ -337,13 +345,13 @@ const AIScannerPanel: React.FC = () => {
             />
           </div>
           <div className="flex items-center gap-3">
-            <span className="font-mono-cyber text-[9px] text-slate-500">{scanning ? "SCANNING..." : "ANALYSIS COMPLETE"}</span>
+            <span className="font-mono-cyber text-[9px] text-slate-500">{scanning ? t("dashboardPreview.scanners.scanning") : t("dashboardPreview.scanners.complete")}</span>
             {!scanning && (
               <span
                 className="font-mono-cyber text-[9px] px-2 py-0.5 rounded-full"
                 style={{ background: `${resultColor}18`, color: resultColor, border: `1px solid ${resultColor}30` }}
               >
-                {currentScan.result.toUpperCase()}
+                {t(`dashboardPreview.results.${currentScan.result}`).toUpperCase()}
               </span>
             )}
           </div>
@@ -379,6 +387,7 @@ const AIScannerPanel: React.FC = () => {
 
 // ─── Neural Network SVG ────────────────────────────────────────────────────────
 const NeuralNetworkPanel: React.FC = () => {
+  const { t } = useTranslation();
   const nodes = [
     { x: 30,  y: 50,  id: "i1" }, { x: 30,  y: 110, id: "i2" }, { x: 30,  y: 170, id: "i3" },
     { x: 105, y: 30,  id: "h1" }, { x: 105, y: 80,  id: "h2" }, { x: 105, y: 130, id: "h3" }, { x: 105, y: 180, id: "h4" },
@@ -406,7 +415,7 @@ const NeuralNetworkPanel: React.FC = () => {
 
   return (
     <div className="relative rounded-2xl p-4 overflow-hidden h-full" style={glassStyle("rgba(139,92,246,0.1)", "rgba(139,92,246,0.2)")}>
-      <PanelHeader title="AI THREAT NEURAL NET" accent="#8b5cf6" badge="LIVE INFERENCE" />
+      <PanelHeader title={t("dashboardPreview.panels.neuralNet.title")} accent="#8b5cf6" badge={t("dashboardPreview.panels.neuralNet.badge")} />
 
       <div className="relative overflow-hidden rounded-xl" style={{ height: 220 }}>
         <svg width="100%" height="220" viewBox="0 0 285 210" preserveAspectRatio="xMidYMid meet">
@@ -469,9 +478,9 @@ const NeuralNetworkPanel: React.FC = () => {
       {/* Stats row */}
       <div className="grid grid-cols-3 gap-2 mt-2">
         {[
-          { label:"Accuracy", value:"99.2%", color:"#10b981" },
-          { label:"Latency",  value:"18ms",  color:"#06b6d4" },
-          { label:"Threats",  value:"2.4K",  color:"#f43f5e" },
+          { label: t("dashboardPreview.accuracy"), value:"99.2%", color:"#10b981" },
+          { label: t("dashboardPreview.latency"),  value:"18ms",  color:"#06b6d4" },
+          { label: t("dashboardPreview.threats"),  value:"2.4K",  color:"#f43f5e" },
         ].map(s => (
           <div key={s.label} className="text-center rounded-lg py-1.5" style={{ background:"rgba(255,255,255,0.02)", border:"1px solid rgba(255,255,255,0.05)" }}>
             <div className="font-orbitron text-[12px] font-bold" style={{ color: s.color }}>{s.value}</div>
@@ -484,50 +493,59 @@ const NeuralNetworkPanel: React.FC = () => {
 };
 
 // ─── Awareness Stats Panel ─────────────────────────────────────────────────────
-const AwarenessStatsPanel: React.FC = () => (
-  <div className="relative rounded-2xl p-4 overflow-hidden" style={glassStyle("rgba(16,185,129,0.1)", "rgba(16,185,129,0.2)")}>
-    <PanelHeader title="PROTECTION INTELLIGENCE" accent="#10b981" badge="INDIA·2025" />
-    <div className="grid grid-cols-2 gap-3">
-      {AWARENESS_STATS.map((s, i) => (
-        <motion.div
-          key={s.label}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: i * 0.1 }}
-          className="relative rounded-xl p-3 overflow-hidden"
-          style={{ background: `${s.color}08`, border: `1px solid ${s.color}20` }}
-        >
-          <div className="text-xl mb-1">{s.icon}</div>
-          <div className="font-orbitron text-[16px] font-bold" style={{ color: s.color }}>{s.value}</div>
-          <div className="font-rajdhani text-[10px] text-slate-400 leading-tight">{s.label}</div>
-          <div className="font-mono-cyber text-[9px] mt-1" style={{ color: s.color }}>{s.delta} this week</div>
-
-          {/* Corner glow */}
-          <div className="absolute top-0 right-0 w-8 h-8 rounded-bl-2xl" style={{ background: `radial-gradient(circle at top right, ${s.color}25, transparent)` }}/>
-
-          {/* Animated bar */}
+const AwarenessStatsPanel: React.FC = () => {
+  const { t } = useTranslation();
+  const statKeys = ["phishing", "qr", "deepfake", "citizens"];
+  return (
+    <div className="relative rounded-2xl p-4 overflow-hidden" style={glassStyle("rgba(16,185,129,0.1)", "rgba(16,185,129,0.2)")}>
+      <PanelHeader title={t("dashboardPreview.panels.protectionIntel.title")} accent="#10b981" badge={t("dashboardPreview.panels.protectionIntel.badge")} />
+      <div className="grid grid-cols-2 gap-3">
+        {AWARENESS_STATS.map((s, i) => (
           <motion.div
-            className="absolute bottom-0 left-0 h-0.5 rounded-full"
-            style={{ background: s.color }}
-            initial={{ width: "0%" }}
-            animate={{ width: "85%" }}
-            transition={{ duration: 1.5, delay: 0.5 + i * 0.2, ease: "easeOut" }}
-          />
-        </motion.div>
-      ))}
+            key={s.label}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: i * 0.1 }}
+            className="relative rounded-xl p-3 overflow-hidden"
+            style={{ background: `${s.color}08`, border: `1px solid ${s.color}20` }}
+          >
+            <div className="text-xl mb-1">{s.icon}</div>
+            <div className="font-orbitron text-[16px] font-bold" style={{ color: s.color }}>{s.value}</div>
+            <div className="font-rajdhani text-[10px] text-slate-400 leading-tight">
+              {t(`dashboardPreview.stats.${statKeys[i]}`)}
+            </div>
+            <div className="font-mono-cyber text-[9px] mt-1" style={{ color: s.color }}>
+              {s.delta} {t("dashboardPreview.deltaWeek")}
+            </div>
+
+            {/* Corner glow */}
+            <div className="absolute top-0 right-0 w-8 h-8 rounded-bl-2xl" style={{ background: `radial-gradient(circle at top right, ${s.color}25, transparent)` }}/>
+
+            {/* Animated bar */}
+            <motion.div
+              className="absolute bottom-0 left-0 h-0.5 rounded-full"
+              style={{ background: s.color }}
+              initial={{ width: "0%" }}
+              animate={{ width: "85%" }}
+              transition={{ duration: 1.5, delay: 0.5 + i * 0.2, ease: "easeOut" }}
+            />
+          </motion.div>
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 // ─── Deepfake Monitor Panel ────────────────────────────────────────────────────
 const DeepfakeMonitorPanel: React.FC = () => {
+  const { t } = useTranslation();
   const [detection, setDetection] = useState(78);
   const [activeFrame, setActiveFrame] = useState(0);
 
   useEffect(() => {
     const iv1 = setInterval(
       () =>
-        setDetection((v) =>
+         setDetection((v) =>
           Math.min(
             99,
             Math.max(
@@ -546,7 +564,7 @@ const DeepfakeMonitorPanel: React.FC = () => {
 
   return (
     <div className="relative rounded-2xl p-4 overflow-hidden h-full" style={glassStyle("rgba(139,92,246,0.12)", "rgba(139,92,246,0.22)")}>
-      <PanelHeader title="DEEPFAKE DETECTOR" accent="#8b5cf6" live badge="AI VISION" />
+      <PanelHeader title={t("dashboardPreview.panels.deepfakeDetector.title")} accent="#8b5cf6" live badge={t("dashboardPreview.panels.deepfakeDetector.badge")} />
 
       {/* Frame grid simulation */}
       <div className="grid grid-cols-3 gap-1 mb-3">
@@ -578,7 +596,7 @@ const DeepfakeMonitorPanel: React.FC = () => {
       {/* Detection score */}
       <div className="relative rounded-xl p-3 overflow-hidden" style={{ background: isHigh ? "rgba(244,63,94,0.08)" : "rgba(16,185,129,0.08)", border: `1px solid ${isHigh ? "rgba(244,63,94,0.2)" : "rgba(16,185,129,0.2)"}` }}>
         <div className="flex items-center justify-between mb-2">
-          <span className="font-rajdhani text-[11px] font-semibold text-slate-300">Manipulation Score</span>
+          <span className="font-rajdhani text-[11px] font-semibold text-slate-300">{t("dashboardPreview.manipulationScore")}</span>
           <motion.span
             className="font-orbitron text-[18px] font-bold"
             style={{ color: isHigh ? "#f43f5e" : "#10b981" }}
@@ -598,7 +616,7 @@ const DeepfakeMonitorPanel: React.FC = () => {
         </div>
         <div className="mt-1.5">
           <span className="font-mono-cyber text-[9px]" style={{ color: isHigh ? "#f43f5e" : "#10b981" }}>
-            {isHigh ? "⚠ HIGH MANIPULATION DETECTED" : "✓ LOW RISK — AUTHENTIC"}
+            {isHigh ? t("dashboardPreview.highManipulation") : t("dashboardPreview.lowRisk")}
           </span>
         </div>
       </div>
@@ -608,7 +626,9 @@ const DeepfakeMonitorPanel: React.FC = () => {
 
 // ─── Cyber Alert Ticker ────────────────────────────────────────────────────────
 const AlertTicker: React.FC = () => {
-  const alerts = [
+  const { t } = useTranslation();
+  const alertsObj = t("dashboardPreview.alerts.list", { returnObjects: true });
+  const alerts = Array.isArray(alertsObj) ? alertsObj : [
     "⚠ NEW PHISHING WAVE TARGETING UPI USERS IN MH/KA REGION",
     "🔴 DEEPFAKE VIDEO CIRCULATING — PM IMPERSONATION CONFIRMED",
     "⚡ AI SCANNER BLOCKED 18,432 MALICIOUS LINKS IN LAST HOUR",
@@ -625,7 +645,7 @@ const AlertTicker: React.FC = () => {
           animate={{ opacity: [1, 0.5, 1] }}
           transition={{ duration: 1.2, repeat: Infinity }}
         >
-          ◉ ALERT
+          {t("dashboardPreview.alerts.title")}
         </motion.span>
         <div className="overflow-hidden flex-1">
           <motion.div
@@ -665,35 +685,45 @@ const DataStreamColumn: React.FC<{ delay?: number; color?: string }> = ({ delay 
   );
 };
 
-const DataStream: React.FC = () => (
-  <div className="relative rounded-2xl p-4 overflow-hidden h-full" style={glassStyle("rgba(16,185,129,0.08)", "rgba(16,185,129,0.15)")}>
-    <PanelHeader title="DATA SIGNAL FEED" accent="#10b981" live />
-    <div className="flex gap-2 overflow-hidden" style={{ height: 160 }}>
-      {Array.from({ length: 8 }).map((_, i) => (
-        <DataStreamColumn key={i} delay={i * 0.3} color={i % 3 === 0 ? "#10b981" : i % 3 === 1 ? "#06b6d4" : "rgba(139,92,246,0.8)"} />
-      ))}
+const DataStream: React.FC = () => {
+  const { t } = useTranslation();
+  return (
+    <div className="relative rounded-2xl p-4 overflow-hidden h-full" style={glassStyle("rgba(16,185,129,0.08)", "rgba(16,185,129,0.15)")}>
+      <PanelHeader title={t("dashboardPreview.panels.dataSignalFeed.title")} accent="#10b981" live />
+      <div className="flex gap-2 overflow-hidden" style={{ height: 160 }}>
+        {Array.from({ length: 8 }).map((_, i) => (
+          <DataStreamColumn key={i} delay={i * 0.3} color={i % 3 === 0 ? "#10b981" : i % 3 === 1 ? "#06b6d4" : "rgba(139,92,246,0.8)"} />
+        ))}
+      </div>
+      <div className="mt-2 font-mono-cyber text-[9px] text-slate-600">
+        <motion.span animate={{ opacity: [1, 0, 1] }} transition={{ duration: 1.2, repeat: Infinity }}>
+          {t("dashboardPreview.streamActive")}
+        </motion.span>
+      </div>
     </div>
-    <div className="mt-2 font-mono-cyber text-[9px] text-slate-600">
-      <motion.span animate={{ opacity: [1, 0, 1] }} transition={{ duration: 1.2, repeat: Infinity }}>
-        █ STREAM ACTIVE · 4.2 TB/s · ENCRYPTED
-      </motion.span>
-    </div>
-  </div>
-);
+  );
+};
 
 // ─── QR Fraud Analysis ─────────────────────────────────────────────────────────
 const QRAnalysisPanel: React.FC = () => {
+  const { t } = useTranslation();
   const [scanPhase, setScanPhase] = useState(0);
-  const phases = ["DECODING QR MATRIX", "RESOLVING REDIRECT CHAIN", "AI RISK ANALYSIS", "THREAT CONFIRMED"];
+  const phasesObj = t("dashboardPreview.qrPhases", { returnObjects: true });
+  const phases = Array.isArray(phasesObj) ? phasesObj : [
+    "DECODING QR MATRIX",
+    "RESOLVING REDIRECT CHAIN",
+    "AI RISK ANALYSIS",
+    "THREAT CONFIRMED"
+  ];
 
   useEffect(() => {
     const iv = setInterval(() => setScanPhase(p => (p + 1) % phases.length), 1800);
     return () => clearInterval(iv);
-  }, []);
+  }, [phases.length]);
 
   return (
     <div className="relative rounded-2xl p-4 overflow-hidden h-full" style={glassStyle("rgba(245,158,11,0.1)", "rgba(245,158,11,0.2)")}>
-      <PanelHeader title="QR FRAUD ANALYSIS" accent="#f59e0b" live />
+      <PanelHeader title={t("dashboardPreview.panels.qrFraudAnalysis.title")} accent="#f59e0b" live />
 
       {/* QR code simulation */}
       <div className="relative mx-auto mb-3 rounded-lg overflow-hidden" style={{ width: 100, height: 100, background: "rgba(245,158,11,0.06)", border: "1px solid rgba(245,158,11,0.2)" }}>
@@ -756,58 +786,61 @@ const QRAnalysisPanel: React.FC = () => {
 };
 
 // ─── Section Header ────────────────────────────────────────────────────────────
-const SectionHeader: React.FC = () => (
-  <div className="text-center mb-12 relative z-10">
-    {/* Eyebrow */}
-    <motion.div
-      className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-      style={{ background: "rgba(6,182,212,0.08)", border: "1px solid rgba(6,182,212,0.2)" }}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-    >
-      <motion.span
-        className="w-2 h-2 rounded-full bg-cyan-400"
-        animate={{ scale: [1, 1.4, 1], opacity: [0.8, 1, 0.8] }}
-        transition={{ duration: 1.5, repeat: Infinity }}
-      />
-      <span className="font-orbitron text-[10px] text-cyan-400 tracking-[0.25em]">COMMAND CENTER · LIVE ENVIRONMENT</span>
-      <motion.span
-        className="w-2 h-2 rounded-full bg-emerald-400"
-        animate={{ scale: [1, 1.4, 1], opacity: [0.8, 1, 0.8] }}
-        transition={{ duration: 1.5, repeat: Infinity, delay: 0.4 }}
-      />
-    </motion.div>
+const SectionHeader: React.FC = () => {
+  const { t } = useTranslation();
+  return (
+    <div className="text-center mb-12 relative z-10">
+      {/* Eyebrow */}
+      <motion.div
+        className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+        style={{ background: "rgba(6,182,212,0.08)", border: "1px solid rgba(6,182,212,0.2)" }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <motion.span
+          className="w-2 h-2 rounded-full bg-cyan-400"
+          animate={{ scale: [1, 1.4, 1], opacity: [0.8, 1, 0.8] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        />
+        <span className="font-orbitron text-[10px] text-cyan-400 tracking-[0.25em]">{t("dashboardPreview.sectionLabel")}</span>
+        <motion.span
+          className="w-2 h-2 rounded-full bg-emerald-400"
+          animate={{ scale: [1, 1.4, 1], opacity: [0.8, 1, 0.8] }}
+          transition={{ duration: 1.5, repeat: Infinity, delay: 0.4 }}
+        />
+      </motion.div>
 
-    <motion.h2
-      className="font-orbitron font-black text-4xl md:text-5xl lg:text-6xl leading-tight mb-4"
-      style={{ background: "linear-gradient(135deg, #ffffff 0%, #06b6d4 40%, #10b981 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.7, delay: 0.1 }}
-    >
-      AI INTELLIGENCE
-      <br />
-      <span style={{ background: "linear-gradient(135deg, #8b5cf6, #f43f5e)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-        OPERATIONS CORE
-      </span>
-    </motion.h2>
+      <motion.h2
+        className="font-orbitron font-black text-4xl md:text-5xl lg:text-6xl leading-tight mb-4"
+        style={{ background: "linear-gradient(135deg, #ffffff 0%, #06b6d4 40%, #10b981 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7, delay: 0.1 }}
+      >
+        {t("dashboardPreview.title")}
+        <br />
+        <span style={{ background: "linear-gradient(135deg, #8b5cf6, #f43f5e)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+          {t("dashboardPreview.titleColored")}
+        </span>
+      </motion.h2>
 
-    <motion.p
-      className="font-rajdhani text-lg text-slate-400 max-w-2xl mx-auto font-medium"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: 0.3 }}
-    >
-      Every second, our AI monitors the digital threat landscape — detecting phishing, deepfakes, and scams before they reach you.
-      <br />
-      <span className="text-cyan-400/70">This is your shield. This is AEGIS.</span>
-    </motion.p>
-  </div>
-);
+      <motion.p
+        className="font-rajdhani text-lg text-slate-400 max-w-2xl mx-auto font-medium"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+      >
+        {t("dashboardPreview.subtitle")}
+        <br />
+        <span className="text-cyan-400/70">{t("dashboardPreview.subtitleShield")}</span>
+      </motion.p>
+    </div>
+  );
+};
 
 // ─── Mouse parallax hook ───────────────────────────────────────────────────────
 function useMouseParallax() {
@@ -834,6 +867,7 @@ function useMouseParallax() {
 
 // ─── Main Component ────────────────────────────────────────────────────────────
 const DashboardPreview: React.FC = () => {
+  const { t } = useTranslation();
   const { springX, springY, handleMouseMove, handleMouseLeave } = useMouseParallax();
 
   return (
@@ -982,7 +1016,7 @@ const DashboardPreview: React.FC = () => {
                 transition={{ duration: 1.5, repeat: Infinity }}
               />
               <span className="font-rajdhani text-sm text-slate-400 font-medium">
-                Live intelligence updated every <span className="text-cyan-400 font-semibold">30 seconds</span> · Protected by <span className="text-emerald-400 font-semibold">AEGIS AI Core v4.2</span>
+                {t("dashboardPreview.bottomCta.updated")} <span className="text-cyan-400 font-semibold">{t("dashboardPreview.bottomCta.seconds")}</span> {t("dashboardPreview.bottomCta.divider")} {t("dashboardPreview.bottomCta.protected")} <span className="text-emerald-400 font-semibold">{t("dashboardPreview.bottomCta.aegis")}</span>
               </span>
               <motion.div className="w-2 h-2 rounded-full bg-cyan-400"
                 animate={{ scale: [1, 1.5, 1], opacity: [0.8, 1, 0.8] }}

@@ -1,5 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -126,12 +127,20 @@ const PulseDivider: React.FC = () => {
 // ─── System Status Row ────────────────────────────────────────────────────────
 
 const SystemStatusBar: React.FC = () => {
+  const { t } = useTranslation();
   const [tick, setTick] = useState(0);
 
   useEffect(() => {
     const t = setInterval(() => setTick((p) => p + 1), 3000);
     return () => clearInterval(t);
   }, []);
+
+  const getStatusLabelKey = (label: string) => {
+    if (label === "Threat Feed") return "threatFeed";
+    if (label === "AI Engine") return "aiEngine";
+    if (label === "Scam Monitor") return "scamMonitor";
+    return label;
+  };
 
   return (
     <div className="flex flex-wrap items-center justify-center gap-6" key={tick}>
@@ -152,10 +161,10 @@ const SystemStatusBar: React.FC = () => {
             />
           </div>
           <span className="text-[10px] font-mono tracking-widest" style={{ color: s.color }}>
-            {s.label.toUpperCase()}
+            {t("footer.statuses." + getStatusLabelKey(s.label), s.label).toUpperCase()}
           </span>
           <span className="text-[10px] font-mono text-white/20 tracking-wider">
-            {s.status.toUpperCase()}
+            {t("footer.statusLabel." + s.status, s.status).toUpperCase()}
           </span>
         </div>
       ))}
@@ -166,11 +175,28 @@ const SystemStatusBar: React.FC = () => {
 // ─── Animated Link ────────────────────────────────────────────────────────────
 
 const FooterLink: React.FC<{ link: NavLink; delay?: number }> = ({ link, delay = 0 }) => {
+  const { t } = useTranslation();
   const [hovered, setHovered] = useState(false);
   const badgeColors = {
     live: { bg: "rgba(239,68,68,0.15)", border: "rgba(239,68,68,0.4)", text: "#f87171" },
     alert: { bg: "rgba(251,191,36,0.15)", border: "rgba(251,191,36,0.4)", text: "#fbbf24" },
     new: { bg: "rgba(52,211,153,0.15)", border: "rgba(52,211,153,0.4)", text: "#34d399" },
+  };
+
+  const getLinkLabel = (label: string, href: string) => {
+    if (href === "/analyzer") return t("coreModules.modules.scam-analyzer.title");
+    if (href === "/threat-feed") return t("nav.threat_feed");
+    if (href === "/deepfake") return t("coreModules.modules.deepfake-lab.title");
+    if (href === "/qr") return t("coreModules.modules.qr-scanner.title");
+    if (href === "/phishing") return t("coreModules.modules.phishing-sim.title");
+    if (href === "/url-scanner") return t("coreModules.modules.url-scanner.title");
+    if (href === "/laws") return t("nav.cyber_laws");
+    if (href === "/quiz") return t("nav.challenges");
+    if (href === "/upi") return t("navbar.upiFraud");
+    if (href === "/ip-scanner") return t("coreModules.modules.ip-scanner.title");
+    if (label === "Report a Scam") return t("nav.reporting");
+    if (label === "Emergency Resources") return t("footer.emergencyTitle");
+    return t(`footer.links.${label}`, label);
   };
 
   return (
@@ -186,14 +212,12 @@ const FooterLink: React.FC<{ link: NavLink; delay?: number }> = ({ link, delay =
     >
       {/* Hover accent */}
       <motion.div
-        className="flex-shrink-0 w-1 rounded-full"
-        style={{ backgroundColor: "#22d3ee" }}
-        animate={{ height: hovered ? 14 : 4, opacity: hovered ? 1 : 0.3 }}
-        transition={{ duration: 0.25 }}
+        className="group-hover:block group-hover:h-3.5 group-hover:opacity-100 flex-shrink-0 w-1 rounded-full transition-all duration-200"
+        style={{ backgroundColor: "#22d3ee", height: hovered ? 14 : 4, opacity: hovered ? 1 : 0.3 }}
       />
 
       <span className="text-[13px] font-mono text-white/45 transition-colors duration-200 group-hover:text-white/80 tracking-wide">
-        {link.label}
+        {getLinkLabel(link.label, link.href)}
       </span>
 
       {link.badge && link.badgeType && (
@@ -223,6 +247,7 @@ const FooterLink: React.FC<{ link: NavLink; delay?: number }> = ({ link, delay =
 // ─── Logo / Brand ─────────────────────────────────────────────────────────────
 
 const BrandBlock: React.FC = () => {
+  const { t } = useTranslation();
   const [glitch, setGlitch] = useState(false);
 
   useEffect(() => {
@@ -268,10 +293,10 @@ const BrandBlock: React.FC = () => {
             transition={{ duration: 0.15 }}
           >
             <p className="text-white font-semibold text-sm tracking-tight font-mono">
-              CYBER AWARE
+              {t("footer.branding")}
             </p>
             <p className="text-[10px] font-mono tracking-[0.25em] text-cyan-400/50 uppercase">
-              Command Center
+              {t("hero.commandCenter")}
             </p>
           </motion.div>
         </div>
@@ -280,10 +305,10 @@ const BrandBlock: React.FC = () => {
       {/* Tagline */}
       <div className="space-y-2 max-w-xs">
         <p className="text-white/60 text-sm leading-relaxed font-light">
-          Cyber awareness is digital self-defense.
+          {t("footer.brandTagline")}
         </p>
         <p className="text-white/30 text-xs leading-relaxed font-mono">
-          AI-powered public cyber safety — free, open, and built for everyone.
+          {t("footer.brandSubtitle")}
         </p>
       </div>
 
@@ -302,25 +327,33 @@ const BrandBlock: React.FC = () => {
             transition={{ duration: 1.2, repeat: Infinity }}
           />
           <span className="text-[10px] font-mono tracking-widest text-red-400/70 uppercase">
-            Emergency Resources
+            {t("footer.emergencyTitle")}
           </span>
         </div>
-        {EMERGENCY_LINKS.map((link) => (
-          <a
-            key={link.code}
-            href={link.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-between group"
-          >
-            <span className="text-[12px] font-mono text-white/50 group-hover:text-white/80 transition-colors duration-200">
-              {link.label}
-            </span>
-            <span className="text-[10px] font-mono text-red-400/50 group-hover:text-red-400/80 transition-colors duration-200">
-              {link.code}
-            </span>
-          </a>
-        ))}
+        {EMERGENCY_LINKS.map((link) => {
+          let translatedLabel = link.label;
+          let translatedCode = link.code;
+          if (link.label === "Cyber Crime Portal") translatedLabel = t("footer.emergency.cyberCrimePortal", link.label);
+          if (link.label === "CERT-In") translatedLabel = t("footer.emergency.certIn", link.label);
+          if (link.label === "RBI Fraud Helpline") translatedLabel = t("footer.emergency.rbiHelpline", link.label);
+          if (link.code === "1930 · National Helpline") translatedCode = t("footer.emergency.nationalHelpline", link.code);
+          return (
+            <a
+              key={link.code}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-between group"
+            >
+              <span className="text-[12px] font-mono text-white/50 group-hover:text-white/80 transition-colors duration-200">
+                {translatedLabel}
+              </span>
+              <span className="text-[10px] font-mono text-red-400/50 group-hover:text-red-400/80 transition-colors duration-200">
+                {translatedCode}
+              </span>
+            </a>
+          );
+        })}
       </div>
     </div>
   );
@@ -356,6 +389,7 @@ const LiveCyberClock: React.FC = () => {
 // ─── Main Footer ──────────────────────────────────────────────────────────────
 
 const Footer: React.FC = () => {
+  const { t } = useTranslation();
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -409,7 +443,7 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             <p className="text-[10px] font-mono tracking-[0.3em] text-white/25 uppercase mb-5">
-              Protection Modules
+              {t("footer.modulesTitle")}
             </p>
             <div className="flex flex-col gap-3">
               {MODULE_LINKS.map((link, i) => (
@@ -425,7 +459,7 @@ const Footer: React.FC = () => {
             transition={{ duration: 0.7, delay: 0.3 }}
           >
             <p className="text-[10px] font-mono tracking-[0.3em] text-white/25 uppercase mb-5">
-              Awareness & Help
+              {t("footer.awarenessTitle")}
             </p>
             <div className="flex flex-col gap-3">
               {AWARENESS_LINKS.map((link, i) => (
@@ -457,7 +491,7 @@ const Footer: React.FC = () => {
               </svg>
             </div>
             <p className="text-[11px] font-mono text-white/25 tracking-wide">
-              Stay aware · Stay protected · Threat intelligence for everyone
+              {t("footer.copyright")}
             </p>
           </div>
 
@@ -465,7 +499,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-col items-end gap-1">
             <LiveCyberClock />
             <span className="text-[9px] font-mono text-white/15 tracking-widest">
-              CYBERAWARE · PUBLIC SAFETY PLATFORM · v2.0
+              {t("footer.version")}
             </span>
           </div>
         </motion.div>

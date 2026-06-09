@@ -17,7 +17,26 @@
     "title": "سائبر خطرات سے خود کو محفوظ رکھیں",
     "subtitle": "سائبر حفاظت، اسکیم آگاہی اور ڈیجیٹل تحفظ سیکھیں۔",
     "analyzerBtn": "اے آئی اسکیم تجزیہ کار",
-    "dashboardBtn": "ایڈمن ڈیش بورڈ"
+    "dashboardBtn": "ایڈمن ڈیش بورڈ",
+    "eyebrow": "AI سائبر انٹیلی جنس",
+    "commandCenter": "کمانڈ سینٹر",
+    "stayAware": "آگاہ رہیں۔",
+    "stayProtected": "محفوظ رہیں۔",
+    "stayInControl": "کنٹرول میں رہیں۔",
+    "subCopy": "AI سے چلنے والی دھمکی آمیز انٹیلی جنس جو آپ کو فشنگ، ڈیپ فیکس، QR گھوٹالوں اور سوشل انجینئرنگ کو پہچاننے میں مدد کرتی ہے — اس سے پہلے کہ وہ آپ تک پہنچیں۔ حقیقی آگہی۔ حقیقی تحفظ۔",
+    "commandCenterBtn": "کمانڈ سینٹر میں داخل ہوں۔",
+    "learnThreatsBtn": "دھمکیاں جانیں۔",
+    "indicatorAi": "AI سے چلنے والا پتہ لگانا",
+    "indicatorRadar": "ریئل ٹائم خطرہ میپنگ",
+    "indicatorHuman": "انسان کی پہلی آگہی",
+    "cycleTitle": "آگاہی سائیکل",
+    "cycleSteps": {
+      "detect": "پتہ لگانا",
+      "understand": "سمجھیں۔",
+      "learn": "سیکھیں۔",
+      "protect": "حفاظت کرنا",
+      "act": "ایکٹ"
+    }
   },
   "coreModules": {
     "sectionLabel": "بنیادی ماڈیولز",
@@ -47,7 +66,214 @@
     "reportIncident": "واقعہ کی رپورٹ کریں",
     "reportIncidentDesc": "سائبر کرائم کی رپورٹ کرنے، شواہد محفوظ رکھنے اور نیشنل سائبر کرائم پورٹل سے رابطہ کرنے کے لیے مرحلہ وار رہنمائی۔",
     "reportIncidentTag": "رپورٹ",
-    "exploreModule": "ماڈیول دیکھیں"
+    "exploreModule": "ماڈیول دیکھیں",
+    "launchModule": "ماڈیول لانچ کریں۔",
+    "liveIntelligence": "لائیو انٹیلی جنس",
+    "modules": {
+      "scam-analyzer": {
+        "title": "اے آئی اسکام تجزیہ کار",
+        "subtitle": "اعصابی خطرے کی شناخت",
+        "description": "ہمارے AI انجن میں مشکوک پیغامات، کالز یا لنکس فیڈ کریں۔ حقیقی وقت میں سوشل انجینئرنگ کے نمونوں، فوری طور پر ہیرا پھیری، اور نقالی کے حربوں کا پتہ لگاتا ہے۔",
+        "statusLabel": "پیٹرنز کا تجزیہ کرنا",
+        "tags": {
+          "tag0": "سوشل انجینئرنگ",
+          "tag1": "ایس ایم ایس فراڈ",
+          "tag2": "وائس کلوننگ"
+        },
+        "liveData": {
+          "item0": "وائس اسکام کا پتہ چلا — انڈیا +91",
+          "item1": "SMS فریب کاری کو مسدود کر دیا گیا۔",
+          "item2": "تصدیقی فصل کی کوشش"
+        }
+      },
+      "url-scanner": {
+        "title": "یو آر ایل سیفٹی سکینر",
+        "subtitle": "لنک تھریٹ اسیسمنٹ",
+        "description": "فوری گہرے تجزیہ کے لیے کوئی بھی مشکوک لنک چسپاں کریں۔ ٹائپو کوٹنگ، میلویئر پے لوڈز، فشنگ پیجز، جعلی لاگ ان پورٹلز، اور ری ڈائریکٹ پر مبنی دھوکہ دہی کی زنجیروں کا پتہ لگاتا ہے۔",
+        "statusLabel": "لنک سکینر",
+        "tags": {
+          "tag0": "Typosquatting",
+          "tag1": "میلویئر پے لوڈ",
+          "tag2": "ری ڈائریکٹ چین"
+        },
+        "liveData": {
+          "item0": "فشنگ URL کا پتہ چلا",
+          "item1": "Typosquat کی نشاندہی کی گئی۔",
+          "item2": "صاف URL — محفوظ"
+        }
+      },
+      "deepfake-lab": {
+        "title": "ڈیپ فیک ڈیٹیکشن لیب",
+        "subtitle": "مصنوعی میڈیا تجزیہ",
+        "description": "تصاویر یا ویڈیو کلپس اپ لوڈ کریں۔ ہمارا ملٹی موڈل AI چہرے کی ترکیب کے نمونے، صوتی کلوننگ کے دستخط، اور دھوکہ دہی اور غلط معلومات میں استعمال ہونے والے AI سے تیار کردہ مواد کی شناخت کرتا ہے۔",
+        "statusLabel": "ماڈل ایکٹو",
+        "tags": {
+          "tag0": "چہرے کا تبادلہ",
+          "tag1": "آواز کی ترکیب",
+          "tag2": "ویڈیو فرانزک"
+        },
+        "liveData": {
+          "item0": "ڈیپ فیک ویڈیو کا تجزیہ کیا گیا۔",
+          "item1": "مصنوعی آڈیو کی تصدیق ہوگئی",
+          "item2": "اصلی چہرہ — تصدیق شدہ"
+        }
+      },
+      "qr-scanner": {
+        "title": "کیو آر اسکیم اسکینر",
+        "subtitle": "بدنیتی پر مبنی کوڈ کا پتہ لگانا",
+        "description": "ادائیگی کرنے یا دیکھنے سے پہلے کوئی بھی QR کوڈ اسکین کریں۔ ہمارا انجن چھپی ہوئی ری ڈائریکٹ چینز، UPI ہیرا پھیری، مالویئر ڈسٹری بیوشن یو آر ایل، اور QR میں سرایت شدہ ادائیگی کے فراڈ کو ڈی کوڈ کرتا ہے۔",
+        "statusLabel": "اسکین تیار ہے۔",
+        "tags": {
+          "tag0": "UPI ری ڈائریکٹ",
+          "tag1": "میلویئر لنکس",
+          "tag2": "جعلی ادائیگیاں"
+        },
+        "liveData": {
+          "item0": "نقصان دہ UPI QR مسدود ہے۔",
+          "item1": "ری ڈائریکٹ چین بے نقاب",
+          "item2": "محفوظ QR کی تصدیق ہو گئی۔"
+        }
+      },
+      "phishing-sim": {
+        "title": "فشنگ سمیلیٹر",
+        "subtitle": "آگاہی ٹریننگ انجن",
+        "description": "محفوظ ماحول میں نقلی فشنگ حملوں کا تجربہ کریں۔ فریب دینے والے لنکس، جعلی ڈومینز، جعلی لاگ ان صفحات، اور فوری طور پر ہیرا پھیری کے حربوں کی شناخت کرنا سیکھیں۔",
+        "statusLabel": "سم ایکٹو",
+        "tags": {
+          "tag0": "ڈومین سپوفنگ",
+          "tag1": "سندی فصل",
+          "tag2": "فوری بیتنگ"
+        },
+        "liveData": {
+          "item0": "نقلی: بینک فش",
+          "item1": "صارف جعلی لاگ ان پکڑا گیا۔",
+          "item2": "بیداری کا اسکور: ہائی"
+        }
+      },
+      "cyber-laws": {
+        "title": "لیگل اے آئی کمانڈ سینٹر",
+        "subtitle": "شکایات کا انٹیلی جنس سسٹم",
+        "description": "گائیڈڈ انٹرویوز، قانونی نقشہ سازی، شواہد کے خلاصے، اور پی ڈی ایف ایکسپورٹ کے ساتھ سائبر کرائم کے واقعات کے بیانیے کو منظم شکایات میں تبدیل کریں۔",
+        "statusLabel": "نالج بیس",
+        "tags": {
+          "tag0": "آئی ٹی ایکٹ 2000",
+          "tag1": "ڈی پی ڈی پی بل",
+          "tag2": "سائبر رائٹس"
+        },
+        "liveData": {
+          "item0": "شکایت کا مسودہ تیار ہوا۔",
+          "item1": "قانونی سیکشنز میپ کیے گئے۔",
+          "item2": "پی ڈی ایف ایکسپورٹ تیار ہے۔"
+        }
+      },
+      "challenges": {
+        "title": "آگاہی کے چیلنجز",
+        "subtitle": "سائبر ڈیفنس ٹریننگ",
+        "description": "گیمفائیڈ سائبر آگاہی مشن۔ گھوٹالے کے اسکرین شاٹس کی شناخت کریں، فشنگ ای میلز کو ڈی کوڈ کریں، جعلی ویب سائٹس کو اسپاٹ کریں۔",
+        "statusLabel": "مشن ایکٹیو",
+        "tags": {
+          "tag0": "گیمیفائیڈ لرننگ",
+          "tag1": "اسکام اسپاٹنگ",
+          "tag2": "سیکورٹی IQ"
+        },
+        "liveData": {
+          "item0": "چیلنج: فش کو تلاش کریں۔",
+          "item1": "سطح 4 غیر مقفل ہے۔",
+          "item2": "سیکیورٹی آئی کیو بہتر ہوا۔"
+        }
+      },
+      "reporting": {
+        "title": "رپورٹنگ سینٹر",
+        "subtitle": "واقعہ کی دستاویزات",
+        "description": "AI کی مدد سے فارم کی تکمیل کے ساتھ منظم سائبر واقعے کی رپورٹنگ۔ واقعہ کی قسم کی بنیاد پر CERT-In، سائبر کرائم پورٹل، یا RBI محتسب کو رپورٹوں کو خود بخود روٹ کرتا ہے۔",
+        "statusLabel": "رپورٹس کھلی ہیں۔",
+        "tags": {
+          "tag0": "CERT-In",
+          "tag1": "سائبر کرائم پورٹل",
+          "tag2": "آر بی آئی محتسب"
+        },
+        "liveData": {
+          "item0": "CERT-In کو رپورٹ درج کرائی گئی۔",
+          "item1": "کیس نمبر تیار ہوا۔",
+          "item2": "کشیدگی کو متحرک کیا گیا۔"
+        }
+      },
+      "upi-fraud": {
+        "title": "UPI فراڈ آگاہی",
+        "subtitle": "ادائیگی کی حفاظت کی انٹیلی جنس",
+        "description": "سمجھیں کہ UPI گھوٹالے کیسے کام کرتے ہیں — درخواستیں جمع کریں، اسکرین شیئر فراڈ، جعلی ادائیگی کے اسکرین شاٹس، اور مرچنٹ کی نقالی۔ عام حملے کے نمونوں کا انٹرایکٹو فراڈ کا نقشہ۔",
+        "statusLabel": "فراڈ کا نقشہ لائیو",
+        "tags": {
+          "tag0": "گھوٹالے جمع کریں۔",
+          "tag1": "اسکرین فراڈ",
+          "tag2": "جعلی اسکرین شاٹس"
+        },
+        "liveData": {
+          "item0": "درخواست اسکیم لہر جمع کریں۔",
+          "item1": "نیا اسکرین شیئر حملہ",
+          "item2": "جعلی رسید کا نمونہ"
+        }
+      },
+      "ip-scanner": {
+        "title": "آئی پی انٹیلی جنس سکینر",
+        "subtitle": "نیٹ ورک اصلیت کا تجزیہ",
+        "description": "خطرے کی ساکھ، جغرافیائی محل وقوع، ہوسٹنگ فراہم کنندہ، اور بلیک لسٹ کی حیثیت کے لیے IP پتوں کا تجزیہ کریں۔ سمجھیں کہ کیا کال کرنے والا، ویب سائٹ، یا بھیجنے والا معلوم خطرے کے بنیادی ڈھانچے سے نکلتا ہے۔",
+        "statusLabel": "سکینر آن لائن",
+        "tags": {
+          "tag0": "ساکھ کی جانچ",
+          "tag1": "بلیک لسٹ کی حیثیت",
+          "tag2": "جیو ٹریس"
+        },
+        "liveData": {
+          "item0": "آئی پی بلیک لسٹ - جھنڈا لگا ہوا ہے۔",
+          "item1": "VPN کی اصل کا پتہ چلا",
+          "item2": "کلین آئی پی - تصدیق شدہ"
+        }
+      },
+      "threat-feed": {
+        "title": "لائیو تھریٹ فیڈ",
+        "subtitle": "گلوبل سائبر انٹیلی جنس",
+        "description": "پورے ہندوستان اور عالمی سطح پر عوامی خطرے کے انٹیلی جنس ذرائع سے ابھرتی ہوئی گھوٹالے کی مہموں، رینسم ویئر کے پھیلاؤ، اور سماجی دھوکہ دہی کے ویکٹروں کا حقیقی وقت کا مجموعہ۔",
+        "statusLabel": "لائیو مانیٹرنگ",
+        "tags": {
+          "tag0": "رینسم ویئر الرٹس",
+          "tag1": "گھوٹالے کی مہمات",
+          "tag2": "ڈارک ویب سگنلز"
+        },
+        "liveData": {
+          "item0": "نئی OTP اسکیم لہر کا پتہ چلا",
+          "item1": "حکومتی نقالی میں اضافہ",
+          "item2": "بینکنگ فراڈ پیٹرن کو جھنڈا لگا دیا گیا۔"
+        }
+      },
+      "scam-library": {
+        "title": "اسکیم انٹیلی جنس آرکائیو",
+        "subtitle": "فراڈ پیٹرن ڈیٹا بیس",
+        "description": "دستاویزی گھوٹالوں، فراڈ اسکیموں، اور دھوکہ دہی کے نمونوں کا جامع درجہ بند ذخیرہ۔ گھوٹالے کی تاریخی مہمات تلاش کریں، دھوکہ دہی کے حربوں کا تجزیہ کریں، اور ہندوستان کے سائبر خطرے کے منظر نامے سے خطرے کی انڈیکسڈ انٹیلی جنس دریافت کریں۔",
+        "statusLabel": "آرکائیو انڈیکسڈ",
+        "tags": {
+          "tag0": "فراڈ پیٹرن",
+          "tag1": "گھوٹالے کی تاریخ",
+          "tag2": "دھمکی انٹیلی جنس"
+        },
+        "liveData": {
+          "item0": "آرکائیو اندراجات: 2,400+",
+          "item1": "گھوٹالے کے نمونوں کی درجہ بندی",
+          "item2": "دھوکہ دہی کی دھمکیوں کا نقشہ بنایا گیا۔"
+        }
+      }
+    },
+    "titleHeader": "کمانڈ سینٹر",
+    "titleHeaderColored": "بنیادی ماڈیولز",
+    "subtitleHeader": "گیارہ AI سے چلنے والے آگاہی کے نظام جو سائبر خطرات کے بدلتے ہوئے منظر نامے کے خلاف شہریوں کو تعلیم، تحفظ اور بااختیار بنانے کے لیے بنائے گئے ہیں۔",
+    "systemCounts": {
+      "activeModules": "فعال ماڈیولز",
+      "threatVectors": "خطرہ ویکٹرز",
+      "awarenessSystems": "آگاہی کے نظام"
+    },
+    "bottomCtaTitle": "تمام ماڈیولز مفت اور تعلیمی ہیں۔",
+    "bottomCtaDesc": "کوئی ڈیٹا محفوظ نہیں ہے · اکاؤنٹس کی ضرورت نہیں ہے · پبلک سائبر انٹیلی جنس",
+    "bottomCtaBtn": "کمانڈ سینٹر میں داخل ہوں۔"
   },
   "dashboardPreview": {
     "sectionLabel": "انٹیلیجنس ڈیش بورڈ",
@@ -73,7 +299,110 @@
     "smallBusinesses": "چھوٹے کاروبار",
     "businessActions1": "رینسم ویئر سے تحفظ حاصل کریں",
     "businessActions2": "ادائیگی کے گیٹ ویز کو محفوظ بنائیں",
-    "businessActions3": "ملازمین کی فشنگ سے آگاہی"
+    "businessActions3": "ملازمین کی فشنگ سے آگاہی",
+    "titleColored": "آپریشنز کور",
+    "subtitleShield": "یہ آپ کی ڈھال ہے۔ یہ AEGIS ہے۔",
+    "panels": {
+      "threatRadar": {
+        "title": "خطرہ ریڈار",
+        "badge": "عالمی"
+      },
+      "urlScanner": {
+        "title": "یو آر ایل سیفٹی اسکینر",
+        "badge": "لنک دفاع"
+      },
+      "aiLinkScanner": {
+        "title": "اے آئی لنک سکینر",
+        "badge": "GPT سے تصدیق شدہ"
+      },
+      "neuralNet": {
+        "title": "AI خطرہ نیورل نیٹ",
+        "badge": "لائیو انفرنس"
+      },
+      "protectionIntel": {
+        "title": "پروٹیکشن انٹیلی جنس",
+        "badge": "انڈیا · 2025"
+      },
+      "deepfakeDetector": {
+        "title": "ڈیپ فیک ڈیٹیکٹر",
+        "badge": "اے آئی ویژن"
+      },
+      "dataSignalFeed": {
+        "title": "ڈیٹا سگنل فیڈ",
+        "badge": "لائیو"
+      },
+      "qrFraudAnalysis": {
+        "title": "QR فراڈ تجزیہ",
+        "badge": "لائیو"
+      }
+    },
+    "legend": {
+      "critical": "تنقیدی",
+      "high": "اعلی",
+      "monitoring": "نگرانی",
+      "resolved": "حل ہو گیا۔"
+    },
+    "accuracy": "درستگی",
+    "latency": "تاخیر",
+    "threats": "دھمکیاں",
+    "recentScans": "حالیہ اسکینز",
+    "manipulationScore": "ہیرا پھیری کا اسکور",
+    "highManipulation": "⚠ زیادہ ہیرا پھیری کا پتہ چلا",
+    "lowRisk": "✓ کم خطرہ - مستند",
+    "alerts": {
+      "title": "◉ الرٹ",
+      "list": [
+        "⚠ MH/KA ریجن میں UPI صارفین کو نشانہ بنانے والی نئی فشنگ لہر",
+        "🔴 ڈیپ فیک ویڈیو گردش کر رہا ہے - وزیر اعظم کی نقالی کی تصدیق ہو گئی",
+        "⚡ AI سکینر نے گزشتہ ایک گھنٹے میں 18,432 بدنیتی پر مبنی لنکس کو بلاک کر دیا",
+        "🟡 QR کوڈ فراڈ اسپائک کا پتہ چلا - میٹرو سٹیز خطرے میں",
+        "🛡 سائبر لا اپ ڈیٹ: آئی ٹی ایکٹ ترمیم 2025 اب اثر میں ہے",
+        "🤖 صوتی کلون گھوٹالے کی لہر پورے بینکنگ سیکٹر میں رپورٹ کی گئی"
+      ]
+    },
+    "streamActive": "█ سٹریم ایکٹو · 4.2 TB/s · انکرپٹڈ",
+    "deltaWeek": "اس ہفتے",
+    "scanners": {
+      "scanning": "سکیننگ...",
+      "complete": "تجزیہ مکمل"
+    },
+    "results": {
+      "phishing": "فشنگ",
+      "suspicious": "مشکوک",
+      "deepfake": "ڈیپ فیک",
+      "safe": "محفوظ"
+    },
+    "stats": {
+      "phishing": "فشنگ لنکس کو جھنڈا لگا دیا گیا۔",
+      "qr": "QR گھوٹالے مسدود ہیں۔",
+      "deepfake": "ڈیپ فیکس کا پتہ چلا",
+      "citizens": "شہریوں کو تحفظ دیا گیا۔"
+    },
+    "qrPhases": [
+      "ڈی کوڈنگ کیو آر میٹرکس",
+      "ری ڈائریکٹ چین کو حل کرنا",
+      "AI خطرے کا تجزیہ",
+      "دھمکی کی تصدیق ہو گئی۔"
+    ],
+    "bottomCta": {
+      "updated": "لائیو انٹیلی جنس ہر اپ ڈیٹ",
+      "seconds": "30 سیکنڈ",
+      "divider": "·",
+      "protected": "کی طرف سے محفوظ",
+      "aegis": "AEGIS AI Core v4.2"
+    },
+    "scannerWidget": {
+      "placeholder": "https://example.com",
+      "scanUrl": "URL اسکین کریں۔",
+      "failedScan": "URL کا تجزیہ کرنے میں ناکام",
+      "suspiciousDetected": "مشتبہ URL کا پتہ چلا",
+      "appearsSafe": "URL محفوظ دکھائی دیتا ہے۔",
+      "liveAnalysis": "لائیو وائرس ٹوٹل تجزیہ",
+      "malicious": "بدنیتی پر مبنی",
+      "suspicious": "مشکوک",
+      "harmless": "بے ضرر",
+      "reputation": "شہرت"
+    }
   },
   "threatBanner": {
     "liveThreats": "لائیو خطرات",
@@ -81,14 +410,71 @@
     "alert2": "الرٹ: ڈیپ فیک اسکیموں میں اضافہ ہو رہا ہے — بھروسہ کرنے سے پہلے تصدیق کریں",
     "alert3": "الرٹ: آتھار [Aadhaar Redacted] اور پین کارڈ ہولڈرز کو نشانہ بنانے والی نئی فشنگ مہمات",
     "alert4": "الرٹ: ذاتی ڈیٹا چرانے والے جعلی جاب پورٹلز — ہوشیار رہیں",
-    "alert5": "الرٹ: او ٹی پی پر مبنی سم سویپ فراڈ میں اضافہ — او ٹی پی کبھی شیئر نہ کریں"
+    "alert5": "الرٹ: او ٹی پی پر مبنی سم سویپ فراڈ میں اضافہ — او ٹی پی کبھی شیئر نہ کریں",
+    "live": "جیو",
+    "critical": "تنقیدی",
+    "threatIntel": "دھمکی انٹیل",
+    "paused": "روک دیا گیا",
+    "aiScan": "اے آئی اسکین",
+    "categories": {
+      "QR SCAM": "کیو آر اسکام",
+      "DEEPFAKE": "ڈیپ فیک",
+      "PHISHING": "فشنگ",
+      "UPI FRAUD": "UPI فراڈ",
+      "AI VOICE": "اے آئی وائس",
+      "APP SCAM": "ایپ اسکام",
+      "SMS LURE": "ایس ایم ایس لالچ",
+      "SOC-ENG": "سوشل انجینئر",
+      "AWARENESS": "آگاہی",
+      "MALWARE": "مالویئر",
+      "ROM-SCAM": "رومانوی اسکینڈل",
+      "BROADCAST": "براڈ کاسٹ"
+    },
+    "alerts": {
+      "T001": "QR ادائیگی اسکیم کی سرگرمی بڑھ رہی ہے - اسکین کرنے سے پہلے تصدیق کریں۔",
+      "T002": "سوشل پلیٹ فارمز پر ڈیپ فیک نقالی کی کوششوں کا پتہ چلا",
+      "T003": "کالج کے طالب علموں کو نشانہ بنانے والی فشنگ مہمات — چوکنا رہیں",
+      "T004": "واٹس ایپ کے ذریعے پھیلنے والے جعلی UPI ادائیگی کے لنکس",
+      "T005": "AI سے تیار کردہ گھوٹالے میں بینک کے اہلکاروں کی نقالی بڑھ رہی ہے۔",
+      "T006": "جعلی انویسٹمنٹ ایپ اسکیم کو جھنڈا لگایا گیا - ڈاؤن لوڈ نہ کریں۔",
+      "T007": "آدھار سے منسلک اکاؤنٹس کو نشانہ بناتے ہوئے ایس ایم ایس فشنگ میں اضافہ",
+      "T008": "سوشل انجینئرنگ پلے بک کے مختلف قسم کا جنگل میں پتہ چلا",
+      "T009": "لاٹری گھوٹالے کی لہر فعال - آگاہی نشریات جاری ہے۔",
+      "T010": "نقصان دہ پی ڈی ایف منسلکات سرکاری نوٹس کے طور پر ظاہر کر رہے ہیں۔",
+      "T011": "رومانس اسکام ویکٹر ڈیٹنگ پلیٹ فارمز پر پھیل رہا ہے۔",
+      "T012": "سائبر آگاہی الرٹ - لنکس شیئر کرنے سے پہلے ذرائع کی تصدیق کریں۔"
+    }
   },
   "threatTicker": {
     "threat1": "پورے بھارت میں جعلی آر بی آئی کے وائی سی اپ ڈیٹ اسکیم بڑھ رہے ہیں۔",
     "threat2": "سوشل میڈیا صارفین کو نشانہ بنا کر ڈیپ فیک سرمایہ کاری کے اسکیم۔",
     "threat3": "ملک بھر میں یو پی آئی صارفین کو متاثر کرنے والے کیو آر ریفنڈ اسکیم۔",
     "threat4": "واٹس ایپ پر جعلی نوکری کے فشنگ حملے پائے گئے ہیں۔",
-    "threat5": "کالز کے ذریعے بینک حکام کا روپ دھارنے والے سائبر مجرم۔"
+    "threat5": "کالز کے ذریعے بینک حکام کا روپ دھارنے والے سائبر مجرم۔",
+    "title": "خطرہ فیڈ",
+    "aiMonitor": "AI · مانیٹر",
+    "live": "جیو",
+    "encrypted": "خفیہ کردہ",
+    "alerts": {
+      "T001": "سوشل پلیٹ فارمز پر ڈیپ فیک کی نقالی کی سرگرمی بڑھ رہی ہے۔",
+      "T002": "طلباء کو نشانہ بنانے والے فشنگ لنکس کا پتہ چلا — کلک کرنے سے پہلے تصدیق کریں۔",
+      "T003": "میٹرو علاقوں میں QR ادائیگی گھوٹالہ مہم فعال ہے۔",
+      "T004": "AI سے تیار کردہ فراڈ کالز بڑھ رہی ہیں - کالر کی شناخت کی تصدیق کریں۔",
+      "T005": "مشتبہ UPI کلون ویب سائٹس کا پتہ چلا — صرف آفیشل ایپس استعمال کریں۔",
+      "T006": "سائبر آگاہی نشریات فعال - خطرے کی انٹیلی جنس مطابقت پذیر",
+      "T007": "تعلیمی پورٹلز پر اسناد کی کٹائی کی کوششوں کا پتہ چلا",
+      "T008": "نقصان دہ APK فائلیں خفیہ کردہ میسجنگ ایپس کے ذریعے گردش کر رہی ہیں۔",
+      "T009": "نئے فارغ التحصیل افراد کو نشانہ بنانے والی جعلی ملازمت کی پیشکش کی مہمات - بھرتی کرنے والوں کی تصدیق کریں۔",
+      "T010": "SMS OTP مداخلت کے خطرے کی اطلاع - ایپ پر مبنی 2FA کو فعال کریں۔",
+      "T011": "تھریٹ انٹیلی جنس چینلز کی مطابقت پذیری - تمام نوڈس آپریشنل",
+      "T012": "AI سے تیار کردہ پروفائلز کا استعمال کرتے ہوئے رومانس گھوٹالے کی کارروائیوں کا پتہ چلا"
+    },
+    "levels": {
+      "critical": "تنقیدی",
+      "high": "اعلی",
+      "medium": "درمیانہ",
+      "advisory": "معلومات"
+    }
   },
   "admin": {
     "dashboardTitle": "سائبر آگاہی ڈیش بورڈ",
@@ -155,28 +541,1897 @@
     "preparedBy": "Prepared by TrustLayerLabs Sentinel Legal AI using deterministic legal mappings and user-provided facts.",
     "signatureLabel": "[Signature]"
   },
+  "cyberJustice": {
+    "greeting": "سادہ الفاظ میں بتائیں کہ کیا ہوا تھا۔ میں سائبر کرائم کی درجہ بندی کروں گا۔",
+    "greetingShort": "Tell me what happened in simple words.",
+    "captured": "I captured those details. Review the proposed updates, then confirm them when ready.",
+    "analysisResult": "I classified this as {{category}} with {{confidence}}% confidence and extracted available identifiers.",
+    "phaseLabel": "Phase 2 Case Builder",
+    "title": "سائبر جسٹس AI",
+    "button": {
+      "reset": "Reset",
+      "back": "Back",
+      "analyze": "Analyze Incident",
+      "analyzing": "Analyzing...",
+      "next": "Next Step"
+    },
+    "steps": {
+      "NARRATIVE": "Narrative",
+      "ANALYSIS": "Analysis",
+      "EVIDENCE": "Evidence",
+      "TIMELINE": "Timeline",
+      "REVIEW": "Review"
+    },
+    "questions": {
+      "upi-utr": "What is the UTR, RRN, or transaction reference number for the payment?",
+      "upi-amount": "How much money was lost in this incident?",
+      "phishing-url": "What suspicious link or website did you receive or open?",
+      "phishing-email": "Do you have the sender email address or reply-to email?",
+      "sextortion-platform": "Which platform did the threats, messages, or impersonation happen on?",
+      "suspect-phone": "What phone number did the suspect use, if any?",
+      "bank-name": "Which bank account or bank app was used for the transaction?",
+      "evidence-refs": "What evidence do you have, such as screenshots, chats, emails, recordings, or bank statements?",
+      "general-narrative": "Please describe what happened in your own words, including contact method, money loss, and any evidence you have."
+    },
+    "ui": {
+      "conversation": {
+        "title": "Conversation intake",
+        "nextBestQuestion": "Next best question",
+        "proposedUpdates": "Proposed case updates are ready for review.",
+        "apply": "Apply",
+        "reject": "Reject",
+        "naturalUpdateLabel": "Natural incident update",
+        "placeholder": "Add details naturally: I lost INR 25000, UTR was..., the suspect used WhatsApp...",
+        "send": "Send"
+      },
+      "header": {
+        "badge": "Cyber Justice AI Phase 2",
+        "title": "Build a legal-ready cybercrime case file.",
+        "subtitle": "Narrative analysis, evidence vault, timeline builder, party details, financial loss, complaint generation, and PDF export now share one case file."
+      },
+      "emergency": {
+        "title": "Emergency financial fraud?",
+        "desc": "Call 1930 immediately and contact your bank to try freezing funds."
+      },
+      "legalOutput": {
+        "title": "Legal engine output",
+        "confidence": "Confidence",
+        "noAnalysis": "The classification and laws will appear here after analysis."
+      },
+      "timeline": {
+        "title": "Timeline builder",
+        "description": "Generate events from the conversation, extracted entities, and evidence, then add manual corrections.",
+        "action": {
+          "fromConversation": "From conversation",
+          "fromEntities": "From entities",
+          "fromEvidence": "From evidence"
+        },
+        "field": {
+          "eventTitle": "Event title",
+          "eventTitlePlaceholder": "Money transferred, phishing link received...",
+          "timestamp": "Timestamp",
+          "timestampPlaceholder": "2026-05-29T10:30:00+05:30",
+          "description": "Description",
+          "descriptionPlaceholder": "What happened at this moment"
+        },
+        "option": {
+          "noLinkedEvidence": "No linked evidence"
+        },
+        "button": {
+          "addEvent": "Add event"
+        },
+        "confirmed": "Confirmed",
+        "confirm": "Confirm",
+        "noTimelineEvents": "No timeline events yet."
+      },
+      "evidence": {
+        "title": "Evidence vault",
+        "description": {
+          "label": "Description",
+          "placeholder": "What this item proves"
+        },
+        "label": {
+          "type": "Evidence type"
+        },
+        "name": {
+          "label": "Name",
+          "placeholder": "WhatsApp screenshot, bank statement, call recording..."
+        },
+        "timestamp": {
+          "label": "Timestamp",
+          "placeholder": "2026-05-29T10:30:00+05:30"
+        },
+        "extractableLabel": "Extractable text",
+        "extractable": {
+          "placeholder": "Paste OCR text, email body, chat export, transcript, statement text, UTR/RRN, UPI IDs, URLs, wallet IDs..."
+        },
+        "addButton": "Add evidence",
+        "stat": {
+          "vaultItems": "Vault items",
+          "verified": "Verified",
+          "extracted": "Extracted entities"
+        },
+        "noDescription": "No description provided.",
+        "verified": "Verified",
+        "markVerified": "Mark verified",
+        "noEvidence": "No evidence added yet.",
+        "types": {
+          "SCREENSHOT": "Screenshot",
+          "PDF": "PDF",
+          "AUDIO": "Audio",
+          "VIDEO": "Video",
+          "CHAT": "Chat",
+          "EMAIL": "Email",
+          "BANK_STATEMENT": "Bank Statement"
+        }
+      },
+      "analysis": {
+        "noNarrative": "Add an incident narrative first, then run analysis.",
+        "title": "Classification and laws",
+        "description": "Review the mapped Sentinel Legal analysis before collecting evidence.",
+        "detectedCategory": "Detected category",
+        "confidence": "Confidence",
+        "manualOverride": "Manual override"
+      },
+      "review": {
+        "title": "Review center",
+        "description": "Validate the complete Phase 2 case file before generating the complaint and PDF.",
+        "noNarrative": "No incident narrative provided.",
+        "classification": "Classification",
+        "notAnalyzed": "Not analyzed",
+        "confidence": "Confidence",
+        "pending": "Pending",
+        "mappedSections": "Mapped sections",
+        "evidenceInventory": "Evidence inventory",
+        "noEvidenceItems": "No evidence items added.",
+        "noDescription": "No description provided.",
+        "verified": "Verified",
+        "pendingReview": "Pending review",
+        "financialLoss": "Financial loss",
+        "fields": {
+          "amount": "Amount",
+          "currency": "Currency",
+          "bank": "Bank",
+          "transactionId": "Transaction ID",
+          "paymentMethod": "Payment Method",
+          "recoveryStatus": "Recovery Status"
+        },
+        "victim": "Victim",
+        "accused": "Accused",
+        "timeline": "Timeline",
+        "noTimelineEvents": "No timeline events added.",
+        "extractedEntities": "Extracted entities",
+        "officialPacketTitle": "Official packet generation",
+        "officialPacketDesc": "Creates a complaint packet with cover page, annexures, page numbers, and signature block.",
+        "generatePacket": {
+          "generating": "Generating...",
+          "button": "Generate Packet"
+        },
+        "downloadPdf": "Download PDF",
+        "exportSummary": "Export summary",
+        "summary": {
+          "packetNumber": "Packet Number",
+          "annexures": "Annexures",
+          "evidenceItems": "Evidence Items",
+          "timelineEvents": "Timeline Events",
+          "mappedLaws": "Mapped Laws",
+          "financialLossIncluded": "Included",
+          "financialLossNotRecorded": "Not recorded",
+          "pdfReady": "Ready",
+          "pdfPending": "Pending",
+          "generated": "Generated"
+        },
+        "pdfErrorPrefix": "PDF error:",
+        "annexurePreview": "Annexure preview",
+        "packetPreview": "Packet preview"
+      },
+      "submission": {
+        "packagePreviewTitle": "Submission package preview",
+        "noPacket": "No official complaint packet generated yet. Use \"Generate Packet\" to create an export-ready complaint packet.",
+        "packetNumber": "Packet number",
+        "annexures": "Annexures",
+        "summary": "Summary",
+        "summaryFormat": "{{evidenceCount}} evidence items • {{timelineCount}} timeline events"
+      },
+      "checklist": {
+        "title": "Submission checklist",
+        "allSet": "All set — no immediate checklist items.",
+        "required": "Required",
+        "recommended": "Recommended"
+      },
+      "authority": {
+        "title": "Recommended authorities"
+      },
+      "engines": {
+        "timeline": {
+          "suggestions": {
+            "instagram": {
+              "title": "Instagram contact established",
+              "description": "The narrative mentions the suspect first contacted the victim through Instagram.",
+              "reason": "Social media platform was explicitly referenced in the incident report."
+            },
+            "videoCall": {
+              "title": "Video call interaction occurred",
+              "description": "A video call happened during the incident.",
+              "reason": "The user described a video call exchange, which is a key timeline event in sextortion cases."
+            },
+            "recording": {
+              "title": "Recording or footage was captured",
+              "description": "A recording or similar media was referenced in the incident narrative.",
+              "reason": "Recording of the victim or interaction can anchor an extortion timeline event."
+            },
+            "threat": {
+              "title": "Threat or extortion demand was issued",
+              "description": "A direct threat or extortion demand was described by the victim.",
+              "reason": "Threat language is an important event marker for sextortion timelines."
+            },
+            "paymentDemand": {
+              "title": "Payment demand was requested",
+              "description": "The user mentioned a monetary demand or amount in the narrative.",
+              "reason": "Monetary demands are essential to reconstruct the incident timeline."
+            },
+            "narrative": {
+              "title": "Incident described by complainant",
+              "reason": "The user provided a natural-language incident account."
+            },
+            "evidence": {
+              "title": "{{type}} evidence available",
+              "description": "{{name}}: {{desc}}",
+              "defaultDescription": "Evidence item added to vault.",
+              "reason": "Evidence vault item has a timestamp and can anchor the case timeline."
+            }
+          },
+          "entityGroups": {
+            "utr": {
+              "title": "UTR/RRN reference identified"
+            },
+            "upi": {
+              "title": "UPI ID identified"
+            },
+            "url": {
+              "title": "Suspicious URL identified"
+            },
+            "contact": {
+              "title": "Suspect contact identified"
+            },
+            "wallet": {
+              "title": "Wallet ID identified"
+            },
+            "reason": "The deterministic entity extractor found identifiers that may belong on the incident timeline."
+          }
+        },
+        "emergency": {
+          "preserveEvidence": {
+            "title": "Preserve evidence",
+            "detail": "Take screenshots, save messages, download attachments and do not delete logs."
+          },
+          "contactHelpline": {
+            "title": "Call 1930",
+            "detail": "Contact National Cyber Crime Helpline 1930 for guidance and immediate assistance."
+          },
+          "call1930": {
+            "title": "Call 1930",
+            "detail": "Call the National Cyber Crime Helpline 1930 immediately and report the unauthorized transaction."
+          },
+          "contactBank": {
+            "title": "Contact your bank",
+            "detail": "Notify your bank, request account freeze and reversal, provide transaction IDs and evidence."
+          },
+          "otpCall": {
+            "title": "Call 1930",
+            "detail": "Report OTP interception or misuse via the helpline for immediate advice."
+          },
+          "notifyBank": {
+            "title": "Notify bank",
+            "detail": "Inform the bank and request account freeze. Change banking credentials and enable stronger 2FA."
+          },
+          "preservePhishing": {
+            "title": "Preserve phishing sample",
+            "detail": "Save the email, screenshot the URL and download headers where possible."
+          },
+          "doNotClick": {
+            "title": "Do not click links",
+            "detail": "Do not follow any links or provide credentials. Change passwords for exposed accounts."
+          },
+          "reportPlatform": {
+            "title": "Report to platform",
+            "detail": "Report the phishing page to the hosting platform and to CERT-In / National portal."
+          },
+          "doNotPay": {
+            "title": "Do not pay",
+            "detail": "Do not pay or negotiate with extortionists — payment often escalates demands."
+          },
+          "contactPolice": {
+            "title": "Contact Cyber Police",
+            "detail": "File a complaint with local cyber cell and the National Cyber Crime Portal."
+          },
+          "blockReport": {
+            "title": "Block and report",
+            "detail": "Block the perpetrator on platforms and report to platform grievance officers."
+          },
+          "freezeAccounts": {
+            "title": "Freeze affected accounts",
+            "detail": "Contact banks and platforms to freeze or secure accounts."
+          },
+          "collectProof": {
+            "title": "Collect proof",
+            "detail": "Gather evidence of impersonation, fake profiles, and transactions."
+          },
+          "changeCredentials": {
+            "title": "Change credentials",
+            "detail": "Change passwords for affected accounts and enable MFA immediately."
+          },
+          "notifyPlatforms": {
+            "title": "Notify affected platforms",
+            "detail": "Inform service providers and follow their incident response guidance."
+          },
+          "reportCert": {
+            "title": "Report to CERT-In",
+            "detail": "File a report with CERT-In for technical advisory and mitigation."
+          },
+          "isolateSystems": {
+            "title": "Isolate affected systems",
+            "detail": "Disconnect compromised devices from network to prevent further access."
+          },
+          "preserveLogs": {
+            "title": "Preserve logs",
+            "detail": "Collect and preserve logs, system images and timestamps for forensic analysis."
+          }
+        },
+        "evidence": {
+          "recommendations": {
+            "upi-transaction-screenshot": {
+              "title": "Transaction screenshot",
+              "description": "Upload a screenshot showing the fraudulent UPI transaction, amount, UPI ID, or reference number.",
+              "reason": "This proves the transfer details and supports bank escalation."
+            },
+            "upi-bank-statement": {
+              "title": "Bank statement",
+              "description": "Upload a statement or passbook entry showing the debit.",
+              "reason": "This validates the claimed financial loss."
+            },
+            "phishing-page-record": {
+              "title": "Phishing page or message record",
+              "description": "Upload the suspicious page, email, or message that led to the incident.",
+              "reason": "This preserves the deception path and malicious URL before it disappears."
+            },
+            "sextortion-threat-record": {
+              "title": "Threat messages or recordings",
+              "description": "Upload chats, screenshots, audio, or video showing threats or coercion.",
+              "reason": "Threat content is central to intimidation and extortion claims."
+            },
+            "profile-impersonation-proof": {
+              "title": "Profile or impersonation proof",
+              "description": "Upload screenshots of fake profiles, job posts, or impersonation pages.",
+              "reason": "This connects the accused identity or fake profile to the harm."
+            },
+            "crypto-wallet-transaction": {
+              "title": "Wallet or investment transaction record",
+              "description": "Upload wallet transfer proof, investment dashboard screenshots, or payment records.",
+              "reason": "This links wallet IDs and payment trail to the complaint."
+            },
+            "communication-history": {
+              "title": "Communication history",
+              "description": "Upload chats, emails, or screenshots showing how the suspect contacted you.",
+              "reason": "Communication records explain the deception and suspect identifiers."
+            }
+          }
+        },
+        "authority": {
+          "nationalPortal": {
+            "name": "National Cyber Crime Portal",
+            "notes": "Official government portal for cybercrime complaints"
+          },
+          "cyberPolice": {
+            "name": "Cyber Police (Local Cyber Cell)",
+            "notes": "Visit or contact your nearest cyber crime police station with printed evidence"
+          },
+          "nationalHelpline": {
+            "name": "National Cyber Crime Helpline",
+            "notes": "24x7 helpline — call for urgent assistance"
+          },
+          "cert": {
+            "name": "CERT-In",
+            "notes": "Computer Emergency Response Team — report breaches and incidents"
+          },
+          "phishing": {
+            "notes": "Report phishing incidents and provide evidence",
+            "localNotes": "File FIR at local cyber cell if financial loss occurred",
+            "certNotes": "CERT-In accepts technical reports of phishing campaigns"
+          },
+          "dataBreach": {
+            "certNotes": "Report data breaches for mitigation and advisories",
+            "localNotes": "Notify local cyber cell for investigation and FIR"
+          },
+          "hacking": {
+            "certNotes": "Report intrusions and request incident response guidance",
+            "localNotes": "Contact local cyber cell for criminal investigation"
+          }
+        },
+        "law": {
+          "evidenceNeeds": {
+            "financial": {
+              "label": "Transaction and bank proof",
+              "description": "Transaction screenshot, bank statement, UTR/RRN, or payment reference."
+            },
+            "communication": {
+              "label": "Suspect communication",
+              "description": "Chats, emails, screenshots, calls, or recordings showing deception, threats, or demands."
+            },
+            "identity": {
+              "label": "Impersonation or account proof",
+              "description": "Fake profile, forged document, account compromise, or impersonation screenshots."
+            },
+            "platform": {
+              "label": "Platform record",
+              "description": "Platform profile URL, account handle, report/takedown reference, or message export."
+            }
+          },
+          "whyMapped": "Mapped for {{category}}."
+        },
+        "questions": {
+          "reasons": {
+            "upi-utr": "Transaction references help banks and police trace the fraudulent transfer.",
+            "upi-amount": "The loss amount is needed for the complaint and financial loss annexure.",
+            "phishing-url": "The URL is a primary identifier for phishing investigation.",
+            "phishing-email": "Email identifiers help preserve the impersonation trail.",
+            "sextortion-platform": "Platform context helps request takedown, account tracing, and evidence preservation.",
+            "suspect-phone": "Phone numbers are actionable identifiers for investigation.",
+            "bank-name": "Bank details support the financial loss annexure and recovery workflow.",
+            "evidence-refs": "Evidence references help build the complaint packet annexures.",
+            "general-narrative": "The narrative is needed before classification-specific questions can be selected."
+          }
+        },
+        "adapters": {
+          "packetHeader": "OFFICIAL CYBERCRIME COMPLAINT PACKET",
+          "packetNumber": "Packet Number",
+          "generatedAt": "Generated At",
+          "subject": "Subject",
+          "annexureIndex": "Annexure Index",
+          "item": "item",
+          "items": "items",
+          "signatureBlock": "Signature Block",
+          "complainantSignature": "Complainant Signature",
+          "name": "Name",
+          "date": "Date",
+          "financialLossHeading": "Expanded Financial Loss Details"
+        },
+        "store": {
+          "userMentioned": "User mentioned {{keyword}}"
+        }
+      }
+    }
+  },
+  "footer": {
+    "branding": "سائبر آگاہ",
+    "brandTagline": "سائبر آگاہی ڈیجیٹل سیلف ڈیفنس ہے۔",
+    "brandSubtitle": "AI سے چلنے والی پبلک سائبر سیفٹی — مفت، کھلی اور سب کے لیے بنائی گئی ہے۔",
+    "emergencyTitle": "ہنگامی وسائل",
+    "modulesTitle": "تحفظ کے ماڈیولز",
+    "awarenessTitle": "آگاہی اور مدد",
+    "copyright": "ہوشیار رہیں · محفوظ رہیں · ہر ایک کے لیے خطرے کی ذہانت",
+    "version": "سائبرویئر · پبلک سیفٹی پلیٹ فارم · v2.0",
+    "statuses": {
+      "threatFeed": "خطرہ فیڈ",
+      "aiEngine": "اے آئی انجن",
+      "scamMonitor": "اسکام مانیٹر"
+    }
+  },
   "nav": {
-    "threat_feed": "Threat Feed",
-    "threat_feed_desc": "Real-time global cyber threat intelligence",
-    "ai_scanner": "AI Scanner",
-    "ai_scanner_desc": "Scan links, files & content with AI",
-    "scam_library": "Scam Library",
-    "scam_library_desc": "Comprehensive scam & fraud database",
-    "case_studies": "Case Studies",
-    "case_studies_desc": "Browse curated cyber incident reports",
-    "learn": "Learn",
-    "learn_desc": "Structured cyber awareness curriculum",
-    "deepfake_lab": "Deepfake Lab",
-    "deepfake_lab_desc": "Detect and understand AI-generated media",
-    "cyber_laws": "Legal AI",
-    "cyber_laws_desc": "AI-guided cybercrime complaint drafting",
-    "locator": "Locator",
-    "locator_desc": "Locate cybercrime cells and reporting centers.",
-    "reporting": "Reporting",
-    "reporting_desc": "Report incidents. Stay protected.",
-    "challenges": "Challenges",
-    "challenges_desc": "Test your cyber knowledge & earn badges",
-    "stayProtected": "Stay Protected",
-    "languageSelector": "Select language"
+    "threat_feed": "خطرہ فیڈ",
+    "threat_feed_desc": "ریئل ٹائم گلوبل سائبر خطرے کی انٹیلی جنس",
+    "ai_scanner": "اے آئی سکینر",
+    "ai_scanner_desc": "AI کے ساتھ لنکس، فائلز اور مواد کو اسکین کریں۔",
+    "scam_library": "اسکیم لائبریری",
+    "scam_library_desc": "جامع اسکام اور فراڈ ڈیٹا بیس",
+    "case_studies": "کیس اسٹڈیز",
+    "case_studies_desc": "کیوریٹڈ سائبر واقعے کی رپورٹس کو براؤز کریں۔",
+    "learn": "سیکھیں۔",
+    "learn_desc": "منظم سائبر آگاہی نصاب",
+    "deepfake_lab": "ڈیپ فیک لیب",
+    "deepfake_lab_desc": "AI سے تیار کردہ میڈیا کا پتہ لگائیں اور سمجھیں۔",
+    "cyber_laws": "قانونی AI",
+    "cyber_laws_desc": "اے آئی گائیڈڈ سائبر کرائم شکایت کا مسودہ تیار کرنا",
+    "locator": "لوکیٹر",
+    "locator_desc": "سائبر کرائم سیلز اور رپورٹنگ سینٹرز تلاش کریں۔",
+    "reporting": "رپورٹنگ",
+    "reporting_desc": "واقعات کی اطلاع دیں۔ محفوظ رہیں۔",
+    "challenges": "چیلنجز",
+    "challenges_desc": "اپنے سائبر علم کی جانچ کریں اور بیجز حاصل کریں۔",
+    "stayProtected": "محفوظ رہیں",
+    "languageSelector": "زبان منتخب کریں۔"
+  },
+  "cyberLawsPage": {
+    "nav": {
+      "brand": "سائبر لاء SOC",
+      "emergencyResponse": "ایمرجنسی رسپانس - لیول الفا",
+      "cyberEmergency": "سائبر ایمرجنسی",
+      "responseCommand": "رسپانس کمانڈ",
+      "center": "مرکز",
+      "sub": "سائبر کرائم، ڈیجیٹل فراڈ، فشنگ، شناخت کی چوری، اور آن لائن گھوٹالوں کا تیز ردعمل۔ AI سے چلنے والی انٹیلی جنس اور 24×7 ہنگامی رہنمائی کے ساتھ ہندوستان کے ڈیجیٹل شہریوں کی حفاظت کرنا۔",
+      "reportBtn": "واقعہ کی اطلاع دیں۔",
+      "guidanceBtn": "ہنگامی رہنمائی",
+      "threatLevel": "خطرے کی سطح: بلند",
+      "monitoringActive": "مانیٹرنگ فعال",
+      "incidentsCount": "23 واقعات/24H",
+      "systemUptime": "نظام کی حیثیت: آپریشنل | اپ ٹائم: 99.97%",
+      "copNetwork": "ٹرسٹلیئرلیبز © 2025 - سائبر ایمرجنسی رسپانس کمانڈ سینٹر",
+      "irLabel": "واقعہ کا جواب",
+      "irDesc": "تیز رفتار ٹرائیج اور ایکشن",
+      "epLabel": "ثبوت کا تحفظ",
+      "epDesc": "فرانزک گریڈ والٹ",
+      "aiLabel": "اے آئی گائیڈنس",
+      "aiDesc": "ریئل ٹائم انٹیلی جنس",
+      "ncaLabel": "نیشنل سائبر آگاہی",
+      "ncaDesc": "پالیسی اور قانونی مدد"
+    },
+    "legend": {
+      "title": "لیجنڈ",
+      "highThreat": "زیادہ خطرہ",
+      "medium": "میڈیم",
+      "responseNode": "رسپانس نوڈ"
+    },
+    "dashboard": {
+      "live": "لائیو",
+      "title": "کمانڈ ڈیش بورڈ — لائیو",
+      "radarTitle": "ایکٹو تھریٹ ریڈار",
+      "radarLegend": {
+        "threat": "دھمکی",
+        "warning": "وارننگ",
+        "safe": "محفوظ"
+      },
+      "radarLive": "تھریٹ ریڈار — لائیو",
+      "signalTitle": "خطرے کے سگنل کا تجزیہ",
+      "incidentTitle": "لائیو واقعہ فیڈ",
+      "responseNetwork": "رسپانس نیٹ ورک",
+      "systemStatus": "سسٹم اسٹیٹس",
+      "operational": "آپریشنل",
+      "responseTime": "جوابی وقت",
+      "secureChannel": "محفوظ چینل",
+      "active": "فعال"
+    },
+    "tickerTitle": "لائیو تھریٹ الرٹس",
+    "timeline": {
+      "eyebrow": "وقوعہ رسپانس پروٹوکول",
+      "title": "ایمرجنسی رسپانس ٹائم لائن",
+      "sub": "سائبر واقعے کے فوراً بعد اس ترتیب پر عمل کریں۔ وقت اہم ہے - ثبوت کو محفوظ رکھنے اور نقصان کو محدود کرنے کے لیے ہر منٹ اہمیت رکھتا ہے۔"
+    },
+    "reporting": {
+      "eyebrow": "واقعہ کی درجہ بندی کا نظام",
+      "title": "رپورٹنگ کمانڈ سینٹر",
+      "sub": "سائبر کرائم کی وہ قسم منتخب کریں جس کا آپ نے تجربہ کیا ہے۔ ہمارا AI رہنمائی کا نظام آپ کے واقعہ کے زمرے کی بنیاد پر اپنی سفارشات کو اپنائے گا۔",
+      "selectCategory": "واقعہ کیٹیگری منتخب کریں۔",
+      "detailsHeader": "واقعہ کی تفصیلات",
+      "fullName": "پورا نام",
+      "fullNamePlaceholder": "آپ کا نام",
+      "contactNumber": "رابطہ نمبر",
+      "contactNumberPlaceholder": "+91 XXXXX XXXXX",
+      "description": "واقعہ کی تفصیل",
+      "descriptionPlaceholder": "تفصیل سے بیان کریں کہ کیا ہوا — تاریخیں، اوقات، رقم، حملہ آور کے ذریعے استعمال کردہ پلیٹ فارمز شامل کریں...",
+      "loss": "تخمینی نقصان (₹)",
+      "date": "واقعہ کی تاریخ",
+      "attacker": "حملہ آور کا رابطہ / URL / UPI ID",
+      "attackerPlaceholder": "فون نمبر، URL، ای میل، یا UPI ID جو حملہ آور کے ذریعہ استعمال کیا جاتا ہے۔",
+      "submitBtn": "⚡ واقعہ کی رپورٹ جمع کروائیں۔"
+    },
+    "aiPanel": {
+      "title": "AI رسپانس سسٹم",
+      "subtitle": "ریئل ٹائم گائیڈنس انجن",
+      "analyzing": "خطرے کی پروفائل کا تجزیہ...",
+      "actionsHeader": "فوری اقدامات کی ضرورت ہے۔",
+      "numbersHeader": "ایمرجنسی نمبرز",
+      "numbers": {
+        "helpline": "سائبر کرائم ہیلپ لائن",
+        "police": "پولیس ایمرجنسی",
+        "ombudsman": "بینکنگ محتسب"
+      }
+    },
+    "vault": {
+      "eyebrow": "فرانزک ثبوت کا انتظام",
+      "title": "ایویڈنس والٹ",
+      "sub": "فرانزک تجزیہ کے لیے محفوظ طریقے سے ڈیجیٹل ثبوت جمع کروائیں۔ تمام اپ لوڈز AES-256 کے ساتھ انکرپٹ کیے گئے ہیں اور الگ تھلگ محفوظ کنٹینرز میں محفوظ کیے گئے ہیں۔",
+      "protocol": "والٹ سیکیورٹی پروٹوکول",
+      "protocolText": "ٹرانسمیشن سے پہلے تمام ثبوت AES-256 کے ساتھ خفیہ کیے گئے ہیں۔ فائلوں کو الگ تھلگ فرانزک کنٹینرز میں زنجیر آف کسٹڈی لاگنگ کے ساتھ محفوظ کیا جاتا ہے۔ آپ کا ڈیٹا آپ کی واضح رضامندی کے بغیر کبھی بھی شیئر نہیں کیا جاتا ہے اور یہ صرف سائبر کرائم کے مجاز تفتیش کاروں کے لیے قابل رسائی ہے۔",
+      "encrypted": "🔒 AES-256 انکرپٹڈ"
+    },
+    "actions": {
+      "eyebrow": "فوری جوابی پروٹوکول",
+      "title": "ایمرجنسی ایکشن سینٹر",
+      "sub": "سائبر واقعے کے فوراً بعد ان اہم اقدامات کو انجام دیں۔ رفتار آپ کا سب سے بڑا فائدہ ہے — پہلے 4 گھنٹے کے اندر عمل کریں۔"
+    },
+    "alerts": {
+      "eyebrow": "انٹیلی جنس براڈکاسٹ سسٹم",
+      "title": "لائیو سائبر تھریٹ الرٹس",
+      "sub": "ہمارے انٹیلی جنس نیٹ ورک کی طرف سے شناخت شدہ خطرے کی فعال مہمات۔ باخبر رہیں اور اپنی کمیونٹی کے ساتھ ان انتباہات کا اشتراک کریں۔"
+    },
+    "support": {
+      "eyebrow": "سرکاری وسائل اور رابطے",
+      "title": "نیشنل سائبر سپورٹ ہب",
+      "sub": "بھارت میں سائبر کرائم کے متاثرین کے لیے سرکاری چینلز، ہنگامی رابطے اور قانونی وسائل۔"
+    },
+    "awareness": {
+      "eyebrow": "کلاسیفائیڈ انٹیلی جنس بریفنگ",
+      "title": "سائبر آگاہی پروٹوکول",
+      "sub": "اپنے آپ کو بچانے اور سائبر واقعے کے دوران ہونے والے نقصان کو کم سے کم کرنے کے لیے اہم طرز عمل کی ذہانت۔"
+    },
+    "map": {
+      "eyebrow": "قومی خطرہ انٹیلی جنس",
+      "title": "بھارت سائبر واقعے کا نقشہ",
+      "sub": "ہندوستان کے بڑے شہروں میں سائبر خطرے کی سرگرمی کا حقیقی وقت کا تصور۔ قومی سائبر کرائم رپورٹنگ انفراسٹرکچر سے حاصل کردہ ڈیٹا۔"
+    },
+    "cta": {
+      "active": "ایمرجنسی رسپانس سسٹم ایکٹو",
+      "titlePart1": "تیزی سے جواب دیں۔",
+      "titlePart2": "ثبوت کو محفوظ رکھیں۔",
+      "titlePart3": "اپنی ڈیجیٹل شناخت کا دفاع کریں۔",
+      "sub": "سائبر واقعے کے بعد ہر سیکنڈ کا شمار ہوتا ہے۔ ہمارا ایمرجنسی رسپانس سسٹم 24×7 فعال ہے تاکہ آپ کو بحران میں رہنمائی فراہم کی جا سکے، آپ کے شواہد کی حفاظت کی جا سکے، اور آپ کو قومی قانون نافذ کرنے والے اداروں سے منسلک کیا جا سکے۔",
+      "reportBtn": "⚡ واقعہ کی رپورٹ شروع کریں۔",
+      "awarenessBtn": "سائبر آگاہی کو دریافت کریں۔"
+    },
+    "crimeTips": {
+      "phishing": [
+        "لنک پر کلک نہ کریں - یہ میلویئر انسٹال کر سکتا ہے۔",
+        "فشنگ SMS کو 7726 (SPAM) پر فارورڈ کریں",
+        "گوگل سیف براؤزنگ کو URL کی اطلاع دیں۔",
+        "چیک کریں کہ آیا جعلی سائٹ پر اسناد داخل کی گئی تھیں۔",
+        "متاثرہ اکاؤنٹس کے لیے فوری طور پر پاس ورڈ تبدیل کریں۔"
+      ],
+      "upi": [
+        "فوری طور پر اپنے بینک فراڈ لائن کو کال کریں۔",
+        "NPCI پورٹل (npci.org.in) پر شکایت درج کریں",
+        "SMS سے UTR/ٹرانزیکشن ID جمع کریں۔",
+        "اپنی ادائیگی کی ایپ کو دھوکہ دہی والے UPI ID کی اطلاع دیں۔",
+        "بحالی کے بہترین امکانات کے لیے 1 گھنٹے کے اندر 1930 پر کال کریں۔"
+      ],
+      "deepfake": [
+        "اگر ممکن ہو تو مشکوک کال ریکارڈ کریں۔",
+        "ایک علیحدہ معروف چینل کے ذریعے شناخت کی تصدیق کریں۔",
+        "اکیلے ویڈیو/وائس کالز کی بنیاد پر کبھی بھی رقم منتقل نہ کریں۔",
+        "کال ریکارڈنگ کے ساتھ cybercrime.gov.in پر رپورٹ کریں۔",
+        "اپنے رابطوں کو خبردار کریں - حملہ آور آپ کی نقالی بھی کر سکتے ہیں۔"
+      ],
+      "impersonation": [
+        "نقالی سے تمام مواصلات کو دستاویز کریں۔",
+        "آئی ٹی ایکٹ سیکشن 66 ڈی کے تحت شکایت درج کریں۔",
+        "باضابطہ طور پر نقالی تنظیم سے رابطہ کریں۔",
+        "پلیٹ فارم سے فراڈ پروفائلز کو ہٹانے کی درخواست کریں۔",
+        "پولیس کو رپورٹ کرنے سے پہلے تمام شواہد اکٹھے کریں۔"
+      ],
+      "qrscam": [
+        "غیر مجاز ڈیبٹ کے لیے بینک اسٹیٹمنٹ چیک کریں۔",
+        "مقامی پولیس کو QR کوڈ کے مقام کی اطلاع دیں۔",
+        "اس مرچنٹ کو الرٹ کریں جس کا QR تبدیل کیا گیا تھا۔",
+        "اپنی ادائیگی ایپ کے ساتھ UPI تنازعہ فائل کریں۔",
+        "ایپ کی تاریخ سے لین دین کا ثبوت جمع کریں۔"
+      ],
+      "hacking": [
+        "تمام فعال سیشنز کو فوری طور پر منسوخ کریں۔",
+        "تمام سمجھوتہ شدہ اکاؤنٹس پر 2FA کو فعال کریں۔",
+        "مختلف ڈیوائس سے پاس ورڈ تبدیل کریں۔",
+        "چیک کریں کہ آیا حملہ آور کے ذریعے ای میل فارورڈنگ کے قواعد شامل کیے گئے تھے۔",
+        "منسلک تھرڈ پارٹی ایپ کی اجازتوں کا جائزہ لیں۔"
+      ],
+      "investment": [
+        "وصولی کی توقع کرتے ہوئے زیادہ رقم کی سرمایہ کاری نہ کریں۔",
+        "تمام مواصلات اور ادائیگی کی رسیدیں جمع کریں۔",
+        "SEBI کو scores.sebi.gov.in پر رپورٹ کریں۔",
+        "دفعہ 420 (دھوکہ دہی) کے تحت مقدمہ درج کریں",
+        "کسی بھی متعلقہ اکاؤنٹس کو جھنڈا لگانے کے لیے اپنے بینک کو آگاہ کریں۔"
+      ],
+      "identity": [
+        "اگر آدھار کا غلط استعمال ہوا ہے تو UIDAI کے پاس شکایت درج کریں۔",
+        "ممکنہ دھوکہ دہی کے بارے میں الرٹ کریڈٹ بیورو (CIBIL)",
+        "غیر مجاز ITR فائلنگ کے لیے فارم 26AS چیک کریں۔",
+        "متعلقہ پلیٹ فارم کو رپورٹ کریں جہاں شناخت استعمال کی گئی تھی۔",
+        "شناخت کی چوری کی پولیس ایف آئی آر درج کریں۔"
+      ]
+    },
+    "legacyNav": {
+      "brand": "سائبر لاء SOC",
+      "backDashboard": "ڈیش بورڈ پر واپس جائیں۔",
+      "ipc": "آئی پی سی",
+      "bns": "بی این ایس",
+      "itAct": "آئی ٹی ایکٹ",
+      "reporting": "رپورٹنگ",
+      "rights": "حقوق",
+      "awareness": "آگاہی",
+      "penalties": "سزائیں",
+      "cases": "کیسز",
+      "dashboard": "ڈیش بورڈ"
+    },
+    "legacyPages": {
+      "bns": {
+        "eyebrow": "BNS فعال نقشہ",
+        "title": "بھارتی نیا سنہتا ایکسپلورر",
+        "lead": "سائبر واقعات کو جدید جرائم پیشہ خاندانوں کے لیے نقشہ بنائیں: دھوکہ دہی، جعلسازی، مجرمانہ دھمکیاں، منظم جرم، جنسی طور پر ہراساں کرنا، اور شناخت سے منسلک بدانتظامی۔",
+        "searchPlaceholder": "تلاش کریں BNS موضوع، نقصان، سیکشن فیملی...",
+        "chips": {
+          "all": "تمام",
+          "fraud": "فراڈ",
+          "harassment": "ہراساں کرنا",
+          "threat": "دھمکی"
+        },
+        "map": {
+          "cheat": {
+            "title": "دھوکہ دہی والے خاندان",
+            "desc": "آن لائن دھوکہ، جعلی پلیٹ فارم، ادائیگی کے جال۔"
+          },
+          "forgery": {
+            "title": "جعلساز خاندان",
+            "desc": "جعلی ریکارڈ، من گھڑت ثبوت، شناختی دستاویزات۔"
+          },
+          "threat": {
+            "title": "دھمکی دینے والا خاندان",
+            "desc": "سائبر بلیک میل، ڈاکسنگ دھمکیاں، جبر۔"
+          },
+          "harass": {
+            "title": "ایذا رسانی اور تعاقب کے سیاق و سباق",
+            "desc": "جنسی طور پر ہراساں کرنا، تعاقب کرنا، تصویر کے غلط استعمال کے سیاق و سباق۔"
+          }
+        },
+        "accordions": {
+          "cheat": {
+            "title": "ڈیجیٹل چینلز کے ذریعے دھوکہ دہی",
+            "desc": "آن لائن سرمایہ کاری، نوکری کے گھوٹالے، بازار میں دھوکہ دہی، معاونت کی نقالی، اور ادائیگی میں ہیرا پھیری میں بے ایمانی کی حوصلہ افزائی کے لیے استعمال کریں۔"
+          },
+          "forgery": {
+            "title": "جعلسازی اور جھوٹے ریکارڈ",
+            "desc": "متعلقہ جب اسکرین شاٹس، IDs، دستخط، رسیدیں، سرٹیفکیٹس، یا الیکٹرانک ریکارڈز من گھڑت یا حقیقی کے طور پر استعمال کیے جاتے ہیں۔"
+          },
+          "threat": {
+            "title": "مجرمانہ دھمکی",
+            "desc": "چیٹس، کالز، پوسٹس اور ای میلز کے ذریعے شہرت، جسم، جائیداد، خاندان، یا روزی روٹی کو لاحق خطرات کا احاطہ کرتا ہے۔"
+          },
+          "harass": {
+            "title": "ایذا رسانی اور تعاقب کے سیاق و سباق",
+            "desc": "IT ایکٹ کی دفعات کے ساتھ بار بار ناپسندیدہ رابطے، جنسی دھمکیوں اور تعاقب کے رویے کے لیے مفید ہے۔"
+          }
+        }
+      },
+      "ipc": {
+        "eyebrow": "IPC میراثی ایکسپلورر",
+        "title": "انڈین پینل کوڈ سائبر لنکس",
+        "lead": "پرانے حوالہ جات، ایف آئی آر کی زبان، اور سائبر سے ملحقہ جرائم جیسے کہ دھوکہ دہی، جعلسازی، ہتک عزت، دھمکی، اور فحاشی کے لیے اس قابل تلاش ایکسپلورر کا استعمال کریں۔",
+        "searchPlaceholder": "IPC سیکشن، جرم، کلیدی لفظ تلاش کریں...",
+        "empty": "کوئی مماثل IPC سگنل نہیں ملا۔",
+        "chips": {
+          "all": "تمام",
+          "fraud": "فراڈ",
+          "speech": "تقریر",
+          "safety": "حفاظت"
+        },
+        "map": {
+          "ipc420": {
+            "title": "آئی پی سی 420",
+            "desc": "دھوکہ دہی اور بے ایمانی سے جائیداد کی ترسیل پر آمادہ کرنا۔"
+          },
+          "ipc468": {
+            "title": "آئی پی سی 468",
+            "desc": "دھوکہ دہی کے مقصد سے جعلسازی۔"
+          },
+          "ipc471": {
+            "title": "آئی پی سی 471",
+            "desc": "جعلی الیکٹرانک یا جسمانی ریکارڈ کو حقیقی کے طور پر استعمال کرنا۔"
+          },
+          "ipc499": {
+            "title": "آئی پی سی 499/500",
+            "desc": "نقصان دہ اشاعت کے ذریعے بدنامی"
+          },
+          "ipc503": {
+            "title": "IPC 503/506",
+            "desc": "مجرمانہ دھمکیاں، دھمکیاں، بھتہ خوری کا دباؤ۔"
+          }
+        },
+        "accordions": {
+          "ipc420": {
+            "title": "آن لائن دھوکہ دہی",
+            "desc": "عام طور پر سائبر فراڈ، مارکیٹ پلیس گھوٹالوں، جعلی انویسٹمنٹ پورٹلز، اور سوشل انجینئرنگ کے لیے حوالہ دیا جاتا ہے جس سے غلط نقصان ہوتا ہے۔"
+          },
+          "ipc468": {
+            "title": "دھوکہ دہی کے لیے جعلسازی",
+            "desc": "جب کسی شکار یا تنظیم کو دھوکہ دینے کے لیے جعلی دستاویزات، شناخت، اسکرین شاٹس، ای میلز یا ریکارڈ بنائے جاتے ہیں تو لاگو ہوتا ہے۔"
+          },
+          "ipc471": {
+            "title": "جعلی ریکارڈ استعمال کرنا",
+            "desc": "اس وقت مفید ہے جب جعلی ریکارڈ کو حقیقی کے طور پر پیش کیا جائے، بشمول جعلی KYC، ادائیگی کا ثبوت، یا ڈاکٹر شدہ مواصلت۔"
+          },
+          "ipc499": {
+            "title": "بدنامی",
+            "desc": "شہرت کے حملوں، جھوٹی پوسٹس، نقالی مہمات، یا ٹارگٹ نقصان دہ اشاعت میں پیدا ہو سکتا ہے۔"
+          },
+          "ipc503": {
+            "title": "دھمکیاں اور دھمکیاں",
+            "desc": "بھتہ خوری کی دھمکیاں، ڈاکسنگ دھمکیاں، بلیک میل پیغامات، اور زبردستی آن لائن دھمکیوں سے متعلق۔"
+          },
+          "copyBtn": "سیکشن کاپی کریں۔"
+        }
+      },
+      "itAct": {
+        "eyebrow": "آئی ٹی ایکٹ کنٹرول پرت",
+        "title": "انفارمیشن ٹیکنالوجی ایکٹ میٹرکس",
+        "lead": "غیر مجاز رسائی، شناخت کی چوری، رازداری کی خلاف ورزی، فحش مواد، محفوظ نظام، اور درمیانی ردعمل کے لیے عملی IT ایکٹ اینکرز تلاش کریں۔",
+        "searchPlaceholder": "تلاش سیکشن، جرم، ثبوت...",
+        "chips": {
+          "report": "واقعہ کی اطلاع دیں۔",
+          "penalties": "سزائیں دیکھیں"
+        },
+        "accordions": {
+          "sec43": {
+            "title": "غیر مجاز رسائی اور نقصان",
+            "desc": "غیر مجاز رسائی، ڈیٹا نکالنے، مالویئر، سروس سے انکار، اکاؤنٹ سے سمجھوتہ، اور سسٹم کو نقصان پہنچانے کے لیے استعمال کریں۔ لاگز، آئی پی ٹریسز، ڈیوائس امیجز اور ٹائم اسٹیمپ کو محفوظ کریں۔"
+          },
+          "sec66C": {
+            "title": "شناخت کی چوری",
+            "desc": "پاس ورڈز، ڈیجیٹل دستخطوں، صارف ناموں، OTPs، یا دیگر منفرد شناختی خصوصیات کے دھوکہ دہی سے استعمال پر لاگو ہوتا ہے۔"
+          },
+          "sec66D": {
+            "title": "شخصیت کے ذریعہ دھوکہ دہی",
+            "desc": "جعلی سپورٹ ایجنٹس، جعلی پروفائلز، رومانوی گھوٹالے، نوکری کے گھوٹالے، بازار کی نقالی، اور ادائیگی کی ری ڈائریکشن کے لیے متعلقہ۔"
+          },
+          "sec66E": {
+            "title": "رازداری کی خلاف ورزی",
+            "desc": "رازداری کی توقعات کی خلاف ورزی میں نجی تصاویر کی گرفتاری، اشاعت، یا ٹرانسمیشن کا احاطہ کرتا ہے۔"
+          },
+          "sec67": {
+            "title": "فحش اور جنسی طور پر واضح مواد",
+            "desc": "سنگین اضافے کے تقاضوں کے ساتھ، فحش، جنسی طور پر واضح، یا بچوں کے جنسی استحصال کے مواد کی اشاعت یا ترسیل کے لیے استعمال کیا جاتا ہے۔"
+          }
+        }
+      },
+      "rights": {
+        "eyebrow": "شہری حقوق کی تہہ",
+        "title": "اپنے ڈیجیٹل حقوق کو جانیں۔",
+        "lead": "سائبر کرائم کے متاثرین، طلباء، ملازمین، تخلیق کاروں، اور روزمرہ انٹرنیٹ استعمال کرنے والوں کے لیے ایک عملی حقوق کا کنسول۔",
+        "cards": {
+          "privacy": {
+            "title": "رازداری کا حق",
+            "desc": "آپ غیر مجاز کیپچر، اشاعت، یا نجی معلومات اور مباشرت تصاویر کے غلط استعمال پر اعتراض کر سکتے ہیں۔"
+          },
+          "evidence": {
+            "title": "ثبوت کو محفوظ رکھنے کا حق",
+            "desc": "آپ دھمکیوں اور دھوکہ دہی کو مجرم کے ساتھ شامل کیے بغیر یا ٹریل کو تباہ کیے بغیر دستاویز کرسکتے ہیں۔"
+          },
+          "report": {
+            "title": "رپورٹ کرنے کا حق",
+            "desc": "متاثرین سائبر پولیس، مقامی پولیس، ہیلپ لائنز، پورٹلز، بینکوں، پلیٹ فارمز اور ادارہ جاتی حکام سے رجوع کر سکتے ہیں۔"
+          },
+          "safety": {
+            "title": "تحفظ کا حق",
+            "desc": "دھمکیاں، بھتہ خوری، تعاقب، ڈاکسنگ، اور جنسی ہراسانی کو تیزی سے اور محفوظ طریقے سے بڑھایا جانا چاہیے۔"
+          }
+        },
+        "accordions": {
+          "avoid": {
+            "title": "کسی واقعے کے بعد مجھے کس چیز سے پرہیز کرنا چاہیے؟",
+            "desc": "باضابطہ رپورٹنگ سے پہلے بھتہ وصول کرنے، شواہد کو حذف کرنے، توہین آمیز مواد کو بڑے پیمانے پر آگے بھیجنے، یا عوامی طور پر مشتبہ افراد کے نام لینے سے گریز کریں۔"
+          },
+          "takedown": {
+            "title": "کیا میں اخراج کے لیے کہہ سکتا ہوں؟",
+            "desc": "جی ہاں رپورٹ کا ثبوت رکھتے ہوئے نقالی، بدسلوکی، غیر متفقہ مواد، اور فراڈ پیجز کے لیے پلیٹ فارم رپورٹنگ ٹولز کا استعمال کریں۔"
+          }
+        }
+      },
+      "penalties": {
+        "eyebrow": "جرمانہ ذہانت",
+        "title": "سزا اور پنلٹی کارڈز",
+        "lead": "عام سائبر جرم کے زمرے، ممکنہ قانونی ٹریکس، اور شدت کے اشارے اسکین کریں۔ قطعی سزا کا انحصار حقائق، قابل اطلاق قانون اور تفتیش پر ہے۔",
+        "searchPlaceholder": "فراڈ، شناخت، رازداری، فحش، میلویئر تلاش کریں...",
+        "chips": {
+          "cases": "پریکٹس کیسز"
+        },
+        "cards": {
+          "identity": {
+            "title": "شناخت کی چوری",
+            "desc": "پاس ورڈز، دستخطوں، OTPs، یا شناختی خصوصیات کا دھوکہ دہی سے استعمال۔ اکاؤنٹ لاگ اور نقالی ثبوت کو محفوظ رکھیں۔"
+          },
+          "personation": {
+            "title": "شخصیت کے ذریعہ دھوکہ دہی",
+            "desc": "مواصلاتی آلات کے ذریعے جعلی سپورٹ، جعلی پروفائلز، فشنگ، اور دھوکہ دہی۔"
+          },
+          "privacy": {
+            "title": "رازداری کی خلاف ورزی",
+            "desc": "رضامندی کے بغیر نجی تصاویر کیپچر کرنا یا شیئر کرنا۔ تیزی سے بڑھیں اور ہٹانے کی درخواست کریں۔"
+          },
+          "obscene": {
+            "title": "فحش مواد",
+            "desc": "فحش یا جنسی طور پر واضح مواد کی اشاعت یا ترسیل سنگین جرمانے کا باعث بن سکتی ہے۔"
+          },
+          "unauthorized": {
+            "title": "غیر مجاز رسائی",
+            "desc": "ہیکنگ، مالویئر، اکاؤنٹ سے سمجھوتہ، ڈیٹا نکالنا، یا سسٹم کو نقصان۔"
+          },
+          "threat": {
+            "title": "دھمکیاں اور بھتہ",
+            "desc": "بلیک میل، ڈاکسنگ کی دھمکیاں، دھمکیاں، اور زبردستی مطالبات میں مجرمانہ دھمکیاں اور بھتہ خوری کا راستہ شامل ہو سکتا ہے۔"
+          }
+        }
+      },
+      "cases": {
+        "eyebrow": "انٹرایکٹو کیس ڈیسک",
+        "title": "قانونی ردعمل کا راستہ منتخب کریں۔",
+        "lead": "حقیقت پسندانہ سائبر واقعات کے ذریعے کام کریں اور سب سے محفوظ ثبوت-پہلے جواب کا انتخاب کریں۔",
+        "nextCase": "اگلا کیس",
+        "openFlow": "رپورٹ کا بہاؤ کھولیں۔"
+      },
+      "awareness": {
+        "eyebrow": "بیداری کی ڈھال",
+        "title": "روک تھام کی تجاویز قانونی تیاری کے ساتھ",
+        "lead": "اچھی سائبر حفظان صحت بھی اچھی ثبوت حفظان صحت ہے. یہ تجاویز خطرے کو کم کرنے اور ردعمل کے اختیارات کو کھلا رکھنے میں مدد کرتی ہیں۔",
+        "cards": {
+          "otp": {
+            "title": "OTPs کا کبھی اشتراک نہ کریں۔",
+            "desc": "کسی بھی بینک، پولیس، ڈیلیوری ایجنٹ، یا سپورٹ ڈیسک کو OTPs، PINs، یا اسکرین شیئر تک رسائی نہیں مانگنی چاہیے۔"
+          },
+          "logs": {
+            "title": "پگڈنڈی رکھیں",
+            "desc": "سائبر واقعے کے بعد پیغامات، کال لاگز، ای میلز، ایپ کے نام، یا یو آر ایل کو حذف نہ کریں۔"
+          },
+          "verify": {
+            "title": "چینلز کی تصدیق کریں۔",
+            "desc": "آفیشل ویب سائٹس، تصدیق شدہ ایپ اسٹورز، معلوم کسٹمر کیئر نمبرز، اور براہ راست ادارے کے پورٹلز کا استعمال کریں۔"
+          },
+          "extortion": {
+            "title": "اکیلے مذاکرات نہ کریں۔",
+            "desc": "بلیک میل، مباشرت تصویر کی دھمکیوں، یا ڈاکسنگ کے لیے، ثبوت کو محفوظ رکھیں اور فوری طور پر قابل اعتماد تعاون شامل کریں۔"
+          }
+        },
+        "timeline": {
+          "before": {
+            "title": "اس سے پہلے",
+            "desc": "اکاؤنٹ کی بازیابی کے لیے پاس ورڈ مینیجرز، MFA، رازداری کی ترتیبات، اور قابل اعتماد رابطے استعمال کریں۔"
+          },
+          "during": {
+            "title": "دوران",
+            "desc": "بات چیت بند کریں، ثبوت کیپچر کریں، اکاؤنٹس کو الگ کریں، اور فوری طور پر بینکوں یا پلیٹ فارمز کو مطلع کریں۔"
+          },
+          "after": {
+            "title": "کے بعد",
+            "desc": "رپورٹیں فائل کریں، اکاؤنٹس کی نگرانی کریں، شواہد کو اپ ڈیٹ کریں، اور جہاں ضرورت ہو ادارہ جاتی یا قانونی مدد حاصل کریں۔"
+          }
+        }
+      }
+    }
+  },
+  "quizPage": {
+    "nav": {
+      "command": "کمانڈ",
+      "quiz": "کوئز",
+      "challenge": "چیلنج",
+      "cases": "کیسز",
+      "leaderboard": "لیڈر بورڈ",
+      "systemsOnline": "سسٹمز آن لائن",
+      "logo": "CYBRSHLD",
+      "homeLink": "ماڈیول ہوم",
+      "quizLink": "کوئزز",
+      "challengeLink": "چیلنج",
+      "leaderboardLink": "لیڈر بورڈ",
+      "caseStudiesLink": "کیس اسٹڈیز"
+    },
+    "home": {
+      "eyebrow": "// AI سائبر آگاہی کمانڈ سینٹر",
+      "titlePart1": "سائبر",
+      "titlePart2": "ٹریننگ",
+      "titlePart3": "مشن",
+      "description": "اب آپ سائبر تھریٹ انٹیلی جنس گرڈ سے جڑ گئے ہیں۔ آگاہی کے مشن کو مکمل کریں، حقیقی خطرات کا تجزیہ کریں، اور اپنا ڈیجیٹل دفاعی پروفائل بنائیں۔",
+      "threatsActive": "دھمکیاں فعال",
+      "operatorsOnline": "آپریٹرز آن لائن",
+      "yourXp": "آپ کا XP",
+      "radarLive": "تھریٹ ریڈار — لائیو",
+      "cards": {
+        "cyberAwareness": {
+          "label": "سائبر آگاہی",
+          "desc": "فشنگ، سوشل انجینئرنگ، اور ڈیجیٹل حفظان صحت کے منظرنامے۔"
+        },
+        "scamSimulator": {
+          "label": "اسکیم سمیلیٹر",
+          "desc": "دباؤ کے تحت حقیقی خطرات کی درجہ بندی کریں - فوری فیصلے کا اعتماد پیدا کریں۔"
+        },
+        "cases": {
+          "label": "کیس اسٹڈیز",
+          "desc": "تصدیق شدہ واقعات اور ماسٹر ردعمل کے نمونوں کا تجزیہ کریں۔"
+        },
+        "leaderboard": {
+          "label": "لیڈر بورڈ",
+          "desc": "ایکس پی، سائبر رینک، اور ساتھیوں کے خلاف تربیت کی پیشرفت کو ٹریک کریں۔"
+        }
+      },
+      "enterMission": "مشن میں داخل ہوں۔",
+      "header": "// AI سائبر آگاہی کمانڈ سینٹر",
+      "titleCyber": "سائبر",
+      "titleTraining": "ٹریننگ",
+      "titleMission": "مشن",
+      "desc": "اب آپ سائبر تھریٹ انٹیلی جنس گرڈ سے جڑ گئے ہیں۔ آگاہی کے مشن کو مکمل کریں، حقیقی خطرات کا تجزیہ کریں، اور اپنا ڈیجیٹل دفاعی پروفائل بنائیں۔",
+      "threatRadarLive": "تھریٹ ریڈار — لائیو",
+      "moduleCyber": "سائبر آگاہی",
+      "moduleCyberDesc": "فشنگ، سوشل انجینئرنگ، اور ڈیجیٹل حفظان صحت کے منظرنامے۔",
+      "moduleScam": "اسکیم سمیلیٹر",
+      "moduleScamDesc": "دباؤ کے تحت حقیقی خطرات کی درجہ بندی کریں - فوری فیصلے کا اعتماد پیدا کریں۔",
+      "moduleCases": "کیس اسٹڈیز",
+      "moduleCasesDesc": "تصدیق شدہ واقعات اور ماسٹر ردعمل کے نمونوں کا تجزیہ کریں۔",
+      "moduleLeaderboard": "لیڈر بورڈ",
+      "moduleLeaderboardDesc": "ایکس پی، سائبر رینک، اور ساتھیوں کے خلاف تربیت کی پیشرفت کو ٹریک کریں۔"
+    },
+    "quiz": {
+      "activeMission": "ایکٹو مشن",
+      "title": "سائبر آگاہی کوئز",
+      "feedback": {
+        "correct": "// خطرے کی شناخت — درست تجزیہ",
+        "wrong": "// تجزیہ کی خرابی - جائزے کی ضرورت ہے۔",
+        "xpAwarded": "+{{xp}} XP سے نوازا گیا۔"
+      },
+      "aiAnalysis": "AI تجزیہ",
+      "advice": {
+        "initial": "منظر نامے کا بغور تجزیہ کریں۔ سوشل انجینئرنگ پیٹرن اور یو آر ایل کی بے ضابطگیوں کو تلاش کریں۔",
+        "correct": "بہترین حالات سے متعلق آگاہی۔ آپ نے بنیادی فشنگ سگنل پیٹرن کی نشاندہی کی۔",
+        "wrong": "خطرے کے ویکٹرز کا جائزہ لیں: یو آر ایل کی مماثلت کے ساتھ مل کر فوری سگنل بنیادی اشارے ہیں۔"
+      },
+      "questions": [
+        {
+          "missionType": "فشنگ کا پتہ لگانا",
+          "text": "مندرجہ ذیل میں سے کون سی فشنگ ای میل کی علامت ہے؟",
+          "options": {
+            "A": "آپ کے پورے نام کے ساتھ ذاتی نوعیت کا سلام",
+            "B": "آپ کی کمپنی کے تصدیق شدہ ڈومین سے بھیجا گیا۔",
+            "C": "فوری زبان کے علاوہ ایک مماثل مرسل URL",
+            "D": "درست تفصیلات کے ساتھ کیلنڈر کی دعوت پر مشتمل ہے۔"
+          },
+          "explanation": "غیر مماثل بھیجنے والے URLs کے ساتھ مل کر فوری ایک کلاسک فشنگ سگنل ہے۔ حملہ آور عقلی سوچ کو زیر کرنے کے لیے مصنوعی وقت کا دباؤ بناتے ہیں۔"
+        }
+      ],
+      "header": "// ایکٹو مشن",
+      "feedbackCorrect": "// خطرے کی شناخت — درست تجزیہ",
+      "feedbackWrong": "// تجزیہ کی خرابی - جائزے کی ضرورت ہے۔",
+      "xpAwarded": "+ {{xp}} XP سے نوازا گیا۔",
+      "aiFeedbackCorrect": "بہترین حالات سے متعلق آگاہی۔ آپ نے بنیادی فشنگ سگنل پیٹرن کی نشاندہی کی۔",
+      "aiFeedbackWrong": "خطرے کے ویکٹرز کا جائزہ لیں: یو آر ایل کی مماثلت کے ساتھ مل کر فوری سگنل بنیادی اشارے ہیں۔",
+      "aiFeedbackDefault": "منظر نامے کا بغور تجزیہ کریں۔ سوشل انجینئرنگ پیٹرن اور یو آر ایل کی بے ضابطگیوں کو تلاش کریں۔"
+    },
+    "challenge": {
+      "missionComplete": "مشن مکمل",
+      "allCleared": "تمام چیلنجز ختم ہو گئے۔",
+      "totalXp": "کل XP کمایا",
+      "restart": "مشن کو دوبارہ شروع کریں۔",
+      "feedback": {
+        "correct": "// درست درجہ بندی",
+        "wrong": "// بحالی کی ضرورت ہے۔"
+      },
+      "complete": "مکمل مشن",
+      "next": "اگلا چیلنج →",
+      "score": "مشن سکور",
+      "xpEarned": "XP کمایا",
+      "missionsCount": "{{idx}} / {{کل}} مشن",
+      "activeThreats": "فعال دھمکیاں",
+      "challenges": [
+        {
+          "title": "فشنگ کا پتہ لگانا",
+          "missionType": "خطرے کی درجہ بندی",
+          "scenario": "ایک پیغام میں کہا گیا ہے کہ آپ کا بینک اکاؤنٹ 20 منٹ میں لاک ہو جائے گا اور آپ سے bit.ly/bank-safe کے ذریعے تصدیق کرنے کو کہا جائے گا۔",
+          "options": [
+            "محفوظ اطلاع",
+            "فشنگ کی کوشش",
+            "سسٹم اپ ڈیٹ"
+          ],
+          "explanation": "عجلت + مختصر URLs + اسناد کی درخواستیں = درسی کتاب کی فشنگ۔ غیر منقولہ پیغامات کے چھوٹے لنکس پر کبھی کلک نہ کریں۔"
+        },
+        {
+          "title": "پاس ورڈ کی طاقت کا تجزیہ",
+          "missionType": "سیکورٹی کی تشخیص",
+          "scenario": "نئے اکاؤنٹ کے لیے کون سا پاس ورڈ سب سے مضبوط ہے؟",
+          "options": [
+            "موسم گرما 2026",
+            "ادیتی @ 123",
+            "River-Quartz-91!vault"
+          ],
+          "explanation": "لمبائی + بے ترتیب پن + مخلوط کریکٹر کلاسز = اینٹروپی۔ 'rever-Quartz-91!vault' میں اعلی درجے کی اینٹروپی ہے جس کی وجہ سے یہ تیزی سے ٹوٹنا مشکل ہے۔"
+        },
+        {
+          "title": "سوشل انجینئرنگ ڈیفنس",
+          "missionType": "سماجی خطرہ",
+          "scenario": "IT ہونے کا دعویٰ کرنے والا ایک فوری ٹکٹ بند کرنے کے لیے آپ سے OTP طلب کرتا ہے۔",
+          "options": [
+            "OTP شیئر کریں۔",
+            "آزادانہ طور پر تصدیق کریں۔",
+            "ریموٹ ایپ انسٹال کریں۔"
+          ],
+          "explanation": "جائز IT کبھی بھی OTP کی درخواست نہیں کرتا ہے۔ کوئی بھی کارروائی کرنے سے پہلے ہمیشہ سرکاری چینلز کے ذریعے کال کرنے والے کی شناخت کی تصدیق کریں۔"
+        }
+      ],
+      "completeTitle": "مشن مکمل",
+      "completeSub": "تمام چیلنجز ختم ہو گئے۔",
+      "missions": "{{موجودہ}} / {{کل}} مشن",
+      "correctHeader": "// درست درجہ بندی",
+      "wrongHeader": "// بحالی کی ضرورت ہے۔",
+      "completeBtn": "مکمل مشن",
+      "nextBtn": "اگلا چیلنج →"
+    },
+    "cases": {
+      "intelligenceCaseFiles": "انٹیلی جنس کیس فائلیں",
+      "incidentAnalysis": "واقعہ کا تجزیہ",
+      "indicators": "خطرے کے اشارے",
+      "decryptBtn": "انٹیلی جنس فائل کو ڈیکرپٹ کریں — +{{xp}} XP",
+      "protocolDecrypted": "// ڈیفنس پروٹوکول کو خارج کر دیا گیا۔",
+      "xpAwarded": "+{{xp}} XP سے نوازا گیا۔",
+      "prev": "← سابقہ کیس",
+      "next": "اگلا کیس →",
+      "caseStudies": [
+        {
+          "title": "جعلی جاب آفر اسکینڈل",
+          "category": "مالی فراڈ",
+          "body": "ایک امیدوار کو ایک پریمیم نظر آنے والا آفر لیٹر ملتا ہے اور اس سے کہا جاتا ہے کہ وہ اپنی شروعات کی تاریخ سے پہلے قابل واپسی سامان کی فیس ادا کرے۔",
+          "lesson": "بھرتی کرنے والے کی شناخت، کمپنی کے ڈومین اور انٹرویو کی تاریخ کی تصدیق کریں۔ جائز آجر کبھی بھی امیدواروں سے نوکری کی پیشکش حاصل کرنے کے لیے فیس ادا کرنے کے لیے نہیں کہتے۔",
+          "indicators": [
+            "غیر منقولہ پیشکش",
+            "سامان کی فیس کا مطالبہ",
+            "فوری طور پر ادائیگی کرنے کی ضرورت"
+          ]
+        },
+        {
+          "title": "UPI ریفنڈ ٹریپ",
+          "category": "ڈیجیٹل ادائیگی فراڈ",
+          "body": "کال کرنے والا رقم وصول کرنے کے لیے QR کوڈ بھیجتا ہے، لیکن اسے اسکین کرنے سے جمع کرنے کی درخواست کھل جاتی ہے جو آپ کے UPI PIN کا اشارہ دیتی ہے۔",
+          "lesson": "UPI پن داخل کرنا ہمیشہ آپ کے اکاؤنٹ سے ادائیگی کی اجازت دیتا ہے۔ رقم کی واپسی کے لیے کبھی بھی آپ کے آلے پر پن کے اندراج کی ضرورت نہیں ہوتی ہے۔",
+          "indicators": [
+            "پیغام کے ذریعے QR کوڈ",
+            "موصول ہونے پر پن کی درخواست",
+            "کال کرنے والا دباؤ"
+          ]
+        },
+        {
+          "title": "اکاؤنٹ لاک فشنگ",
+          "category": "اسناد کی چوری",
+          "body": "ایک ای میل کا دعویٰ ہے کہ آپ کا اکاؤنٹ آج مستقل طور پر بند کر دیا جائے گا جب تک کہ آپ فوری طور پر فراہم کردہ مختصر لنک کے ذریعے سائن ان نہ کریں۔",
+          "lesson": "فوری طور پر، مختصر لنکس، اور اسناد کی درخواستیں سب سے زیادہ خطرے والے سگنل ہیں۔ ہمیشہ براہ راست سروس کی آفیشل ویب سائٹ پر جائیں۔",
+          "indicators": [
+            "مصنوعی عجلت",
+            "مختصر لنک",
+            "اکاؤنٹ کھونے کا خطرہ"
+          ]
+        }
+      ]
+    },
+    "leaderboard": {
+      "globalRankingMatrix": "عالمی درجہ بندی میٹرکس",
+      "operatorLeaderboard": "آپریٹر لیڈر بورڈ",
+      "you": "[آپ]",
+      "xp": "ایکس پی",
+      "totalOperators": "کل آپریٹرز",
+      "completedToday": "مشن آج مکمل ہوئے۔",
+      "sessionXp": "آپ کا سیشن XP",
+      "rankTitles": {
+        "CYBER SENTINEL": "سائبر سینٹینل",
+        "THREAT ANALYST": "خطرہ تجزیہ کار",
+        "NET DEFENDER": "نیٹ ڈیفنڈر",
+        "RECRUIT": "بھرتی"
+      },
+      "names": {
+        "Nisha": "نشا",
+        "Rahul": "راہول",
+        "Aditi": "ادیتی",
+        "Kabir": "کبیر",
+        "Meera": "میرا"
+      },
+      "header": "// عالمی درجہ بندی میٹرکس",
+      "title": "آپریٹر لیڈر بورڈ",
+      "totalOps": "کل آپریٹرز"
+    },
+    "links": {
+      "home": "ماڈیول ہوم",
+      "quizzes": "کوئزز",
+      "challenge": "چیلنج",
+      "leaderboard": "لیڈر بورڈ",
+      "caseStudies": "کیس اسٹڈیز"
+    },
+    "caseStudy": {
+      "header": "// انٹیلی جنس کیس فائلیں",
+      "title": "واقعہ کا تجزیہ",
+      "indicators": "خطرے کے اشارے",
+      "decryptBtn": "انٹیلی جنس فائل کو ڈیکرپٹ کریں — +{{xp}} XP",
+      "decryptHeader": "// ڈیفنس پروٹوکول کو خارج کر دیا گیا۔",
+      "xpAwarded": "+ {{xp}} XP سے نوازا گیا۔",
+      "prevBtn": "← سابقہ کیس",
+      "nextBtn": "اگلا کیس →"
+    },
+    "threatLevels": {
+      "CRITICAL": "تنقیدی",
+      "HIGH": "ہائی",
+      "MEDIUM": "میڈیم"
+    },
+    "questions": [
+      null,
+      {
+        "text": "مندرجہ ذیل میں سے کون سی فشنگ ای میل کی علامت ہے؟",
+        "options": {
+          "A": "آپ کے پورے نام کے ساتھ ذاتی نوعیت کا سلام",
+          "B": "آپ کی کمپنی کے تصدیق شدہ ڈومین سے بھیجا گیا۔",
+          "C": "فوری زبان کے علاوہ ایک مماثل مرسل URL",
+          "D": "درست تفصیلات کے ساتھ کیلنڈر کی دعوت پر مشتمل ہے۔"
+        },
+        "explanation": "غیر مماثل بھیجنے والے URLs کے ساتھ مل کر فوری ایک کلاسک فشنگ سگنل ہے۔ حملہ آور عقلی سوچ کو زیر کرنے کے لیے مصنوعی وقت کا دباؤ بناتے ہیں۔"
+      }
+    ],
+    "challenges": [
+      null,
+      {
+        "title": "فشنگ کا پتہ لگانا",
+        "scenario": "ایک پیغام میں کہا گیا ہے کہ آپ کا بینک اکاؤنٹ 20 منٹ میں لاک ہو جائے گا اور آپ سے bit.ly/bank-safe کے ذریعے تصدیق کرنے کو کہا جائے گا۔",
+        "explanation": "عجلت + مختصر URLs + اسناد کی درخواستیں = درسی کتاب کی فشنگ۔ غیر منقولہ پیغامات کے چھوٹے لنکس پر کبھی کلک نہ کریں۔"
+      },
+      {
+        "title": "پاس ورڈ کی طاقت کا تجزیہ",
+        "scenario": "نئے اکاؤنٹ کے لیے کون سا پاس ورڈ سب سے مضبوط ہے؟",
+        "options": {
+          "Summer2026": "موسم گرما 2026"
+        },
+        "explanation": "لمبائی + بے ترتیب پن + مخلوط کریکٹر کلاسز = اینٹروپی۔ 'rever-Quartz-91!vault' میں اعلی درجے کی اینٹروپی ہے جس کی وجہ سے یہ تیزی سے ٹوٹنا مشکل ہے۔"
+      },
+      {
+        "title": "سوشل انجینئرنگ ڈیفنس",
+        "scenario": "IT ہونے کا دعویٰ کرنے والا ایک فوری ٹکٹ بند کرنے کے لیے آپ سے OTP طلب کرتا ہے۔",
+        "explanation": "جائز IT کبھی بھی OTP کی درخواست نہیں کرتا ہے۔ کوئی بھی کارروائی کرنے سے پہلے ہمیشہ سرکاری چینلز کے ذریعے کال کرنے والے کی شناخت کی تصدیق کریں۔"
+      }
+    ],
+    "caseStudies": [
+      null,
+      {
+        "title": "جعلی جاب آفر اسکینڈل",
+        "category": "مالی فراڈ",
+        "body": "ایک امیدوار کو ایک پریمیم نظر آنے والا آفر لیٹر ملتا ہے اور اس سے کہا جاتا ہے کہ وہ اپنی شروعات کی تاریخ سے پہلے قابل واپسی سامان کی فیس ادا کرے۔",
+        "lesson": "بھرتی کرنے والے کی شناخت، کمپنی کے ڈومین اور انٹرویو کی تاریخ کی تصدیق کریں۔ جائز آجر کبھی بھی امیدواروں سے نوکری کی پیشکش حاصل کرنے کے لیے فیس ادا کرنے کے لیے نہیں کہتے۔"
+      },
+      {
+        "title": "UPI ریفنڈ ٹریپ",
+        "category": "ڈیجیٹل ادائیگی فراڈ",
+        "body": "کال کرنے والا رقم وصول کرنے کے لیے QR کوڈ بھیجتا ہے، لیکن اسے اسکین کرنے سے جمع کرنے کی درخواست کھل جاتی ہے جو آپ کے UPI PIN کا اشارہ دیتی ہے۔",
+        "lesson": "UPI پن داخل کرنا ہمیشہ آپ کے اکاؤنٹ سے ادائیگی کی اجازت دیتا ہے۔ رقم کی واپسی کے لیے کبھی بھی آپ کے آلے پر پن کے اندراج کی ضرورت نہیں ہوتی ہے۔"
+      },
+      {
+        "title": "اکاؤنٹ لاک فشنگ",
+        "category": "اسناد کی چوری",
+        "body": "ایک ای میل کا دعویٰ ہے کہ آپ کا اکاؤنٹ آج مستقل طور پر بند کر دیا جائے گا جب تک کہ آپ فوری طور پر فراہم کردہ مختصر لنک کے ذریعے سائن ان نہ کریں۔",
+        "lesson": "فوری طور پر، مختصر لنکس، اور اسناد کی درخواستیں سب سے زیادہ خطرے والے سگنل ہیں۔ ہمیشہ براہ راست سروس کی آفیشل ویب سائٹ پر جائیں۔"
+      }
+    ]
+  },
+  "breachChecker": {
+    "errors": {
+      "invalidEmail": "غلط ای میل",
+      "scanFailed": "اسکین ناکام ہوگیا۔"
+    },
+    "mockData": [
+      null,
+      {
+        "name": "شیڈو نیٹ لیک",
+        "description": "ایک سے زیادہ خدمات سے بڑا اسنادی ڈمپ۔"
+      },
+      {
+        "name": "CloudStorage کی غلط تشکیل",
+        "description": "عوامی بالٹیوں میں بے نقاب PII۔"
+      }
+    ],
+    "title": "خلاف ورزی چیکر",
+    "subtitle": "ڈارک سائبر ┬╖ محفوظ اسکین",
+    "placeholder": "name@example.com",
+    "scanning": "سکین ہو رہا ہے...",
+    "scan": "اسکین کریں۔",
+    "prompt": "ایک ای میل درج کریں اور ایکسپوژر چیک کرنے کے لیے اسکین پر کلک کریں۔",
+    "riskLabel": "خطرہ: بلند",
+    "actionLabel": "ایکشن: جائزہ",
+    "idLabel": "ID:",
+    "exposedDataLabel": "بے نقاب ڈیٹا",
+    "recommendationsTitle": "سفارشات",
+    "recommendation1": "پاس ورڈ تبدیل کریں اور متاثرہ اکاؤنٹس پر MFA کو فعال کریں۔",
+    "recommendation2": "تمام سروسز میں دوبارہ استعمال ہونے والے منفرد پاس ورڈز تلاش کریں۔",
+    "recommendation3": "مشکوک سرگرمیوں کے لیے اکاؤنٹس کی نگرانی؛ PII کے سامنے آنے پر کریڈٹ منجمد کرنے پر غور کریں۔",
+    "recommendation4": "ایک مکمل سیکیورٹی جائزہ چلائیں اور اگر قابل اطلاق ہوں تو API کیز کو گھمائیں۔"
+  },
+  "scamAnalyzerPage": {
+    "stageOcrHeading": "او سی آر نکالنا",
+    "stageOcrDesc": "بصری سگنل میٹرکس کو پارس کیا جا رہا ہے...",
+    "stageThreatHeading": "دھمکی کا تجزیہ",
+    "stageThreatDesc": "کراس حوالہ دینے والے خطرے کا ڈیٹا بیس...",
+    "stageBriefHeading": "AI انٹیلی جنس بریف",
+    "stageBriefDesc": "اعصابی تشخیص کی ترکیب سازی...",
+    "version": "سائبرشیلڈ انٹیلی جنس سسٹم Γùê v4.1",
+    "headerTitle": "سائبرشیلڈ انٹیلی جنس سسٹم Γùê v4.1",
+    "headerTitleColored": "اے آئی اسکام انٹیلی جنس\"\"",
+    "headerSubtitle": "مرکز",
+    "terminalLabel": "سگنل ان پٹ ٹرمینل",
+    "textareaPlaceholder": "پلیس ہولڈر=\"مشکوک ایس ایم ایس، فشنگ ای میل، واٹس ایپ میسج، یا اسکیم ٹیکسٹ پیسٹ کریں...\"",
+    "chars": "text.length حروف",
+    "dragDropActive": "کیا ڈریگ ایکٹو ہے؟ \"OCR اسکین شروع کرنے کے لیے ڈراپ کریں...\" : \"خطرے کا اسکرین شاٹ اپ لوڈ کریں\"",
+    "dragDropNormal": "کیا ڈریگ ایکٹو ہے؟ \"OCR اسکین شروع کرنے کے لیے ڈراپ کریں...\" : \"خطرے کا اسکرین شاٹ اپ لوڈ کریں\"",
+    "dragDropSub": "کیا ڈریگ ایکٹو ہے؟ \"OCR اسکین شروع کرنے کے لیے ڈراپ کریں...\" : \"خطرے کا اسکرین شاٹ اپ لوڈ کریں\"",
+    "ocrScanning": "? \"او سی آر نکالنا...\"",
+    "threatAnalyzing": "? \"او سی آر نکالنا...\"",
+    "aiSynthesizing": "? \"او سی آر نکالنا...\"",
+    "btnScan": "? \"خطرہ تجزیہ...\"",
+    "btnDemo": "ڈیمو سگنل",
+    "ocrScanningHeading": "او سی آر اسکیننگ",
+    "ocrScanningText": "او سی آر اسکیننگ",
+    "verdictTitle": "انٹیلی جنس تشخیص مکمل",
+    "threatClassification": "خطرے کی درجہ بندی",
+    "aiConfidence": "AI اعتماد",
+    "btnDownloadCompiling": "پی ڈی ایف پیدا کر رہا ہے؟ \"مرتب کر رہا ہے...\" : \"انٹیل رپورٹ\"",
+    "btnDownload": "پی ڈی ایف پیدا کر رہا ہے؟ \"مرتب کر رہا ہے...\" : \"انٹیل رپورٹ\"",
+    "statRiskLevel": "لیبل=\"انڈیکیٹرز\"",
+    "statThreatScore": "لیبل=\"انڈیکیٹرز\"",
+    "statOutOf100": "لیبل=\"انڈیکیٹرز\"",
+    "statConfidence": "لیبل=\"انڈیکیٹرز\"",
+    "statIndicators": "لیبل=\"انڈیکیٹرز\"",
+    "statSignals": "لیبل=\"انڈیکیٹرز\"",
+    "panelIndicators": "عنوان = \"خطرے کے اشارے\"",
+    "noIndicators": "خطرے کے کوئی اشارے نہیں ملے۔",
+    "panelFlaggedUrls": "title=\"جھنڈا لگے ہوئے URLs\"",
+    "panelSafetyDirective": "title=\"حفاظتی ہدایت\"",
+    "panelAiBrief": "عنوان=\"AI انٹیلی جنس بریف\"",
+    "generatedBy": "Groq ┬╖ Heuristic + Neural Analysis کے ذریعے تیار کردہ",
+    "footerNote": "سائبر شیلڈ انٹیلی جنس ┬╖ عوامی حفاظت سے متعلق آگاہی ٹول ┬╖ ہمیشہ سرکاری چینلز کے ذریعے تصدیق کریں"
+  },
+  "breachCheckerPage": {
+    "title": "خلاف ورزی چیکر",
+    "description": "چیک کریں کہ آیا کوئی ای میل معلوم خلاف ورزیوں میں ظاہر ہوتا ہے (ڈیمو کے لئے مذاق)۔"
+  },
+  "deepfake": {
+    "hero": {
+      "badge": "درجہ بندی // فعال نظام",
+      "titlePart1": "اے آئی فارنسک",
+      "titlePart2": "ڈیپ فیک",
+      "titlePart3": "کمانڈ سینٹر",
+      "kicker": "TRUSTLAYERLABS",
+      "description": "ملٹری گریڈ AI فرانزک انٹیلی جنس سسٹم۔ مصنوعی میڈیا کا پتہ لگانا، AI سے تیار کردہ دھوکہ دہی، اور ریئل ٹائم میں ڈیپ فیک ہیرا پھیری",
+      "pills": [
+        "AI تجزیہ",
+        "اعصابی کھوج",
+        "چہرے کی صداقت",
+        "وائس اسکین"
+      ],
+      "analyzeBtn": "میڈیا کا تجزیہ کریں۔",
+      "risksBtn": "ڈیپ فیک کے خطرات"
+    },
+    "live": {
+      "tag": "// فارنسک تجزیہ انجن",
+      "title": "لائیو",
+      "titleHighlight": "پتہ لگانے والا پینل",
+      "desc": "ملٹی لیئر نیورل ڈٹیکشن اور اعتماد اسکورنگ کے ساتھ ریئل ٹائم AI فرانزک تجزیہ",
+      "cards": [
+        {
+          "label": "صداقت کا اسکور",
+          "title": "چہرے کا بایومیٹرک تجزیہ",
+          "tags": [
+            "چہرے کے نشانات Γ£ô",
+            "پلک جھپکنے کی شرح Γ£ô",
+            "مائیکرو ایکسپریشن ΓÜá"
+          ],
+          "bars": [
+            "اعصابی مستقل مزاجی",
+            "جلد کی ساخت",
+            "ہونٹ کی مطابقت پذیری کا میچ"
+          ]
+        },
+        {
+          "label": "ہیرا پھیری کا اسکور",
+          "title": "مصنوعی آرٹفیکٹ کا پتہ لگانا",
+          "tags": [
+            "وائس کلون ΓÜá",
+            "ہونٹوں کی مطابقت پذیری کی مماثلت",
+            "مصنوعی نمونہ",
+            "میٹا ڈیٹا بے ضابطگی"
+          ],
+          "bars": [
+            "AI جنریشن پروب",
+            "آواز کی ترکیب"
+          ],
+          "warning": "صوتی کلون پیٹرن کا پتہ چلا اس کے لیے جائزے کی ضرورت ہے"
+        }
+      ]
+    },
+    "analyzer": {
+      "tag": "// AI فرانزک سکینر",
+      "title": "میڈیا",
+      "titleHighlight": "تجزیہ کار",
+      "desc": "فوری AI فرانزک تفتیش کے لیے تصویر، ویڈیو یا آڈیو جمع کرائیں۔",
+      "state": {
+        "scanning": "AI تجزیہ جاری ہے۔",
+        "done": "تجزیہ مکمل کریں اور دوسرا چھوڑ دیں۔",
+        "idle": "تجزیہ کے لیے میڈیا چھوڑ دیں۔"
+      },
+      "prompt": {
+        "scanning": "نیورل فرانزک اسکین چل رہا ہے...",
+        "idle": "زیادہ سے زیادہ سیکیورٹی فرانزک اسکین کو منتخب کرنے کے لیے گھسیٹیں اور چھوڑیں یا کلک کریں۔"
+      },
+      "types": [
+        "IMAGE",
+        "ویڈیو",
+        "آڈیو",
+        "PDF"
+      ]
+    },
+    "result": {
+      "verdictLabel": "فرانزک فیصلہ",
+      "verdictValue": "ہیرا پھیری کا پتہ چلا",
+      "riskLabel": "رسک اسکور",
+      "explanationLabel": "فرانزک وضاحت",
+      "explanationValue": "اعصابی تجزیہ نے چہرے کے علاقوں میں خصوصیت کے GAN نمونے کی نشاندہی کی ہے۔ فریکوئینسی ڈومین تجزیہ بازی ماڈل کی ترکیب کی مخصوص سپیکٹرل عدم مطابقتوں کو ظاہر کرتا ہے۔ صوتی نمونہ معلوم آواز کلون فن تعمیر سے 67% مماثلت دکھاتا ہے۔",
+      "actionsLabel": "تجویز کردہ اقدامات",
+      "actionsValue": "Γæá اس میڈیا کا اشتراک یا اعتماد نہ کریں Γæí پلیٹ فارم کے منتظمین کو رپورٹ کریں Γæó تصدیق کے لئے ابتدائی ذریعہ سے رابطہ کریں Γæú تحقیقات کے لئے ثبوت کا سلسلہ محفوظ رکھیں"
+    },
+    "forensics": {
+      "tag": "// سنیماٹک فارنسک",
+      "title": "فرانزک",
+      "titleHighlight": "تصور",
+      "desc": "نیورل پیٹرن کے تجزیہ کے ساتھ اعلی درجے کی ملٹی لیئر فرانزک انٹیلی جنس پینلز"
+    },
+    "panels": [
+      {
+        "label": "چہرے کی نشانی نقشہ سازی۔"
+      },
+      {
+        "label": "ویوفارم کا موازنہ",
+        "original": "اصل",
+        "cloneSignal": "کلون سگنل"
+      },
+      {
+        "label": "ہیٹ میپ اوورلے",
+        "anomalyDetected": "بے ضابطگی کا پتہ چلا",
+        "desc": "آنکھ کے علاقے میں GAN فنگر پرنٹ کی باقیات کا پتہ چلا۔ سپیکٹرل بے ضابطگی اعتماد: 78%"
+      },
+      {
+        "label": "فریم انوملی ٹائم لائن",
+        "desc": "3 غیر مساوی فریموں کا پتہ چلا @ 0:04, 0:12, 0:19"
+      },
+      {
+        "label": "میٹا ڈیٹا انٹیلی جنس",
+        "rows": [
+          {
+            "key": "ڈیوائس",
+            "val": "ترمیم شدہ"
+          },
+          {
+            "key": "جی پی ایس",
+            "val": "سٹریپڈ ΓÜá"
+          },
+          {
+            "key": "بنایا"
+          },
+          {
+            "key": "ترمیم شدہ",
+            "val": "2025-03-15 ΓÜá"
+          },
+          {
+            "key": "سافٹ ویئر",
+            "val": "مستحکم بازی"
+          }
+        ]
+      },
+      {
+        "label": "AI طرز عمل کا گراف",
+        "badge": "AI پیٹرن Γåæ"
+      }
+    ],
+    "awareness": {
+      "tag": "// خطرہ ذہانت",
+      "title": "ڈیپ فیک اسکیم",
+      "titleHighlight": "آگاہی",
+      "desc": "AI سے تیار کردہ دھوکہ دہی کے نمونوں کے لیے فعال خطرے کے ویکٹر اور انسدادی اقدامات"
+    },
+    "timeline": {
+      "tag": "// سائبر واقعے کا ریکارڈ",
+      "title": "فرانزک",
+      "titleHighlight": "کیس کی ٹائم لائن",
+      "desc": "دستاویزی سائبر واقعے کی خرابی ΓÇö ابتدائی ڈیپ فیک تعیناتی سے فارنزک ریزولوشن تک"
+    },
+    "stats": {
+      "tag": "// لائیو انٹیلی جنس میٹرکس",
+      "title": "فرانزک",
+      "titleHighlight": "کمانڈ کے اعدادوشمار",
+      "cards": [
+        "ڈیپ فیکس کا پتہ چلا",
+        "میڈیا کا تجزیہ کیا گیا۔",
+        "فراڈ کی روک تھام",
+        "AI ماڈلز کو ٹیگ کیا گیا۔"
+      ]
+    },
+    "protocols": {
+      "tag": "// کلاسیفائیڈ بریفنگ",
+      "title": "سائبر ڈیفنس",
+      "titleHighlight": "پروٹوکولز",
+      "desc": "فعال ڈیپ فیک خطرے والے ماحول کے لیے فیلڈ ٹیسٹ شدہ انسدادی اقدامات"
+    },
+    "cta": {
+      "tag": "// سچائی کا دفاع کریں۔",
+      "titlePart1": "حقیقت کا دفاع کریں۔",
+      "titlePart2": "مصنوعی کے خلاف",
+      "titlePart3": "دھوکہ",
+      "desc": "AI ہیرا پھیری کا محاذ روزانہ آگے بڑھتا ہے۔ اگلا مصنوعی حملہ آپ کے نیٹ ورک تک پہنچنے سے پہلے ملٹری گریڈ کی فرانزک انٹیلی جنس تعینات کریں۔",
+      "scanBtn": "AI SCAN شروع کریں۔",
+      "exploreBtn": "آگہی تلاش کریں۔",
+      "footer": "TRUSTLAYERLABS // AI فرانزک انٹیلی جنس سسٹم // v4.2.1 // کلاسیفائیڈ"
+    }
+  },
+  "ipScannerPage": {
+    "radar": {
+      "scanning": "سکیننگ",
+      "live": "لائیو"
+    },
+    "pipeline": {
+      "intelPipeline": "انٹیلی جنس پائپ لائن",
+      "title": "تھریٹ ویکٹرز کا تجزیہ کرنا"
+    },
+    "verdicts": {
+      "SAFE": "محفوظ",
+      "SUSPICIOUS": "مشکوک",
+      "MALICIOUS": "بدنیتی۔"
+    },
+    "threatVerdict": "دھمکی کا فیصلہ",
+    "analysisConfidence": "تجزیہ کا اعتماد:",
+    "threatIndicators": "خطرے کے اشارے",
+    "abuseScore": "غلط استعمال کا اسکور",
+    "botnetProbability": "بوٹنیٹ کا امکان",
+    "spamReputation": "سپیم ساکھ",
+    "detectionFlags": "پتہ لگانے والے جھنڈے",
+    "proxyDetected": "پراکسی کا پتہ چلا",
+    "vpnMasking": "وی پی این ماسکنگ",
+    "torExitNode": "ٹی او آر ایگزٹ نوڈ",
+    "blacklisted": "بلیک لسٹ",
+    "networkIntelligence": "نیٹ ورک انٹیلی جنس",
+    "ipAddress": "آئی پی ایڈریس",
+    "asn": "ASN",
+    "isp": "آئی ایس پی",
+    "country": "ملک",
+    "region": "علاقہ",
+    "timezone": "ٹائم زون",
+    "reverseDns": "DNS کو ریورس کریں۔",
+    "hostname": "میزبان نام",
+    "networkOwner": "نیٹ ورک کا مالک",
+    "openPorts": "بندرگاہیں کھولیں۔",
+    "attackEvents": "حملے کے واقعات",
+    "aiThreatAnalysis": "AI خطرے کا تجزیہ",
+    "analyzeAnotherIp": "ایک اور آئی پی کا تجزیہ کریں۔",
+    "threatMap": {
+      "legend": {
+        "attackOrigin": "حملے کی اصل",
+        "targetNode": "ٹارگٹ نوڈ",
+        "liveThreatFeed": "لائیو تھریٹ فیڈ"
+      }
+    },
+    "header": {
+      "trustlayerlabs": "TRUSTLAYERLABS",
+      "threatIntel": "آئی پی تھریٹ انٹیلی جنس",
+      "live": "لائیو"
+    },
+    "hero": {
+      "intelCommandCenter": "انٹیلی جنس کمانڈ سینٹر",
+      "titlePart1": "دھمکیوں کا سراغ لگائیں۔",
+      "titlePart2": "اس سے پہلے کہ وہ آپ کو ٹریس کریں۔",
+      "description": "AI سے چلنے والی IP انٹیلی جنس جو بدنیتی پر مبنی انفراسٹرکچر، حملے کی ابتداء، بوٹنیٹس، غلط استعمال کی رپورٹس، VPN ماسکنگ، اور سائبر خطرے کے نمونوں کا تجزیہ کرتی ہے۔",
+      "poweredBy": "Gemini AI کے ذریعے تقویت یافتہ",
+      "poweredBySuffix": "خطرہ انٹیلی جنس تجزیہ",
+      "placeholder": "آئی پی ایڈریس درج کریں ΓÇö جیسے 8.8.8.8",
+      "analyzeButton": "آئی پی کا تجزیہ کریں۔",
+      "learnButton": "دھمکیاں سیکھیں۔"
+    },
+    "map": {
+      "subtitle": "عالمی انٹیلی جنس",
+      "title": "لائیو تھریٹ کا نقشہ",
+      "desc": "خطرے کی انٹیلی جنس فیڈز میں فعال حملہ ویکٹرز کی متحرک نمائندگی کی نگرانی کی جا رہی ہے۔"
+    },
+    "attackChain": {
+      "subtitle": "اٹیک چین کا تجزیہ",
+      "title": "سائبر اٹیک لائف سائیکل",
+      "desc": "جدید سائبر حملے متوقع آپریشنل نمونوں کی پیروی کرتے ہیں۔ حملے کی زنجیروں کو سمجھنا محافظوں کو ہر مرحلے پر سمجھوتہ (IOCs) کے اشارے کی شناخت کرنے اور اثر سے پہلے قتل کی زنجیر کو توڑنے کے قابل بناتا ہے۔",
+      "aiInsight": "AI بصیرت GE",
+      "aiInsightDesc": "IP انٹیلی جنس تجزیہ C2 سرورز، بوٹ نیٹ انرولمنٹ اینڈ پوائنٹس، اور نیٹ ورک پرت پر فشنگ انفراسٹرکچر کی شناخت کر سکتا ہے ΓÇö اکثر مہمات اختتامی صارفین تک پہنچنے سے پہلے۔"
+    },
+    "education": {
+      "subtitle": "سائبر آگاہی",
+      "title": "ذہانت کی تعلیم"
+    },
+    "cta": {
+      "commandCenter": "کمانڈ سینٹر",
+      "titlePart1": "ہر کنکشن",
+      "titlePart2": "ایک کہانی سناتا ہے۔",
+      "desc": "IPs کا تجزیہ کریں۔ دھمکیوں کو سمجھیں۔ باخبر رہیں۔",
+      "analyzeAnother": "ایک اور آئی پی کا تجزیہ کریں۔",
+      "exploreAwareness": "آگاہی دریافت کریں۔"
+    },
+    "footer": "TRUSTLAYERLABS ΓÇö تعلیمی اور آگاہی کے مقاصد کے لیے آئی پی تھریٹ انٹیلی جنس کمانڈ سینٹر"
+  },
+  "phishing": {
+    "badge": {
+      "unlocked": "بیج غیر مقفل ہو گیا۔"
+    },
+    "edu": {
+      "kicker": "دھمکی کی ذہانت",
+      "title": "سگنل حملہ آوروں کو جانیں امید ہے کہ آپ یاد کر رہے ہیں۔"
+    },
+    "simulator": {
+      "correctFeedback": "آپ نے اس کی صحیح درجہ بندی کی۔",
+      "incorrectFeedback": "جاری رکھنے سے پہلے اشارے کا جائزہ لیں۔",
+      "safeBtn": "محفوظ",
+      "phishBtn": "فشنگ",
+      "score": "سکور",
+      "accuracy": "درستگی",
+      "correct": "درست",
+      "bestStreak": "بہترین سلسلہ",
+      "correctCall": "درست کال",
+      "missedSignal": "یاد شدہ سگنل",
+      "wasPhishing": "یہ منظر فشنگ تھا۔",
+      "wasSafe": "یہ منظر محفوظ تھا۔",
+      "viewResults": "حتمی نتائج دیکھیں",
+      "nextScenario": "اگلا منظر نامہ",
+      "kicker": "انٹرایکٹو سمیلیٹر",
+      "title": "محفوظ یا فشنگ؟",
+      "streak": "اسٹریک"
+    },
+    "results": {
+      "subtitle": "حتمی نتائج",
+      "earnedBadges": "کمائے ہوئے بیجز",
+      "noBadges": "ابھی تک کوئی بیجز نہیں ہیں۔ ایک اور رن آزمائیں۔",
+      "restartBtn": "سمیلیٹر کو دوبارہ شروع کریں۔"
+    },
+    "hero": {
+      "kicker": "فرنٹ اینڈ دھمکی لیب آن لائن",
+      "title": "فشنگ آگاہی سمیلیٹر",
+      "copy": "حقیقت پسندانہ ای میلز، SMS الرٹس، QR ٹریپس، جعلی ڈومینز، رقم کی واپسی کے لالچ اور سوشل انجینئرنگ کے دباؤ کے ساتھ تربیت دیں۔",
+      "startButton": "سمیلیٹر شروع کریں۔",
+      "learnButton": "سگنل سیکھیں۔"
+    }
+  },
+  "upi": {
+    "awareness": {
+      "backBtn": "یو پی آئی ماڈیول پر واپس جائیں۔",
+      "title": "UPI فراڈ آگاہی",
+      "description": "گھوٹالے کے کلیدی نمونوں، منظوری کے جال، اور محفوظ ادائیگی کے اصول سیکھ کر اپنے UPI اکاؤنٹ کی حفاظت کریں۔",
+      "card1": {
+        "title": "ΓÜá∩╕Å عام UPI گھوٹالے کی اقسام"
+      },
+      "scams": [
+        "رقم کی واپسی، انعامات، یا آرڈر کی ادائیگی کے بھیس میں جعلی جمع کرنے کی درخواستیں۔",
+        "اسکرین شیئرنگ یا ریموٹ سپورٹ کالز جو آپ سے UPI ایپس کھولنے کے لیے کہتی ہیں۔",
+        "کسٹمر کیئر نمبرز یا بینک حکام کی نقالی۔",
+        "رقم \\'وصول\\' کرنے یا رقم کی واپسی کی توثیق کرنے کے لیے UPI PIN درج کرنے کی درخواستیں۔",
+        "جعلی QR کوڈز اور ادائیگی کے لنکس اجنبیوں یا خریداروں کے ذریعے بھیجے گئے ہیں۔"
+      ],
+      "card2": {
+        "title": "محفوظ رہنے کا طریقہ"
+      },
+      "safe": [
+        "اپنے UPI PIN، OTP، یا اکاؤنٹ کی تفصیلات کبھی بھی کسی کے ساتھ شیئر نہ کریں۔",
+        "ادائیگیاں شروع کرنے کے لیے اپنا بینک/UPI ایپ استعمال کریں ΓÇö کسی اجنبی سے لنک نہیں۔",
+        "منظوری دینے سے پہلے وصول کنندہ کے VPA، رقم اور مقصد کی تصدیق کریں۔",
+        "غیر متوقع طور پر جمع کرنے کی درخواستوں کو مسترد کریں اور بھیجنے والے سے رقم کی واپسی کی تصدیق کریں۔",
+        "روزانہ UPI کی حدیں سیٹ کریں اور ہر لین دین کے لیے ایپ کی اطلاعات کو فعال کریں۔"
+      ],
+      "card3": {
+        "title": "≡ƒç«≡ƒç│ ہندوستانی رپورٹنگ کی تجاویز"
+      },
+      "reporting": [
+        "cybercrime.gov.in پر دھوکہ دہی کی اطلاع دیں اور لین دین کی رسیدیں رکھیں۔",
+        "سائبر کرائم سپورٹ اور بینک ہیلپ لائنز کے لیے فوری طور پر 1930 پر کال کریں۔",
+        "UPI IDs، ٹرانزیکشن IDs، اوقات، اور ارسال کنندہ کی تفصیلات حکام کے ساتھ شیئر کریں۔",
+        "NPCI آپ کے بینک کو مشتبہ مرچنٹ رویے کی اطلاع UPI ΓÇö کو منظم کرتا ہے۔"
+      ]
+    },
+    "caseStudy": {
+      "backBtn": "یو پی آئی ماڈیول پر واپس جائیں۔",
+      "moduleTitle": "UPI اسکام کیس اسٹڈی",
+      "title": "اصلی UPI اسکام: رقم کی واپسی جمع کرنے کی درخواست",
+      "desc": "ایک صارف کو بازار کے پلیٹ فارم پر خریدار کی طرف سے پیغام موصول ہوتا ہے۔ خریدار کا دعوی ہے کہ وہ رقم کی واپسی بھیجیں گے اور UPI ادائیگی کا لنک شیئر کریں گے۔ صارف وصول کنندہ یا پرامپٹ کی تصدیق کیے بغیر درخواست پر کلک کرتا ہے اور اسے منظور کرتا ہے۔",
+      "whatHappenedTitle": "کیا ہوا؟",
+      "whatHappened": [
+        "خریدار نے اضافی ادائیگی کی واپسی کا دعوی کرتے ہوئے UPI جمع کرنے کی درخواست بھیجی۔",
+        "درخواست میں صارف سے کہا گیا ہے کہ وہ اپنی UPI ایپ کے ذریعے رقم کی منظوری دیں۔",
+        "UPI منظوری اسکرین کو UPI پن کی ضرورت ہے، جو صارف نے درج کیا ہے۔",
+        "رقم وصول کرنے کے بجائے صارف کے اکاؤنٹ سے ڈیبٹ کی گئی۔"
+      ],
+      "whyScamTitle": "یہ ایک اسکینڈل کیوں تھا",
+      "whyScam": [
+        "حقیقی رقم کی واپسی کے لیے وصول کنندہ سے UPI PIN کی منظوری کی ضرورت نہیں ہے۔",
+        "جمع کرنے کی درخواست آنے والی رقم کے طور پر چھپی ہوئی تھی لیکن اصل میں ادائیگی کی اجازت دی گئی تھی۔",
+        "بھیجنے والا ایک نامعلوم رابطہ تھا، تصدیق شدہ خریدار یا خدمت فراہم کنندہ نہیں۔"
+      ],
+      "lessonsTitle": "اسباق سیکھے گئے۔",
+      "lessons": [
+        {
+          "title": "ہمیشہ وصول کنندہ کی تفصیلات کی تصدیق کریں۔",
+          "desc": "جمع کرنے کی کسی بھی درخواست کو منظور کرنے سے پہلے VPA، نام اور مقصد کو چیک کریں۔"
+        },
+        {
+          "title": "رقم وصول کرنے کے لیے کبھی بھی PIN درج نہ کریں۔",
+          "desc": "UPI پن داخل کرنے کا مطلب ہے کہ آپ اپنا اکاؤنٹ چھوڑنے کے لیے رقم کی اجازت دے رہے ہیں۔"
+        },
+        {
+          "title": "قابل اعتماد چینلز استعمال کریں۔",
+          "desc": "اجنبیوں کے لنکس پر کلک کرنے کے بجائے آفیشل ایپس سے رقم کی واپسی یا ادائیگیاں شروع کریں۔"
+        },
+        {
+          "title": "مشکوک درخواستوں کی اطلاع دیں۔",
+          "desc": "دھوکہ دہی کی فوری اطلاع دیں اور اسکرین شاٹس، UPI IDs، اور لین دین کے اوقات جیسے ثبوت رکھیں۔"
+        }
+      ]
+    },
+    "demo": {
+      "backBtn": "یو پی آئی ماڈیول پر واپس جائیں۔",
+      "moduleTitle": "UPI فراڈ ڈیمو",
+      "title": "UPI گھوٹالے کا پتہ لگانے کی مشق کریں۔",
+      "desc": "یہ دیکھنے کے لیے ایک مثال منتخب کریں کہ آیا UPI کی درخواست محفوظ ہے یا مشتبہ، اور دیکھنے کے لیے سرخ جھنڈے سیکھیں۔",
+      "selectedScenarioTitle": "منتخب منظرنامہ",
+      "descriptionKicker": "تفصیل",
+      "mattersKicker": "یہ کیوں اہمیت رکھتا ہے۔",
+      "tipKicker": "ٹپ",
+      "defaultTip": "ہمیشہ وصول کنندہ کے نام، UPI ID، اور لین دین کے سیاق و سباق کی تصدیق کریں۔ اگر آپ کو یقین نہیں ہے تو، منسوخ کریں اور بھیجنے والے سے براہ راست تصدیق کریں۔"
+    },
+    "report": {
+      "backBtn": "یو پی آئی ماڈیول پر واپس جائیں۔",
+      "moduleTitle": "UPI فراڈ کی اطلاع دیں۔",
+      "title": "UPI فراڈ کی فوری اطلاع دیں۔",
+      "desc": "اگر آپ کو UPI دھوکہ دہی کا شبہ ہے تو ثبوت کو محفوظ رکھیں اور حکام کو فوراً مطلع کریں۔ تیز عمل آپ کے صحت یاب ہونے کے امکانات کو بہتر بناتا ہے۔",
+      "step1Title": "مرحلہ 1: ثبوت محفوظ کریں۔",
+      "step1": [
+        "UPI منظوری کی اسکرین کا اسکرین شاٹ کریں، درخواست جمع کریں، اور چیٹ پیغامات۔",
+        "بھیجنے والے کا فون نمبر، UPI ID، اور لین دین کی تفصیلات محفوظ کریں۔",
+        "واقعہ میں شامل تاریخ، وقت، بینک اور رقم نوٹ کریں۔"
+      ],
+      "step2Title": "مرحلہ 2: اپنے بینک سے رابطہ کریں۔",
+      "step2": [
+        "اپنے بینک کی فراڈ ہیلپ لائن پر کال کریں اور مشتبہ UPI لین دین کی وضاحت کریں۔",
+        "عارضی بلاک کی درخواست کریں یا اگر ضرورت ہو تو اپنے UPI PIN کو دوبارہ ترتیب دیں۔",
+        "بینک سے کہیں کہ وہ دھوکہ دہی والے UPI ID کا پتہ لگائے اور ٹرانزیکشن ٹریل کو منجمد کرے۔"
+      ],
+      "step3Title": "مرحلہ 3: سرکاری شکایت درج کروائیں۔",
+      "step3": [
+        "cybercrime.gov.in پر جائیں اور UPI/ادائیگی فراڈ کے تحت شکایت درج کریں۔",
+        "UPI ٹرانزیکشن IDs، پیغامات، فون نمبرز اور اسکرین شاٹس شامل کریں۔",
+        "شکایت کی رسیدوں اور حوالہ نمبروں کی کاپیاں اپنے پاس رکھیں۔"
+      ],
+      "contactsTitle": "فوری رابطے",
+      "contacts": {
+        "helpline": "نیشنل سائبر کرائم ہیلپ لائن:",
+        "portal": "سائبر کرائم پورٹل:",
+        "regulator": "UPI ریگولیٹر:"
+      }
+    },
+    "home": {
+      "backBtn": "ΓåÉ واپس گھر پر",
+      "moduleTitle": "UPI فراڈ ماڈیول",
+      "labKicker": "UPI فراڈ لیب",
+      "heroTitle": "UPI گھوٹالوں کو سمجھیں، اپنے PIN کی حفاظت کریں، اور محفوظ طریقے سے ادائیگی کریں۔",
+      "heroDesc": "یہ ماڈیول آپ کو بغیر کسی حقیقی ادائیگی کے APIs کا استعمال کیے جعلی جمع کرنے کی درخواستوں، اسکرین شیئر ٹریپس، اور فشنگ ادائیگی کے اشارے ΓÇö کو تلاش کرنے میں مدد کرتا ہے۔",
+      "startBtn": "آگاہی شروع کریں۔",
+      "tryDemoBtn": "ڈیمو آزمائیں۔",
+      "mattersTitle": "یہ کیوں اہمیت رکھتا ہے۔",
+      "mattersDesc": "UPI دھوکہ دہی ہندوستان میں سب سے تیزی سے بڑھتے ہوئے ادائیگی کے گھوٹالوں میں سے ایک ہے۔ یہ لیب آپ کو لین دین کی منظوری دینے سے پہلے سرخ جھنڈوں کی شناخت کرنے میں مدد کرتی ہے۔",
+      "fact1": "جمع کرنے کی جعلی درخواستیں اکثر ریفنڈز، انعامات یا کسٹمر سپورٹ کی طرح ظاہر ہوتی ہیں۔",
+      "fact2": "اگر کوئی ایپ رقم وصول کرنے کے لیے آپ کا UPI PIN مانگتی ہے، تو اسے ایک اعلی خطرے والے گھوٹالہ سمجھیں۔",
+      "fact3": "ادائیگیوں کی منظوری دینے سے پہلے ہمیشہ وصول کنندہ، رقم اور متوقع بہاؤ کی تصدیق کریں۔",
+      "sectionsKicker": "ماڈیول کے حصے",
+      "sectionsTitle": "UPI فراڈ سیکھنے کا راستہ دریافت کریں۔",
+      "sectionsDesc": "گھوٹالے سے متعلق آگاہی، حقیقی کیس سیکھنے، انٹرایکٹو UPI چیکس، اور بہترین طریقوں کی رپورٹنگ کی گہرائی میں جائیں۔",
+      "cardOpen": "کھولیں۔",
+      "fastFactsTitle": "تیز حقائق",
+      "fastFacts": [
+        "اپنا UPI PIN یا OTP کبھی بھی کسی کے ساتھ شیئر نہ کریں۔",
+        "جمع کرنے کی درخواستوں کو منظور کرنے سے پہلے وصول کنندہ VPA اور رقم کی توثیق کریں۔",
+        "آفیشل بینک ایپس یا UPI ایپس استعمال کریں، نہ کہ اجنبیوں کے بھیجے گئے لنکس۔"
+      ],
+      "watchTitle": "کیا دیکھنا ہے۔",
+      "watch": [
+        "غیر متوقع رقم کی واپسی یا انعام کی درخواستیں جو ادائیگی کی منظوری کا مطالبہ کرتی ہیں۔",
+        "اسکرین شیئرنگ یا ریموٹ کنٹرول کالز جو آپ سے UPI ایپس کھولنے کے لیے کہتی ہیں۔",
+        "بینکوں، تاجروں، یا سرکاری اہلکاروں کی نقالی۔"
+      ],
+      "reportTitle": "جلدی اطلاع دیں۔",
+      "report": [
+        "سائبر کرائم کی مدد کے لیے 1930 پر کال کریں۔",
+        "UPI لین دین کی تفصیلات کے ساتھ cybercrime.gov.in پر فائل کریں۔",
+        "اسکرین شاٹس، UPI IDs اور بینک حوالہ نمبر رکھیں۔"
+      ]
+    }
+  },
+  "urlScannerPage": {
+    "cyberFacts": [
+      "78% فشنگ حملے اب HTTPS انکرپشن کا استعمال کرتے ہیں۔",
+      "64% واٹس ایپ گھوٹالوں میں مختصر URLs کو ہتھیار بنایا جاتا ہے۔",
+      "اس سہ ماہی میں جعلی کورئیر ڈلیوری گھوٹالوں میں 340 فیصد اضافہ ہوا۔",
+      "43% خلاف ورزیاں ایک فریب دہی ای میل سے شروع ہوئیں",
+      "QR کوڈ فشنگ حملوں میں 2024 میں 587 فیصد اضافہ ہوا۔",
+      "بصری مماثلت کے حملے 82% صارفین کو نظرانداز کرتے ہیں۔",
+      "کلک کے بعد اسناد کی چوری میں اوسطاً 16 سیکنڈ لگتے ہیں۔",
+      "موبائل استعمال کرنے والوں میں فشنگ کا شکار ہونے کا امکان 3 گنا زیادہ ہے۔"
+    ],
+    "stages": {
+      "sslVerification": "SSL تصدیق",
+      "redirectMapping": "ری ڈائریکٹ میپنگ",
+      "domainReputation": "ڈومین کی ساکھ",
+      "scriptInspection": "اسکرپٹ معائنہ",
+      "threatIntelligence": "دھمکی انٹیلی جنس",
+      "heuristicAnalysis": "AI خطرے کا تجزیہ"
+    },
+    "intelDivision": "خطرہ انٹیلی جنس ڈویژن",
+    "systemActive": "نظام فعال",
+    "threatIntel": "خطرہ انٹیل",
+    "headerTitle": "لنکس کی چھان بین کریں۔",
+    "headerTitleColored": "اس سے پہلے کہ وہ آپ کی چھان بین کریں۔",
+    "headerSubtitle": "مشتبہ URLs، ڈومین کی صحت، اور ری ڈائریکٹ منطق کا تجزیہ کرنے کے لیے اعلی درجے کا {{provider}} طاقت سے چلنے والا خطرہ انٹیلی جنس سسٹم۔",
+    "poweredBy": "کی طرف سے طاقت",
+    "targetInput": "URL ان پٹ کو ہدف بنائیں",
+    "inputPlaceholder": "https://suspicious-link.example.com",
+    "btnScanning": "سکیننگ...",
+    "btnScan": "خطرہ اسکین شروع کریں۔",
+    "aiUnavailable": "VirusTotal API کلید غائب ہے۔ ہورسٹک آؤٹ پٹ دکھا رہا ہے۔",
+    "aiScanFailed": "AI اسکین ناکام ہو گیا۔",
+    "scanProgress": "اسکین کی پیشرفت",
+    "threatVerdict": "دھمکی کا فیصلہ",
+    "confidence": "اعتماد",
+    "phishingRisk": "فشنگ کا خطرہ",
+    "sslCertificate": "SSL سرٹیفکیٹ",
+    "status": "حیثیت",
+    "verdicts": {
+      "safe": "محفوظ",
+      "suspicious": "مشکوک",
+      "malicious": "بدنیتی پر مبنی"
+    },
+    "issuer": "جاری کرنے والا",
+    "expires": "میعاد ختم",
+    "domainIntel": "ڈومین انٹیلی جنس",
+    "age": "عمر",
+    "registrar": "رجسٹرار",
+    "reputation": "شہرت",
+    "threatLevel": "خطرے کی سطح",
+    "urlStructureAnalysis": "یو آر ایل کی ساخت کا تجزیہ",
+    "protocol": "پروٹوکول",
+    "subdomain": "ذیلی ڈومین",
+    "domain": "ڈومین",
+    "path": "راستہ",
+    "parameters": "پیرامیٹرز",
+    "socialEngineeringIndicators": "سوشل انجینئرنگ کے اشارے",
+    "tactics": {
+      "urgency": "عجلت",
+      "reward": "انعام",
+      "authority": "اتھارٹی",
+      "fear": "خوف",
+      "verification": "تصدیق"
+    },
+    "suspiciousPatterns": "مشکوک پیٹرن",
+    "redirectChainDetected": "ری ڈائریکٹ چین کا پتہ چلا",
+    "attackFlowPattern": "اٹیک فلو پیٹرن",
+    "scanAnotherUrl": "دوسرا URL اسکین کریں۔",
+    "exploreCyberAwareness": "سائبر آگاہی دریافت کریں۔",
+    "cyberAwarenessIntelligence": "سائبر آگاہی انٹیلی جنس",
+    "understandingThreats": "یہ سمجھنا کہ کس طرح بدنیتی پر مبنی لنکس آپ کو دھوکہ دیتے ہیں ڈیجیٹل دفاع کی پہلی لائن ہے۔",
+    "cards": {
+      "phishingWork": {
+        "title": "فشنگ لنکس کیسے کام کرتے ہیں۔",
+        "desc": "فشنگ لنکس اسناد کو چرانے کے لیے خود کو جائز یو آر ایل کے طور پر چھپاتے ہیں۔ حملہ آور صارفین کو دھوکہ دینے کے لیے بصری مماثلت، ذیلی ڈومین ٹرکس اور ہوموگراف حملوں کا استعمال کرتے ہیں۔",
+        "item1": "Typosquatting: paypal.com کے بجائے paypa1.com",
+        "item2": "ذیلی ڈومین چالیں: paypal.secure-login.phisher.com",
+        "item3": "ہوموگراف حملے: ایک جیسے نظر آنے والے حروف کا استعمال"
+      },
+      "domainHiding": {
+        "title": "ڈومین چھپانے کی تکنیک",
+        "desc": "سائبر کرائمینز بدنیتی پر مبنی ڈومینز کو چھپانے اور انہیں جائز ظاہر کرنے کے لیے جدید ترین طریقے استعمال کرتے ہیں۔ ان حربوں کو سمجھنا آپ کو کلک کرنے سے پہلے مشکوک لنکس کی شناخت کرنے میں مدد کرتا ہے۔",
+        "item1": "یو آر ایل شارٹنرز اصلی منزل کو چھپا رہے ہیں۔",
+        "item2": "حتمی ہدف کو غیر واضح کرنے کے لیے متعدد ری ڈائریکٹ",
+        "item3": "انکوڈنگ تکنیک اور مبہم پیرامیٹرز"
+      },
+      "httpsEnough": {
+        "title": "صرف HTTPS کافی نہیں ہے۔",
+        "desc": "HTTPS اور ایک پیڈ لاک آئیکن کی موجودگی سائٹ کے محفوظ ہونے کی ضمانت نہیں دیتی۔ 78% فشنگ سائٹس اب قابل اعتماد ظاہر ہونے کے لیے SSL سرٹیفکیٹ استعمال کرتی ہیں۔ ہمیشہ ڈومین کی خود تصدیق کریں۔",
+        "item1": "مفت SSL سرٹیفکیٹ ہر کسی کے لیے دستیاب ہیں۔",
+        "item2": "حملہ آور غلط ساکھ بنانے کے لیے HTTPS کا استعمال کرتے ہیں۔",
+        "item3": "ڈومین کا نام چیک کریں، نہ صرف لاک آئیکن"
+      },
+      "qrShortened": {
+        "title": "QR اور مختصر URL کے خطرات",
+        "desc": "QR کوڈز اور مختصر کیے گئے URLs منزل کو مکمل طور پر چھپاتے ہیں، انہیں فشنگ کے لیے بہترین ویکٹر بناتے ہیں۔ 2024 میں کیو آر فشنگ (کوئیشنگ) حملوں میں 587 فیصد اضافہ ہوا۔",
+        "item1": "اسکین کرنے/کلک کرنے سے پہلے منزل کا پیش نظارہ نہیں کیا جا سکتا",
+        "item2": "عام طور پر پارکنگ، ترسیل، اور ادائیگی کے گھوٹالوں میں استعمال ہوتا ہے۔",
+        "item3": "QR کوڈز کو اسکین کرنے سے پہلے ہمیشہ سورس کی تصدیق کریں۔"
+      }
+    },
+    "thinkBeforeYouClick": "آپ کے کلک کرنے سے پہلے سوچیں۔",
+    "everyLinkThreat": "ہر لنک ایک ممکنہ خطرہ ویکٹر ہے۔ چوکس رہیں، ذرائع کی تصدیق کریں، اور اپنی جبلت پر بھروسہ کریں۔",
+    "eduPlatform": "تعلیمی بیداری کا پلیٹ فارم • سیکورٹی وینڈرز سے وابستہ نہیں ہے۔",
+    "forDemoOnly": "صرف مظاہرے اور سیکھنے کے مقاصد کے لیے"
   }
 }
